@@ -1,2 +1,2 @@
 # CG
-Programa para Controle de Estoque
+Programa para Controle de Estoque da GestServi
