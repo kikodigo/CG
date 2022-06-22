@@ -152,6 +152,7 @@ namespace CG
         private void Frm_login_Load_1(object sender, EventArgs e)
         {
             this.TopMost = true;
+            //alteração da main
         }
 
         private void Txt_username_TextChanged(object sender, EventArgs e)
