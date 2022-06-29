@@ -93,6 +93,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             lbl_N.ForeColor = Color.Gray;
             lbl_Observacao.ForeColor = Color.Gray;
         }
+
         public void liberarbotao()
         {
             cbx_estado.Enabled = true;
@@ -129,6 +130,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             lbl_N.ForeColor = Color.White;
             lbl_Observacao.ForeColor = Color.White;
         }
+
         public void Preencher(DataTable dados)
         {
 
@@ -148,8 +150,8 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
 
 
 
-        }
-       
+        }       
+
         public void limpatudo()
         {
             cbx_estado.Text = "";
@@ -165,6 +167,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             txt_obs.Text = "";
             txt_PrLimite.Text = "";
         }
+
         public void controleacesso(string CodPerfil)
         {
             switch (CodPerfil)
@@ -197,6 +200,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
 
             }
         }
+
         private void Frm_ContratoCadastro_Load(object sender, EventArgs e)
         {
 
@@ -215,6 +219,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
           
 
         }
+
         private void Cbx_estado_SelectedIndexChanged(object sender, EventArgs e)
         {
             dadosql = string.Format("select id FROM estado WHERE uf = '{0}'", cbx_estado.Text);
@@ -224,7 +229,6 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             cbx_cidade.DisplayMember = "nome";
             cbx_cidade.DataSource = mConn.LeituraTabela(dadosql);
         }
-
 
         private void Tsm_editar_Click(object sender, EventArgs e)
         {
@@ -257,7 +261,6 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             bloquearbotao();
         }
 
-
         private void Tsm_pesquisar_Click(object sender, EventArgs e)
         {
             frm_ContratoPesquisa ctrp = new frm_ContratoPesquisa(txt_usuario.Text);
@@ -273,15 +276,8 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             DialogResult dialogResult = MessageBox.Show("Limpar todos os campos ?", "Limpeza", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (dialogResult == DialogResult.Yes)
             {
-
-
-                // dadosql = string.Format("DELETE FROM `contrato` WHERE `codcc` = '{0}'", txt_codigo.Text);
-                // cbx_cidade.DisplayMember = "nome";
-                //  cbx_cidade.DataSource = mConn.LeituraTabela(dadosql);
-
                 cbx_cidade.Text = "";
                 cbx_estado.Text = "";
-
                 txt_bairro.Text = "";
                 txt_rua.Text = "";
                 txt_num.Text = "";
@@ -296,8 +292,6 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             {
                 MessageBox.Show("Processo Cancelado!", "Cancelado");
             }
-
-
         }
 
         private void Txt_obs_TextChanged(object sender, EventArgs e)
