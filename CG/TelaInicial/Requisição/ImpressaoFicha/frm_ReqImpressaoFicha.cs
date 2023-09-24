@@ -1,19 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
-using System.Drawing.Imaging;  
 using System.Drawing.Printing;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Threading;
+using System.Windows.Forms;
 
 
 namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
@@ -34,7 +23,7 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
         private void Frm_ReqImpressaoFicha_Load(object sender, EventArgs e)
         {
 
-            
+
             dadosql = string.Format("SELECT `codreq` FROM `requerimento` where `status` <> \"EM ANDAMENTO\" AND `status`<> \"AGUARDANDO APROVAÇÃO\" ORDER BY `codreq` DESC ");
             cbx_nreq.DisplayMember = "codreq";
             cbx_nreq.DataSource = mConn.ConsultaTabela(dadosql);
@@ -55,7 +44,7 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
             txt_Nreq.Text = null;
             txt_dataDEM.Text = null;
             txt_setor.Text = null;
-            
+
             txt_informacoes.BackColor = Color.White;
             txt_dataADM.BackColor = Color.White;
             txt_colaborador.BackColor = Color.White;
@@ -75,7 +64,7 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
             txt_Nreq.ForeColor = Color.Black;
             txt_dataDEM.ForeColor = Color.Black;
             txt_setor.ForeColor = Color.Black;
-           // txt_informacoes.ForeColor = Color.Black;
+            // txt_informacoes.ForeColor = Color.Black;
 
 
 
@@ -104,7 +93,7 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
             this.TopMost = false;
             (printPreviewDialog1 as Form).WindowState = FormWindowState.Maximized;
             printPreviewDialog1.ShowDialog();
-           //  this.printDocument1.Print();
+            //  this.printDocument1.Print();
         }
 
 
@@ -129,8 +118,8 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
 
             this.TopMost = false;
             (printPreviewDialog1 as Form).WindowState = FormWindowState.Maximized;
-           //printPreviewDialog1.ShowDialog();
-             this.printDocument1.Print();
+            //printPreviewDialog1.ShowDialog();
+            this.printDocument1.Print();
         }
 
 
@@ -140,7 +129,7 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
 
             // pre visualiza 
 
-            e.Graphics.DrawImageUnscaled(bmp,0,0);
+            e.Graphics.DrawImageUnscaled(bmp, 0, 0);
 
 
         }
@@ -148,14 +137,14 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
         private void Cbx_contratos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            
+
 
 
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT `contrato` FROM `requerimento` WHERE codreq = '{0}' ", cbx_nreq.Text);
 
             resultado = mConn.LeituraLinha(dadosql);
-            txt_contrato.Text =  resultado.Rows[0]["contrato"].ToString();
+            txt_contrato.Text = resultado.Rows[0]["contrato"].ToString();
             txt_setor.Text = resultado.Rows[0]["contrato"].ToString();
 
             dadosql = string.Format("SELECT * FROM `req_item` where codreq = '{0}' GROUP BY func", cbx_nreq.Text);
@@ -189,7 +178,7 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
             Impressão_Ficha.frm_ReqImpressaoFichaRel form = new Impressão_Ficha.frm_ReqImpressaoFichaRel();
 
             //Impressao_Ficha.frm_ReqImpressaoFichaRel form = Impresso_Ficha.frm_ReqImpressaoFichaRel
-            
+
             form.Show();
         }
 
@@ -206,37 +195,37 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
             }
         }
 
-     
+
 
         private void Cbx_SelectFunc_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable resultado = new DataTable();
 
-            dadosql = string.Format("SELECT `qtd_lib`,`descricao` FROM `req_item`  WHERE `func`= '{0}' and `codreq` = {1}", cbx_SelectFunc.Text ,cbx_nreq.Text);
+            dadosql = string.Format("SELECT `qtd_lib`,`descricao` FROM `req_item`  WHERE `func`= '{0}' and `codreq` = {1}", cbx_SelectFunc.Text, cbx_nreq.Text);
             dgv_descricoes.DataSource = mConn.LeituraLinha(dadosql);
 
 
             //consulta do nome no mysql e consulta da matricula no SQL server
-                dadosql = string.Format("SELECT `matr_func` FROM `req_func` WHERE `func` = '{0}' GROUP by `matr_func`", cbx_SelectFunc.Text);
-                resultado = mConn.LeituraLinha(dadosql);
-                lbl_matricula.Text = resultado.Rows[0]["matr_func"].ToString();
+            dadosql = string.Format("SELECT `matr_func` FROM `req_func` WHERE `func` = '{0}' GROUP by `matr_func`", cbx_SelectFunc.Text);
+            resultado = mConn.LeituraLinha(dadosql);
+            lbl_matricula.Text = resultado.Rows[0]["matr_func"].ToString();
             //--
 
 
             // Consulta SQL Server para preenchimento dos campos
-            string codcargo,sitafa;
-            dadosmssql = string.Format("select numcad,datadm,datafa,codcar,sitafa from vetorh.dbo.r034fun where numcad = {0}",lbl_matricula.Text);
+            string codcargo, sitafa;
+            dadosmssql = string.Format("select numcad,datadm,datafa,codcar,sitafa from vetorh.dbo.r034fun where numcad = {0}", lbl_matricula.Text);
             resultado = msConn.ConsultaTabela(dadosmssql);
             txt_Nreg.Text = resultado.Rows[0]["numcad"].ToString();
-            txt_dataADM.Text =  resultado.Rows[0]["datadm"].ToString();
+            txt_dataADM.Text = resultado.Rows[0]["datadm"].ToString();
 
-           // txt_dataADM2.Text = resultado.Rows[0]["datadm"].ToString();
+            // txt_dataADM2.Text = resultado.Rows[0]["datadm"].ToString();
 
             sitafa = resultado.Rows[0]["datafa"].ToString();
             if (sitafa == "7" && sitafa == "3" && sitafa == "53")
             {
                 txt_dataDEM.Text = resultado.Rows[0]["datafa"].ToString();
-            }            
+            }
 
             codcargo = resultado.Rows[0]["codcar"].ToString();
 
@@ -248,29 +237,29 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
             txt_colaborador.Text = cbx_SelectFunc.Text;
             txt_Nreq.Text = cbx_nreq.Text;
 
-            
+
             // limpa as DGV
-                dadosql = string.Format("SELECT `qtd_lib` AS `Entrega` FROM `req_item` WHERE `func`= 'NADINHA' ");
-                dgv_dataEntrega.DataSource = mConn.LeituraLinha(dadosql);
+            dadosql = string.Format("SELECT `qtd_lib` AS `Entrega` FROM `req_item` WHERE `func`= 'NADINHA' ");
+            dgv_dataEntrega.DataSource = mConn.LeituraLinha(dadosql);
 
 
-                dadosql = string.Format("SELECT `qtd_lib` AS `Assinatura`,`func` AS `Devolução`,`cargo`AS `Assinatura` FROM `req_item` WHERE `func`= 'NADINHA'");
-                dgv_assinaturas.DataSource = mConn.LeituraLinha(dadosql);
+            dadosql = string.Format("SELECT `qtd_lib` AS `Assinatura`,`func` AS `Devolução`,`cargo`AS `Assinatura` FROM `req_item` WHERE `func`= 'NADINHA'");
+            dgv_assinaturas.DataSource = mConn.LeituraLinha(dadosql);
             // ----
 
 
 
-           
+
             dadosql = string.Format("SELECT COUNT(`descricao`) AS `Entrega` FROM `req_item`  WHERE `func`= '{0}' and `codreq` = {1}", cbx_SelectFunc.Text, cbx_nreq.Text);
             resultado = mConn.LeituraLinha(dadosql);
 
             dgv_dataEntrega.DataSource = null;
             dgv_assinaturas.DataSource = null;
-                       
+
 
             if (dgv_dataEntrega.Columns.Count.ToString() == "0")
             {
-                
+
                 dgv_dataEntrega.Columns.Add("Data Entrega", "Data Entrega");
 
             }
@@ -329,11 +318,11 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
             {
                 dadosql = string.Format("SELECT `ca` FROM `estoque` WHERE `descricao` = '{0}'", dgv_descricoes.Rows[contador].Cells[2].Value.ToString());
                 resultado = mConn.ConsultaTabela(dadosql);
-                
 
-                if(dgv_descricoes.Rows.Count.ToString() != "0")
+
+                if (dgv_descricoes.Rows.Count.ToString() != "0")
                 {
-                   
+
                     dgv_descricoes.Rows[contador].Cells["CA"].Value = resultado.Rows[0]["CA"].ToString();
                 }
 
@@ -347,7 +336,7 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
 
         private void Btn_imprime_Click(object sender, EventArgs e)
         {
-            if(chx_visualizar.Checked == true)
+            if (chx_visualizar.Checked == true)
             {
                 Imprimeprev();
 
@@ -357,7 +346,7 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
 
                 Imprime();
             }
-            
+
         }
 
         private void Btn_anterior_Click(object sender, EventArgs e)
@@ -392,14 +381,14 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
 
 
 
-                    if (Convert.ToInt32(lbl_restante.Text) <= Convert.ToInt32(lbl_total.Text) )
+                    if (Convert.ToInt32(lbl_restante.Text) <= Convert.ToInt32(lbl_total.Text))
                     {
                         restante = Convert.ToInt32(lbl_restante.Text);
-                        
-                            
 
 
-                        if(lbl_restante.Text != "1")
+
+
+                        if (lbl_restante.Text != "1")
                         {
                             restante--;
                             cbx_SelectFunc.SelectedIndex = restante - 1;
@@ -428,7 +417,7 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
                     }
 
                 }
-              
+
             }
             else
             {
@@ -481,7 +470,7 @@ namespace CG.Tela_Inicial.Requisição.Impressão_Ficha
                         {
                             cbx_SelectFunc.SelectedIndex = restante - 1;
                         }
-                       // Imprime();
+                        // Imprime();
 
 
                         if (Convert.ToInt32(lbl_restante.Text) >= Convert.ToInt32(lbl_total.Text))

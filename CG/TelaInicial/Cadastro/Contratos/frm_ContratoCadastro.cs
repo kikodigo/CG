@@ -19,7 +19,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             DataTable resultado = new DataTable();
             resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
-            this.TopMost = true; 
+            this.TopMost = true;
         }
 
         public frm_ContratoCadastro(string usuario, string valor)
@@ -30,7 +30,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             cbx_contrato.DisplayMember = "nomccu";
             cbx_contrato.DataSource = msConn.ConsultaTabela(dadosmssql);
 
-  
+
 
             txt_usuario.Text = usuario;
             txt_codigo.Text = valor;
@@ -39,13 +39,13 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
 
-            
+
 
             dadosql = string.Format("SELECT * FROM `contrato` where `codcc` = '{0}'", txt_codigo.Text);
             resultado = mConn.LeituraTabela(dadosql);
-                      
-                Preencher(resultado);
-  
+
+            Preencher(resultado);
+
             this.TopMost = true;
 
         }
@@ -108,9 +108,9 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             txt_contato.Enabled = true;
             txt_tel1.Enabled = true;
             txt_tel2.Enabled = true;
-            txt_obs.Enabled = true;            
+            txt_obs.Enabled = true;
             txt_PrLimite.Enabled = true;
-            
+
             tsm_limpar.Enabled = true;
             tsm_salvar.Enabled = true;
             tsm_editar.Enabled = false;
@@ -150,7 +150,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
 
 
 
-        }       
+        }
 
         public void limpatudo()
         {
@@ -211,12 +211,12 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
                 cbx_contrato.DataSource = msConn.ConsultaTabela(dadosmssql);
 
             }
-        
+
 
             bloquearbotao();
             controleacesso(lbl_VlPermissao.Text);
 
-          
+
 
         }
 
@@ -265,7 +265,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
         {
             frm_ContratoPesquisa ctrp = new frm_ContratoPesquisa(txt_usuario.Text);
             ctrp.Show();
-            this.TopMost = false; 
+            this.TopMost = false;
             this.Close();
 
         }
@@ -336,12 +336,12 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
                 txt_tel2.Text = "";
                 txt_obs.Text = "";
                 txt_PrLimite.Text = "";
-                
+
             }
 
 
 
         }
-        
+
     }
 }

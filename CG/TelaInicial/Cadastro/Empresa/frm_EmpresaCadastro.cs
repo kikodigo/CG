@@ -1,20 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace CG.Tela_Inicial.Cadastro.Empresa
 {
     public partial class frm_EmpresaCadastro : Form
     {
-  
+
 
         public frm_EmpresaCadastro(string usuario)
         {
@@ -35,10 +28,10 @@ namespace CG.Tela_Inicial.Cadastro.Empresa
 
                     break;
 
-                case "2":                 
+                case "2":
                     break;
 
-                case "3":  
+                case "3":
                     tsm_editar.Visible = false;
 
                     break;
@@ -89,7 +82,7 @@ namespace CG.Tela_Inicial.Cadastro.Empresa
             label0.ForeColor = Color.Gray;
             label1.ForeColor = Color.Gray;
             label2.ForeColor = Color.Gray;
-            label3.ForeColor = Color.Gray; 
+            label3.ForeColor = Color.Gray;
             label3.ForeColor = Color.Gray;
             label4.ForeColor = Color.Gray;
             label5.ForeColor = Color.Gray;

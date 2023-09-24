@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
 
@@ -58,7 +52,7 @@ namespace CG.TelaInicial.ControleEstoque.Entrada
             using (XmlReader meuXml = XmlReader.Create(arquivo))
             {
                 // cabeçalho, dados do emitente
-                while (meuXml.Read()) 
+                while (meuXml.Read())
                 {
                     if (meuXml.NodeType == XmlNodeType.Element && meuXml.Name == "emit")
                         isEmitente = true;
@@ -82,10 +76,10 @@ namespace CG.TelaInicial.ControleEstoque.Entrada
 
 
                         if (meuXml.NodeType == XmlNodeType.Element && meuXml.Name == "xNome")
-                        
+
                             txt_Fornecedor.Text = meuXml.ReadElementString();
-                            
-                        
+
+
                     }
 
                 }
@@ -95,7 +89,7 @@ namespace CG.TelaInicial.ControleEstoque.Entrada
 
                 while (meuXml.Read())
                 {
-                 
+
                     //---- Itens
 
                     if (meuXml.NodeType == XmlNodeType.Element && meuXml.Name == "det")
@@ -180,7 +174,7 @@ namespace CG.TelaInicial.ControleEstoque.Entrada
                         MessageBox.Show(erro.Message.ToString());
                         MessageBox.Show(erro.ToString());
                     }
-                                       
+
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -262,7 +256,7 @@ namespace CG.TelaInicial.ControleEstoque.Entrada
                 if (Table.Rows.Count != 0)
                 {
                     tbc_Itens.SelectedTab = tbp_Falha;
-                    MessageBox.Show("Atenção! \nExistem "+Table.Rows.Count.ToString() + " itens sem cadastro de codigo externo. \nPor favor, verifique o cadastro de estoque \nNão é permitido a liberação de XML com falhas.","Atenção",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Atenção! \nExistem " + Table.Rows.Count.ToString() + " itens sem cadastro de codigo externo. \nPor favor, verifique o cadastro de estoque \nNão é permitido a liberação de XML com falhas.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
                 Table = null;
@@ -281,7 +275,7 @@ namespace CG.TelaInicial.ControleEstoque.Entrada
         private void Btn_Liberar_Click(object sender, EventArgs e)
         {
 
-            if(dgv_Falha.RowCount == 0)
+            if (dgv_Falha.RowCount == 0)
             {
                 DataTable dt = new DataTable();
                 //Adiciona as colunas existentes.
@@ -305,10 +299,10 @@ namespace CG.TelaInicial.ControleEstoque.Entrada
             }
             else
             {
-                MessageBox.Show("Não é possivel importar XML com itens com codigo externo faltantes.\nExistem " + dgv_Falha.RowCount.ToString() + " iten(s) que não foram cadastrados.\nPor favor, verifique no cadastro de produtos","Erro",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Não é possivel importar XML com itens com codigo externo faltantes.\nExistem " + dgv_Falha.RowCount.ToString() + " iten(s) que não foram cadastrados.\nPor favor, verifique no cadastro de produtos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 tbc_Itens.SelectedTab = tbp_Falha;
 
-            }          
+            }
 
         }
 

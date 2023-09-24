@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CG
 {
     public partial class frm_gerenciador : Form
     {
-        
+
         public frm_gerenciador()
         {
             InitializeComponent();
@@ -20,11 +13,11 @@ namespace CG
         private string sql;
         private string msgError = "O ID não pode ser nulo ou negativo";
         Classes.conexao conn = new Classes.conexao();
-        
+
         //btn alterar
         private void btn_alterar_Click(object sender, EventArgs e)
         {
-            if(nud_id.Value <= 0)
+            if (nud_id.Value <= 0)
             {
                 lbl_erro.Text = msgError;
             }
@@ -40,7 +33,7 @@ namespace CG
         //excluir
         private void btn_excluir_Click(object sender, EventArgs e)
         {
-            if(nud_id.Value <= 0)
+            if (nud_id.Value <= 0)
             {
                 lbl_erro.Text = msgError;
             }
@@ -79,7 +72,7 @@ namespace CG
         //metodos
         public void Listar()
         {
-            sql = "select id,siteNome,login,senha from gerenciador where usuario = '"+frm_login.id+"'";
+            sql = "select id,siteNome,login,senha from gerenciador where usuario = '" + frm_login.id + "'";
             dgv_info.DataSource = conn.ConsultarTabelas(sql);
         }
 

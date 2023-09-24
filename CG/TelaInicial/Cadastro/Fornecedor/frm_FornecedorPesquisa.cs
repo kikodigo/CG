@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace CG
 {
@@ -54,20 +46,20 @@ namespace CG
                     break;
                 case "Nome":
                     coluna = "nome";
-                    
+
                     break;
                 case "CNPJ / CPF":
                     coluna = "doc";
-                   
+
                     break;
                 case "E-Mail":
-                    coluna = "email";                    
-                   
+                    coluna = "email";
+
                     break;
 
                 default:
                     MessageBox.Show("Opção Invalida");
-                    break;                   
+                    break;
 
             }
 

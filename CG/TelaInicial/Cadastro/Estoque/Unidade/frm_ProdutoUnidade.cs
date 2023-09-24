@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace CG
 {
@@ -19,7 +12,7 @@ namespace CG
             InitializeComponent();
             txt_usuario.Text = usuario;
         }
-        public frm_ProdutoUnidade(String valor,String usuario)
+        public frm_ProdutoUnidade(String valor, String usuario)
         {
             InitializeComponent();
             txt_codigo.Text = valor;
@@ -39,7 +32,7 @@ namespace CG
 
         public void bloquearbotao()
         {
-            
+
 
             txt_unidade.Enabled = true;
 
@@ -55,14 +48,14 @@ namespace CG
 
             label1.ForeColor = Color.Gray;
             label2.ForeColor = Color.Gray;
-            
+
 
         }
         public void liberarbotao()
         {
             txt_unidade.Enabled = true;
 
-            tsm_salvar.Enabled = true;                        
+            tsm_salvar.Enabled = true;
             tsm_novo.Enabled = false;
             tsm_editar.Enabled = false;
             tsm_anterior.Enabled = false;
@@ -72,7 +65,7 @@ namespace CG
 
             label1.ForeColor = Color.White;
             label2.ForeColor = Color.White;
-            
+
         }
         private void Frm_ProdutoUnidade_Load(object sender, EventArgs e)
         {
@@ -99,10 +92,10 @@ namespace CG
                 cbx_ativo.Text = resultado.Rows[0]["ativo"].ToString();
 
             }
-            
+
         }
-        
-  
+
+
 
         private void Tsm_novo_Click(object sender, EventArgs e)
         {
@@ -257,7 +250,7 @@ namespace CG
         {
             this.TopMost = false;
             frm_ProdutoUnidadePesquisa Produtounid = new frm_ProdutoUnidadePesquisa(txt_usuario.Text);
-            Produtounid.ShowDialog();           
+            Produtounid.ShowDialog();
             this.Close();
 
         }

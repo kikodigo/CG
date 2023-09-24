@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace CG.Tela_Inicial.Cadastro.Contratos
 {
@@ -35,7 +26,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
         private string dadosql;
         Classes.dbconect mConn = new Classes.dbconect();
 
-       
+
         private void frm_ContratoPesquisa_Load(object sender, EventArgs e)
         {
             dadosql = string.Format("SELECT `codcc` as `Codigo Contrato`,`nome_contrato` as `Nome do Contrato`,`contato` as `Contato`,`tel1` as `Telefone 1`,`tel2`as `Telefone 2` FROM `contrato`");
@@ -58,13 +49,13 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
                 case "Contato":
                     coluna = "contato";
 
-                    break;              
-
-                default:
-                    MessageBox.Show("Opção Invalida","Erro",MessageBoxButtons.OK,MessageBoxIcon.Error);
                     break;
 
-            }           
+                default:
+                    MessageBox.Show("Opção Invalida", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
+
+            }
             dadosql = string.Format("SELECT `codcc` as `Codigo Contrato`,`nome_contrato` as `Nome do Contrato`,`contato` as `Contato`,`tel1` as `Telefone 1`,`tel2`as `Telefone 2`  FROM `estoque` WHERE `{0}` LIKE '%{1}%'", coluna, txt_referencia.Text);
 
             dgv_ContratoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
@@ -72,14 +63,14 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
 
         private void dgv_ContratoPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
             txt_destino.Text = this.dgv_ContratoPesquisa.CurrentRow.Cells[0].Value.ToString();
-          
+
             frm_ContratoCadastro contrato = new frm_ContratoCadastro(txt_usuario.Text, txt_destino.Text);
             this.TopMost = false;
-            this.Close();           
+            this.Close();
             contrato.Show();
-           
+
         }
     }
 }

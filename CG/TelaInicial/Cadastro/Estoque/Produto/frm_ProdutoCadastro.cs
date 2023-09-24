@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 
 namespace CG
@@ -21,7 +16,7 @@ namespace CG
             txt_usuario.Text = usuario;
 
             DataTable resultado = new DataTable();
-            resultado = mPermissao.consulta(usuario, this.Name);                        
+            resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
         }
 
@@ -57,46 +52,46 @@ namespace CG
 
         }
 
-        
+
 
         public void controleacesso(string CodPerfil)
+        {
+            switch (CodPerfil)
             {
-                switch (CodPerfil)
-                {
-                    case "1":
+                case "1":
 
-                        break;
+                    break;
 
-                    case "2":
-                      tsm_excluir.Visible = false;
-                        break;
+                case "2":
+                    tsm_excluir.Visible = false;
+                    break;
 
-                    case "3":
+                case "3":
                     tsm_excluir.Visible = false;
                     tsm_editar.Visible = false;
 
-                        break;
+                    break;
 
-                    case "4":
-                        tsm_editar.Visible = false;
-                        tsm_novo.Visible = false;
-                        tsm_excluir.Visible = false;
-                        tsm_salvar.Visible = false;
-                        tsm_cancelar.Visible = false;
-                        break;
+                case "4":
+                    tsm_editar.Visible = false;
+                    tsm_novo.Visible = false;
+                    tsm_excluir.Visible = false;
+                    tsm_salvar.Visible = false;
+                    tsm_cancelar.Visible = false;
+                    break;
 
-                    case "0":
-                        MessageBox.Show("Acesso negado!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        this.Close();
-                        break;
+                case "0":
+                    MessageBox.Show("Acesso negado!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    this.Close();
+                    break;
 
-                    default:
-                        MessageBox.Show("Falha ao carregar Perfil.\nInforme o Administrador do sistema.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        this.Close();
-                        break;
+                default:
+                    MessageBox.Show("Falha ao carregar Perfil.\nInforme o Administrador do sistema.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                    break;
 
-                }
-           
+            }
+
         }
 
         public string foto = "";
@@ -104,7 +99,7 @@ namespace CG
         private string permissao;
         Classes.permissoes mPermissao = new Classes.permissoes();
 
-        public frm_ProdutoCadastro(string valor,string usuario)
+        public frm_ProdutoCadastro(string valor, string usuario)
         {
             //Retorna valor selecionado do frm_ProdutoPesquisa
             InitializeComponent();
@@ -126,7 +121,7 @@ namespace CG
         private string dadosql;
         Classes.dbconect mConn = new Classes.dbconect();
 
-       
+
 
         //bloqueia todos os botões e txt/cbx alterando cor das lbl
         public void bloquearbotao()
@@ -163,10 +158,10 @@ namespace CG
             btn_ExcCodExt.Enabled = false;
             btn_ExCodExt.Enabled = false;
 
-            
 
-            
-            
+
+
+
 
             lbl_Cod.ForeColor = Color.Gray;
             lbl_Descricao.ForeColor = Color.Gray;
@@ -211,7 +206,7 @@ namespace CG
             btn_ExcluirFoto.Enabled = true;
             btn_AddCodExt.Enabled = true;
             btn_ExcCodExt.Enabled = true;
-            btn_ExCodExt.Enabled = true;       
+            btn_ExCodExt.Enabled = true;
 
 
 
@@ -230,57 +225,57 @@ namespace CG
 
             if (chx_editar.Checked == false)
             {
-              pb_Foto.Image = null;
+                pb_Foto.Image = null;
             }
         }
 
         // função para preenchimento de todas as textbox e combobox
         public void preencher(DataTable dados)
+        {
+
+            txt_codigo.Text = dados.Rows[0]["cod"].ToString();
+            txt_descricao.Text = dados.Rows[0]["descricao"].ToString();
+            txt_EstoqueAtual.Text = dados.Rows[0]["estoqueatual"].ToString();
+            txt_EstoqueMinimo.Text = dados.Rows[0]["estoqueminimo"].ToString();
+            txt_PrCusto.Text = dados.Rows[0]["prcusto"].ToString();
+            txt_ca.Text = dados.Rows[0]["ca"].ToString();
+
+            cbx_classe.Text = dados.Rows[0]["classe"].ToString();
+            cbx_Unidade.Text = dados.Rows[0]["unidade"].ToString();
+            cbx_ativo.Text = dados.Rows[0]["ativo"].ToString();
+
+
+
+            if (chx_CarregarFoto.Checked == true)
             {
-            
-                txt_codigo.Text = dados.Rows[0]["cod"].ToString();
-                txt_descricao.Text = dados.Rows[0]["descricao"].ToString();            
-                txt_EstoqueAtual.Text = dados.Rows[0]["estoqueatual"].ToString();
-                txt_EstoqueMinimo.Text = dados.Rows[0]["estoqueminimo"].ToString();
-                txt_PrCusto.Text = dados.Rows[0]["prcusto"].ToString();
-                txt_ca.Text = dados.Rows[0]["ca"].ToString();
+                dadosql = string.Format("SELECT `foto` FROM `esto_foto`where `cod_prod`= '{0}'", txt_codigo.Text);
 
-                cbx_classe.Text = dados.Rows[0]["classe"].ToString();
-                cbx_Unidade.Text = dados.Rows[0]["unidade"].ToString();
-                cbx_ativo.Text = dados.Rows[0]["ativo"].ToString();
+                DataTable resultado = new DataTable();
+                resultado = mConn.LeituraLinha(dadosql);
 
-
-
-                if (chx_CarregarFoto.Checked == true) 
+                if (resultado.Rows.Count != 0)
                 {
-                    dadosql = string.Format("SELECT `foto` FROM `esto_foto`where `cod_prod`= '{0}'", txt_codigo.Text);
+                    byte[] imagem = (byte[])(resultado.Rows[0]["foto"]);
 
-                    DataTable resultado = new DataTable();
-                    resultado = mConn.LeituraLinha(dadosql);
-
-                    if (resultado.Rows.Count != 0)
-                    {
-                        byte[] imagem = (byte[])(resultado.Rows[0]["foto"]);
-
-                        if (imagem == null)
-                        {
-                            pb_Foto.Image = null;
-                        }
-                        else
-                        {
-                            MemoryStream mstream = new MemoryStream(imagem);
-                            pb_Foto.Image = System.Drawing.Image.FromStream(mstream);
-
-                        }
-                    }
-                    else
+                    if (imagem == null)
                     {
                         pb_Foto.Image = null;
                     }
+                    else
+                    {
+                        MemoryStream mstream = new MemoryStream(imagem);
+                        pb_Foto.Image = System.Drawing.Image.FromStream(mstream);
+
+                    }
                 }
+                else
+                {
+                    pb_Foto.Image = null;
+                }
+            }
             PreencherDgv();
 
-            }
+        }
 
         public void PreencherDgv()
         {
@@ -412,7 +407,7 @@ namespace CG
             {
                 if (chx_editar.Checked == true)
                 {
-                    dadosql = string.Format("UPDATE estoque SET `descricao` = '{0}',`classe` = '{1}',`unidade` = '{2}',`estoqueatual`= '{3}',`estoqueminimo` = '{4}',`prcusto` = '{5}',`ca`= '{6}',`ncm` = '{7}',`ativo` = '{8}' WHERE `cod` = '{9}' ", txt_descricao.Text, lbl_CodClasse.Text, lbl_CodUnidade.Text, txt_EstoqueAtual.Text, txt_EstoqueMinimo.Text, txt_PrCusto.Text.Replace(',','.'), txt_ca.Text,txt_Ncm.Text, cbx_ativo.Text, txt_codigo.Text);
+                    dadosql = string.Format("UPDATE estoque SET `descricao` = '{0}',`classe` = '{1}',`unidade` = '{2}',`estoqueatual`= '{3}',`estoqueminimo` = '{4}',`prcusto` = '{5}',`ca`= '{6}',`ncm` = '{7}',`ativo` = '{8}' WHERE `cod` = '{9}' ", txt_descricao.Text, lbl_CodClasse.Text, lbl_CodUnidade.Text, txt_EstoqueAtual.Text, txt_EstoqueMinimo.Text, txt_PrCusto.Text.Replace(',', '.'), txt_ca.Text, txt_Ncm.Text, cbx_ativo.Text, txt_codigo.Text);
                     salvo1 = " Item atualizado com exito";
                     salvo2 = "ATUALIZADO";
                 }
@@ -436,7 +431,7 @@ namespace CG
                         txt_ca.Text = "0";
                     }
 
-                    dadosql = string.Format("insert into estoque values(NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", txt_descricao.Text, lbl_CodClasse.Text, lbl_CodUnidade.Text, txt_EstoqueAtual.Text, txt_EstoqueMinimo.Text, txt_PrCusto.Text.Replace(',', '.'), txt_ca.Text,txt_Ncm.Text, cbx_ativo.Text);
+                    dadosql = string.Format("insert into estoque values(NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}')", txt_descricao.Text, lbl_CodClasse.Text, lbl_CodUnidade.Text, txt_EstoqueAtual.Text, txt_EstoqueMinimo.Text, txt_PrCusto.Text.Replace(',', '.'), txt_ca.Text, txt_Ncm.Text, cbx_ativo.Text);
 
                     salvo1 = "Item Criado com Exito";
                     salvo2 = "CRIADO";
@@ -447,7 +442,7 @@ namespace CG
                 if (txt_image.Text != "" & txt_image.Text != null)
                 {
                     dadosql = string.Format("SELECT * FROM `esto_foto` WHERE `cod_prod` = '{0}'", txt_codigo.Text);
-                 
+
                     resultado = mConn.LeituraLinha(dadosql);
 
                     if (resultado.Rows.Count == 0)
@@ -467,7 +462,7 @@ namespace CG
                     this.foto = "";
                     pb_Foto.Image = null;
                     dadosql = string.Format("DELETE FROM `esto_foto` WHERE `cod_prod` = '{0}'", txt_codigo.Text);
-                    mConn.LeituraLinha(dadosql);                    
+                    mConn.LeituraLinha(dadosql);
 
                 }
 
@@ -481,7 +476,7 @@ namespace CG
                     resultado = mConn.LeituraLinha(dadosql);
                     preencher(resultado);
                     bloquearbotao();
-                    MessageBox.Show(salvo1, salvo2,MessageBoxButtons.OK);
+                    MessageBox.Show(salvo1, salvo2, MessageBoxButtons.OK);
 
                 }
                 else
@@ -609,7 +604,7 @@ namespace CG
             }
         }
         private void Tsm_pesquisar_Click(object sender, EventArgs e)
-        {   
+        {
             Frm_ProdutoPesquisa prodpesq = new Frm_ProdutoPesquisa(txt_usuario.Text);
             prodpesq.ShowDialog();
             this.TopMost = false;
@@ -619,7 +614,7 @@ namespace CG
 
         private void Tsm_excluir_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir o produto? \nExclusão apenas troca a opção ativo para NÃO", "Excluir", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+            DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir o produto? \nExclusão apenas troca a opção ativo para NÃO", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dialogResult == DialogResult.Yes)
             {
 
@@ -637,7 +632,7 @@ namespace CG
             }
             else if (dialogResult == DialogResult.No)
             {
-                MessageBox.Show("Processo cancelado!", "Cancelado",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Processo cancelado!", "Cancelado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
         }
@@ -652,14 +647,14 @@ namespace CG
                 string foto = dialog.FileName.ToString();
                 txt_image.Text = foto;
                 pb_Foto.ImageLocation = foto;
-    
-            }                     
+
+            }
         }
         private void Btn_ExcluirFoto_Click(object sender, EventArgs e)
         {
 
             //dadosql = string.Format(" DELETE FROM `esto_foto` WHERE `cod_prod` = '{0}'", txt_codigo.Text);
-          //  mConn.LeituraLinha(dadosql);
+            //  mConn.LeituraLinha(dadosql);
 
             this.foto = "";
             pb_Foto.Image = null;
@@ -704,12 +699,12 @@ namespace CG
         private void cbx_classe_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable resultado = new DataTable();
-          
+
             dadosql = string.Format("SELECT `cod` FROM esto_classe where `classe` = '{0}'", cbx_classe.Text);
             resultado = mConn.LeituraLinha(dadosql);
             lbl_CodClasse.Text = resultado.Rows[0]["cod"].ToString();
         }
-        
+
         private void cbx_Unidade_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable resultado = new DataTable();
@@ -736,10 +731,10 @@ namespace CG
             dadosql = string.Format("SELECT `cod` FROM `fornecedor` WHERE `nome` = '{0}'", cbx_CodExtForne.Text);
             resultado = mConn.LeituraTabela(dadosql);
 
-            dadosql = string.Format("SELECT * FROM `esto_codext` WHERE `codprod` = '{0}' AND `codext` = '{1}' AND `codforne` = '{2}'",txt_codigo.Text,txt_CodExtCod.Text,resultado.Rows[0]["cod"].ToString());
-                resultado = mConn.LeituraTabela(dadosql);
+            dadosql = string.Format("SELECT * FROM `esto_codext` WHERE `codprod` = '{0}' AND `codext` = '{1}' AND `codforne` = '{2}'", txt_codigo.Text, txt_CodExtCod.Text, resultado.Rows[0]["cod"].ToString());
+            resultado = mConn.LeituraTabela(dadosql);
 
-            if(resultado.Rows.Count == 0)
+            if (resultado.Rows.Count == 0)
             {
                 dadosql = string.Format("SELECT `cod` FROM `fornecedor` WHERE `nome` = '{0}'", cbx_CodExtForne.Text);
                 resultado = mConn.LeituraTabela(dadosql);
@@ -750,7 +745,7 @@ namespace CG
             }
             else
             {
-                MessageBox.Show("Codigo externo ja inserdido para esse produto e para esse fornecedor. \nCertifique que as informações estejam corretas","Atenção",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Codigo externo ja inserdido para esse produto e para esse fornecedor. \nCertifique que as informações estejam corretas", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
         }
@@ -759,7 +754,7 @@ namespace CG
         {
             if (string.IsNullOrEmpty(txt_CodExtCod.Text))
             {
-                MessageBox.Show("Campo Codigo Externo não pode ser em branco","Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Campo Codigo Externo não pode ser em branco", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -791,7 +786,7 @@ namespace CG
                     MessageBox.Show("Codigo Externo não localizado. \nPor favor acione o administrador.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-           
+
 
         }
 
@@ -800,6 +795,6 @@ namespace CG
             txt_CodExtCod.Text = dgv_CodExt.CurrentRow.Cells[1].Value.ToString();
         }
 
-     
+
     }
 }

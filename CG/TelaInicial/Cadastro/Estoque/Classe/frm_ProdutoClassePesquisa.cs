@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace CG
 {
@@ -23,7 +15,7 @@ namespace CG
             InitializeComponent();
             txt_usuario.Text = usuario;
 
-        DataTable resultado = new DataTable();
+            DataTable resultado = new DataTable();
             resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
         }
@@ -37,16 +29,16 @@ namespace CG
                     break;
 
                 case "2":
-                   
+
                     break;
 
                 case "3":
-                   
+
 
                     break;
 
                 case "4":
-                    
+
 
                     break;
 

@@ -36,7 +36,7 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
             cbx_req.Enabled = false;
             cbx_MetEnvio.Enabled = false;
 
-            txt_Qtd.Enabled = false;            
+            txt_Qtd.Enabled = false;
             txt_InfoEnvio.Enabled = false;
             txt_Data.Enabled = false;
             txt_PrevisaoEnvio.Enabled = false;
@@ -49,8 +49,8 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
             chx_Patrimonio.Checked = false;
             chx_Patrimonio.Enabled = false;
             chx_Editar.Checked = false;
-            
-            
+
+
             //-----
 
             //TSM - Barra superior
@@ -109,15 +109,15 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
                 cbx_req.Enabled = true;
                 cbx_MetEnvio.Enabled = true;
 
-                txt_Qtd.Enabled = true;                
+                txt_Qtd.Enabled = true;
                 txt_InfoEnvio.Enabled = true;
                 txt_PrevisaoEnvio.Enabled = true;
                 txt_Obs.Enabled = true;
 
                 btn_adicionar.Enabled = true;
                 btn_ExcluirItem.Enabled = true;
-                btn_ReqTransferencia.Enabled = true;               
-                
+                btn_ReqTransferencia.Enabled = true;
+
                 chx_Liberar.Enabled = true;
 
                 //-----
@@ -154,10 +154,10 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
         {
 
             txt_Cod.Text = resultado.Rows[0]["codsaida"].ToString();
-            txt_Data.Text =  Convert.ToDateTime(resultado.Rows[0]["data"]).ToString("dd/MM/yyyy");
+            txt_Data.Text = Convert.ToDateTime(resultado.Rows[0]["data"]).ToString("dd/MM/yyyy");
             cbx_Contrato.Text = resultado.Rows[0]["nomcont"].ToString();
             txt_Status.Text = resultado.Rows[0]["status"].ToString();
-            if(resultado.Rows[0]["metenvio"].ToString() == "")
+            if (resultado.Rows[0]["metenvio"].ToString() == "")
             {
                 cbx_MetEnvio.Text = null;
             }
@@ -166,16 +166,16 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
                 cbx_MetEnvio.Text = resultado.Rows[0]["metenvio"].ToString();
             }
 
-            txt_InfoEnvio.Text = resultado.Rows[0]["infoenvio"].ToString();          
+            txt_InfoEnvio.Text = resultado.Rows[0]["infoenvio"].ToString();
             txt_Obs.Text = resultado.Rows[0]["obs"].ToString();
 
-            if(resultado.Rows[0]["dataenvio"].ToString() != "01/01/0001 00:00:00")            
+            if (resultado.Rows[0]["dataenvio"].ToString() != "01/01/0001 00:00:00")
                 txt_DataEnvio.Text = Convert.ToDateTime(resultado.Rows[0]["dataenvio"]).ToString("dd/MM/yyyy");
-            
-            if (resultado.Rows[0]["prevenvio"].ToString() != "01/01/0001 00:00:00")            
+
+            if (resultado.Rows[0]["prevenvio"].ToString() != "01/01/0001 00:00:00")
                 txt_PrevisaoEnvio.Text = Convert.ToDateTime(resultado.Rows[0]["prevenvio"]).ToString("dd/MM/yyyy");
-            
-                
+
+
 
 
             if ((resultado.Rows[0]["status"].ToString() == "ENVIADO" || resultado.Rows[0]["status"].ToString() == "CANCELADO"))
@@ -219,10 +219,10 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
             txt_Status.Text = "";
 
             cbx_Contrato.Text = "";
-            cbx_Descricao.Text = "";            
-            cbx_MetEnvio.Text = "";            
+            cbx_Descricao.Text = "";
+            cbx_MetEnvio.Text = "";
             cbx_req.Text = "";
-            
+
 
             chx_Editar.Checked = false;
             chx_Liberar.Checked = false;
@@ -295,14 +295,14 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
             {
                 dadosql = string.Format("SELECT `req` FROM `esto_saida_item` WHERE `codsaida` = '{0}' LIMIT 1", txt_Cod.Text);
                 resultado = mConn.LeituraTabela(dadosql);
-                if(resultado.Rows.Count != 0)
+                if (resultado.Rows.Count != 0)
                 {
                     //if (resultado.Rows[0]["req"].ToString() != "0" || resultado.Rows[0]["SOMA"].ToString() != "")
                     //{
-                        //MessageBox.Show(resultado.Rows[0]["SOMA"].ToString());
-                        MessageBox.Show("Já existe itens neste controle referente a uma requisição! \nNão é permitido inserir itens a mais de um controle vinculado a uma requisição!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //MessageBox.Show(resultado.Rows[0]["SOMA"].ToString());
+                    MessageBox.Show("Já existe itens neste controle referente a uma requisição! \nNão é permitido inserir itens a mais de um controle vinculado a uma requisição!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     //}
-                }               
+                }
                 else
                 {
                     if (txt_Qtd.Text == "0")
@@ -336,7 +336,7 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
                     }
                 }
 
-                
+
 
 
             }
@@ -502,11 +502,11 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
             {
                 txt_DataEnvio.Text = DateTime.Now.ToShortDateString();
                 txt_Status.Text = "ENVIADO";
-               
-                dadosql = string.Format("SELECT s.codsaida,e.`cod`,e.`descricao`,e.`estoqueatual`,s.qtd FROM `estoque` AS e INNER JOIN esto_saida_item AS s ON e.`cod` = s.coditem WHERE s.`codsaida` = '{0}'",  txt_Cod.Text);
+
+                dadosql = string.Format("SELECT s.codsaida,e.`cod`,e.`descricao`,e.`estoqueatual`,s.qtd FROM `estoque` AS e INNER JOIN esto_saida_item AS s ON e.`cod` = s.coditem WHERE s.`codsaida` = '{0}'", txt_Cod.Text);
                 resultado = mConn.LeituraTabela(dadosql);
                 int contador = 0;
-                while(contador < resultado.Rows.Count)
+                while (contador < resultado.Rows.Count)
                 {
                     dadosql = string.Format("UPDATE `estoque` SET `estoqueatual` = `estoqueatual` - {0} WHERE `estoque`.`cod` = '{1}'", resultado.Rows[contador]["qtd"].ToString(), resultado.Rows[contador]["cod"].ToString());
 
@@ -516,8 +516,8 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
                 }
 
 
-                  dadosql = string.Format("UPDATE `requerimento` SET `status` = '{0}', `prev` = '{1}', `data_envio` = '{2}', `tipo_envio` = '{3}' WHERE `codreq` = (SELECT `req` FROM `esto_saida_item` WHERE `codsaida` = {4} GROUP BY `req`)",  txt_Status.Text, PrevEnvio, Convert.ToDateTime(txt_DataEnvio.Text).ToString("yyyy-MM-dd"), cbx_MetEnvio.Text, txt_Cod.Text);
-                  mConn.Inserirdb(dadosql);
+                dadosql = string.Format("UPDATE `requerimento` SET `status` = '{0}', `prev` = '{1}', `data_envio` = '{2}', `tipo_envio` = '{3}' WHERE `codreq` = (SELECT `req` FROM `esto_saida_item` WHERE `codsaida` = {4} GROUP BY `req`)", txt_Status.Text, PrevEnvio, Convert.ToDateTime(txt_DataEnvio.Text).ToString("yyyy-MM-dd"), cbx_MetEnvio.Text, txt_Cod.Text);
+                mConn.Inserirdb(dadosql);
 
             }
             if (cbx_Contrato.Text != "")
@@ -525,7 +525,7 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
                 dadosmssql = string.Format("select codccu from vetorh.dbo.r018ccu where nomccu = '{0}'", cbx_Contrato.Text);
                 resultado = msConn.ConsultaTabela(dadosmssql);
                 string codcontrato = resultado.Rows[0]["codccu"].ToString();
-               
+
 
 
                 dadosql = string.Format("UPDATE `esto_saida` SET `codcont` = '{0}', `nomcont` = '{1}', `status` = '{2}', `metenvio` = '{3}', `infoenvio` = '{4}', `prevenvio` = '{5}',  `obs` = '{6}' WHERE `codsaida` = {7}", codcontrato, cbx_Contrato.Text, txt_Status.Text, cbx_MetEnvio.Text, txt_InfoEnvio.Text, PrevEnvio, txt_Obs.Text, txt_Cod.Text);
@@ -559,7 +559,7 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
 
         private void frm_ControleSaida_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(tsm_novo.Enabled == false)
+            if (tsm_novo.Enabled == false)
             {
                 DialogResult Resposta;
                 Resposta = MessageBox.Show("Deseja realmente fechar essa tela? \nTodas as alterações não serão salvas.", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -568,7 +568,7 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
                     e.Cancel = true;
                 }
             }
-            
+
         }
 
         private void btn_PatriAdicionar_Click(object sender, EventArgs e)
@@ -745,12 +745,12 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
                 {
                     DataTable resultado = new DataTable();
                     dadosql = string.Format("SELECT s.codsaida,e.`cod`,e.`descricao`,e.`estoqueatual`,s.qtd FROM `estoque` AS e INNER JOIN esto_saida_item AS s ON e.`cod` = s.coditem WHERE  e.estoqueatual < s.`qtd` AND s.`codsaida` = '{0}'", txt_Cod.Text);
-                   resultado = mConn.LeituraTabela(dadosql);
-                    if(resultado.Rows.Count != 0)
+                    resultado = mConn.LeituraTabela(dadosql);
+                    if (resultado.Rows.Count != 0)
                     {
-                        MessageBox.Show("Existem itens com estoque insuficiente.","Erro",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("Existem itens com estoque insuficiente.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         DialogResult Resposta1;
-                        Resposta1 = MessageBox.Show("Deseja visualizar a listagem de itens?","Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        Resposta1 = MessageBox.Show("Deseja visualizar a listagem de itens?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (Resposta1.Equals(DialogResult.Yes))
                         {
                             CG.TelaInicial.ControleEstoque.Saida.frm_ControleSaida_SemEstoque semestoque = new TelaInicial.ControleEstoque.Saida.frm_ControleSaida_SemEstoque(resultado);

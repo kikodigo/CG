@@ -2,12 +2,6 @@
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using MySql.Data.MySqlClient;
 
 
 namespace CG
@@ -21,7 +15,7 @@ namespace CG
             txt_usuario.Text = usuario;
 
             DataTable resultado = new DataTable();
-            resultado = mPermissao.consulta(usuario, this.Name);                        
+            resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
         }
 
@@ -38,44 +32,44 @@ namespace CG
             dgv_Funcionarios.DataSource = msConn.ConsultaTabela(dadosmssql);
 
         }
-           
+
         public void controleacesso(string CodPerfil)
+        {
+            switch (CodPerfil)
             {
-                switch (CodPerfil)
-                {
-                    case "1":
+                case "1":
 
-                        break;
+                    break;
 
-                    case "2":
-                    
-                        break;
+                case "2":
 
-                    case "3":
-                   
+                    break;
 
-                        break;
+                case "3":
 
-                    case "4":
-                       
-                        break;
 
-                    case "0":
-                        MessageBox.Show("Acesso negado!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        this.Close();
-                        break;
+                    break;
 
-                    default:
-                        MessageBox.Show("Falha ao carregar Perfil.\nInforme o Administrador do sistema.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        this.Close();
-                        break;
+                case "4":
 
-                }
-           
+                    break;
+
+                case "0":
+                    MessageBox.Show("Acesso negado!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    this.Close();
+                    break;
+
+                default:
+                    MessageBox.Show("Falha ao carregar Perfil.\nInforme o Administrador do sistema.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                    break;
+
+            }
+
         }
 
         private string permissao;
-        Classes.permissoes mPermissao = new Classes.permissoes();        
+        Classes.permissoes mPermissao = new Classes.permissoes();
 
         //declaração da classe de comunicação do MYSQL e a Variavel de comunicação
         private string dadosql;
@@ -86,7 +80,7 @@ namespace CG
 
 
         //bloqueia todos os botões e txt/cbx alterando cor das lbl
-    
+
         private void Atualiza_Descricao()
         {
             DataTable resultado = new DataTable();
@@ -96,7 +90,7 @@ namespace CG
             string ComandoMysql, valor;
 
             ComandoMysql = string.Format("SELECT `descricao` FROM `estoque` WHERE `ativo` = 'sim'");
-            
+
             while (i < contador)
             {
                 if (i == 0)
@@ -106,20 +100,20 @@ namespace CG
                 else
                 {
                     valor = string.Format(" or  `classe` = '{0}' ", resultado.Rows[i]["cod_classe"].ToString());
-                }        
+                }
 
-                ComandoMysql = ComandoMysql + valor ;
+                ComandoMysql = ComandoMysql + valor;
 
                 i++;
             }
-          
-             cbx_descricao.DisplayMember = "descricao";
-             cbx_descricao.DataSource = mConn.LeituraLinha(ComandoMysql);
+
+            cbx_descricao.DisplayMember = "descricao";
+            cbx_descricao.DataSource = mConn.LeituraLinha(ComandoMysql);
 
         }
-        
+
         private void Frm_ProdutoPostoCadastro_Load(object sender, EventArgs e)
-        {            
+        {
             controleacesso(lbl_VlPermissao.Text);
 
             dadosmssql = string.Format("select desred from vetorh.dbo.r017pos where estpos = '2' order by desred asc");
@@ -138,7 +132,7 @@ namespace CG
 
             string CodigoPosto, NumeroLocal, CodigoCusto, CodigoCargo, CodigoVinculo;
 
-            dadosmssql = string.Format("select postra from vetorh.dbo.r017pos where desred = '{0}' and estpos = '2'",cbx_Posto.Text);
+            dadosmssql = string.Format("select postra from vetorh.dbo.r017pos where desred = '{0}' and estpos = '2'", cbx_Posto.Text);
             resultado = msConn.ConsultaTabela(dadosmssql);
             txt_CodigoPosto.Text = CodigoPosto = resultado.Rows[0]["postra"].ToString();
 
@@ -147,18 +141,18 @@ namespace CG
 
             resultado = msConn.ConsultaTabela(dadosmssql);
 
-          
 
-                //txt_CodigoPosto.Text = CodigoPosto = resultado.Rows[0]["postra"].ToString();
-                txt_NumeroLocal.Text = NumeroLocal = resultado.Rows[0]["numloc"].ToString();
-                txt_CodigoContrato.Text = CodigoCusto = resultado.Rows[0]["codccu"].ToString();
-                txt_CodigoCargo.Text = CodigoCargo = resultado.Rows[0]["codcar"].ToString();
-                txt_CodigoVinculo.Text = CodigoVinculo = resultado.Rows[0]["codvin"].ToString();
+
+            //txt_CodigoPosto.Text = CodigoPosto = resultado.Rows[0]["postra"].ToString();
+            txt_NumeroLocal.Text = NumeroLocal = resultado.Rows[0]["numloc"].ToString();
+            txt_CodigoContrato.Text = CodigoCusto = resultado.Rows[0]["codccu"].ToString();
+            txt_CodigoCargo.Text = CodigoCargo = resultado.Rows[0]["codcar"].ToString();
+            txt_CodigoVinculo.Text = CodigoVinculo = resultado.Rows[0]["codvin"].ToString();
 
 
             dadosmssql = string.Format("select (select nomloc from vetorh.dbo.r016orn where numloc = (select top(1) numloc from vetorh.dbo.r017car where postra = '{0}' order by datini desc)) as 'Nome_Local',(select nomccu from vetorh.dbo.r018ccu where codccu = (select top(1) codccu from vetorh.dbo.r017car where postra = '{0}' order by datini desc)) as 'Nome_Contrato',(select titred from vetorh.dbo.r024car where codcar = (select top(1) codcar from vetorh.dbo.r017car where postra = '{0}' order by datini desc )) as 'Nome_Cargo', (select desvin from vetorh.dbo.r022vin where codvin = (select top(1) codvin from vetorh.dbo.r017car where postra = '{0}')) as 'Nome_Vinculo'", CodigoPosto);
 
-                resultado = msConn.ConsultaTabela(dadosmssql);
+            resultado = msConn.ConsultaTabela(dadosmssql);
 
 
             txt_NomeLocal.Text = resultado.Rows[0]["Nome_Local"].ToString();
@@ -186,7 +180,7 @@ namespace CG
         private void btn_InserirItem_Click(object sender, EventArgs e)
         {
 
-            if(txt_CodigoDescricao.Text == "" | txt_CodigoPosto.Text == "")
+            if (txt_CodigoDescricao.Text == "" | txt_CodigoPosto.Text == "")
             {
                 MessageBox.Show("deu ruim em ");
             }
@@ -195,8 +189,8 @@ namespace CG
                 DataTable resultado = new DataTable();
                 dadosql = string.Format("SELECT* FROM `esto_posto_por_item` WHERE `cod_posto` = '{0}' AND `cod_descricao`= '{1}'", txt_CodigoPosto.Text, txt_CodigoDescricao.Text);
                 resultado = mConn.ConsultaTabela(dadosql);
-                
-                if(resultado.Rows.Count == 0)
+
+                if (resultado.Rows.Count == 0)
                 {
                     dadosql = string.Format("INSERT INTO `esto_posto_por_item` (`cod`, `cod_posto`, `cod_descricao`) VALUES(NULL, '{0}', '{1}')", txt_CodigoPosto.Text, txt_CodigoDescricao.Text);
                     mConn.Inserirdb(dadosql);
@@ -209,7 +203,7 @@ namespace CG
 
                 Atualiza_DGV();
             }
-           
+
             //INSERT INTO `esto_posto_por_item` (`cod`, `cod_posto`, `cod_descricao`) VALUES(NULL, '123', '2')
         }
 
@@ -243,7 +237,7 @@ namespace CG
         private void cbx_descricao_SelectedIndexChanged(object sender, EventArgs e)
         {
             DataTable resultado = new DataTable();
-            dadosql = string.Format("SELECT `cod` FROM `estoque` where `descricao` = '{0}'",cbx_descricao.Text);
+            dadosql = string.Format("SELECT `cod` FROM `estoque` where `descricao` = '{0}'", cbx_descricao.Text);
             resultado = mConn.ConsultaTabela(dadosql);
             txt_CodigoDescricao.Text = resultado.Rows[0]["cod"].ToString();
 

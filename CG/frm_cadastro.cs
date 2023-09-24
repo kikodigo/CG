@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CG
@@ -66,9 +61,9 @@ namespace CG
             txt_senha.Enabled = true;
             txt_confirmar.Enabled = true;
             txt_nome.Text = null;
-            cbx_UsuarioPerfil.Text = null;            
+            cbx_UsuarioPerfil.Text = null;
             lbl_UsuarioPerfilCod.Text = null;
-            
+
             btn_entrar.Text = "Cadastrar";
         }
 
@@ -105,9 +100,9 @@ namespace CG
             }
             else
             {
-                if(btn_entrar.Text == "Atualizar")
+                if (btn_entrar.Text == "Atualizar")
                 {
-                    if(chx_alterarsenha.Checked == true)
+                    if (chx_alterarsenha.Checked == true)
                     {
                         Classes.hash crypt = new Classes.hash();
                         //passando txt de string para byte
@@ -121,9 +116,9 @@ namespace CG
                     }
 
 
-                   dadosql = string.Format("UPDATE `usuario` SET `usuario` = '{0}', `nome` = '{1}', `perfil` = '{2}' WHERE `usuario`.`usuario_id` = '{3}'", txt_username.Text, txt_nome.Text,lbl_UsuarioPerfilCod.Text, lbl_UsuarioIdCod.Text);
+                    dadosql = string.Format("UPDATE `usuario` SET `usuario` = '{0}', `nome` = '{1}', `perfil` = '{2}' WHERE `usuario`.`usuario_id` = '{3}'", txt_username.Text, txt_nome.Text, lbl_UsuarioPerfilCod.Text, lbl_UsuarioIdCod.Text);
                     mConn.LeituraTabela(dadosql);
-                    
+
                 }
                 else
                 {
@@ -142,7 +137,7 @@ namespace CG
                         //passando array de bytes como parametro e armazenando na variavel
                         string senhaMd5 = crypt.Md5(senhaCrypto).ToString();
 
-                        sql = string.Format("insert into usuario(usuario_id,usuario,senha,nome,data_cadastro,perfil) values(null,'{0}','{1}','{2}',now(),'{3}')", txt_username.Text, senhaMd5, txt_nome.Text,lbl_UsuarioPerfilCod.Text);
+                        sql = string.Format("insert into usuario(usuario_id,usuario,senha,nome,data_cadastro,perfil) values(null,'{0}','{1}','{2}',now(),'{3}')", txt_username.Text, senhaMd5, txt_nome.Text, lbl_UsuarioPerfilCod.Text);
 
                         conn.AlterarTabelas(sql);
 
@@ -155,7 +150,7 @@ namespace CG
                         btn_entrar.Text = "Cadastrar";
                     }
                 }
-               
+
 
             }
             carregardgv();
@@ -164,7 +159,7 @@ namespace CG
         }
 
 
- 
+
         private void PictureBox1_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -205,13 +200,13 @@ namespace CG
         private void Btn_limpar_Click(object sender, EventArgs e)
         {
             limpausuario();
-            
+
         }
 
 
         private void Chx_alterarsenha_CheckedChanged(object sender, EventArgs e)
         {
-            if(txt_senha.Enabled == false)
+            if (txt_senha.Enabled == false)
             {
 
                 txt_senha.Enabled = true;
@@ -226,7 +221,7 @@ namespace CG
 
         private void Btn_perfilOK_Click(object sender, EventArgs e)
         {
-            if((rbt_adicionar.Checked == true ) | (rbt_atualizar.Checked == true))
+            if ((rbt_adicionar.Checked == true) | (rbt_atualizar.Checked == true))
             {
 
                 dadosql = string.Format("SELECT* FROM `perfil` WHERE `perfil` = '{0}'", txt_perfil.Text);
@@ -238,14 +233,14 @@ namespace CG
                 {
                     DataTable resultado = new DataTable();
 
-                    dadosql = string.Format("INSERT INTO `perfil` (`cod`, `perfil`) VALUES(NULL, '{0}')",txt_perfil.Text);
+                    dadosql = string.Format("INSERT INTO `perfil` (`cod`, `perfil`) VALUES(NULL, '{0}')", txt_perfil.Text);
                     mConn.Inserirdb(dadosql);
 
 
                     dadosql = string.Format("SELECT `cod` FROM `perfil` where perfil = '{0}'", txt_perfil.Text);
                     resultado = mConn.LeituraLinha(dadosql);
 
-                   
+
 
                     dadosql = string.Format(" INSERT INTO `permissao` (`cod`, `perfil`, `frm_TelaInicial`, `frm_ContratoCadastro`, `frm_ContratoPesquisa`, `frm_EmpresaCadastro`, `frm_ProdutoClasse`, `frm_ProdutoClassePesquisa`, `frm_ProdutoCadastro`, `frm_ProdutoPesquisa`, `frm_ProdutoUnidade`, `frm_ProdutoUnidadePesquisa`, `frm_FornecedorCadastro`, `frm_FornecedorPesquisa`, `frm_Funcionarios`, `frm_ReqConsulta`, `frm_ReqImpressaoFicha`, `frm_ReqCadastro`, `frm_ReqPesquise`, `frm_ReqVisualizador`, `frm_ReqRetornoFicha`) VALUES(NULL, '{0}', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1', '1')", resultado.Rows[0]["cod"].ToString());
                     mConn.Inserirdb(dadosql);
@@ -253,11 +248,11 @@ namespace CG
 
                 }
 
-               if(rbt_atualizar.Checked == true)
+                if (rbt_atualizar.Checked == true)
                 {
-                  
-                    dadosql = string.Format("  UPDATE `perfil` SET `perfil` = '{0}' WHERE `perfil`.`cod` = '{1}'", txt_perfil.Text,lbl_CodPerfil.Text);
-                    mConn.Inserirdb(dadosql);                   
+
+                    dadosql = string.Format("  UPDATE `perfil` SET `perfil` = '{0}' WHERE `perfil`.`cod` = '{1}'", txt_perfil.Text, lbl_CodPerfil.Text);
+                    mConn.Inserirdb(dadosql);
 
                 }
 
@@ -268,8 +263,8 @@ namespace CG
             }
             else
             {
-                MessageBox.Show("Selecione uma das opções acima","ERRO!",MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+                MessageBox.Show("Selecione uma das opções acima", "ERRO!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             limpaperfil();
 
@@ -288,14 +283,14 @@ namespace CG
 
         private void Btn_PerfilDeletar_Click(object sender, EventArgs e)
         {
-            if(lbl_CodPerfil.Text != "")
+            if (lbl_CodPerfil.Text != "")
             {
 
-            
-                DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir este perfil?", "Excluir", MessageBoxButtons.YesNo,MessageBoxIcon.Exclamation);
+
+                DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir este perfil?", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
                 {
-                
+
                     dadosql = string.Format("DELETE FROM `perfil` WHERE `cod` = '{0}'", lbl_CodPerfil.Text);
                     mConn.Inserirdb(dadosql);
 
@@ -303,7 +298,7 @@ namespace CG
                     mConn.Inserirdb(dadosql);
 
                     carregardgv();
-            
+
 
                 }
                 else if (dialogResult == DialogResult.No)
@@ -321,16 +316,16 @@ namespace CG
         private void Btn_PermissaoOk_Click(object sender, EventArgs e)
         {
 
-            if((txt_PermissaoPerfil.Text == "") || (txt_PermissaoTela.Text == "") ||(lbl_CodPermissao.Text == ""))
+            if ((txt_PermissaoPerfil.Text == "") || (txt_PermissaoTela.Text == "") || (lbl_CodPermissao.Text == ""))
             {
-                MessageBox.Show("Por favor, Selecione uma tela e sua permissão","Erro",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Por favor, Selecione uma tela e sua permissão", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
 
                 dadosql = string.Format("UPDATE `permissao` SET `{0}` = '{1}' WHERE `perfil` = '{2}'", lbl_PermissaoTela.Text, lbl_CodPermissao.Text, lbl_PermissaoCodPerfil.Text);
 
-                     mConn.Inserirdb(dadosql);
+                mConn.Inserirdb(dadosql);
 
                 limpapermissao();
                 carregardgv();
@@ -371,13 +366,13 @@ namespace CG
 
         private void Cbx_UsuarioPerfil_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            if(cbx_UsuarioPerfil.Text != "")
+
+            if (cbx_UsuarioPerfil.Text != "")
             {
-            DataTable resultado = new DataTable();
-            dadosql = string.Format("SELECT `cod` FROM `perfil` where perfil = '{0}'", cbx_UsuarioPerfil.Text);
-            resultado = mConn.LeituraLinha(dadosql);
-            lbl_UsuarioPerfilCod.Text = resultado.Rows[0]["cod"].ToString();
+                DataTable resultado = new DataTable();
+                dadosql = string.Format("SELECT `cod` FROM `perfil` where perfil = '{0}'", cbx_UsuarioPerfil.Text);
+                resultado = mConn.LeituraLinha(dadosql);
+                lbl_UsuarioPerfilCod.Text = resultado.Rows[0]["cod"].ToString();
             }
 
         }
@@ -394,12 +389,12 @@ namespace CG
             txt_PermissaoTela.Text = this.dgv_permissoes.CurrentCell.OwningColumn.HeaderText.ToString();
             lbl_PermissaoTela.Text = this.dgv_permissoes.CurrentCell.OwningColumn.DataPropertyName.ToString();
 
-                //define lbl com cod de perfil
+            //define lbl com cod de perfil
 
-                DataTable resultado = new DataTable();
-                dadosql = string.Format("SELECT `cod` FROM `perfil` where perfil = '{0}'", txt_PermissaoPerfil.Text);
-                resultado = mConn.LeituraLinha(dadosql);
-                lbl_PermissaoCodPerfil.Text = resultado.Rows[0]["cod"].ToString();
+            DataTable resultado = new DataTable();
+            dadosql = string.Format("SELECT `cod` FROM `perfil` where perfil = '{0}'", txt_PermissaoPerfil.Text);
+            resultado = mConn.LeituraLinha(dadosql);
+            lbl_PermissaoCodPerfil.Text = resultado.Rows[0]["cod"].ToString();
 
         }
     }

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
 using System.Data;
-using System.Windows.Forms;
 using System.IO;
 
 
@@ -39,18 +33,18 @@ namespace CG.Classes
                 conectar.Open();
             //return conectar;
         }
-        
+
         public DataTable consulta(string usuario, string tela)
         {
             Conectdb();
 
-            string dadosql = string.Format("SELECT `perfil` FROM `usuario` WHERE `usuario` = '{0}'",usuario);
+            string dadosql = string.Format("SELECT `perfil` FROM `usuario` WHERE `usuario` = '{0}'", usuario);
 
             MySqlCommand comando = new MySqlCommand(dadosql, conectar);
             MySqlDataReader dr = comando.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Load(dr);
-           // conectar.Close();
+            // conectar.Close();
             //MessageBox.Show("O codigo de perfil é : " + dt.Rows[0]["perfil"].ToString());
             string codperfil = dt.Rows[0]["perfil"].ToString();
 
@@ -64,7 +58,7 @@ namespace CG.Classes
             dt2.Load(dr2);
 
             conectar.Close();
-           string permissaotela = dt2.Rows[0][tela].ToString();
+            string permissaotela = dt2.Rows[0][tela].ToString();
 
             //MessageBox.Show("O usuario é : "+usuario+" | O codigo de perfil é : "+codperfil+" | a permissão é :" +permissaotela);
 

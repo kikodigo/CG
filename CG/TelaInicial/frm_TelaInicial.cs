@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Diagnostics;
-using System.Reflection;
-using System.IO;
 
 
 namespace CG
@@ -18,15 +8,15 @@ namespace CG
     public partial class frm_TelaInicial : Form
     {
 
-        
+
         private string dadosql;
         Classes.dbconect mConn = new Classes.dbconect();
 
 
-        public frm_TelaInicial (string usuariologado)
+        public frm_TelaInicial(string usuariologado)
         {
             InitializeComponent();
-          
+
             txt_usuario.Text = usuariologado;
 
         }
@@ -39,17 +29,17 @@ namespace CG
             frm_ReqCadastro req = new frm_ReqCadastro(txt_usuario.Text);
             req.ShowDialog();
         }
-                
 
-     
+
+
         private void NovoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frm_OCMMCadastro ocmm = new frm_OCMMCadastro();
             ocmm.ShowDialog();
         }
 
-     
-             
+
+
 
         private void RetornoFichasToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -75,7 +65,7 @@ namespace CG
             consulta.ShowDialog();
         }
 
-      
+
 
         private void LogToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -85,7 +75,7 @@ namespace CG
             log.ShowDialog();
         }
 
-      
+
 
         private void CadastroToolStripMenuItem3_Click(object sender, EventArgs e)
         {
@@ -193,12 +183,12 @@ namespace CG
 
         private void pictureBox1_Click(object sender, EventArgs e) // easter egg do jukera 
         {
-            if(Convert.ToInt32(lbl_contador.Text) == 100)
+            if (Convert.ToInt32(lbl_contador.Text) == 100)
             {
                 MessageBox.Show("TAPOOOOOOOOORRAAAAA MENÓ \n YODA, AJUDA, AJUDA AJUDA ... YODAAAAAA", "TAPORRA", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 lbl_contador.Text = "0";
             }
-            lbl_contador.Text =  Convert.ToString(Convert.ToInt32(lbl_contador.Text) + 1);
+            lbl_contador.Text = Convert.ToString(Convert.ToInt32(lbl_contador.Text) + 1);
 
 
         }
@@ -215,8 +205,8 @@ namespace CG
         {
 
         }
-        
-        
+
+
         private void btn_TesteEmail_Click(object sender, EventArgs e)
         {
 
@@ -230,12 +220,12 @@ namespace CG
             }
             catch (Exception erro)
             {
-                MessageBox.Show(erro.ToString());;
+                MessageBox.Show(erro.ToString()); ;
             }
 
         }
 
-       
+
 
         private void saidaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -251,7 +241,7 @@ namespace CG
             correios.Show();
         }
 
-       
+
 
         private void XMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -265,5 +255,5 @@ namespace CG
             entrada.Show();
         }
     }
-    
+
 }

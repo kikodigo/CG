@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Runtime.Serialization;
+using System.Windows.Forms;
 
 namespace CG
 {
@@ -16,7 +16,7 @@ namespace CG
 
         public YourCustomException(string message) : base(message)
         {
-            
+
         }
 
         public YourCustomException(string v, EventArgs e)

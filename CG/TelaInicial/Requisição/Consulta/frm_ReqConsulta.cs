@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 
 namespace CG.Tela_Inicial.Requisição.Consulta
@@ -21,7 +12,7 @@ namespace CG.Tela_Inicial.Requisição.Consulta
         }
         public frm_ReqConsulta(string usuario)
         {
-            
+
             InitializeComponent();
             txt_usuario.Text = usuario;
         }
@@ -31,8 +22,8 @@ namespace CG.Tela_Inicial.Requisição.Consulta
         private void Frm_ReqConsulta_Load(object sender, EventArgs e)
         {
             dadosql = string.Format("SELECT `codreq`,`data`,`contrato`,`data_aprov`,`status`,`obs`,`prev`,`data_envio`,`tipo_envio`,`retorno_ficha` FROM `requerimento` ORDER BY `codreq` DESC");
-            dgv_ReqPesquisa.DataSource = mConn.LeituraLinha(dadosql);            
-            cbx_coluna.Text = "N°Req";           
+            dgv_ReqPesquisa.DataSource = mConn.LeituraLinha(dadosql);
+            cbx_coluna.Text = "N°Req";
         }
 
         private void Txt_referencia_TextChanged(object sender, EventArgs e)
@@ -73,7 +64,7 @@ namespace CG.Tela_Inicial.Requisição.Consulta
             txt_aprovado.Text = Convert.ToDateTime(dgv_ReqPesquisa.CurrentRow.Cells[3].Value).ToString("dd/MM/yyyy").Replace("01/01/0001", "");
             txt_status.Text = dgv_ReqPesquisa.CurrentRow.Cells[4].Value.ToString();
             txt_observacao.Text = dgv_ReqPesquisa.CurrentRow.Cells[5].Value.ToString();
-            txt_DataEnvio.Text = Convert.ToDateTime(dgv_ReqPesquisa.CurrentRow.Cells[6].Value).ToString("dd/MM/yyyy").Replace("01/01/0001","");
+            txt_DataEnvio.Text = Convert.ToDateTime(dgv_ReqPesquisa.CurrentRow.Cells[6].Value).ToString("dd/MM/yyyy").Replace("01/01/0001", "");
             txt_Previsao.Text = Convert.ToDateTime(dgv_ReqPesquisa.CurrentRow.Cells[7].Value).ToString("dd/MM/yyyy").Replace("01/01/0001", "");
             txt_TipoEnvio.Text = dgv_ReqPesquisa.CurrentRow.Cells[8].Value.ToString();
         }

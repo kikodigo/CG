@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace CG
 {
@@ -81,7 +72,7 @@ namespace CG
         private void Dgv_ProdutoPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             txt_destino.Text = this.dgv_ProdutoPesquisa.CurrentRow.Cells[0].Value.ToString();
-            frm_ProdutoUnidade destino = new frm_ProdutoUnidade(txt_destino.Text,txt_usuario.Text);
+            frm_ProdutoUnidade destino = new frm_ProdutoUnidade(txt_destino.Text, txt_usuario.Text);
             this.Close();
             destino.Show();
         }

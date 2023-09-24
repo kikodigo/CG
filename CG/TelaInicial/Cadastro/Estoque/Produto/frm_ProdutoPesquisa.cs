@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace CG
 {
@@ -38,16 +30,16 @@ namespace CG
                     break;
 
                 case "2":
-                   
+
                     break;
 
                 case "3":
-                   
+
 
                     break;
 
                 case "4":
-                    
+
 
                     break;
 
@@ -78,19 +70,19 @@ namespace CG
             dadosql = string.Format("SELECT MIN(cod) FROM estoque");
             DataTable resultado = new DataTable();
             resultado = mConn.LeituraLinha(dadosql);
-            
+
             txt_destino.Text = resultado.Rows[0]["MIN(cod)"].ToString();
 
         }
-      
+
 
         private void Button1_Click_2(object sender, EventArgs e)
         {
             txt_referencia.Text = "";
-                       
+
         }
 
-             
+
         private void Frm_ProdutoPesquisa_Load(object sender, EventArgs e)
         {
             Listar();
@@ -103,7 +95,7 @@ namespace CG
         {
 
 
-            string coluna,vlreferencia;
+            string coluna, vlreferencia;
             vlreferencia = txt_referencia.Text;
             coluna = cbx_coluna.Text;
             if (coluna.Equals("DESCRIÇÃO"))
@@ -116,11 +108,11 @@ namespace CG
             }
 
             dadosql = string.Format("SELECT* FROM `v_estoque` WHERE `{0}` LIKE '%{1}%'", coluna, vlreferencia);
-       
+
             dgv_ProdutoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
         }
 
-      
+
 
         private void Dgv_ProdutoPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -129,7 +121,7 @@ namespace CG
             this.TopMost = false;
             this.Close();
             destino.Show();
-            
+
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
