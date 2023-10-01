@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Diagnostics;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace CG
 {
@@ -25,9 +20,9 @@ namespace CG
             InitializeComponent();
             txt_usuario.Text = usuario;
 
-        } 
+        }
 
-        public frm_ReqCadastro(string usuario,string numreq)
+        public frm_ReqCadastro(string usuario, string numreq)
         {
 
             InitializeComponent();
@@ -80,7 +75,7 @@ namespace CG
                 chx_liberar.Checked = false;
             }
 
-            if(lbl_status.Text == "CANCELADO")
+            if (lbl_status.Text == "CANCELADO")
             {
                 tsm_editar.Enabled = false;
                 tsm_cancelar.Enabled = false;
@@ -119,17 +114,17 @@ namespace CG
 
         public void Preencher(DataTable dados)
         {
-           
+
             txt_numreq.Text = dados.Rows[0]["codreq"].ToString();
             txt_data.Text = Convert.ToDateTime(dados.Rows[0]["data"]).ToString("dd/MM/yyyy");
             cbx_contrato.Text = dados.Rows[0]["contrato"].ToString();
             lbl_status.Text = dados.Rows[0]["status"].ToString();
 
-            if((lbl_status.Text == "APROVADO") | (lbl_status.Text == "AGUARDANDO APROVAÇÃO") | (lbl_status.Text == "CANCELADO"))
+            if ((lbl_status.Text == "APROVADO") | (lbl_status.Text == "AGUARDANDO APROVAÇÃO") | (lbl_status.Text == "CANCELADO"))
             {
                 tsm_editar.Enabled = false;
                 chx_liberar.Checked = true;
-                
+
             }
             else
             {
@@ -164,11 +159,11 @@ namespace CG
         {
 
             dadosql = string.Format("SELECT `matr_func`,`func`,`qtd_item_func`,`soma_item_func`,`soma_item_func_lib` FROM `req_item_qtd_fun` WHERE `codreq` = {0}", txt_numreq.Text);
-                dgv_funcionario.DataSource = mConn.LeituraLinha(dadosql);
+            dgv_funcionario.DataSource = mConn.LeituraLinha(dadosql);
 
             dadosql = string.Format("SELECT `descricao`,`qtd`,`motivo`,`qtd_lib` FROM `req_item`  WHERE `matr_func`= '{0}' and `codreq` = {1}", txt_matr.Text, txt_numreq.Text);
-                dgv_produtos.DataSource = mConn.LeituraLinha(dadosql);
-                
+            dgv_produtos.DataSource = mConn.LeituraLinha(dadosql);
+
             txt_QtdTotal.Text = dgv_funcionario.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[Soma.Name].Value ?? 0)).ToString();
             txt_QtdTotalLib.Text = dgv_funcionario.Rows.Cast<DataGridViewRow>().Sum(i => Convert.ToDecimal(i.Cells[soma_item_liberado.Name].Value ?? 0)).ToString();
         }
@@ -189,7 +184,7 @@ namespace CG
                 }
             }
         }
-        
+
         private void Frm_req_Load(object sender, EventArgs e)
         {
 
@@ -203,7 +198,7 @@ namespace CG
             cbx_CargoSemCadastro.DisplayMember = "titred";
             cbx_CargoSemCadastro.DataSource = msConn.ConsultaTabela(dadosmssql);
             cbx_CargoSemCadastro.Text = "";
-                     
+
 
 
             //dadosql = string.Format("SELECT descricao FROM `estoque` WHERE `ativo` = 'SIM' ");
@@ -221,13 +216,13 @@ namespace CG
             resultado = mConn.LeituraTabela(dadosql);
             if (resultado.Rows.Count == 0)
             {
-                
+
             }
             else
             {
                 if (txt_numreq.Text == "")
                 {
-                                       
+
                     dadosql = string.Format("SELECT MAX(codreq) FROM requerimento");
                     resultado = mConn.LeituraLinha(dadosql);
 
@@ -246,12 +241,12 @@ namespace CG
                     Preencher(resultado);
                     Preencher_dgv();
                 }
-              
+
 
             }
             this.dgv_funcionario.DefaultCellStyle.ForeColor = Color.Black;
             this.dgv_produtos.DefaultCellStyle.ForeColor = Color.Black;
-            
+
             lbl_coditem.Text = "";
         }
 
@@ -269,7 +264,7 @@ namespace CG
 
             cbx_funcionario.DisplayMember = "nomfun";
             cbx_funcionario.DataSource = msConn.ConsultaTabela(dadosmssql);
-        } 
+        }
 
         private void Btn_guardar_Click(object sender, EventArgs e)
         {
@@ -277,7 +272,7 @@ namespace CG
             DataTable resultado = new DataTable();
             if ((cbx_descricao.Text == "") | (txt_quantidade.Text == "") | (cbx_motivo.Text == ""))
             {
-                MessageBox.Show("Preencha todos os 3 campos a cima!", "Erro",MessageBoxButtons.OK, MessageBoxIcon.Error);               
+                MessageBox.Show("Preencha todos os 3 campos a cima!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -295,7 +290,7 @@ namespace CG
                     if (resultado.Rows.Count != 0 && resultado.Rows[0]["motivo"].ToString() == cbx_motivo.Text)
                     {
 
-                        dadosql = string.Format("UPDATE `req_troca` SET `req_origem` = '{0}', `cod_item` = '{1}', `cod_item_origem` = '{2}' WHERE `req_nova` = '{3}' and `mtr_func` = '{4}' ",cbx_numreqtroca.Text, lbl_coditem.Text, lbl_CodItemTroca.Text, txt_numreq.Text, txt_matr.Text);
+                        dadosql = string.Format("UPDATE `req_troca` SET `req_origem` = '{0}', `cod_item` = '{1}', `cod_item_origem` = '{2}' WHERE `req_nova` = '{3}' and `mtr_func` = '{4}' ", cbx_numreqtroca.Text, lbl_coditem.Text, lbl_CodItemTroca.Text, txt_numreq.Text, txt_matr.Text);
                         mConn.Inserirdb(dadosql);
                     }
                     else
@@ -308,41 +303,41 @@ namespace CG
                         }
                         else
                         {
-                        
-                        string item = resultado.Rows[0]["coditem"].ToString();
-                        dadosql = string.Format("DELETE FROM `req_troca` WHERE `req_nova` = '{0}' and `mtr_func` = '{1}' and `cod_item` = '{2}'", Convert.ToInt32(txt_numreq.Text), txt_matr.Text, item);
-                        mConn.Inserirdb(dadosql);
+
+                            string item = resultado.Rows[0]["coditem"].ToString();
+                            dadosql = string.Format("DELETE FROM `req_troca` WHERE `req_nova` = '{0}' and `mtr_func` = '{1}' and `cod_item` = '{2}'", Convert.ToInt32(txt_numreq.Text), txt_matr.Text, item);
+                            mConn.Inserirdb(dadosql);
                         }
 
                     }
-                                       
-                    dadosql = string.Format("UPDATE `req_item` SET `coditem` = '{0}', `descricao` = '{1}', `qtd` = '{2}',`qtd_lib` = '{2}' , `motivo` = '{3}' WHERE `codreq` = {4} AND `descricao` = '{5}' AND `matr_func`={6}", lbl_coditem.Text, cbx_descricao.Text, txt_quantidade.Text, cbx_motivo.Text, txt_numreq.Text,this.dgv_produtos.CurrentRow.Cells[0].Value.ToString(),txt_matr.Text);
+
+                    dadosql = string.Format("UPDATE `req_item` SET `coditem` = '{0}', `descricao` = '{1}', `qtd` = '{2}',`qtd_lib` = '{2}' , `motivo` = '{3}' WHERE `codreq` = {4} AND `descricao` = '{5}' AND `matr_func`={6}", lbl_coditem.Text, cbx_descricao.Text, txt_quantidade.Text, cbx_motivo.Text, txt_numreq.Text, this.dgv_produtos.CurrentRow.Cells[0].Value.ToString(), txt_matr.Text);
                     mConn.LeituraLinha(dadosql);
-               }
+                }
 
                 else // else caso não seja ETIDAR os campos
                 {
-                    
+
                     // Verificador de duplicidade de itens
                     dadosql = string.Format("SELECT * FROM `req_item` WHERE `codreq` = {0} AND `coditem` = {1} AND `matr_func`= {2}", Convert.ToInt32(txt_numreq.Text), Convert.ToInt32(lbl_coditem.Text), Convert.ToInt32(txt_matr.Text));
                     resultado = mConn.LeituraLinha(dadosql);
 
                     if (resultado.Rows.Count != 0)
                     {
-                        MessageBox.Show("Item já inserido","Item duplicado",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-                        
+                        MessageBox.Show("Item já inserido", "Item duplicado", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
                     }
                     else // caso item não esteja em duplicidade -  inserção direta 
                     {
 
 
-                        if(chx_Fun_Sem_Cadastro.Checked == true)
+                        if (chx_Fun_Sem_Cadastro.Checked == true)
                         {
                             dadosql = string.Format("SELECT * FROM `req_item` WHERE `codreq` = {0} AND `matr_func`= {1}", Convert.ToInt32(txt_numreq.Text), Convert.ToInt32(txt_matr.Text));
                             resultado = mConn.LeituraLinha(dadosql);
-                            if(resultado.Rows.Count != 0)
+                            if (resultado.Rows.Count != 0)
                             {
-                                txt_matr.Text =  resultado.Rows[0]["matr_func"].ToString();
+                                txt_matr.Text = resultado.Rows[0]["matr_func"].ToString();
                             }
                             else
                             {
@@ -351,29 +346,29 @@ namespace CG
                                 txt_matr.Text = resultado.Rows[0]["cod"].ToString();
                             }
 
-                                                                                 
+
                         }
-                        
-
-                            dadosql = string.Format("INSERT INTO `req_item` (`cod`, `codreq`, `matr_func`, `func`, `cargo`, `coditem`, `descricao`, `qtd`, `qtd_lib`, `motivo`) VALUES (NULL, {0}, {1}, '{2}', '{3}', {4}, '{5}','{6}','{6}','{7}')", txt_numreq.Text, txt_matr.Text, cbx_funcionario.Text, txt_cargo.Text, Convert.ToInt32(lbl_coditem.Text), cbx_descricao.Text, txt_quantidade.Text, cbx_motivo.Text);
-                            mConn.Inserirdb(dadosql);
 
 
-                        dadosql = string.Format("SELECT * FROM `req_func` WHERE `matr_func`= '{0}' and `codreq` = {1}",txt_matr.Text,txt_numreq.Text);
+                        dadosql = string.Format("INSERT INTO `req_item` (`cod`, `codreq`, `matr_func`, `func`, `cargo`, `coditem`, `descricao`, `qtd`, `qtd_lib`, `motivo`) VALUES (NULL, {0}, {1}, '{2}', '{3}', {4}, '{5}','{6}','{6}','{7}')", txt_numreq.Text, txt_matr.Text, cbx_funcionario.Text, txt_cargo.Text, Convert.ToInt32(lbl_coditem.Text), cbx_descricao.Text, txt_quantidade.Text, cbx_motivo.Text);
+                        mConn.Inserirdb(dadosql);
+
+
+                        dadosql = string.Format("SELECT * FROM `req_func` WHERE `matr_func`= '{0}' and `codreq` = {1}", txt_matr.Text, txt_numreq.Text);
                         resultado = mConn.LeituraLinha(dadosql);
-                       
-                            if (resultado.Rows.Count == 0)
-                            {
-                                dadosql = string.Format("INSERT INTO `req_func` (`cod`, `codreq`, `matr_func`, `func`,`retorno_ficha`) VALUES (NULL, {0}, {1}, '{2}','0000-00-00')", txt_numreq.Text, txt_matr.Text,cbx_funcionario.Text);
-                                mConn.Inserirdb(dadosql);
-                            }
 
-                            if(cbx_motivo.Text == "TROCA")
-                            {
+                        if (resultado.Rows.Count == 0)
+                        {
+                            dadosql = string.Format("INSERT INTO `req_func` (`cod`, `codreq`, `matr_func`, `func`,`retorno_ficha`) VALUES (NULL, {0}, {1}, '{2}','0000-00-00')", txt_numreq.Text, txt_matr.Text, cbx_funcionario.Text);
+                            mConn.Inserirdb(dadosql);
+                        }
+
+                        if (cbx_motivo.Text == "TROCA")
+                        {
 
                             dadosql = string.Format("INSERT INTO `req_troca` (`cod`, `req_origem`, `req_nova`, `mtr_func`, `cod_item`, `cod_item_origem`) VALUES (NULL,'{0}', '{1}', '{2}', '{3}' ,'{4}')", cbx_numreqtroca.Text, txt_numreq.Text, txt_matr.Text, lbl_coditem.Text, lbl_CodItemTroca.Text);
                             mConn.Inserirdb(dadosql);
-                            }
+                        }
                     }
                 }
             }
@@ -392,11 +387,11 @@ namespace CG
             txt_reqdatatroca.Text = "";
             txt_reqdatatroca.Visible = false;
             txt_reqdatatroca.Visible = false;
-            txt_quantidade.Text = "";            
+            txt_quantidade.Text = "";
 
             lbl_datatroca.Visible = false;
             lbl_reqtroca.Visible = false;
-            lbl_CodItemTroca.Visible = false;         
+            lbl_CodItemTroca.Visible = false;
 
         }
 
@@ -410,9 +405,9 @@ namespace CG
                 dadosmssql = string.Format("select * from vetorh.dbo.r034fun where nomfun = '{0}'", cbx_funcionario.Text);
                 resultado = msConn.ConsultaTabela(dadosmssql);
                 txt_matr.Text = resultado.Rows[0]["numcad"].ToString();
-               
-                    codcargo = resultado.Rows[0]["codcar"].ToString();
-                    codPosto = resultado.Rows[0]["postra"].ToString();
+
+                codcargo = resultado.Rows[0]["codcar"].ToString();
+                codPosto = resultado.Rows[0]["postra"].ToString();
 
                 dadosmssql = string.Format("select * from vetorh.dbo.r024car WHERE codcar = '{0}'", codcargo);
                 resultado = msConn.ConsultaTabela(dadosmssql);
@@ -421,7 +416,7 @@ namespace CG
 
 
 
-                dadosql = string.Format("SELECT Descrição FROM `v_esto_posto_por_item` WHERE `ativo` = 'SIM' AND `Codigo Posto` = '{0}'",codPosto);
+                dadosql = string.Format("SELECT Descrição FROM `v_esto_posto_por_item` WHERE `ativo` = 'SIM' AND `Codigo Posto` = '{0}'", codPosto);
                 cbx_descricao.DisplayMember = "Descrição";
                 cbx_descricao.DataSource = mConn.ConsultaTabela(dadosql);
                 cbx_descricao.Text = "";
@@ -429,16 +424,16 @@ namespace CG
 
 
             }
-            if(this.dgv_produtos.Enabled == true)
+            if (this.dgv_produtos.Enabled == true)
             {
                 btn_adicionar.Enabled = true;
             }
-          
+
         }
-        
+
         private void Btn_visualizar_Click(object sender, EventArgs e)
         {
-            CG.Tela_Inicial.Requisição.frm_ReqVisualizador destino = new CG.Tela_Inicial.Requisição.frm_ReqVisualizador(txt_numreq.Text);            
+            CG.Tela_Inicial.Requisição.frm_ReqVisualizador destino = new CG.Tela_Inicial.Requisição.frm_ReqVisualizador(txt_numreq.Text);
             destino.Show();
         }
 
@@ -458,51 +453,51 @@ namespace CG
             cbx_motivo.Text = this.dgv_produtos.CurrentRow.Cells[2].Value.ToString();
             btn_Cancelar_Edicao.Visible = true;
             btn_ExcluirItem.Visible = true;
-            btn_adicionar.Text = "Editar";    
+            btn_adicionar.Text = "Editar";
 
-                if(cbx_motivo.Text == "TROCA")
-                {
-                    dadosql = string.Format(" SELECT `codreq` FROM `req_func` WHERE `matr_func` = '{0}'", txt_matr.Text);
-                    cbx_numreqtroca.DisplayMember = "codreq";
-                    cbx_numreqtroca.DataSource = mConn.ConsultaTabela(dadosql);
+            if (cbx_motivo.Text == "TROCA")
+            {
+                dadosql = string.Format(" SELECT `codreq` FROM `req_func` WHERE `matr_func` = '{0}'", txt_matr.Text);
+                cbx_numreqtroca.DisplayMember = "codreq";
+                cbx_numreqtroca.DataSource = mConn.ConsultaTabela(dadosql);
 
-                    cbx_DescricaoTroca.Visible = true;
-                    cbx_numreqtroca.Visible = true;
-                    txt_reqdatatroca.Visible = true;
+                cbx_DescricaoTroca.Visible = true;
+                cbx_numreqtroca.Visible = true;
+                txt_reqdatatroca.Visible = true;
 
-                    lbl_CodItemTroca.Visible = true;
-                    lbl_reqtroca.Visible = true;
-                    lbl_datatroca.Visible = true;
+                lbl_CodItemTroca.Visible = true;
+                lbl_reqtroca.Visible = true;
+                lbl_datatroca.Visible = true;
 
-                    DataTable resultado = new DataTable();
-                    dadosql = string.Format("SELECT * FROM `req_troca` WHERE `req_nova` = '{0}' AND `mtr_func` = '{1}'", txt_numreq.Text , txt_matr.Text);
-                    resultado = mConn.ConsultaTabela(dadosql);
+                DataTable resultado = new DataTable();
+                dadosql = string.Format("SELECT * FROM `req_troca` WHERE `req_nova` = '{0}' AND `mtr_func` = '{1}'", txt_numreq.Text, txt_matr.Text);
+                resultado = mConn.ConsultaTabela(dadosql);
 
-                    cbx_numreqtroca.Text  = resultado.Rows[0]["req_origem"].ToString();
-                   string coditemorigem = resultado.Rows[0]["cod_item_origem"].ToString();
-
-
-                    dadosql = string.Format("SELECT `data` FROM `requerimento` WHERE `codreq` = '{0}'", cbx_numreqtroca.Text);
-                    resultado = mConn.LeituraLinha(dadosql);
-                    txt_reqdatatroca.Text = resultado.Rows[0]["data"].ToString();
-
-                    dadosql = string.Format("SELECT `descricao` FROM `req_item` WHERE `matr_func` = '{0}' and `codreq` = '{1}' ", txt_matr.Text, cbx_numreqtroca.Text);
-                    //cbx_DescricaoTroca.DisplayMember = "descricao";
-                    cbx_DescricaoTroca.DataSource = mConn.ConsultaTabela(dadosql);
-
-                    dadosql = string.Format("SELECT `descricao` FROM `estoque` WHERE `cod` = '{0}'", coditemorigem);
-                    resultado = mConn.LeituraLinha(dadosql);
-                    cbx_DescricaoTroca.Text = resultado.Rows[0]["descricao"].ToString();
+                cbx_numreqtroca.Text = resultado.Rows[0]["req_origem"].ToString();
+                string coditemorigem = resultado.Rows[0]["cod_item_origem"].ToString();
 
 
-                }
+                dadosql = string.Format("SELECT `data` FROM `requerimento` WHERE `codreq` = '{0}'", cbx_numreqtroca.Text);
+                resultado = mConn.LeituraLinha(dadosql);
+                txt_reqdatatroca.Text = resultado.Rows[0]["data"].ToString();
+
+                dadosql = string.Format("SELECT `descricao` FROM `req_item` WHERE `matr_func` = '{0}' and `codreq` = '{1}' ", txt_matr.Text, cbx_numreqtroca.Text);
+                //cbx_DescricaoTroca.DisplayMember = "descricao";
+                cbx_DescricaoTroca.DataSource = mConn.ConsultaTabela(dadosql);
+
+                dadosql = string.Format("SELECT `descricao` FROM `estoque` WHERE `cod` = '{0}'", coditemorigem);
+                resultado = mConn.LeituraLinha(dadosql);
+                cbx_DescricaoTroca.Text = resultado.Rows[0]["descricao"].ToString();
+
+
+            }
         }
 
         private void Cbx_descricao_SelectedIndexChanged(object sender, EventArgs e)
         {
 
 
-            if(cbx_descricao.Text != "System.Data.DataRowView" | cbx_descricao.Text == "")
+            if (cbx_descricao.Text != "System.Data.DataRowView" | cbx_descricao.Text == "")
             {
                 DataTable resultado = new DataTable();
                 dadosql = string.Format("SELECT cod FROM `estoque` WHERE descricao = '{0}'", cbx_descricao.Text);
@@ -510,8 +505,8 @@ namespace CG
 
                 lbl_coditem.Text = resultado.Rows[0]["cod"].ToString();
             }
-            
-           // MessageBox.Show(cbx_descricao.Text);
+
+            // MessageBox.Show(cbx_descricao.Text);
         }
 
         private void Btn_Cancelar_Edicao_Click(object sender, EventArgs e)
@@ -527,7 +522,7 @@ namespace CG
             btn_Cancelar_Edicao.Visible = false;
             btn_ExcluirItem.Visible = false;
 
-                dadosql = string.Format("DELETE FROM `req_item` WHERE matr_func = {0} AND coditem = {1} and codreq = {2}",txt_matr.Text, lbl_coditem.Text, txt_numreq.Text);
+            dadosql = string.Format("DELETE FROM `req_item` WHERE matr_func = {0} AND coditem = {1} and codreq = {2}", txt_matr.Text, lbl_coditem.Text, txt_numreq.Text);
             mConn.Inserirdb(dadosql);
 
             Preencher_dgv();
@@ -792,11 +787,11 @@ namespace CG
         private void Tsm_excluir_Click(object sender, EventArgs e)
         {
 
-            DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir a requisição ?  \nA exclusão de requisição não é reversivel \nNº "+ txt_numreq.Text + " - " + cbx_contrato.Text , "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir a requisição ?  \nA exclusão de requisição não é reversivel \nNº " + txt_numreq.Text + " - " + cbx_contrato.Text, "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dialogResult == DialogResult.Yes)
             {
                 dadosql = string.Format("UPDATE `requerimento` SET `status` = 'CANCELADO' WHERE `codreq` = '{0}'", txt_numreq.Text);
-                 mConn.Inserirdb(dadosql);
+                mConn.Inserirdb(dadosql);
 
             }
             else if (dialogResult == DialogResult.No)
@@ -805,7 +800,7 @@ namespace CG
             }
             Bloquearbotao();
 
-            
+
 
         }
 
@@ -848,12 +843,12 @@ namespace CG
             resultado = mConn.LeituraLinha(dadosql);
             txt_reqdatatroca.Text = Convert.ToDateTime(resultado.Rows[0]["data"]).ToString("dd/MM/yyyy");
 
-            dadosql = string.Format("SELECT `descricao` FROM `req_item` WHERE `matr_func` = '{0}' and `codreq` = '{1}' ", txt_matr.Text ,cbx_numreqtroca.Text);
+            dadosql = string.Format("SELECT `descricao` FROM `req_item` WHERE `matr_func` = '{0}' and `codreq` = '{1}' ", txt_matr.Text, cbx_numreqtroca.Text);
             cbx_DescricaoTroca.DisplayMember = "descricao";
             cbx_DescricaoTroca.DataSource = mConn.ConsultaTabela(dadosql);
 
 
-        }      
+        }
 
         private void Lbl_reqtroca_DoubleClick(object sender, EventArgs e)
         {
@@ -872,20 +867,20 @@ namespace CG
         private void Chx_Fun_Sem_Cadastro_CheckedChanged(object sender, EventArgs e)
         {
 
-            if(cbx_funcionario.Visible == false)
+            if (cbx_funcionario.Visible == false)
             {
                 cbx_funcionario.Visible = true;
                 cbx_CargoSemCadastro.Visible = false;
                 cbx_descricao.DataSource = null;
                 cbx_descricao.Text = "";
 
-                txt_FuncSemCadastro.Visible = false;                
+                txt_FuncSemCadastro.Visible = false;
                 txt_cargo.Visible = true;
                 txt_matr.Text = "";
 
                 lbl_funcionario.Text = "Funcionario";
-                btn_adicionar.Enabled = false;                            
-                
+                btn_adicionar.Enabled = false;
+
             }
             else
             {
@@ -899,9 +894,9 @@ namespace CG
                 cbx_descricao.DataSource = null;
 
                 lbl_funcionario.Text = "Funcionario não cadastrado";
-                
-                btn_adicionar.Enabled = true;              
-                
+
+                btn_adicionar.Enabled = true;
+
                 dadosql = string.Format("SELECT `descricao` FROM `estoque` WHERE `ativo` = 'SIM'");
                 cbx_descricao.DisplayMember = "descricao";
                 cbx_descricao.DataSource = mConn.ConsultaTabela(dadosql);
@@ -909,7 +904,7 @@ namespace CG
 
             }
 
-           
+
         }
 
         private void Txt_FuncSemCadastro_TextChanged(object sender, EventArgs e)

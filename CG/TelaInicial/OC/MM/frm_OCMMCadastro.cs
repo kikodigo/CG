@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace CG
 {
@@ -25,7 +18,7 @@ namespace CG
         Classes.dbconect mConn = new Classes.dbconect();
         public void bloquearbotao()
         {
-            
+
 
             txt_limitecompra.Enabled = false;
             txt_endereco.Enabled = false;
@@ -42,8 +35,8 @@ namespace CG
             txt_VlTotalOc.Enabled = false;
 
             cbx_Contrato.Enabled = false;
-            cbx_Fornecedor.Enabled = false;            
-            cbx_Descricao.Enabled = false;            
+            cbx_Fornecedor.Enabled = false;
+            cbx_Descricao.Enabled = false;
 
             tsm_novo.Enabled = true;
             tsm_salvar.Enabled = false;
@@ -63,7 +56,7 @@ namespace CG
             label7.ForeColor = Color.Gray;
             label8.ForeColor = Color.Gray;
             label9.ForeColor = Color.Gray;
-            label10.ForeColor = Color.Gray;            
+            label10.ForeColor = Color.Gray;
             label13.ForeColor = Color.Gray;
             label14.ForeColor = Color.Gray;
             label15.ForeColor = Color.Gray;
@@ -89,9 +82,9 @@ namespace CG
             txt_condicao.Enabled = true;
             txt_VlTotalOc.Enabled = true;
 
-            cbx_Contrato.Enabled = true;            
-            cbx_Fornecedor.Enabled = true;            
-            cbx_Descricao.Enabled = true;           
+            cbx_Contrato.Enabled = true;
+            cbx_Fornecedor.Enabled = true;
+            cbx_Descricao.Enabled = true;
 
             tsm_novo.Enabled = false;
             tsm_salvar.Enabled = true;
@@ -130,9 +123,9 @@ namespace CG
             txt_MotCompra.Text = dados.Rows[0]["tel2"].ToString();
             txt_condicao.Text = dados.Rows[0]["prlimite"].ToString();
 
-            cbx_Contrato.Text = dados.Rows[0]["cidade"].ToString();            
+            cbx_Contrato.Text = dados.Rows[0]["cidade"].ToString();
             cbx_Fornecedor.Text = dados.Rows[0]["num"].ToString();
-            
+
         }
         private void LimparTextBoxes(Control.ControlCollection controles)
         {
@@ -153,7 +146,7 @@ namespace CG
 
         private void Frm_OCMMCadastro_Load(object sender, EventArgs e)
         {
-            
+
             dadosql = string.Format("SELECT * FROM `contrato`");
             cbx_Contrato.DisplayMember = "nome_contrato";
             cbx_Contrato.DataSource = mConn.LeituraLinha(dadosql);
@@ -183,10 +176,10 @@ namespace CG
             dadosql = string.Format("SELECT * FROM `ocmm`");
             resultado = mConn.LeituraLinha(dadosql);
 
-            if(resultado.Rows.Count.ToString() == "0")
+            if (resultado.Rows.Count.ToString() == "0")
             {
                 txt_NumOc.Text = "1";
-                dadosql = string.Format("INSERT INTO `ocmm` (`cod`, `codmm`, `data`, `contrato`, `fornecedor`, `prev_entrega`, `motivo`, `condicao`, `vl_total`) VALUES(NULL, '{0}', '{1}', '', '', '', '', '', 0)",txt_NumOc.Text ,txt_Data.Text);
+                dadosql = string.Format("INSERT INTO `ocmm` (`cod`, `codmm`, `data`, `contrato`, `fornecedor`, `prev_entrega`, `motivo`, `condicao`, `vl_total`) VALUES(NULL, '{0}', '{1}', '', '', '', '', '', 0)", txt_NumOc.Text, txt_Data.Text);
                 mConn.Inserirdb(dadosql);
             }
             else
@@ -203,7 +196,7 @@ namespace CG
             {
 
                 if (chx_editar.Checked == false)
-                {                    
+                {
                     dadosql = string.Format("DELETE FROM `ocmm` WHERE `codmm` = '{0}'", txt_NumOc.Text);
                     mConn.Inserirdb(dadosql);
 
@@ -220,7 +213,7 @@ namespace CG
             }
             else if (dialogResult == DialogResult.No)
             {
-                
+
             }
 
 
@@ -257,19 +250,19 @@ namespace CG
 
         private void Txt_Quantidade_TextChanged(object sender, EventArgs e)
         {
-            if(txt_Quantidade.Text != "")
+            if (txt_Quantidade.Text != "")
             {
                 int valor = Convert.ToInt32(txt_VlCusto.Text) + Convert.ToInt32(txt_Quantidade.Text);
 
                 txt_VlTotalItem.Text = "R$ " + Convert.ToString(valor);
-             //   MessageBox.Show(Convert.ToString(valor));
+                //   MessageBox.Show(Convert.ToString(valor));
             }
             else
             {
                 txt_VlTotalItem.Text = "";
             }
-            
-           // txt_VlTotalItem.Text = Convert.ToInt32(txt_VlCusto.Text);
+
+            // txt_VlTotalItem.Text = Convert.ToInt32(txt_VlCusto.Text);
 
         }
 

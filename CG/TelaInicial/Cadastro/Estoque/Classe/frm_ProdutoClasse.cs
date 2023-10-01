@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace CG
 {
@@ -20,7 +13,7 @@ namespace CG
             txt_usuario.Text = usuario;
 
 
-        DataTable resultado = new DataTable();
+            DataTable resultado = new DataTable();
             resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
         }
@@ -79,7 +72,7 @@ namespace CG
             cbx_Patrimonio.Text = resultado.Rows[0]["patrimonio"].ToString();
         }
 
-        public frm_ProdutoClasse (String valor,string usuario)
+        public frm_ProdutoClasse(String valor, string usuario)
         {
             InitializeComponent();
             txt_codigo.Text = valor;
@@ -97,7 +90,7 @@ namespace CG
         Classes.dbconect mConn = new Classes.dbconect();
         public void bloquearbotao()
         {
-            
+
             txt_Classe.Enabled = false;
 
             tsm_salvar.Enabled = false;
@@ -119,14 +112,14 @@ namespace CG
             lbl_ativo.ForeColor = Color.Gray;
             lbl_patrimonio.ForeColor = Color.Gray;
 
-            
+
 
         }
         public void liberarbotao()
         {
             txt_Classe.Enabled = true;
 
-            tsm_salvar.Enabled = true;                     
+            tsm_salvar.Enabled = true;
             tsm_novo.Enabled = false;
             tsm_editar.Enabled = false;
             tsm_anterior.Enabled = false;
@@ -144,7 +137,7 @@ namespace CG
             lbl_ativo.ForeColor = Color.White;
         }
 
-       
+
 
         private void Frm_ProdutoClasse_Load(object sender, EventArgs e)
         {
@@ -194,24 +187,24 @@ namespace CG
 
             if (chx_editar.Checked == true)
             {
-              
-                dadosql = string.Format("SELECT `patrimonio` FROM esto_classe WHERE `cod` = '{0}' ",txt_codigo.Text);
+
+                dadosql = string.Format("SELECT `patrimonio` FROM esto_classe WHERE `cod` = '{0}' ", txt_codigo.Text);
                 resultado = mConn.LeituraLinha(dadosql);
                 if (resultado.Rows[0]["patrimonio"].ToString() != cbx_Patrimonio.Text)
-                {                   
+                {
                     dadosql = string.Format(" SELECT COUNT(`codclasse`) AS QTD FROM `v_patrimonio` where `codclasse` = '{0}'", txt_codigo.Text);
                     resultado = mConn.LeituraLinha(dadosql);
-                      if(resultado.Rows[0]["QTD"].ToString()!= "0")
-                      {
+                    if (resultado.Rows[0]["QTD"].ToString() != "0")
+                    {
                         salvo1 = "Item não foi atualizado. \nExistem patrimônios vinculados a itens dessa classe.";
                         salvo2 = "Erro";
-                      }
-                      else
-                      {
+                    }
+                    else
+                    {
                         dadosql = string.Format("UPDATE esto_classe SET `classe` = '{0}',`patrimonio`= '{1}',`ativo`= '{2}' WHERE `cod` = '{3}' ", txt_Classe.Text, cbx_Patrimonio.Text, cbx_ativo.Text, txt_codigo.Text);
                         salvo1 = "Item atualizado com exito";
                         salvo2 = "ATUALIZADO";
-                      }
+                    }
                 }
                 else
                 {
@@ -221,12 +214,12 @@ namespace CG
                 }
 
 
-               
+
             }
             else
             {
 
-                dadosql = string.Format("INSERT INTO `esto_classe` (`cod`, `classe`, `patrimonio`, `ativo`) VALUES (NULL, '{0}', '{1}', '{2}')", txt_Classe.Text,cbx_Patrimonio.Text, cbx_ativo.Text);
+                dadosql = string.Format("INSERT INTO `esto_classe` (`cod`, `classe`, `patrimonio`, `ativo`) VALUES (NULL, '{0}', '{1}', '{2}')", txt_Classe.Text, cbx_Patrimonio.Text, cbx_ativo.Text);
 
                 salvo1 = "Item Criado com Exito";
                 salvo2 = "CRIADO";
@@ -336,7 +329,7 @@ namespace CG
         private void Tsm_pesquisar_Click(object sender, EventArgs e)
         {
             this.TopMost = false;
-                      
+
             frm_ProdutoClassePesquisa Produtoclass = new frm_ProdutoClassePesquisa(txt_usuario.Text);
             Produtoclass.ShowDialog();
             this.Close();
@@ -367,6 +360,6 @@ namespace CG
             }
         }
 
-       
+
     }
 }

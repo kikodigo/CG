@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using System.Xml.Serialization;
+﻿using System.Windows.Forms;
 
 
 namespace CG.TelaInicial.ControleEstoque.Correios
@@ -13,7 +10,7 @@ namespace CG.TelaInicial.ControleEstoque.Correios
             InitializeComponent();
         }
 
-     
+
         //private void btn_Rastrear_Click(object sender, EventArgs e)
         //{
 
@@ -56,6 +53,6 @@ namespace CG.TelaInicial.ControleEstoque.Correios
         //    }
 
 
-      // }
+        // }
     }
 }

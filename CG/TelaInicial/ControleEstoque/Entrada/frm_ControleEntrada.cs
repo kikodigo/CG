@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
-using System.Xml.Serialization;
-using System.IO;
-using System.Xml;
 
 
 namespace CG.Tela_Inicial.Controle_Estoque.Saida
@@ -22,17 +12,17 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
         {
             InitializeComponent();
         }
-        public frm_ControleEntrada(DataTable tabela, string usuario,string codforne,string dataemi, string nNota)
+        public frm_ControleEntrada(DataTable tabela, string usuario, string codforne, string dataemi, string nNota)
         {
             InitializeComponent();
 
-            
+
             DataTable resultado = new DataTable();
             string cod, qtd, vlu, vlt;
             int contador = 0;
             txt_DataEmissao.Text = dataemi;
             txt_Nnota.Text = nNota;
-                        
+
             Novo();
             dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` = '{0}'", codforne);
             resultado = mConn.LeituraTabela(dadosql);
@@ -53,11 +43,11 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
                 resultado = mConn.LeituraTabela(dadosql);
                 if (resultado.Rows.Count == 0)
                 {
-                    dadosql = string.Format("INSERT INTO `esto_entrada_item` (`cod`, `codentr`, `coddesc`, `qtd`, `prunit`, `prtotal`) VALUES(NULL, '{0}', '{1}', '{2}', '{3}', '{4}')", txt_CodEntrada.Text, cod, qtd.Replace(",","").Replace("0",""), vlu.Replace("R$", "").Replace(",", "."), vlt.Replace("R$", "").Replace(",", "."));
+                    dadosql = string.Format("INSERT INTO `esto_entrada_item` (`cod`, `codentr`, `coddesc`, `qtd`, `prunit`, `prtotal`) VALUES(NULL, '{0}', '{1}', '{2}', '{3}', '{4}')", txt_CodEntrada.Text, cod, qtd.Replace(",", "").Replace("0", ""), vlu.Replace("R$", "").Replace(",", "."), vlt.Replace("R$", "").Replace(",", "."));
                     mConn.Inserirdb(dadosql);
 
-                             
-                    
+
+
                 }
                 else
                 {
@@ -65,15 +55,15 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
                 }
                 contador++;
             }
-            
 
-        
+
+
 
             dadosql = string.Format("UPDATE `esto_entrada` SET `vltotal` = (SELECT SUM(`prtotal`) FROM `esto_entrada_item` WHERE `codentr` = '{0}') WHERE `codentr` = '{0}'", txt_CodEntrada.Text);
             mConn.Inserirdb(dadosql);
 
             dadosql = string.Format("SELECT * FROM `esto_entrada` WHERE `codentr` = '{0}'", txt_CodEntrada.Text);
-            resultado =  mConn.ConsultaTabela(dadosql);
+            resultado = mConn.ConsultaTabela(dadosql);
 
             dadosql = string.Format("UPDATE `esto_entrada` SET `datemi` = '{0}', `codfor` = '{1}', `nnota` = '{2}', `vltotal` = '{3}', `status` = '{4}' WHERE `codentr` = {5}", Convert.ToDateTime(txt_DataEmissao.Text).ToString("yyyy-MM-dd"), codforne, txt_Nnota.Text, resultado.Rows[0]["vltotal"].ToString().Replace("R$", "").Replace(".", "").Replace(",", "."), txt_Status.Text, txt_CodEntrada.Text);
             mConn.Inserirdb(dadosql);
@@ -84,9 +74,9 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
             resultado = mConn.LeituraTabela(dadosql);
             preencher(resultado);
 
-           
-            txt_usuario.Text = usuario;        
-          
+
+            txt_usuario.Text = usuario;
+
 
         }
         public frm_ControleEntrada(string usuario)
@@ -269,9 +259,9 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
         }
 
         private void frm_ControleEntrada_Load(object sender, EventArgs e)
-        {            
-            if(txt_CodEntrada.Text == "")
-            {               
+        {
+            if (txt_CodEntrada.Text == "")
+            {
                 dadosql = string.Format("SELECT `descricao` FROM `estoque` where `ativo` = 'SIM' ORDER BY `descricao` ASC ");
                 cbx_Descricao.DisplayMember = "descricao";
                 cbx_Descricao.DataSource = mConn.ConsultaTabela(dadosql);
@@ -298,7 +288,7 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
                 Liberarbotao();
             }
         }
-      
+
         private void txt_Qtd_TextChanged(object sender, EventArgs e)
         {
             if (txt_Qtd.Text == "" || txt_PrUnit.Text == "")
@@ -330,7 +320,7 @@ namespace CG.Tela_Inicial.Controle_Estoque.Saida
             Limpeza();
             Novo();
             Liberarbotao();
-            
+
         }
         private void Novo()
         {

@@ -1,14 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Reflection;
 
 namespace CG.Tela_Inicial.Requisição
 {
@@ -29,13 +21,13 @@ namespace CG.Tela_Inicial.Requisição
             dgv_visualizador.DataSource = mConn.LeituraLinha(dadosql);
 
             DataTable resultado = new DataTable();
-            dadosql = string.Format("SELECT * FROM `requerimento` where  `codreq` = {0}",txt_numreq.Text);
+            dadosql = string.Format("SELECT * FROM `requerimento` where  `codreq` = {0}", txt_numreq.Text);
             resultado = mConn.LeituraLinha(dadosql);
             txt_data.Text = Convert.ToDateTime(resultado.Rows[0]["data"]).ToString("dd/MM/yyyy");
             txt_contrato.Text = resultado.Rows[0]["contrato"].ToString();
             txt_status.Text = resultado.Rows[0]["status"].ToString();
             this.TopMost = true;
-           
+
 
         }
 
@@ -62,17 +54,17 @@ namespace CG.Tela_Inicial.Requisição
         {
             if ((txt_matr.Text == "") | (txt_func.Text == "") | (txt_descricao.Text == "") | (txt_QtdLib.Text == ""))
             {
-                MessageBox.Show("Selecione um funcionario abaixo", "Atenção",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Selecione um funcionario abaixo", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                           
-                dadosql = string.Format(" UPDATE `req_item` SET `qtd_lib` = '{0}' WHERE `codreq` = '{1}' AND `matr_func` = '{2}' AND `descricao` = '{3}'", txt_QtdLib.Text, txt_numreq.Text,txt_matr.Text,txt_descricao.Text);
+
+                dadosql = string.Format(" UPDATE `req_item` SET `qtd_lib` = '{0}' WHERE `codreq` = '{1}' AND `matr_func` = '{2}' AND `descricao` = '{3}'", txt_QtdLib.Text, txt_numreq.Text, txt_matr.Text, txt_descricao.Text);
                 mConn.LeituraLinha(dadosql);
 
                 dadosql = string.Format("SELECT `matr_func`,`func`,`cargo`,`descricao`,`qtd`,`qtd_lib`,`motivo` FROM `req_item` WHERE `codreq` = {0}", txt_numreq.Text);
                 dgv_visualizador.DataSource = mConn.LeituraLinha(dadosql);
-               
+
 
             }
 
@@ -80,12 +72,12 @@ namespace CG.Tela_Inicial.Requisição
 
         private void Txt_QtdLib_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void Btn_aprovar_Click(object sender, EventArgs e)
         {
-            if(txt_status.Text == "AGUARDANDO APROVAÇÃO")
+            if (txt_status.Text == "AGUARDANDO APROVAÇÃO")
             {
                 DialogResult dialogResult = MessageBox.Show("Deseja realmente aprovar esta requisição?", "Aprovação", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (dialogResult == DialogResult.Yes)
@@ -95,7 +87,7 @@ namespace CG.Tela_Inicial.Requisição
                     DateTime dt = DateTime.Now;
                     string str = dt.ToString("yyy-MM-dd");
 
-                    dadosql = string.Format("UPDATE `requerimento` SET `status` = 'APROVADO',`data_aprov` = '{0}' WHERE `requerimento`.`codreq` = {1}",str, txt_numreq.Text);
+                    dadosql = string.Format("UPDATE `requerimento` SET `status` = 'APROVADO',`data_aprov` = '{0}' WHERE `requerimento`.`codreq` = {1}", str, txt_numreq.Text);
                     mConn.LeituraLinha(dadosql);
 
                     dadosql = string.Format("SELECT * FROM `requerimento` where  `codreq` = {0}", txt_numreq.Text);
@@ -118,14 +110,14 @@ namespace CG.Tela_Inicial.Requisição
             }
             else
             {
-                MessageBox.Show(string.Format("Requisição esta com o status em  {0} \nNão pode ser aprovada!",txt_status.Text),"Atenção",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show(string.Format("Requisição esta com o status em  {0} \nNão pode ser aprovada!", txt_status.Text), "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-               
+
         }
 
         private void Txt_QtdLib_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == 13)
+            if (e.KeyChar == 13)
             {
                 if ((txt_matr.Text == "") | (txt_func.Text == "") | (txt_descricao.Text == "") | (txt_QtdLib.Text == ""))
                 {
@@ -139,7 +131,7 @@ namespace CG.Tela_Inicial.Requisição
 
                     dadosql = string.Format("SELECT `matr_func`,`func`,`cargo`,`descricao`,`qtd`,`qtd_lib`,`motivo` FROM `req_item` WHERE `codreq` = {0}", txt_numreq.Text);
                     dgv_visualizador.DataSource = mConn.LeituraLinha(dadosql);
-                    
+
 
                 }
             }

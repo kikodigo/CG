@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CG.TelaInicial.Cadastro.Estoque.Produto_por_Posto
@@ -57,7 +51,7 @@ namespace CG.TelaInicial.Cadastro.Estoque.Produto_por_Posto
 
             dadosql = string.Format("SELECT * FROM `esto_classe_posto` where `cod_classe` = '{0}'", codigo);
             resultado = mConn.ConsultaTabela(dadosql);
-            if(resultado.Rows.Count == 0)
+            if (resultado.Rows.Count == 0)
             {
                 dadosql = string.Format("INSERT INTO `esto_classe_posto` (`cod`, `cod_classe`) VALUES(NULL, '{0}')", codigo);
                 mConn.Inserirdb(dadosql);
@@ -65,7 +59,7 @@ namespace CG.TelaInicial.Cadastro.Estoque.Produto_por_Posto
             }
             else
             {
-                MessageBox.Show("Itens ja existe!","Atenção!",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Itens ja existe!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
 
@@ -92,7 +86,7 @@ namespace CG.TelaInicial.Cadastro.Estoque.Produto_por_Posto
                 dadosql = string.Format("DELETE FROM `esto_classe_posto` WHERE `cod_classe` = '{0}'", codigo);
                 mConn.Inserirdb(dadosql);
                 atualizadgv();
-               
+
             }
 
         }

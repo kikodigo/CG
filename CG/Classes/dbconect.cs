@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+﻿using MySqlConnector;
+using System;
 using System.Data;
 using System.IO;
 using System.Windows.Forms;
 
 namespace CG.Classes
 {
-    class dbconect  
+    class dbconect
     {
         private MySqlConnection conectar;
 
         public string String_Conexao()
         {
 
-            String Caminho = "C:\\CG\\db.ini"; 
-            if (!System.IO.File.Exists(Caminho))System.IO.File.Create(Caminho).Close();
+            String Caminho = "C:\\CG\\db.ini";
+            if (!System.IO.File.Exists(Caminho)) System.IO.File.Create(Caminho).Close();
             StreamReader sr = new StreamReader(Caminho);
 
             // modelo de caminho de server = "persist security info = false;server=srv-bkp;database=db_cg;uid=glpi;pwd=GESTservi3627;convert zero datetime=True;"
@@ -32,7 +28,7 @@ namespace CG.Classes
         {
             conectar = new MySqlConnection(String_Conexao());
             if (conectar.State == ConnectionState.Closed)
-                conectar.Open();            
+                conectar.Open();
             //return conectar;
         }
 
@@ -60,13 +56,13 @@ namespace CG.Classes
             {
                 codigodb.ExecuteNonQuery();
             }
-            catch(Exception erro)
+            catch (Exception erro)
             {
                 MessageBox.Show(erro.Message);
                 MessageBox.Show(erro.ToString());
                 MessageBox.Show(dadosql);
             }
-            
+
             conectar.Close();
 
         }
@@ -80,24 +76,24 @@ namespace CG.Classes
             conectar.Close();
             return tabela;
         }
-        
+
         public DataTable LeituraTabela(string dadosql)
-        {
-            Conectdb();
-            MySqlCommand comando = new MySqlCommand(dadosql, conectar);
-            MySqlDataReader dr = comando.ExecuteReader();            
-            DataTable dt = new DataTable();           
-            dt.Load(dr);
-            conectar.Close();
-            return dt;
-        }
-        public DataTable LeituraLinha (string dadosql)
         {
             Conectdb();
             MySqlCommand comando = new MySqlCommand(dadosql, conectar);
             MySqlDataReader dr = comando.ExecuteReader();
             DataTable dt = new DataTable();
-            dt.Load(dr);            
+            dt.Load(dr);
+            conectar.Close();
+            return dt;
+        }
+        public DataTable LeituraLinha(string dadosql)
+        {
+            Conectdb();
+            MySqlCommand comando = new MySqlCommand(dadosql, conectar);
+            MySqlDataReader dr = comando.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
             conectar.Close();
             return dt;
         }
@@ -113,16 +109,16 @@ namespace CG.Classes
             conectar.Close();
 
             return tabela;
-           
+
         }
 
-        public void log(string usuario,string tela,string metodo, string acao, string detalhe)
+        public void log(string usuario, string tela, string metodo, string acao, string detalhe)
         {
             Conectdb();
-           string dadosql = string.Format("INSERT INTO `log` (`cod`, `usuario`, `tela`, `metodo`, `acao`, `data`, `detalhe`) VALUES(NULL, '{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", usuario,tela,metodo,acao,  Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("yyyy-MM-dd"), detalhe  );
+            string dadosql = string.Format("INSERT INTO `log` (`cod`, `usuario`, `tela`, `metodo`, `acao`, `data`, `detalhe`) VALUES(NULL, '{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", usuario, tela, metodo, acao, Convert.ToDateTime(DateTime.Now.ToShortDateString()).ToString("yyyy-MM-dd"), detalhe);
 
             MySqlCommand codigodb = new MySqlCommand(dadosql, conectar);
-            
+
             codigodb.ExecuteNonQuery();
             conectar.Close();
 

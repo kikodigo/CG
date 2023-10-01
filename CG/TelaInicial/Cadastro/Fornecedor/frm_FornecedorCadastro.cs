@@ -15,7 +15,7 @@ namespace CG
         }
 
 
-      
+
         public frm_FornecedorCadastro(string valor, string usuario)
         {
             InitializeComponent();
@@ -55,10 +55,10 @@ namespace CG
             cbx_ativo.Text = "SIM";
 
             mtb_Doc.Text = "";
-            
-            
-            
-            
+
+
+
+
 
         }
         public void bloquearbotao()
@@ -82,8 +82,8 @@ namespace CG
             cbx_TipoConta.Enabled = false;
             cbx_ativo.Enabled = false;
 
-            mtb_Doc.Enabled = false;      
-            
+            mtb_Doc.Enabled = false;
+
             tsm_novo.Enabled = true;
             tsm_salvar.Enabled = false;
             tsm_editar.Enabled = true;
@@ -116,7 +116,7 @@ namespace CG
         }
         public void liberarbotao()
         {
-            
+
             txt_nome.Enabled = true;
             txt_bairro.Enabled = true;
             txt_rua.Enabled = true;
@@ -129,8 +129,8 @@ namespace CG
             txt_op.Enabled = true;
             txt_ct.Enabled = true;
             txt_email.Enabled = true;
-            txt_site.Enabled = true;         
-            
+            txt_site.Enabled = true;
+
             mtb_Doc.Enabled = true;
 
             cbx_TipoConta.Enabled = true;
@@ -196,9 +196,9 @@ namespace CG
             cbx_ativo.Text = dados.Rows[0]["ativo"].ToString();
 
             mtb_Doc.Text = dados.Rows[0]["doc"].ToString();
-            
-            
-            
+
+
+
         }
         private void Frm_FornecedorCadastro_Load(object sender, EventArgs e)
         {
@@ -225,7 +225,7 @@ namespace CG
             bloquearbotao();
             tsm_cancelar.Enabled = false;
             tsm_salvar.Enabled = false;
-           
+
         }
 
 
@@ -267,15 +267,15 @@ namespace CG
             cbx_cidade.DataSource = mConn.LeituraTabela(dadosql);
         }
 
-    
+
 
         private void Txt_tel1_Leave_1(object sender, EventArgs e)
         {
-           // if (Convert.ToInt32(txt_tel1.Text.Length) == 11)
-           // {
-           //     txt_tel1.Mask = "(00)00000 - 0000";
-          //  }
-           
+            // if (Convert.ToInt32(txt_tel1.Text.Length) == 11)
+            // {
+            //     txt_tel1.Mask = "(00)00000 - 0000";
+            //  }
+
         }
 
         private void Tsm_novo_Click(object sender, EventArgs e)
@@ -301,7 +301,7 @@ namespace CG
             cbx_estado.Text = "";
             cbx_TipoConta.Text = "";
 
-            
+
         }
 
         private void Tsm_editar_Click(object sender, EventArgs e)
@@ -315,25 +315,25 @@ namespace CG
             string salvo1, salvo2, codigo;
             int vlcodigo;
             DataTable resultado = new DataTable();
-            
+
 
             if (chx_editar.Checked == true)
-                //Atualização dos dados do fornecedor no banco
+            //Atualização dos dados do fornecedor no banco
             {
-                dadosql = string.Format("UPDATE `fornecedor` SET `nome` = '{0}',`estado` = '{1}', `cidade` = '{2}', `bairro` = '{3}', `rua` = '{4}', `num` = '{5}', `cep` = '{6}', `contato` = '{7}', `tel1` = '{8}', `tel2` = '{9}', `tipodoc` = '', `doc` = '{10}', `tipocont` = '{11}', `ag` = '{12}', `op` = '{13}', `ct` = '{14}', `email` = '{15}', `site` = '{16}', `ativo` = '{17}' WHERE `fornecedor`.`cod` = '{18}'", txt_nome.Text, cbx_estado.Text, cbx_cidade.Text, txt_bairro.Text, txt_rua.Text, txt_num.Text, txt_cep.Text, txt_contato.Text, txt_tel1.Text, txt_tel2.Text, mtb_Doc.Text.Replace(",","."), cbx_TipoConta.Text, txt_ag.Text, txt_op.Text, txt_ct.Text, txt_email.Text, txt_site.Text, cbx_ativo.Text, txt_codigo.Text);
+                dadosql = string.Format("UPDATE `fornecedor` SET `nome` = '{0}',`estado` = '{1}', `cidade` = '{2}', `bairro` = '{3}', `rua` = '{4}', `num` = '{5}', `cep` = '{6}', `contato` = '{7}', `tel1` = '{8}', `tel2` = '{9}', `tipodoc` = '', `doc` = '{10}', `tipocont` = '{11}', `ag` = '{12}', `op` = '{13}', `ct` = '{14}', `email` = '{15}', `site` = '{16}', `ativo` = '{17}' WHERE `fornecedor`.`cod` = '{18}'", txt_nome.Text, cbx_estado.Text, cbx_cidade.Text, txt_bairro.Text, txt_rua.Text, txt_num.Text, txt_cep.Text, txt_contato.Text, txt_tel1.Text, txt_tel2.Text, mtb_Doc.Text.Replace(",", "."), cbx_TipoConta.Text, txt_ag.Text, txt_op.Text, txt_ct.Text, txt_email.Text, txt_site.Text, cbx_ativo.Text, txt_codigo.Text);
                 salvo1 = " Item atualizado com exito";
                 salvo2 = "ATUALIZADO";
             }
             else
-                //Caso o botão editar não seja selecionado, ira inserir um registro 
+            //Caso o botão editar não seja selecionado, ira inserir um registro 
             {
-                dadosql = string.Format("INSERT INTO `fornecedor` (`cod`, `nome`, `estado`, `cidade`, `bairro`, `rua`, `num`, `cep`, `contato`, `tel1`, `tel2`, `tipodoc`, `doc`, `tipocont`, `ag`, `op`, `ct`, `email`, `site`, `ativo`) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')", txt_nome.Text, cbx_estado.Text, cbx_cidade.Text, txt_bairro.Text, txt_rua.Text, txt_num.Text, txt_cep.Text, txt_contato.Text, txt_tel1.Text, txt_tel2.Text,  mtb_Doc.Text.Replace(",","."), cbx_TipoConta.Text, txt_ag.Text, txt_op.Text, txt_ct.Text, txt_email.Text, txt_site.Text, cbx_ativo.Text);
+                dadosql = string.Format("INSERT INTO `fornecedor` (`cod`, `nome`, `estado`, `cidade`, `bairro`, `rua`, `num`, `cep`, `contato`, `tel1`, `tel2`, `tipodoc`, `doc`, `tipocont`, `ag`, `op`, `ct`, `email`, `site`, `ativo`) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')", txt_nome.Text, cbx_estado.Text, cbx_cidade.Text, txt_bairro.Text, txt_rua.Text, txt_num.Text, txt_cep.Text, txt_contato.Text, txt_tel1.Text, txt_tel2.Text, mtb_Doc.Text.Replace(",", "."), cbx_TipoConta.Text, txt_ag.Text, txt_op.Text, txt_ct.Text, txt_email.Text, txt_site.Text, cbx_ativo.Text);
 
                 salvo1 = "Item Criado com Exito";
                 salvo2 = "CRIADO";
 
             }
-            mConn.Inserirdb(dadosql);           
+            mConn.Inserirdb(dadosql);
             if (salvo2 == "ATUALIZADO")
             {
                 vlcodigo = Convert.ToInt16(txt_codigo.Text);
@@ -503,11 +503,11 @@ namespace CG
         {
             //MessageBox.Show(mtb_Doc.Text.Replace(",", "").Replace("-",""));
 
-            if(mtb_Doc.Text == "   ,   ,   -" || mtb_Doc.Text == "  ,   ,   /    -")
+            if (mtb_Doc.Text == "   ,   ,   -" || mtb_Doc.Text == "  ,   ,   /    -")
             {
                 MessageBox.Show("em branco");
             }
-            else 
+            else
             {
                 MessageBox.Show("VAI PORRA !!!");
                 int x = mtb_Doc.Text.Replace(",", "").Replace("-", "").Replace("/", "").Length;

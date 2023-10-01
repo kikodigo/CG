@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CG
@@ -22,7 +16,7 @@ namespace CG
 
         private void btn_apagarConta_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Realmente deseja apagar sua conta?","Deletar Conta",MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            DialogResult dr = MessageBox.Show("Realmente deseja apagar sua conta?", "Deletar Conta", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (dr == DialogResult.Yes)
             {
                 try
