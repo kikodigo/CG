@@ -5,11 +5,11 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CG", "src\CG\CG.csproj", "{2940CDFD-EFA1-44F8-AAF8-64445C3D412B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CG.Core", "src\CG.Core\CG.Core.csproj", "{A958BCF0-D444-4DE1-828A-24B94B333C83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CG.Core", "src\CG.Core\CG.Core.csproj", "{A958BCF0-D444-4DE1-828A-24B94B333C83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CG.Repository", "src\CG.Repository\CG.Repository.csproj", "{6F9F876A-42F6-4C96-BE6E-E2D0E350BFE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CG.Repository", "src\CG.Repository\CG.Repository.csproj", "{6F9F876A-42F6-4C96-BE6E-E2D0E350BFE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CG.Domain", "src\CG.Domain\CG.Domain.csproj", "{BBCCA179-8796-4220-B3B5-912C7CD85A74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CG.Domain", "src\CG.Domain\CG.Domain.csproj", "{BBCCA179-8796-4220-B3B5-912C7CD85A74}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

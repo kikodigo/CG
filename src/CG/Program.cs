@@ -1,3 +1,9 @@
+using CG.Controllers.Interface;
+using CG.Core.IoC;
+using CG.IoC;
+using CG.Repository.IoC;
+using Microsoft.Extensions.DependencyInjection;
+
 namespace CG
 {
     internal static class Program
@@ -8,10 +14,27 @@ namespace CG
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
+
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            string connectionString = Environment.GetEnvironmentVariable("csSecretGest");
+
+            // Configurar o contêiner de serviços
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddRepositories(connectionString);
+            serviceCollection.AddCoreServices();
+            serviceCollection.AddControllersServices();
+
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+
+            // Resolva o serviço de login
+            var loginController = serviceProvider.GetRequiredService<ILoginControllers>();
+
+            // Crie uma instância de frm_login com injeção de dependência
+            var mainForm = new frm_login(loginController);
+
+            Application.Run(mainForm);
+
         }
     }
 }
