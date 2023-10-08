@@ -1,4 +1,5 @@
-﻿using CG.Core.Interfaces;
+﻿using CG.Core.Services;
+using CG.Core.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CG.Core.IoC

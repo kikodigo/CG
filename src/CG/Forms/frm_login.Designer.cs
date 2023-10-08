@@ -180,7 +180,6 @@
             pbx_user.SizeMode = PictureBoxSizeMode.Zoom;
             pbx_user.TabIndex = 14;
             pbx_user.TabStop = false;
-            pbx_user.Click += pbx_user_Click;
             // 
             // frm_login
             // 
@@ -205,6 +204,7 @@
             Name = "frm_login";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CG - Login";
+            FormClosing += frm_login_FormClosing;
             pnl_header.ResumeLayout(false);
             pnl_header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

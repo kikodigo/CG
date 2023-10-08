@@ -1,6 +1,8 @@
 ﻿using CG.Repository.Interfaces;
-using Microsoft.Extensions.Logging;
+using Dapper;
 using MySql.Data.MySqlClient;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace CG.Repository
 {
@@ -35,7 +37,7 @@ namespace CG.Repository
             }
             finally
             {
-                if (_mySqlConnection.State != System.Data.ConnectionState.Open)
+                if (_mySqlConnection.State == System.Data.ConnectionState.Open)
                 {
                     _mySqlConnection.Close();
                 }
@@ -45,12 +47,58 @@ namespace CG.Repository
 
         public async Task<string> Login(string username, string password)
         {
+            var encryptedPassword = EncryptPassword(new UTF8Encoding().GetBytes(password));
 
-            _mySqlConnection.Open();
+            var query = $"select usuario from usuario where usuario = '{username}' and senha = '{encryptedPassword}'";
 
-            var estoqueItem = _mySqlConnection.QueryFirstOrDefault<EstoqueItem>("SELECT * FROM estoque WHERE id = @id", new { id = itemId });
+            var result = GetByParams<string>(query);
 
+            return result.FirstOrDefault();
 
         }
+
+
+        #region PrivateMethod
+        private List<T> GetByParams<T>(string query)
+        {
+            IEnumerable<T> queryResult = new List<T>();
+
+            try
+            {
+                _mySqlConnection.Open();
+
+
+                queryResult = _mySqlConnection.Query<T>(query);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            finally
+            {
+                _mySqlConnection.Close();
+            }
+
+            return (List<T>)queryResult;
+        }
+
+
+        private string EncryptPassword(byte[] input)
+        {
+            using (var md5 = MD5.Create())
+            {
+                byte[] hash = ((HashAlgorithm)CryptoConfig.CreateFromName("MD5")).ComputeHash(input);
+
+                string senhaCrypto = BitConverter.ToString(hash)
+                   .Replace("-", string.Empty)
+                   .ToLower();
+
+                return senhaCrypto;
+            }
+        }
+
+        #endregion PrivateMethod
+
     }
 }
