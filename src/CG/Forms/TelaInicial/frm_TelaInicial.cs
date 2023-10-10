@@ -4,7 +4,7 @@ namespace CG
 {
     public partial class frm_TelaInicial : Form
     {
-        public frm_TelaInicial() 
+        public frm_TelaInicial()
         {
         }
 
@@ -40,6 +40,14 @@ namespace CG
             var forneCadastro = new frm_FornecedorCadastro(txt_usuario.Text);
 
             forneCadastro.Show();
+        }
+
+        private void frm_TelaInicial_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
+            }
         }
     }
 }

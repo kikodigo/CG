@@ -2,7 +2,7 @@
 
 namespace CG.Core.Services
 {
-    public class LoginServices 
+    public class LoginServices
     {
         private readonly LoginRepository _loginRepository;
 

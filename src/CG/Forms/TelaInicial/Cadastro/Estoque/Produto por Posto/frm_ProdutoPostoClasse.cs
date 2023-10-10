@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Windows.Forms;
+﻿using System.Data;
 
 namespace CG.TelaInicial.Cadastro.Estoque.Produto_por_Posto
 {

@@ -1,6 +1,8 @@
 ﻿using CG.Core.Services;
+using CG.Domain.Data;
 using System.Data;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace CG
 {
@@ -24,7 +26,7 @@ namespace CG
             //resultado = mConn.LeituraLinha(dadosql);
             //------
 
-            preencher(resultado);
+            //preencher(resultado);
             this.TopMost = true;
             txt_usuario.Text = usuario;
 
@@ -167,34 +169,65 @@ namespace CG
             label20.ForeColor = Color.White;
             label21.ForeColor = Color.White;
         }
-        public void preencher(DataTable dados)
+
+        public void Preencher(FornecedorData dados)
         {
 
-            txt_codigo.Text = dados.Rows[0]["cod"].ToString();
-            txt_nome.Text = dados.Rows[0]["nome"].ToString();
-            txt_bairro.Text = dados.Rows[0]["bairro"].ToString();
-            txt_rua.Text = dados.Rows[0]["rua"].ToString();
-            txt_num.Text = dados.Rows[0]["num"].ToString();
-            txt_cep.Text = dados.Rows[0]["cep"].ToString();
-            txt_contato.Text = dados.Rows[0]["contato"].ToString();
-            txt_tel1.Text = dados.Rows[0]["tel1"].ToString();
-            txt_tel2.Text = dados.Rows[0]["tel2"].ToString();
-            txt_ag.Text = dados.Rows[0]["ag"].ToString();
-            txt_op.Text = dados.Rows[0]["op"].ToString();
-            txt_ct.Text = dados.Rows[0]["ct"].ToString();
-            txt_email.Text = dados.Rows[0]["email"].ToString();
-            txt_site.Text = dados.Rows[0]["site"].ToString();
+            //Todo: Precisa ajustar os nomes dos Txt e cbx com o mesmo nome com do objeto FornecedorData
+            asdadasdassaasdasdasd
 
-            cbx_estado.Text = dados.Rows[0]["estado"].ToString();
-            cbx_cidade.Text = dados.Rows[0]["cidade"].ToString();
-            cbx_TipoConta.Text = dados.Rows[0]["tipocont"].ToString();
-            cbx_ativo.Text = dados.Rows[0]["ativo"].ToString();
-
-            mtb_Doc.Text = dados.Rows[0]["doc"].ToString();
-
-
-
+            foreach (Control control in Controls)
+            {
+                if (control is TextBox textBox && control.Name.StartsWith("txt_"))
+                {
+                    string propertyName = control.Name.Substring(4); // Remove o prefixo "txt_"
+                    PropertyInfo propertyInfo = dados.GetType().GetProperty(propertyName);
+                    if (propertyInfo != null)
+                    {
+                        string valor = propertyInfo.GetValue(dados)?.ToString();
+                        textBox.Text = valor;
+                    }
+                }
+                else if (control is ComboBox comboBox && control.Name.StartsWith("cbx_"))
+                {
+                    string propertyName = control.Name.Substring(4); // Remove o prefixo "cbx_"
+                    PropertyInfo propertyInfo = dados.GetType().GetProperty(propertyName);
+                    if (propertyInfo != null)
+                    {
+                        string valor = propertyInfo.GetValue(dados)?.ToString();
+                        comboBox.Text = valor;
+                    }
+                }
+            }
         }
+
+        //public void preencher(FornecedorData dados)
+        //{
+
+        //    txt_codigo.Text = dados.Cod.ToString();
+        //    txt_nome.Text = dados.Nome;
+        //    txt_bairro.Text = dados.Bairro;
+        //    txt_rua.Text = dados.Rua;
+        //    txt_num.Text = dados.Num;
+        //    txt_cep.Text = dados.Cep;
+        //    txt_contato.Text = dados.Contato;
+        //    txt_tel1.Text = dados.Tel1;
+        //    txt_tel2.Text = dados.Tel2;
+        //    txt_ag.Text = dados.Ag;
+        //    txt_op.Text = dados.Op;
+        //    txt_ct.Text = dados.Ct;
+        //    txt_email.Text = dados.Email;
+        //    txt_site.Text = dados.Site;
+
+        //    cbx_estado.Text = dados.Estado;
+        //    cbx_cidade.Text = dados.Cidade;
+        //    cbx_TipoConta.Text = dados.Tipocont;
+        //    cbx_ativo.Text = dados.Status.ToString();
+
+        //    mtb_Doc.Text = dados.Doc;
+
+        //}
+
         private void Frm_FornecedorCadastro_Load(object sender, EventArgs e)
         {
 
@@ -257,8 +290,8 @@ namespace CG
             dadosql = string.Format("select id FROM estado WHERE uf = '{0}'", cbx_estado.Text);
             DataTable resultado = new DataTable();
             ////resultado = mConn.LeituraLinha(dadosql);
-            dadosql = string.Format("SELECT nome FROM `cidade` WHERE estado = '{0}'", resultado.Rows[0]["id"].ToString());
-            cbx_cidade.DisplayMember = "nome";
+            //dadosql = string.Format("SELECT nome FROM `cidade` WHERE estado = '{0}'", resultado.Rows[0]["id"].ToString());
+            //cbx_cidade.DisplayMember = "nome";
             //cbx_cidade.DataSource = mConn.LeituraTabela(dadosql);
         }
 
@@ -336,7 +369,7 @@ namespace CG
 
                 //resultado = mConn.LeituraLinha(dadosql);
 
-                preencher(resultado);
+                //preencher(resultado);
 
                 bloquearbotao();
 
@@ -353,7 +386,7 @@ namespace CG
 
                 //resultado = mConn.LeituraLinha(dadosql);
 
-                preencher(resultado);
+                //preencher(resultado);
 
                 bloquearbotao();
                 MessageBox.Show(salvo1, salvo2);
@@ -384,7 +417,7 @@ namespace CG
             vlcodigo = Convert.ToInt16(txt_codigo.Text);
             dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
             //resultado = mConn.LeituraLinha(dadosql);
-            preencher(resultado);
+            //preencher(resultado);
             chx_editar.Checked = false;
             bloquearbotao();
         }
@@ -407,7 +440,7 @@ namespace CG
                 dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
                 //resultado = mConn.LeituraLinha(dadosql);
 
-                preencher(resultado);
+               // preencher(resultado);
                 tsm_anterior.Enabled = false;
                 tsm_proximo.Enabled = true;
             }
@@ -417,7 +450,7 @@ namespace CG
 
                 dadosql = string.Format("SELECT * FROM fornecedor WHERE cod < '{0}' ORDER BY cod DESC LIMIT 1", vlcodigo);
                 //resultado = mConn.LeituraLinha(dadosql);
-                preencher(resultado);
+               // preencher(resultado);
             }
         }
 
@@ -447,7 +480,7 @@ namespace CG
                 dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
 
                 //resultado = mConn.LeituraLinha(dadosql);
-                preencher(resultado);
+                //preencher(resultado);
                 tsm_proximo.Enabled = false;
 
             }
@@ -457,7 +490,7 @@ namespace CG
                 dadosql = string.Format("SELECT * FROM fornecedor WHERE cod > '{0}' ORDER BY cod LIMIT 1", vlcodigo);
 
                 //resultado = mConn.LeituraLinha(dadosql);
-                preencher(resultado);
+                //preencher(resultado);
 
             }
         }
@@ -486,7 +519,7 @@ namespace CG
                 MessageBox.Show("Item excluido com exito!", "Excluido");
                 dadosql = string.Format("SELECT * FROM fornecedor where `cod` = '{0}'", vlcodigo);
                 //resultado = mConn.LeituraLinha(dadosql);
-                preencher(resultado);
+                //preencher(resultado);
             }
             else if (dialogResult == DialogResult.No)
             {
@@ -513,9 +546,9 @@ namespace CG
 
         private void label17_Click(object sender, EventArgs e)
         {
-          var bla =  _fornecedorServices.TestDB().Result;
+            var bla = _fornecedorServices.GetFirstFornec().Result;
 
-            MessageBox.Show(bla);
+            Preencher(bla);
         }
     }
 }

@@ -1,26 +1,23 @@
-﻿using CG.Repository.Config;
-using MySql.Data.MySqlClient;
+﻿using CG.Domain.Data;
 
 namespace CG.Repository.Repositories
 {
-    public class FornecedorRepository 
+    public class FornecedorRepository
     {
-        private readonly MySqlConnection _mySqlConnection;
+        private readonly QueryBaseRepository _queryBaseRepository;
 
         public FornecedorRepository()
         {
-            _mySqlConnection = new MySqlConnection(ConnectionStringConfig.CsSecretGest);
+            _queryBaseRepository = new QueryBaseRepository();
         }
 
-        public async Task<string> testDB()
+        public async Task<FornecedorData> GetFirstFornec()
         {
-            _mySqlConnection.Open();
+            var query = "SELECT * FROM `fornecedor`ORDER BY cod ASC LIMIT 1";
 
-            Console.WriteLine(_mySqlConnection.State.ToString());
+            var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 
-            Console.Error.WriteLine($"Log gerado via MS Logging {_mySqlConnection.State.ToString()}");
-
-            return _mySqlConnection.State.ToString();
+            return result.FirstOrDefault();
         }
     }
 }

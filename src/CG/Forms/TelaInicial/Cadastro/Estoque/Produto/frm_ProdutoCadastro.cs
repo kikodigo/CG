@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Windows.Forms;
 
 
 namespace CG
@@ -782,7 +781,7 @@ namespace CG
                 DataTable resultado = new DataTable();
 
                 dadosql = string.Format("SELECT `cod` FROM `fornecedor` WHERE `nome` = '{0}'", cbx_CodExtForne.Text);
-               // resultado = mConn.LeituraTabela(dadosql);
+                // resultado = mConn.LeituraTabela(dadosql);
 
                 dadosql = string.Format("SELECT * FROM `esto_codext` WHERE `codprod` = '{0}' AND `codext` = '{1}' AND `codforne` = '{2}'", txt_codigo.Text, txt_CodExtCod.Text, resultado.Rows[0]["cod"].ToString());
                 //resultado = mConn.LeituraTabela(dadosql);
@@ -798,7 +797,7 @@ namespace CG
                         //resultado = mConn.LeituraTabela(dadosql);
 
                         dadosql = string.Format("DELETE FROM `esto_codext` WHERE `codforne` = '{0}' AND `codprod` = '{1}' AND `codext` = '{2}'", resultado.Rows[0]["cod"].ToString(), txt_codigo.Text, txt_CodExtCod.Text);
-                       // mConn.Inserirdb(dadosql);
+                        // mConn.Inserirdb(dadosql);
                         PreencherDgv();
                     }
                 }

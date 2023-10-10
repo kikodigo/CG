@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace CG.Tela_Inicial.Cadastro.Contratos
+﻿namespace CG.Tela_Inicial.Cadastro.Contratos
 {
     public partial class frm_ContratoPesquisa : Form
     {

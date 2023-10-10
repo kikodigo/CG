@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace CG.Tela_Inicial.Cadastro.Funcionarios
+﻿namespace CG.Tela_Inicial.Cadastro.Funcionarios
 {
     public partial class frm_Funcionarios : Form
     {

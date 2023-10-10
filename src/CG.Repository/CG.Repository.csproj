@@ -17,4 +17,8 @@
     <ProjectReference Include="..\CG.Domain\CG.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
+
 </Project>

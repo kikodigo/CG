@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-namespace CG
+﻿namespace CG
 {
     public partial class frm_ProdutoUnidadePesquisa : Form
     {

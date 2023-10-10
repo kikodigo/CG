@@ -87,6 +87,7 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = Color.Silver;
+            menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { arquivoToolStripMenuItem, requisiçãoToolStripMenuItem, controleEstoqueToolStripMenuItem, ordensDeCompraToolStripMenuItem, relatorioToolStripMenuItem });
             resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.Name = "menuStrip1";
@@ -379,6 +380,7 @@
             MaximizeBox = false;
             Name = "frm_TelaInicial";
             TransparencyKey = Color.DimGray;
+            FormClosing += frm_TelaInicial_FormClosing;
             Load += frm_TelaInicial_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

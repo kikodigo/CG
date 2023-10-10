@@ -6,7 +6,7 @@ namespace CG.IoC
     {
         public static void AddControllersServices(this IServiceCollection services)
         {
-          
+
         }
     }
 }

@@ -1,19 +1,20 @@
-﻿using CG.Repository.Repositories;
+﻿using CG.Domain.Data;
+using CG.Repository.Repositories;
 
 namespace CG.Core.Services
 {
-    public class FornecedorServices 
+    public class FornecedorServices
     {
         private readonly FornecedorRepository _fornecedorRepository;
 
         public FornecedorServices()
         {
             _fornecedorRepository = new FornecedorRepository();
-        }   
+        }
 
-        public async Task<string> TestDB()
+        public async Task<FornecedorData> GetFirstFornec()
         {
-            return await _fornecedorRepository.testDB();
+            return await _fornecedorRepository.GetFirstFornec();
         }
     }
 }

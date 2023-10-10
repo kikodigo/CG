@@ -1,5 +1,4 @@
-﻿using CG.Core.Services;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace CG.Core.IoC
 {
@@ -7,7 +6,7 @@ namespace CG.Core.IoC
     {
         public static void AddCoreServices(this IServiceCollection services)
         {
-           
+
         }
     }
 }
