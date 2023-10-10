@@ -67,6 +67,8 @@ namespace CG.Repository.Repositories
 
 
                 queryResult = _mySqlConnection.Query<T>(query);
+
+                return (List<T>)queryResult;
             }
             catch (Exception)
             {
@@ -77,8 +79,6 @@ namespace CG.Repository.Repositories
             {
                 _mySqlConnection.Close();
             }
-
-            return (List<T>)queryResult;
         }
 
 
