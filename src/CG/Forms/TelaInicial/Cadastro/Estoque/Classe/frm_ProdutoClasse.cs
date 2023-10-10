@@ -14,7 +14,7 @@ namespace CG
 
 
             DataTable resultado = new DataTable();
-            resultado = mPermissao.consulta(usuario, this.Name);
+            //resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
         }
 
@@ -60,7 +60,7 @@ namespace CG
         }
 
         private string permissao;
-        Classes.permissoes mPermissao = new Classes.permissoes();
+        //Classes.permissoes mPermissao = new Classes.permissoes();
 
         public void preencher(DataTable resultado)
         {
@@ -78,7 +78,7 @@ namespace CG
             txt_codigo.Text = valor;
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT * FROM `esto_classe` WHERE `cod` = '{0}'", txt_codigo.Text);
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
 
             preencher(resultado);
 
@@ -87,7 +87,7 @@ namespace CG
         }
 
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
         public void bloquearbotao()
         {
 
@@ -146,7 +146,7 @@ namespace CG
 
             //Verificação do menor Registro no banco de dados
             dadosql = string.Format("SELECT MIN(cod) FROM esto_classe");
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             //------
 
             if (string.IsNullOrWhiteSpace(txt_codigo.Text))
@@ -155,7 +155,7 @@ namespace CG
                 //Consulta no banco com o menor registro encontrato 
                 // dadosql = string.Format("SELECT * FROM `estoque` WHERE `estoque`.`cod` = 248");
                 dadosql = string.Format("SELECT * FROM `esto_classe` WHERE `cod` = '{0}'", resultado.Rows[0]["MIN(cod)"].ToString());
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 //------
 
                 preencher(resultado);
@@ -189,11 +189,11 @@ namespace CG
             {
 
                 dadosql = string.Format("SELECT `patrimonio` FROM esto_classe WHERE `cod` = '{0}' ", txt_codigo.Text);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 if (resultado.Rows[0]["patrimonio"].ToString() != cbx_Patrimonio.Text)
                 {
                     dadosql = string.Format(" SELECT COUNT(`codclasse`) AS QTD FROM `v_patrimonio` where `codclasse` = '{0}'", txt_codigo.Text);
-                    resultado = mConn.LeituraLinha(dadosql);
+                    //resultado = mConn.LeituraLinha(dadosql);
                     if (resultado.Rows[0]["QTD"].ToString() != "0")
                     {
                         salvo1 = "Item não foi atualizado. \nExistem patrimônios vinculados a itens dessa classe.";
@@ -225,13 +225,13 @@ namespace CG
                 salvo2 = "CRIADO";
 
             }
-            mConn.Inserirdb(dadosql);
+            //mConn.Inserirdb(dadosql);
             if (salvo2 == "ATUALIZADO")
             {
                 vlcodigo = Convert.ToInt16(txt_codigo.Text);
                 dadosql = string.Format("SELECT * FROM `esto_classe` WHERE `cod` ='{0}'", vlcodigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
                 bloquearbotao();
                 MessageBox.Show(salvo1, salvo2);
@@ -240,11 +240,11 @@ namespace CG
             {
 
                 dadosql = string.Format("SELECT MAX(cod) FROM esto_classe");
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 codigo = resultado.Rows[0]["MAX(cod)"].ToString();
                 dadosql = string.Format("SELECT * FROM `esto_classe` WHERE `cod` ='{0}'", codigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
 
                 bloquearbotao();
@@ -261,7 +261,7 @@ namespace CG
         {
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT MIN(cod) FROM esto_classe");
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             if (string.IsNullOrWhiteSpace(txt_codigo.Text))
             {
 
@@ -273,7 +273,7 @@ namespace CG
             if (vlcodigo.Equals(resultado.Rows[0]["MIN(cod)"]))
             {
                 dadosql = string.Format("SELECT * FROM `esto_classe` WHERE `cod` ='{0}'", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
 
                 preencher(resultado);
 
@@ -285,7 +285,7 @@ namespace CG
                 tsm_proximo.Enabled = true;
 
                 dadosql = string.Format("SELECT * FROM esto_classe WHERE cod < '{0}' ORDER BY cod DESC LIMIT 1", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
             }
         }
@@ -295,7 +295,7 @@ namespace CG
             // Verificação do ultimo registro do banco de dados
             dadosql = string.Format("SELECT MAX(cod) FROM esto_classe");
             DataTable resultado = new DataTable();
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             //-----
 
             //Verificação se o campo CODIGO esta vazio, caso esteja será preenchido com o ultimo valor do banco
@@ -313,7 +313,7 @@ namespace CG
             if (vlcodigo.Equals(resultado.Rows[0]["MAX(cod)"]))
             {
                 dadosql = string.Format("SELECT * FROM `esto_classe` WHERE `cod` ='{0}'", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                ////resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
                 tsm_proximo.Enabled = false;
             }
@@ -321,7 +321,7 @@ namespace CG
             {
                 tsm_anterior.Enabled = true;
                 dadosql = string.Format("SELECT * FROM esto_classe WHERE cod > '{0}' ORDER BY cod LIMIT 1", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
             }
         }
@@ -347,11 +347,11 @@ namespace CG
 
                 dadosql = string.Format("UPDATE esto_classe SET ativo = 'NAO' WHERE cod ='{0}'", vlcodigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
 
                 MessageBox.Show("Item excluido com exito!", "Excluido");
                 dadosql = string.Format("SELECT * FROM esto_classe where `cod` = '{0}'", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
             }
             else if (dialogResult == DialogResult.No)

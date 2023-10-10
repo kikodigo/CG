@@ -1,19 +1,19 @@
-﻿using System;
+﻿using CG.Core.Services;
 using System.Data;
 using System.Diagnostics;
-using System.Drawing;
-using System.Windows.Forms;
 
 namespace CG
 {
     public partial class frm_FornecedorCadastro : Form
     {
+        public readonly FornecedorServices _fornecedorServices;
+
         public frm_FornecedorCadastro(string usuario)
         {
             InitializeComponent();
+            _fornecedorServices = new FornecedorServices();
             txt_usuario.Text = usuario;
         }
-
 
 
         public frm_FornecedorCadastro(string valor, string usuario)
@@ -21,7 +21,7 @@ namespace CG
             InitializeComponent();
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` = '{0}'", valor);
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             //------
 
             preencher(resultado);
@@ -31,7 +31,7 @@ namespace CG
         }
 
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
 
         private void limpar()
         {
@@ -55,11 +55,6 @@ namespace CG
             cbx_ativo.Text = "SIM";
 
             mtb_Doc.Text = "";
-
-
-
-
-
         }
         public void bloquearbotao()
         {
@@ -208,21 +203,21 @@ namespace CG
             DataTable resultado = new DataTable();
 
             //Verificação do menor Registro no banco de dados
-            dadosql = string.Format("SELECT MIN(cod) FROM fornecedor");
-            resultado = mConn.LeituraLinha(dadosql);
+            //dadosql = string.Format("SELECT MIN(cod) FROM fornecedor");
+            //resultado = mConn.LeituraLinha(dadosql);
             //------
 
             if (string.IsNullOrWhiteSpace(txt_codigo.Text))
             {
 
                 //Consulta no banco com o menor registro encontrato
-                dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` = '{0}'", resultado.Rows[0]["MIN(cod)"].ToString());
-                resultado = mConn.LeituraLinha(dadosql);
+                // dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` = '{0}'", resultado.Rows[0]["MIN(cod)"].ToString());
+                //resultado = mConn.LeituraLinha(dadosql);
                 //------
 
-                preencher(resultado);
+                //preencher(resultado);
             }
-            bloquearbotao();
+            // bloquearbotao();
             tsm_cancelar.Enabled = false;
             tsm_salvar.Enabled = false;
 
@@ -261,10 +256,10 @@ namespace CG
 
             dadosql = string.Format("select id FROM estado WHERE uf = '{0}'", cbx_estado.Text);
             DataTable resultado = new DataTable();
-            resultado = mConn.LeituraLinha(dadosql);
+            ////resultado = mConn.LeituraLinha(dadosql);
             dadosql = string.Format("SELECT nome FROM `cidade` WHERE estado = '{0}'", resultado.Rows[0]["id"].ToString());
             cbx_cidade.DisplayMember = "nome";
-            cbx_cidade.DataSource = mConn.LeituraTabela(dadosql);
+            //cbx_cidade.DataSource = mConn.LeituraTabela(dadosql);
         }
 
 
@@ -284,7 +279,7 @@ namespace CG
             string ultimo, ultimo1;
             int valor;
             dadosql = string.Format("SELECT MAX(cod) FROM fornecedor");
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             ultimo = resultado.Rows[0]["MAX(cod)"].ToString();
             valor = Convert.ToInt16(ultimo);
             valor++;
@@ -333,13 +328,13 @@ namespace CG
                 salvo2 = "CRIADO";
 
             }
-            mConn.Inserirdb(dadosql);
+            //mConn.Inserirdb(dadosql);
             if (salvo2 == "ATUALIZADO")
             {
                 vlcodigo = Convert.ToInt16(txt_codigo.Text);
                 dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
 
                 preencher(resultado);
 
@@ -352,11 +347,11 @@ namespace CG
             {
 
                 dadosql = string.Format("SELECT MAX(cod) FROM fornecedor");
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 codigo = resultado.Rows[0]["MAX(cod)"].ToString();
                 dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", codigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
 
                 preencher(resultado);
 
@@ -373,7 +368,7 @@ namespace CG
 
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT MIN(cod) FROM fornecedor");
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             if (chx_editar.Checked == true)
             {
                 if ((txt_codigo.Text != resultado.Rows[0]["MIN(cod)"].ToString()) | (txt_codigo.Text == ""))
@@ -388,7 +383,7 @@ namespace CG
             int vlcodigo;
             vlcodigo = Convert.ToInt16(txt_codigo.Text);
             dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             preencher(resultado);
             chx_editar.Checked = false;
             bloquearbotao();
@@ -398,7 +393,7 @@ namespace CG
         {
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT MIN(cod) FROM fornecedor");
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             if (string.IsNullOrWhiteSpace(txt_codigo.Text))
             {
 
@@ -410,7 +405,7 @@ namespace CG
             if (vlcodigo.Equals(resultado.Rows[0]["MIN(cod)"]))
             {
                 dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
 
                 preencher(resultado);
                 tsm_anterior.Enabled = false;
@@ -421,7 +416,7 @@ namespace CG
                 tsm_proximo.Enabled = true;
 
                 dadosql = string.Format("SELECT * FROM fornecedor WHERE cod < '{0}' ORDER BY cod DESC LIMIT 1", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
             }
         }
@@ -431,7 +426,7 @@ namespace CG
             // Verificação do ultimo registro do banco de dados
             dadosql = string.Format("SELECT MAX(cod) FROM fornecedor");
             DataTable resultado = new DataTable();
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             //-----
 
             //Verificação se o campo CODIGO esta vazio, caso esteja será preenchido com o ultimo valor do banco
@@ -451,7 +446,7 @@ namespace CG
 
                 dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
                 tsm_proximo.Enabled = false;
 
@@ -461,7 +456,7 @@ namespace CG
                 tsm_anterior.Enabled = true;
                 dadosql = string.Format("SELECT * FROM fornecedor WHERE cod > '{0}' ORDER BY cod LIMIT 1", vlcodigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
 
             }
@@ -486,11 +481,11 @@ namespace CG
 
                 dadosql = string.Format("UPDATE fornecedor SET ativo = 'NAO' WHERE cod ='{0}'", vlcodigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
 
                 MessageBox.Show("Item excluido com exito!", "Excluido");
                 dadosql = string.Format("SELECT * FROM fornecedor where `cod` = '{0}'", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
             }
             else if (dialogResult == DialogResult.No)
@@ -514,6 +509,13 @@ namespace CG
 
                 MessageBox.Show(x.ToString());
             }
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+          var bla =  _fornecedorServices.TestDB().Result;
+
+            MessageBox.Show(bla);
         }
     }
 }

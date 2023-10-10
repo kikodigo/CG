@@ -15,7 +15,7 @@ namespace CG
             txt_usuario.Text = usuario;
 
             DataTable resultado = new DataTable();
-            resultado = mPermissao.consulta(usuario, this.Name);
+            //resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
         }
 
@@ -25,11 +25,11 @@ namespace CG
             dgv_Funcionarios.ForeColor = Color.Black;
 
             dadosql = string.Format("SELECT  `Codigo Descrição`, `Descrição` FROM `v_esto_posto_por_item` where `Codigo Posto` = '{0}' ORDER by `Codigo Descrição` ASC", txt_CodigoPosto.Text);
-            dgv_ProdutoPorPosto.DataSource = mConn.ConsultaTabela(dadosql);
+            //dgv_ProdutoPorPosto.DataSource = mConn.ConsultaTabela(dadosql);
 
 
             dadosmssql = string.Format("select numcad , nomfun  from vetorh.dbo.r034fun where (sitafa<>7 And sitafa<>3 And sitafa<>53 and postra = '{0}')  ORDER by nomfun ASC", txt_CodigoPosto.Text);
-            dgv_Funcionarios.DataSource = msConn.ConsultaTabela(dadosmssql);
+            ////dgv_Funcionarios.DataSource = msConn.ConsultaTabela(dadosmssql);
 
         }
 
@@ -69,14 +69,14 @@ namespace CG
         }
 
         private string permissao;
-        Classes.permissoes mPermissao = new Classes.permissoes();
+        ////Classes.permissoes mPermissao = new Classes.permissoes();
 
         //declaração da classe de comunicação do MYSQL e a Variavel de comunicação
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
 
         private string dadosmssql;
-        Classes.mssqlconect msConn = new Classes.mssqlconect();
+        //Classes.mssqlconect msConn = new Classes.mssqlconect();
 
 
         //bloqueia todos os botões e txt/cbx alterando cor das lbl
@@ -85,7 +85,7 @@ namespace CG
         {
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT `cod_classe` FROM `esto_classe_posto`");
-            resultado = mConn.ConsultaTabela(dadosql);
+            //resultado = mConn.ConsultaTabela(dadosql);
             int i = 0, contador = resultado.Rows.Count;
             string ComandoMysql, valor;
 
@@ -108,7 +108,7 @@ namespace CG
             }
 
             cbx_descricao.DisplayMember = "descricao";
-            cbx_descricao.DataSource = mConn.LeituraLinha(ComandoMysql);
+            //cbx_descricao.DataSource = mConn.LeituraLinha(ComandoMysql);
 
         }
 
@@ -118,7 +118,7 @@ namespace CG
 
             dadosmssql = string.Format("select desred from vetorh.dbo.r017pos where estpos = '2' order by desred asc");
             cbx_Posto.DisplayMember = "desred";
-            cbx_Posto.DataSource = msConn.ConsultaTabela(dadosmssql);
+            //cbx_Posto.DataSource = msConn.ConsultaTabela(dadosmssql);
 
 
             Atualiza_Descricao();
@@ -133,13 +133,13 @@ namespace CG
             string CodigoPosto, NumeroLocal, CodigoCusto, CodigoCargo, CodigoVinculo;
 
             dadosmssql = string.Format("select postra from vetorh.dbo.r017pos where desred = '{0}' and estpos = '2'", cbx_Posto.Text);
-            resultado = msConn.ConsultaTabela(dadosmssql);
+            //resultado = msConn.ConsultaTabela(dadosmssql);
             txt_CodigoPosto.Text = CodigoPosto = resultado.Rows[0]["postra"].ToString();
 
 
             dadosmssql = string.Format("select postra, numloc, codccu, codcar, codvin from vetorh.dbo.r017car where postra = '{0}'", CodigoPosto);
 
-            resultado = msConn.ConsultaTabela(dadosmssql);
+            ////resultado = msConn.ConsultaTabela(dadosmssql);
 
 
 
@@ -152,7 +152,7 @@ namespace CG
 
             dadosmssql = string.Format("select (select nomloc from vetorh.dbo.r016orn where numloc = (select top(1) numloc from vetorh.dbo.r017car where postra = '{0}' order by datini desc)) as 'Nome_Local',(select nomccu from vetorh.dbo.r018ccu where codccu = (select top(1) codccu from vetorh.dbo.r017car where postra = '{0}' order by datini desc)) as 'Nome_Contrato',(select titred from vetorh.dbo.r024car where codcar = (select top(1) codcar from vetorh.dbo.r017car where postra = '{0}' order by datini desc )) as 'Nome_Cargo', (select desvin from vetorh.dbo.r022vin where codvin = (select top(1) codvin from vetorh.dbo.r017car where postra = '{0}')) as 'Nome_Vinculo'", CodigoPosto);
 
-            resultado = msConn.ConsultaTabela(dadosmssql);
+            //resultado = msConn.ConsultaTabela(dadosmssql);
 
 
             txt_NomeLocal.Text = resultado.Rows[0]["Nome_Local"].ToString();
@@ -188,12 +188,12 @@ namespace CG
             {
                 DataTable resultado = new DataTable();
                 dadosql = string.Format("SELECT* FROM `esto_posto_por_item` WHERE `cod_posto` = '{0}' AND `cod_descricao`= '{1}'", txt_CodigoPosto.Text, txt_CodigoDescricao.Text);
-                resultado = mConn.ConsultaTabela(dadosql);
+                //resultado = mConn.ConsultaTabela(dadosql);
 
                 if (resultado.Rows.Count == 0)
                 {
                     dadosql = string.Format("INSERT INTO `esto_posto_por_item` (`cod`, `cod_posto`, `cod_descricao`) VALUES(NULL, '{0}', '{1}')", txt_CodigoPosto.Text, txt_CodigoDescricao.Text);
-                    mConn.Inserirdb(dadosql);
+                    //mConn.Inserirdb(dadosql);
 
                 }
                 else
@@ -217,12 +217,12 @@ namespace CG
             {
                 DataTable resultado = new DataTable();
                 dadosql = string.Format("SELECT* FROM `esto_posto_por_item` WHERE `cod_posto` = '{0}' AND `cod_descricao`= '{1}'", txt_CodigoPosto.Text, txt_CodigoDescricao.Text);
-                resultado = mConn.ConsultaTabela(dadosql);
+                //resultado = mConn.ConsultaTabela(dadosql);
 
                 if (resultado.Rows.Count != 0)
                 {
                     dadosql = string.Format("DELETE FROM esto_posto_por_item WHERE `cod_posto` = '{0}' AND `cod_descricao` = '{1}'", txt_CodigoPosto.Text, txt_CodigoDescricao.Text);
-                    mConn.Inserirdb(dadosql);
+                    //mConn.Inserirdb(dadosql);
 
                 }
                 else
@@ -238,7 +238,7 @@ namespace CG
         {
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT `cod` FROM `estoque` where `descricao` = '{0}'", cbx_descricao.Text);
-            resultado = mConn.ConsultaTabela(dadosql);
+            //resultado = mConn.ConsultaTabela(dadosql);
             txt_CodigoDescricao.Text = resultado.Rows[0]["cod"].ToString();
 
         }
@@ -249,7 +249,7 @@ namespace CG
             Cod_Descricao = this.dgv_ProdutoPorPosto.CurrentRow.Cells[0].Value.ToString();
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT `descricao` FROM `estoque` WHERE `cod` = '{0}'", Cod_Descricao);
-            resultado = mConn.ConsultaTabela(dadosql);
+            //resultado = mConn.ConsultaTabela(dadosql);
             cbx_descricao.Text = resultado.Rows[0]["descricao"].ToString();
         }
     }

@@ -17,10 +17,10 @@ namespace CG.Tela_Inicial.Cadastro.Funcionarios
         }
 
         private string dadosmssql;
-        Classes.mssqlconect msConn = new Classes.mssqlconect();
+        ////Classes.mssqlconect msConn = new Classes.mssqlconect();
 
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
 
         private void Atualiza_DGV()
         {
@@ -63,7 +63,7 @@ namespace CG.Tela_Inicial.Cadastro.Funcionarios
 
             dadosmssql = string.Format("select e.numcad as 'Matrícula', e.nomfun as 'Nome', e.codcar as 'Cod. Cargo', c.titred as 'Cargo',  e.codccu as 'Cod. Contrato', cu.nomccu as 'Contrato' , e.numloc as 'Num. Local', lo.nomloc as 'Local', e.postra as 'Cod. Posto', p.desred as 'Posto de Trabalho' from vetorh.dbo.r034fun as e inner join vetorh.dbo.r017pos as p on (e.postra = p.postra) inner join vetorh.dbo.r024car as c on (e.codcar = c.codcar)inner join vetorh.dbo.r016orn as lo on (e.numloc = lo.numloc) inner join vetorh.dbo.r018ccu as cu on (e.codccu = cu.codccu)WHERE (e.sitafa<>7 And e.sitafa<>3 And e.sitafa<>53 and p.estpos = 2 and {0} like '%{1}%') order by e.nomfun asc", coluna, txt_referencia.Text);
 
-            dgv_funcionario.DataSource = msConn.ConsultaTabela(dadosmssql);
+            //dgv_funcionario.DataSource = msConn.ConsultaTabela(dadosmssql);
 
         }
 

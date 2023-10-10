@@ -1,23 +1,19 @@
-﻿using CG.Core.Services.Interfaces;
-using CG.Repository.Interfaces;
+﻿using CG.Repository.Repositories;
 
 namespace CG.Core.Services
 {
-    public class LoginServices : ILoginServices
+    public class LoginServices 
     {
-        private readonly ILoginRepository _loginRepository;
+        private readonly LoginRepository _loginRepository;
 
-        public LoginServices(
-            ILoginRepository loginRepository)
+        public LoginServices()
         {
-            _loginRepository = loginRepository;
+            _loginRepository = new LoginRepository();
         }
 
         public async Task<string> connectDB()
         {
             var result = await _loginRepository.Login("", "");
-
-
 
             return "";
         }

@@ -205,6 +205,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CG - Login";
             FormClosing += frm_login_FormClosing;
+            Load += frm_login_Load;
             pnl_header.ResumeLayout(false);
             pnl_header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

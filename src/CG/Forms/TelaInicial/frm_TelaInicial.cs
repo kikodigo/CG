@@ -1,7 +1,14 @@
-﻿namespace CG
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace CG
 {
     public partial class frm_TelaInicial : Form
     {
+        public frm_TelaInicial() 
+        {
+        }
+
+
         public frm_TelaInicial(string userLogged)
         {
             InitializeComponent();
@@ -19,14 +26,20 @@
                 lbl_contador.Text = "0";
             }
             lbl_contador.Text = (Convert.ToInt32(lbl_contador.Text) + 1).ToString();
-
-
         }
 
         private void frm_TelaInicial_Load(object sender, EventArgs e)
         {
 
         }
-    }
 
+        private void Tsm_Fornec_Cadastro_Click(object sender, EventArgs e)
+        {
+            var serviceCollection = new ServiceCollection();
+
+            var forneCadastro = new frm_FornecedorCadastro(txt_usuario.Text);
+
+            forneCadastro.Show();
+        }
+    }
 }

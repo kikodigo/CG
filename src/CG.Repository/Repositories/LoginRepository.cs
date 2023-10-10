@@ -1,21 +1,20 @@
-﻿using CG.Repository.Interfaces;
+﻿using CG.Repository.Config;
 using Dapper;
 using MySql.Data.MySqlClient;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace CG.Repository
+namespace CG.Repository.Repositories
 {
-    public class LoginRepository : ILoginRepository
+    public class LoginRepository
     {
 
         private readonly MySqlConnection _mySqlConnection;
 
-        public LoginRepository(MySqlConnection mySqlConnection)
+        public LoginRepository()
         {
-            _mySqlConnection = mySqlConnection;
+            _mySqlConnection = new MySqlConnection(ConnectionStringConfig.CsSecretGest);
         }
-
 
         public async Task<string> conectDb()
         {
@@ -44,12 +43,11 @@ namespace CG.Repository
             }
         }
 
-
         public async Task<string> Login(string username, string password)
         {
             var encryptedPassword = EncryptPassword(new UTF8Encoding().GetBytes(password));
 
-            var query = $"select usuario from usuario where usuario = '{username}' and senha = '{encryptedPassword}'";
+            var query = $"SELECT usuario FROM usuario WHERE usuario = '{username}' AND senha = '{encryptedPassword}'";
 
             var result = GetByParams<string>(query);
 

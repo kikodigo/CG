@@ -11,15 +11,15 @@ namespace CG
             InitializeComponent();
         }
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
         public void Listar()
         {
             dadosql = "SELECT `cod`,`nome`,`tel1`,`tel2`,`doc`,`email` FROM `fornecedor`";
-            dgv_FornecedorPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
+            //dgv_FornecedorPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
 
             dadosql = string.Format("SELECT MIN(cod) FROM fornecedor");
             DataTable resultado = new DataTable();
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
 
             txt_destino.Text = resultado.Rows[0]["MIN(cod)"].ToString();
 
@@ -64,15 +64,15 @@ namespace CG
             }
 
             dadosql = string.Format("SELECT `cod`,`nome`,`tel1`,`tel2`,`doc`,`email` FROM `fornecedor` WHERE `{0}` LIKE '%{1}%'", coluna, txt_referencia.Text);
-            dgv_FornecedorPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
+            //dgv_FornecedorPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
         }
 
         private void Dgv_FornecedorPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             txt_destino.Text = this.dgv_FornecedorPesquisa.CurrentRow.Cells[0].Value.ToString();
-            frm_FornecedorCadastro destino = new frm_FornecedorCadastro(txt_destino.Text);
+            //frm_FornecedorCadastro destino = new frm_FornecedorCadastro(txt_destino.Text);
             this.Close();
-            destino.Show();
+            //destino.Show();
         }
 
         private void Dgv_FornecedorPesquisa_CellContentClick(object sender, DataGridViewCellEventArgs e)

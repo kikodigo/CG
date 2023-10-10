@@ -1,15 +1,14 @@
-﻿using CG.Core.Services.Interfaces;
+﻿using CG.Core.Services;
 
 namespace CG
 {
     public partial class frm_login : Form
     {
-        private readonly ILoginServices _LoginServices;
+        private readonly LoginServices _LoginServices;
 
-        public frm_login(
-            ILoginServices loginServices)
+        public frm_login()
         {
-            _LoginServices = loginServices;
+            _LoginServices = new LoginServices();
             InitializeComponent();
         }
 
@@ -127,6 +126,11 @@ namespace CG
             {
                 Application.Exit();
             }
+        }
+
+        private void frm_login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

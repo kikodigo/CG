@@ -121,83 +121,11 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cadastroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="cadastroToolStripMenuItem.Text" xml:space="preserve">
-    <value>Cadastro</value>
-  </data>
-  <data name="pesquisaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="pesquisaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pesquisa</value>
-  </data>
-  <data name="produtoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
-  </data>
-  <data name="produtoToolStripMenuItem.Text" xml:space="preserve">
-    <value>Produto</value>
-  </data>
-  <data name="cadastroToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="cadastroToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Cadastro</value>
-  </data>
-  <data name="pesquisaToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="pesquisaToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Pesquisa</value>
-  </data>
-  <data name="classeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
-  </data>
-  <data name="classeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Classe</value>
-  </data>
-  <data name="cadastroToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="cadastroToolStripMenuItem2.Text" xml:space="preserve">
-    <value>Cadastro</value>
-  </data>
-  <data name="pesquisaToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="pesquisaToolStripMenuItem2.Text" xml:space="preserve">
-    <value>Pesquisa</value>
-  </data>
-  <data name="unidadeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
-  </data>
-  <data name="unidadeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Unidade</value>
-  </data>
-  <data name="produtoPorPostoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
-  </data>
-  <data name="produtoPorPostoToolStripMenuItem.Text" xml:space="preserve">
-    <value>Produto por posto</value>
-  </data>
   <data name="estoqueToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 22</value>
   </data>
   <data name="estoqueToolStripMenuItem.Text" xml:space="preserve">
     <value>Estoque</value>
-  </data>
-  <data name="cadastroToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
-  </data>
-  <data name="cadastroToolStripMenuItem3.Text" xml:space="preserve">
-    <value>Cadastro*</value>
-  </data>
-  <data name="pesquisaToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
-  </data>
-  <data name="pesquisaToolStripMenuItem3.Text" xml:space="preserve">
-    <value>Pesquisa</value>
   </data>
   <data name="clienteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 22</value>
@@ -205,14 +133,14 @@
   <data name="clienteToolStripMenuItem.Text" xml:space="preserve">
     <value>Contratos (Endereço)</value>
   </data>
-  <data name="cadastroToolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
+  <data name="Tsm_Fornec_Cadastro.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="cadastroToolStripMenuItem4.Text" xml:space="preserve">
+  <data name="Tsm_Fornec_Cadastro.Text" xml:space="preserve">
     <value>Cadastro</value>
   </data>
   <data name="pesquisaToolStripMenuItem4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="pesquisaToolStripMenuItem4.Text" xml:space="preserve">
     <value>Pesquisa</value>
@@ -223,23 +151,11 @@
   <data name="forncedorToolStripMenuItem.Text" xml:space="preserve">
     <value>Forncedor</value>
   </data>
-  <data name="pesquisaToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 22</value>
-  </data>
-  <data name="pesquisaToolStripMenuItem5.Text" xml:space="preserve">
-    <value>Pesquisa</value>
-  </data>
   <data name="funcionariosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 22</value>
   </data>
   <data name="funcionariosToolStripMenuItem.Text" xml:space="preserve">
     <value>Funcionarios</value>
-  </data>
-  <data name="cadastroToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="cadastroToolStripMenuItem5.Text" xml:space="preserve">
-    <value>Cadastro</value>
   </data>
   <data name="empresaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>186, 22</value>
@@ -253,125 +169,17 @@
   <data name="arquivoToolStripMenuItem.Text" xml:space="preserve">
     <value>Cadastro</value>
   </data>
-  <data name="novoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="novoToolStripMenuItem.Text" xml:space="preserve">
-    <value>Novo</value>
-  </data>
-  <data name="consultaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="consultaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Consulta</value>
-  </data>
-  <data name="retornoFichasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="retornoFichasToolStripMenuItem.Text" xml:space="preserve">
-    <value>Retorno Fichas</value>
-  </data>
-  <data name="impressãoFichasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>164, 22</value>
-  </data>
-  <data name="impressãoFichasToolStripMenuItem.Text" xml:space="preserve">
-    <value>Impressão Fichas</value>
-  </data>
   <data name="requisiçãoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 20</value>
   </data>
   <data name="requisiçãoToolStripMenuItem.Text" xml:space="preserve">
     <value>Requisição</value>
   </data>
-  <data name="comumToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
-  </data>
-  <data name="comumToolStripMenuItem.Text" xml:space="preserve">
-    <value>Comum</value>
-  </data>
-  <data name="xMLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
-  </data>
-  <data name="xMLToolStripMenuItem.Text" xml:space="preserve">
-    <value>XML</value>
-  </data>
-  <data name="entradaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
-  </data>
-  <data name="entradaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Entrada</value>
-  </data>
-  <data name="saidaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
-  </data>
-  <data name="saidaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Saida</value>
-  </data>
-  <data name="correiosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 22</value>
-  </data>
-  <data name="correiosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Correios</value>
-  </data>
   <data name="controleEstoqueToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 20</value>
   </data>
   <data name="controleEstoqueToolStripMenuItem.Text" xml:space="preserve">
     <value>Controle Estoque</value>
-  </data>
-  <data name="novoToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="novoToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Novo</value>
-  </data>
-  <data name="consultaToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="consultaToolStripMenuItem1.Text" xml:space="preserve">
-    <value>Consulta</value>
-  </data>
-  <data name="materialEManutençãoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
-  </data>
-  <data name="materialEManutençãoToolStripMenuItem.Text" xml:space="preserve">
-    <value>Material e Manutenção</value>
-  </data>
-  <data name="novoToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="novoToolStripMenuItem2.Text" xml:space="preserve">
-    <value>Novo</value>
-  </data>
-  <data name="consultaToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="consultaToolStripMenuItem2.Text" xml:space="preserve">
-    <value>Consulta</value>
-  </data>
-  <data name="uniformeEEPIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
-  </data>
-  <data name="uniformeEEPIToolStripMenuItem.Text" xml:space="preserve">
-    <value>Uniforme e EPI</value>
-  </data>
-  <data name="novoToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="novoToolStripMenuItem3.Text" xml:space="preserve">
-    <value>Novo</value>
-  </data>
-  <data name="consultaToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 22</value>
-  </data>
-  <data name="consultaToolStripMenuItem3.Text" xml:space="preserve">
-    <value>Consulta</value>
-  </data>
-  <data name="equipamentosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
-  </data>
-  <data name="equipamentosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Equipamentos</value>
   </data>
   <data name="ordensDeCompraToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>119, 20</value>
@@ -382,12 +190,6 @@
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ordensDeCompraToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
-  </data>
-  <data name="logToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 22</value>
-  </data>
-  <data name="logToolStripMenuItem.Text" xml:space="preserve">
-    <value>Log</value>
   </data>
   <data name="relatorioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 20</value>
@@ -422,6 +224,204 @@
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
     <value>5</value>
+  </data>
+  <data name="produtoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="produtoToolStripMenuItem.Text" xml:space="preserve">
+    <value>Produto</value>
+  </data>
+  <data name="cadastroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="cadastroToolStripMenuItem.Text" xml:space="preserve">
+    <value>Cadastro</value>
+  </data>
+  <data name="pesquisaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="pesquisaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pesquisa</value>
+  </data>
+  <data name="classeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="classeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Classe</value>
+  </data>
+  <data name="cadastroToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="cadastroToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Cadastro</value>
+  </data>
+  <data name="pesquisaToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="pesquisaToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Pesquisa</value>
+  </data>
+  <data name="unidadeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="unidadeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Unidade</value>
+  </data>
+  <data name="cadastroToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="cadastroToolStripMenuItem2.Text" xml:space="preserve">
+    <value>Cadastro</value>
+  </data>
+  <data name="pesquisaToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="pesquisaToolStripMenuItem2.Text" xml:space="preserve">
+    <value>Pesquisa</value>
+  </data>
+  <data name="produtoPorPostoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 22</value>
+  </data>
+  <data name="produtoPorPostoToolStripMenuItem.Text" xml:space="preserve">
+    <value>Produto por posto</value>
+  </data>
+  <data name="cadastroToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 22</value>
+  </data>
+  <data name="cadastroToolStripMenuItem3.Text" xml:space="preserve">
+    <value>Cadastro*</value>
+  </data>
+  <data name="pesquisaToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 22</value>
+  </data>
+  <data name="pesquisaToolStripMenuItem3.Text" xml:space="preserve">
+    <value>Pesquisa</value>
+  </data>
+  <data name="pesquisaToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 22</value>
+  </data>
+  <data name="pesquisaToolStripMenuItem5.Text" xml:space="preserve">
+    <value>Pesquisa</value>
+  </data>
+  <data name="cadastroToolStripMenuItem5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="cadastroToolStripMenuItem5.Text" xml:space="preserve">
+    <value>Cadastro</value>
+  </data>
+  <data name="novoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="novoToolStripMenuItem.Text" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="consultaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="consultaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Consulta</value>
+  </data>
+  <data name="retornoFichasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="retornoFichasToolStripMenuItem.Text" xml:space="preserve">
+    <value>Retorno Fichas</value>
+  </data>
+  <data name="impressãoFichasToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 22</value>
+  </data>
+  <data name="impressãoFichasToolStripMenuItem.Text" xml:space="preserve">
+    <value>Impressão Fichas</value>
+  </data>
+  <data name="entradaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="entradaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Entrada</value>
+  </data>
+  <data name="comumToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="comumToolStripMenuItem.Text" xml:space="preserve">
+    <value>Comum</value>
+  </data>
+  <data name="xMLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="xMLToolStripMenuItem.Text" xml:space="preserve">
+    <value>XML</value>
+  </data>
+  <data name="saidaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="saidaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Saida</value>
+  </data>
+  <data name="correiosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 22</value>
+  </data>
+  <data name="correiosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Correios</value>
+  </data>
+  <data name="materialEManutençãoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 22</value>
+  </data>
+  <data name="materialEManutençãoToolStripMenuItem.Text" xml:space="preserve">
+    <value>Material e Manutenção</value>
+  </data>
+  <data name="novoToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="novoToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="consultaToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="consultaToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Consulta</value>
+  </data>
+  <data name="uniformeEEPIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 22</value>
+  </data>
+  <data name="uniformeEEPIToolStripMenuItem.Text" xml:space="preserve">
+    <value>Uniforme e EPI</value>
+  </data>
+  <data name="novoToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="novoToolStripMenuItem2.Text" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="consultaToolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="consultaToolStripMenuItem2.Text" xml:space="preserve">
+    <value>Consulta</value>
+  </data>
+  <data name="equipamentosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 22</value>
+  </data>
+  <data name="equipamentosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Equipamentos</value>
+  </data>
+  <data name="novoToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="novoToolStripMenuItem3.Text" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="consultaToolStripMenuItem3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>121, 22</value>
+  </data>
+  <data name="consultaToolStripMenuItem3.Text" xml:space="preserve">
+    <value>Consulta</value>
+  </data>
+  <data name="logToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 22</value>
+  </data>
+  <data name="logToolStripMenuItem.Text" xml:space="preserve">
+    <value>Log</value>
   </data>
   <data name="lbl_UsuarioLogado.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1163,10 +1163,10 @@
   <data name="&gt;&gt;forncedorToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cadastroToolStripMenuItem4.Name" xml:space="preserve">
-    <value>cadastroToolStripMenuItem4</value>
+  <data name="&gt;&gt;Tsm_Fornec_Cadastro.Name" xml:space="preserve">
+    <value>Tsm_Fornec_Cadastro</value>
   </data>
-  <data name="&gt;&gt;cadastroToolStripMenuItem4.Type" xml:space="preserve">
+  <data name="&gt;&gt;Tsm_Fornec_Cadastro.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pesquisaToolStripMenuItem4.Name" xml:space="preserve">

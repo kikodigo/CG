@@ -18,19 +18,19 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             this.TopMost = true;
         }
         private string permissao;
-        Classes.permissoes mPermissao = new Classes.permissoes();
+        //Classes.permissoes mPermissao = new Classes.permissoes();
 
         private string dadosmssql;
-        Classes.mssqlconect msConn = new Classes.mssqlconect();
+        //Classes.mssqlconect msConn = new Classes.mssqlconect();
 
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
 
 
         private void frm_ContratoPesquisa_Load(object sender, EventArgs e)
         {
             dadosql = string.Format("SELECT `codcc` as `Codigo Contrato`,`nome_contrato` as `Nome do Contrato`,`contato` as `Contato`,`tel1` as `Telefone 1`,`tel2`as `Telefone 2` FROM `contrato`");
-            dgv_ContratoPesquisa.DataSource = mConn.LeituraTabela(dadosql);
+            //dgv_ContratoPesquisa.DataSource = mConn.LeituraTabela(dadosql);
         }
 
         private void txt_referencia_TextChanged(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             }
             dadosql = string.Format("SELECT `codcc` as `Codigo Contrato`,`nome_contrato` as `Nome do Contrato`,`contato` as `Contato`,`tel1` as `Telefone 1`,`tel2`as `Telefone 2`  FROM `estoque` WHERE `{0}` LIKE '%{1}%'", coluna, txt_referencia.Text);
 
-            dgv_ContratoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
+            //dgv_ContratoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
         }
 
         private void dgv_ContratoPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

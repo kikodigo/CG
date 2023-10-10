@@ -17,7 +17,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             txt_usuario.Text = usuario;
 
             DataTable resultado = new DataTable();
-            resultado = mPermissao.consulta(usuario, this.Name);
+            //resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
             this.TopMost = true;
         }
@@ -28,7 +28,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
 
             dadosmssql = string.Format("select nomccu from vetorh.dbo.r018ccu");
             cbx_contrato.DisplayMember = "nomccu";
-            cbx_contrato.DataSource = msConn.ConsultaTabela(dadosmssql);
+            //cbx_contrato.DataSource = msConn.ConsultaTabela(dadosmssql);
 
 
 
@@ -36,13 +36,13 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             txt_codigo.Text = valor;
 
             DataTable resultado = new DataTable();
-            resultado = mPermissao.consulta(usuario, this.Name);
+            //resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
 
 
 
             dadosql = string.Format("SELECT * FROM `contrato` where `codcc` = '{0}'", txt_codigo.Text);
-            resultado = mConn.LeituraTabela(dadosql);
+            //resultado = mConn.LeituraTabela(dadosql);
 
             Preencher(resultado);
 
@@ -52,13 +52,13 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
 
 
         private readonly string permissao;
-        Classes.permissoes mPermissao = new Classes.permissoes();
+        //Classes.permissoes mPermissao = new Classes.permissoes();
 
         private string dadosmssql;
-        Classes.mssqlconect msConn = new Classes.mssqlconect();
+        //Classes.mssqlconect msConn = new Classes.mssqlconect();
 
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
         public void bloquearbotao()
         {
             cbx_estado.Enabled = false;
@@ -208,7 +208,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
             {
                 dadosmssql = string.Format("select nomccu from vetorh.dbo.r018ccu");
                 cbx_contrato.DisplayMember = "nomccu";
-                cbx_contrato.DataSource = msConn.ConsultaTabela(dadosmssql);
+                //cbx_contrato.DataSource = msConn.ConsultaTabela(dadosmssql);
 
             }
 
@@ -224,10 +224,10 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
         {
             dadosql = string.Format("select id FROM estado WHERE uf = '{0}'", cbx_estado.Text);
             DataTable resultado = new DataTable();
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             dadosql = string.Format("SELECT nome FROM `cidade` WHERE estado = '{0}'", resultado.Rows[0]["id"].ToString());
             cbx_cidade.DisplayMember = "nome";
-            cbx_cidade.DataSource = mConn.LeituraTabela(dadosql);
+            //cbx_cidade.DataSource = mConn.LeituraTabela(dadosql);
         }
 
         private void Tsm_editar_Click(object sender, EventArgs e)
@@ -239,18 +239,18 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
         {
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT `nome_contrato` FROM contrato WHERE `nome_contrato` = '{0}'", cbx_contrato.Text);
-            resultado = mConn.LeituraTabela(dadosql);
+            //resultado = mConn.LeituraTabela(dadosql);
             if (resultado.Rows.Count == 0)
             {
                 dadosql = string.Format("INSERT INTO `contrato` (`cod`, `codcc`, `nome_contrato`, `estado`, `cidade`, `bairro`, `rua`, `num`,`cep`, `contato`, `tel1`, `tel2`, `obs`,`prlimite`) VALUES(NULL, '{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}', '{8}', '{9}', '{10}', '{11}', '{12}')", txt_codigo.Text, cbx_contrato.Text, cbx_estado.Text, cbx_cidade.Text, txt_bairro.Text, txt_rua.Text, txt_num.Text, txt_cep.Text, txt_contato.Text, txt_tel1.Text, txt_tel2.Text, txt_obs.Text, txt_PrLimite.Text);
-                mConn.Inserirdb(dadosql);
+                //mConn.Inserirdb(dadosql);
             }
             else
             {
 
 
                 dadosql = string.Format("UPDATE `contrato` SET `estado` = '{0}', `cidade` = '{1}', `bairro` = '{2}', `rua` = '{3}', `num` = '{4}',`cep` = '{5}', `contato` = '{6}', `tel1` = '{7}', `tel2` = '{8}', `obs` = '{9}', `prlimite` = '{11}' WHERE `codcc` = '{10}'", cbx_estado.Text, cbx_cidade.Text, txt_bairro.Text, txt_rua.Text, txt_num.Text, txt_cep.Text, txt_contato.Text, txt_tel1.Text, txt_tel2.Text, txt_obs.Text, txt_codigo.Text, txt_PrLimite.Text.Replace(',', '.'));
-                mConn.Inserirdb(dadosql);
+                //mConn.Inserirdb(dadosql);
             }
 
             bloquearbotao();
@@ -303,7 +303,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
         {
             dadosmssql = string.Format("select codccu from vetorh.dbo.r018ccu where nomccu = '{0}'", cbx_contrato.Text);
             DataTable resultado = new DataTable();
-            resultado = msConn.ConsultaTabela(dadosmssql);
+            //resultado = msConn.ConsultaTabela(dadosmssql);
             //w
 
             if (cbx_contrato.Text != "")
@@ -316,7 +316,7 @@ namespace CG.Tela_Inicial.Cadastro.Contratos
 
 
             dadosql = string.Format("SELECT * FROM `contrato` where `codcc` = '{0}'", txt_codigo.Text);
-            resultado = mConn.LeituraTabela(dadosql);
+            //resultado = mConn.LeituraTabela(dadosql);
 
             if (resultado.Rows.Count != 0)
             {

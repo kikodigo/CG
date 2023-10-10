@@ -18,7 +18,7 @@ namespace CG
             txt_codigo.Text = valor;
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT * FROM `esto_unidade` WHERE `cod` = '{0}'", txt_codigo.Text);
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
 
             txt_codigo.Text = resultado.Rows[0]["cod"].ToString();
             txt_unidade.Text = resultado.Rows[0]["unidade"].ToString();
@@ -27,7 +27,7 @@ namespace CG
             this.TopMost = true;
         }
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
 
 
         public void bloquearbotao()
@@ -75,7 +75,7 @@ namespace CG
 
             //Verificação do menor Registro no banco de dados
             dadosql = string.Format("SELECT MIN(cod) FROM esto_unidade");
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             //------
 
             if (string.IsNullOrWhiteSpace(txt_codigo.Text))
@@ -84,7 +84,7 @@ namespace CG
                 //Consulta no banco com o menor registro encontrato 
                 // dadosql = string.Format("SELECT * FROM `estoque` WHERE `estoque`.`cod` = 248");
                 dadosql = string.Format("SELECT * FROM `esto_unidade` WHERE `cod` = '{0}'", resultado.Rows[0]["MIN(cod)"].ToString());
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 //------
 
                 txt_codigo.Text = resultado.Rows[0]["cod"].ToString();
@@ -130,14 +130,14 @@ namespace CG
                 salvo2 = "CRIADO";
 
             }
-            mConn.Inserirdb(dadosql);
+            //mConn.Inserirdb(dadosql);
             DataTable resultado = new DataTable();
             if (salvo2 == "ATUALIZADO")
             {
                 vlcodigo = Convert.ToInt16(txt_codigo.Text);
                 dadosql = string.Format("SELECT * FROM `esto_unidade` WHERE `cod` ='{0}'", vlcodigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 txt_codigo.Text = resultado.Rows[0]["cod"].ToString();
                 txt_unidade.Text = resultado.Rows[0]["unidade"].ToString();
                 cbx_ativo.Text = resultado.Rows[0]["ativo"].ToString();
@@ -148,11 +148,11 @@ namespace CG
             {
 
                 dadosql = string.Format("SELECT MAX(cod) FROM esto_unidade");
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 codigo = resultado.Rows[0]["MAX(cod)"].ToString();
                 dadosql = string.Format("SELECT * FROM `esto_unidade` WHERE `cod` ='{0}'", codigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 txt_codigo.Text = resultado.Rows[0]["cod"].ToString();
                 txt_unidade.Text = resultado.Rows[0]["unidade"].ToString();
                 cbx_ativo.Text = resultado.Rows[0]["ativo"].ToString();
@@ -172,7 +172,7 @@ namespace CG
         {
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT MIN(cod) FROM esto_unidade");
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             if (string.IsNullOrWhiteSpace(txt_codigo.Text))
             {
 
@@ -184,7 +184,7 @@ namespace CG
             if (vlcodigo.Equals(resultado.Rows[0]["MIN(cod)"]))
             {
                 dadosql = string.Format("SELECT * FROM `esto_unidade` WHERE `cod` ='{0}'", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                ////resultado = mConn.LeituraLinha(dadosql);
 
                 txt_codigo.Text = resultado.Rows[0]["cod"].ToString();
                 txt_unidade.Text = resultado.Rows[0]["unidade"].ToString();
@@ -198,7 +198,7 @@ namespace CG
                 tsm_proximo.Enabled = true;
 
                 dadosql = string.Format("SELECT * FROM esto_unidade WHERE cod < '{0}' ORDER BY cod DESC LIMIT 1", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 txt_codigo.Text = resultado.Rows[0]["cod"].ToString();
                 txt_unidade.Text = resultado.Rows[0]["unidade"].ToString();
                 cbx_ativo.Text = resultado.Rows[0]["ativo"].ToString();
@@ -210,7 +210,7 @@ namespace CG
             // Verificação do ultimo registro do banco de dados
             dadosql = string.Format("SELECT MAX(cod) FROM esto_unidade");
             DataTable resultado = new DataTable();
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             //-----
 
             //Verificação se o campo CODIGO esta vazio, caso esteja será preenchido com o ultimo valor do banco
@@ -228,7 +228,7 @@ namespace CG
             if (vlcodigo.Equals(resultado.Rows[0]["MAX(cod)"]))
             {
                 dadosql = string.Format("SELECT * FROM `esto_unidade` WHERE `cod` ='{0}'", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                ////resultado = mConn.LeituraLinha(dadosql);
                 txt_codigo.Text = resultado.Rows[0]["cod"].ToString();
                 txt_unidade.Text = resultado.Rows[0]["unidade"].ToString();
                 cbx_ativo.Text = resultado.Rows[0]["ativo"].ToString();
@@ -238,7 +238,7 @@ namespace CG
             {
                 tsm_anterior.Enabled = true;
                 dadosql = string.Format("SELECT * FROM esto_unidade WHERE cod > '{0}' ORDER BY cod LIMIT 1", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 txt_codigo.Text = resultado.Rows[0]["cod"].ToString();
                 txt_unidade.Text = resultado.Rows[0]["unidade"].ToString();
                 cbx_ativo.Text = resultado.Rows[0]["ativo"].ToString();

@@ -10,11 +10,11 @@ namespace CG
         public frm_ProdutoCadastro(string usuario)
         {
             InitializeComponent();
-            txt_usuario.Text = usuario;
+            //txt_usuario.Text = usuario;
 
-            DataTable resultado = new DataTable();
-            resultado = mPermissao.consulta(usuario, this.Name);
-            lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
+            //DataTable resultado = new DataTable();
+            //resultado = mPermissao.consulta(usuario, this.Name);
+            //lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
         }
 
         public void Inserir_Imagem()
@@ -82,8 +82,8 @@ namespace CG
 
                 default:
                     MessageBox.Show("Falha ao carregar Perfil.\n" +
-                        "Informe o Administrador do sistema.", 
-                        "Erro!", 
+                        "Informe o Administrador do sistema.",
+                        "Erro!",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
 
@@ -97,29 +97,29 @@ namespace CG
         public string foto = "";
 
         private string permissao;
-       // Classes.permissoes mPermissao = new Classes.permissoes();
+        // Classes.permissoes mPermissao = new Classes.permissoes();
 
         public frm_ProdutoCadastro(string valor, string usuario)
         {
             //Retorna valor selecionado do frm_ProdutoPesquisa
             InitializeComponent();
-            txt_codigo.Text = valor;
-            DataTable resultado = new DataTable();
-            dadosql = string.Format("SELECT * FROM `v_estoque` WHERE `cod` = '{0}'", txt_codigo.Text);
-            resultado = mConn.LeituraLinha(dadosql);
-            // função de preenchimento
-            preencher(resultado);
-            txt_usuario.Text = usuario;
-            resultado = mPermissao.consulta(usuario, this.Name);
-            lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
-            //manter o formulario na frente, pois quando retorna normal ele esta indo para traz de tudo 
-            this.TopMost = true;
+            //txt_codigo.Text = valor;
+            //DataTable resultado = new DataTable();
+            //dadosql = string.Format("SELECT * FROM `v_estoque` WHERE `cod` = '{0}'", txt_codigo.Text);
+            //resultado = mConn.LeituraLinha(dadosql);
+            //// função de preenchimento
+            //preencher(resultado);
+            //txt_usuario.Text = usuario;
+            //resultado = mPermissao.consulta(usuario, this.Name);
+            //lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
+            ////manter o formulario na frente, pois quando retorna normal ele esta indo para traz de tudo 
+            //this.TopMost = true;
 
         }
 
         //declaração da classe de comunicação do MYSQL e a Variavel de comunicação
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
 
         private void DisableAllControls(Control control)
         {
@@ -135,6 +135,7 @@ namespace CG
                 }
             }
 
+            // estudar isso aki 
             //foreach (Control ctrl in control.Controls)
             //{
             //    if (ctrl is Label label)
@@ -272,7 +273,7 @@ namespace CG
                 dadosql = string.Format("SELECT `foto` FROM `esto_foto`where `cod_prod`= '{0}'", txt_codigo.Text);
 
                 DataTable resultado = new DataTable();
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
 
                 if (resultado.Rows.Count != 0)
                 {
@@ -301,7 +302,7 @@ namespace CG
         public void PreencherDgv()
         {
             dadosql = string.Format("SELECT f.`nome`, e.`codext` FROM `esto_codext` as e INNER JOIN `fornecedor` as f on e.`codforne` = f.`cod` WHERE `codprod` = '{0}'", txt_codigo.Text);
-            dgv_CodExt.DataSource = mConn.LeituraTabela(dadosql);
+            //dgv_CodExt.DataSource = mConn.LeituraTabela(dadosql);
             this.dgv_CodExt.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
 
@@ -331,17 +332,17 @@ namespace CG
             //ComboBox Recebendo Tabelas de Classes e Unidades
             dadosql = string.Format("select classe from esto_classe where ativo = 'sim'");
             cbx_classe.DisplayMember = "classe";
-            cbx_classe.DataSource = mConn.LeituraTabela(dadosql);
+            //cbx_classe.DataSource = mConn.LeituraTabela(dadosql);
             cbx_classe.Text = "";
 
             dadosql = string.Format("select unidade from esto_unidade where ativo = 'sim'");
             cbx_Unidade.DisplayMember = "unidade";
-            cbx_Unidade.DataSource = mConn.LeituraTabela(dadosql);
+            //cbx_Unidade.DataSource = mConn.LeituraTabela(dadosql);
             cbx_Unidade.Text = "";
 
             dadosql = string.Format("SELECT `nome` FROM `fornecedor` WHERE `ativo` = 'SIM'");
             cbx_CodExtForne.DisplayMember = "nome";
-            cbx_CodExtForne.DataSource = mConn.LeituraTabela(dadosql);
+            //cbx_CodExtForne.DataSource = mConn.LeituraTabela(dadosql);
             cbx_CodExtForne.Text = "";
             //--------
 
@@ -352,12 +353,12 @@ namespace CG
 
                 //Verificação do menor Registro no banco de dados
                 dadosql = string.Format("SELECT MIN(cod) FROM estoque");
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 //------
 
                 //Consulta no banco com o menor registro encontrato
                 dadosql = string.Format("SELECT * FROM `v_estoque` WHERE `cod` = '{0}'", resultado.Rows[0]["MIN(cod)"].ToString());
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 //------
 
             }
@@ -365,7 +366,7 @@ namespace CG
             {
                 //Consulta o codigo ja possa estar preenchido do form retornado da pesquisa
                 dadosql = string.Format("SELECT * FROM `v_estoque` WHERE `cod` = '{0}'", txt_codigo.Text);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 //------               
             }
 
@@ -394,7 +395,7 @@ namespace CG
 
             //efetua a consulta no banco do maior codigo de regristro
             dadosql = string.Format("SELECT MAX(cod) FROM estoque");
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             ultimo = resultado.Rows[0]["MAX(cod)"].ToString();
 
             //converte o codigo para int e soma 1 para o usuario verificar qual é o proximo registro
@@ -423,7 +424,7 @@ namespace CG
             int vlcodigo;
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT * FROM `estoque` WHERE `descricao` ='{0}'", txt_descricao.Text);
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             if ((resultado.Rows.Count == 0) | (chx_editar.Checked == true))
             {
                 if (chx_editar.Checked == true)
@@ -458,13 +459,13 @@ namespace CG
                     salvo2 = "CRIADO";
 
                 }
-                mConn.Inserirdb(dadosql);
+                //mConn.Inserirdb(dadosql);
 
                 if (txt_image.Text != "" & txt_image.Text != null)
                 {
                     dadosql = string.Format("SELECT * FROM `esto_foto` WHERE `cod_prod` = '{0}'", txt_codigo.Text);
 
-                    resultado = mConn.LeituraLinha(dadosql);
+                    //resultado = mConn.LeituraLinha(dadosql);
 
                     if (resultado.Rows.Count == 0)
                     {
@@ -473,7 +474,7 @@ namespace CG
                     else
                     {
                         dadosql = string.Format("DELETE FROM `esto_foto` WHERE `cod_prod` = '{0}'", txt_codigo.Text);
-                        mConn.LeituraLinha(dadosql);
+                        //mConn.LeituraLinha(dadosql);
 
                         Inserir_Imagem();
                     }
@@ -483,7 +484,7 @@ namespace CG
                     this.foto = "";
                     pb_Foto.Image = null;
                     dadosql = string.Format("DELETE FROM `esto_foto` WHERE `cod_prod` = '{0}'", txt_codigo.Text);
-                    mConn.LeituraLinha(dadosql);
+                    //mConn.LeituraLinha(dadosql);
 
                 }
 
@@ -494,7 +495,7 @@ namespace CG
                     vlcodigo = Convert.ToInt16(txt_codigo.Text);
                     dadosql = string.Format("SELECT * FROM `v_estoque` WHERE `cod` ='{0}'", vlcodigo);
 
-                    resultado = mConn.LeituraLinha(dadosql);
+                    //resultado = mConn.LeituraLinha(dadosql);
                     preencher(resultado);
                     bloquearbotao();
                     MessageBox.Show(salvo1, salvo2, MessageBoxButtons.OK);
@@ -504,11 +505,11 @@ namespace CG
                 {
 
                     dadosql = string.Format("SELECT MAX(cod) FROM estoque");
-                    resultado = mConn.LeituraLinha(dadosql);
+                    //resultado = mConn.LeituraLinha(dadosql);
                     codigo = resultado.Rows[0]["MAX(cod)"].ToString();
                     dadosql = string.Format("SELECT * FROM `v_estoque` WHERE `cod` ='{0}'", codigo);
 
-                    resultado = mConn.LeituraLinha(dadosql);
+                    //resultado = mConn.LeituraLinha(dadosql);
                     preencher(resultado);
 
 
@@ -528,7 +529,7 @@ namespace CG
             // Declaração de variaveis e a verificação do menor valor da tabela 
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT MIN(cod) FROM estoque");
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             // verifica se foi clicado o botão editar, se foi clicado é para continuar exibindo o valor normal, se foi clicado em novo ele vai preencher tudo com o primeiro registro
             if (chx_editar.Checked == true)
             {
@@ -546,7 +547,7 @@ namespace CG
             int vlcodigo;
             vlcodigo = Convert.ToInt16(txt_codigo.Text);
             dadosql = string.Format("SELECT * FROM `v_estoque` WHERE `cod` ='{0}'", vlcodigo);
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             preencher(resultado);
             bloquearbotao();
         }
@@ -555,7 +556,7 @@ namespace CG
         {
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT MIN(cod) FROM estoque");
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             if (string.IsNullOrWhiteSpace(txt_codigo.Text))
             {
 
@@ -567,7 +568,7 @@ namespace CG
             if (vlcodigo.Equals(resultado.Rows[0]["MIN(cod)"]))
             {
                 dadosql = string.Format("SELECT * FROM `v_estoque` WHERE `cod` ='{0}'", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
 
                 preencher(resultado);
                 tsm_anterior.Enabled = false;
@@ -578,7 +579,7 @@ namespace CG
                 tsm_proximo.Enabled = true;
 
                 dadosql = string.Format("SELECT * FROM v_estoque WHERE cod < '{0}' ORDER BY cod DESC LIMIT 1", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
             }
         }
@@ -588,7 +589,7 @@ namespace CG
             // Verificação do ultimo registro do banco de dados
             dadosql = string.Format("SELECT MAX(cod) FROM estoque");
             DataTable resultado = new DataTable();
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             //-----
 
             //Verificação se o campo CODIGO esta vazio, caso esteja será preenchido com o ultimo valor do banco
@@ -609,7 +610,7 @@ namespace CG
                 dadosql = string.Format("SELECT * FROM `v_estoque` WHERE `cod` ='{0}'", vlcodigo);
 
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
                 tsm_proximo.Enabled = false;
 
@@ -619,7 +620,7 @@ namespace CG
                 tsm_anterior.Enabled = true;
                 dadosql = string.Format("SELECT * FROM v_estoque WHERE cod > '{0}' ORDER BY cod LIMIT 1", vlcodigo);
 
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
 
             }
@@ -632,7 +633,6 @@ namespace CG
             this.Close();
         }
 
-
         private void Tsm_excluir_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir o produto? \nExclusão apenas troca a opção ativo para NÃO", "Excluir", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
@@ -644,11 +644,11 @@ namespace CG
                 vlcodigo = Convert.ToInt16(txt_codigo.Text);
 
                 dadosql = string.Format("UPDATE estoque SET ativo = 'NAO' WHERE cod ='{0}'", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
 
                 MessageBox.Show("Item excluido com exito!", "Excluido");
                 dadosql = string.Format("SELECT * FROM v_estoque where `cod` = '{0}'", vlcodigo);
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
                 preencher(resultado);
             }
             else if (dialogResult == DialogResult.No)
@@ -689,7 +689,7 @@ namespace CG
                 dadosql = string.Format("SELECT `foto` FROM `esto_foto`where `cod_prod`= '{0}'", txt_codigo.Text);
 
                 DataTable resultado = new DataTable();
-                resultado = mConn.LeituraLinha(dadosql);
+                //resultado = mConn.LeituraLinha(dadosql);
 
                 if (resultado.Rows.Count != 0)
                 {
@@ -722,7 +722,7 @@ namespace CG
             DataTable resultado = new DataTable();
 
             dadosql = string.Format("SELECT `cod` FROM esto_classe where `classe` = '{0}'", cbx_classe.Text);
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             lbl_CodClasse.Text = resultado.Rows[0]["cod"].ToString();
         }
 
@@ -731,7 +731,7 @@ namespace CG
             DataTable resultado = new DataTable();
 
             dadosql = string.Format("SELECT `cod` FROM esto_unidade where `unidade` = '{0}'", cbx_Unidade.Text);
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
             lbl_CodUnidade.Text = resultado.Rows[0]["cod"].ToString();
         }
 
@@ -750,18 +750,18 @@ namespace CG
         {
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT `cod` FROM `fornecedor` WHERE `nome` = '{0}'", cbx_CodExtForne.Text);
-            resultado = mConn.LeituraTabela(dadosql);
+            //resultado = mConn.LeituraTabela(dadosql);
 
             dadosql = string.Format("SELECT * FROM `esto_codext` WHERE `codprod` = '{0}' AND `codext` = '{1}' AND `codforne` = '{2}'", txt_codigo.Text, txt_CodExtCod.Text, resultado.Rows[0]["cod"].ToString());
-            resultado = mConn.LeituraTabela(dadosql);
+            //resultado = mConn.LeituraTabela(dadosql);
 
             if (resultado.Rows.Count == 0)
             {
                 dadosql = string.Format("SELECT `cod` FROM `fornecedor` WHERE `nome` = '{0}'", cbx_CodExtForne.Text);
-                resultado = mConn.LeituraTabela(dadosql);
+                //resultado = mConn.LeituraTabela(dadosql);
 
                 dadosql = string.Format("INSERT INTO `esto_codext` (`cod`, `codforne`, `codprod`, `codext`) VALUES (NULL, '{0}', '{1}', '{2}')", resultado.Rows[0]["cod"].ToString(), txt_codigo.Text, txt_CodExtCod.Text);
-                mConn.Inserirdb(dadosql);
+                //mConn.Inserirdb(dadosql);
                 PreencherDgv();
             }
             else
@@ -782,10 +782,10 @@ namespace CG
                 DataTable resultado = new DataTable();
 
                 dadosql = string.Format("SELECT `cod` FROM `fornecedor` WHERE `nome` = '{0}'", cbx_CodExtForne.Text);
-                resultado = mConn.LeituraTabela(dadosql);
+               // resultado = mConn.LeituraTabela(dadosql);
 
                 dadosql = string.Format("SELECT * FROM `esto_codext` WHERE `codprod` = '{0}' AND `codext` = '{1}' AND `codforne` = '{2}'", txt_codigo.Text, txt_CodExtCod.Text, resultado.Rows[0]["cod"].ToString());
-                resultado = mConn.LeituraTabela(dadosql);
+                //resultado = mConn.LeituraTabela(dadosql);
 
                 if (resultado.Rows.Count != 0)
                 {
@@ -795,10 +795,10 @@ namespace CG
                     {
 
                         dadosql = string.Format("SELECT `cod` FROM `fornecedor` WHERE `nome` = '{0}'", cbx_CodExtForne.Text);
-                        resultado = mConn.LeituraTabela(dadosql);
+                        //resultado = mConn.LeituraTabela(dadosql);
 
                         dadosql = string.Format("DELETE FROM `esto_codext` WHERE `codforne` = '{0}' AND `codprod` = '{1}' AND `codext` = '{2}'", resultado.Rows[0]["cod"].ToString(), txt_codigo.Text, txt_CodExtCod.Text);
-                        mConn.Inserirdb(dadosql);
+                       // mConn.Inserirdb(dadosql);
                         PreencherDgv();
                     }
                 }

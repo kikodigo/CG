@@ -16,11 +16,11 @@ namespace CG
         }
 
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
         public void Listar()
         {
             dadosql = "select * from esto_unidade";
-            dgv_ProdutoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
+            //dgv_ProdutoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
         }
 
         private void Dgv_ProdutoPesquisa_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -56,7 +56,7 @@ namespace CG
             }
             dadosql = string.Format("SELECT* FROM `esto_unidade` WHERE `{0}` LIKE '%{1}%'", coluna, vlreferencia);
 
-            dgv_ProdutoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
+            //dgv_ProdutoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
         }
 
         private void Btn_limpar_Click(object sender, EventArgs e)

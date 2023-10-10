@@ -397,7 +397,6 @@
             this.btn_Atualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Atualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Atualizar.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_Atualizar.Image = global::CG.Properties.Resources.atualiza;
             this.btn_Atualizar.Location = new System.Drawing.Point(565, 286);
             this.btn_Atualizar.Margin = new System.Windows.Forms.Padding(0);
             this.btn_Atualizar.Name = "btn_Atualizar";

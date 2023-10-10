@@ -29,721 +29,723 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_FornecedorCadastro));
-            this.cbx_estado = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_cep = new System.Windows.Forms.TextBox();
-            this.txt_rua = new System.Windows.Forms.TextBox();
-            this.txt_nome = new System.Windows.Forms.TextBox();
-            this.txt_codigo = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_bairro = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txt_contato = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cbx_cidade = new System.Windows.Forms.ComboBox();
-            this.cbx_TipoConta = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txt_op = new System.Windows.Forms.TextBox();
-            this.txt_ag = new System.Windows.Forms.TextBox();
-            this.txt_ct = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txt_email = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.txt_num = new System.Windows.Forms.TextBox();
-            this.txt_site = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.lkl_site = new System.Windows.Forms.LinkLabel();
-            this.chx_editar = new System.Windows.Forms.CheckBox();
-            this.cbx_ativo = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.txt_tel2 = new System.Windows.Forms.MaskedTextBox();
-            this.txt_tel1 = new System.Windows.Forms.MaskedTextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.tsm_novo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_editar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_salvar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_cancelar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_anterior = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_proximo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_pesquisa = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_excluir = new System.Windows.Forms.ToolStripMenuItem();
-            this.txt_usuario = new System.Windows.Forms.ToolStripTextBox();
-            this.Usuario = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbl_VlPermissao = new System.Windows.Forms.Label();
-            this.mtb_Doc = new System.Windows.Forms.MaskedTextBox();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            cbx_estado = new ComboBox();
+            label7 = new Label();
+            txt_cep = new TextBox();
+            txt_rua = new TextBox();
+            txt_nome = new TextBox();
+            txt_codigo = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            txt_bairro = new TextBox();
+            label8 = new Label();
+            txt_contato = new TextBox();
+            label9 = new Label();
+            label10 = new Label();
+            cbx_cidade = new ComboBox();
+            cbx_TipoConta = new ComboBox();
+            label11 = new Label();
+            label13 = new Label();
+            txt_op = new TextBox();
+            txt_ag = new TextBox();
+            txt_ct = new TextBox();
+            label14 = new Label();
+            label15 = new Label();
+            label16 = new Label();
+            label17 = new Label();
+            txt_email = new TextBox();
+            label18 = new Label();
+            label19 = new Label();
+            txt_num = new TextBox();
+            txt_site = new TextBox();
+            label20 = new Label();
+            lkl_site = new LinkLabel();
+            chx_editar = new CheckBox();
+            cbx_ativo = new ComboBox();
+            label21 = new Label();
+            txt_tel2 = new MaskedTextBox();
+            txt_tel1 = new MaskedTextBox();
+            menuStrip1 = new MenuStrip();
+            tsm_novo = new ToolStripMenuItem();
+            tsm_editar = new ToolStripMenuItem();
+            tsm_salvar = new ToolStripMenuItem();
+            tsm_cancelar = new ToolStripMenuItem();
+            tsm_anterior = new ToolStripMenuItem();
+            tsm_proximo = new ToolStripMenuItem();
+            tsm_pesquisa = new ToolStripMenuItem();
+            tsm_excluir = new ToolStripMenuItem();
+            txt_usuario = new ToolStripTextBox();
+            Usuario = new ToolStripMenuItem();
+            lbl_VlPermissao = new Label();
+            mtb_Doc = new MaskedTextBox();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // cbx_estado
             // 
-            this.cbx_estado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cbx_estado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbx_estado.Enabled = false;
-            this.cbx_estado.FormattingEnabled = true;
-            this.cbx_estado.Items.AddRange(new object[] {
-            "MG",
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "PA",
-            "PB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO"});
-            this.cbx_estado.Location = new System.Drawing.Point(375, 58);
-            this.cbx_estado.Name = "cbx_estado";
-            this.cbx_estado.Size = new System.Drawing.Size(69, 21);
-            this.cbx_estado.TabIndex = 1;
-            this.cbx_estado.SelectedIndexChanged += new System.EventHandler(this.Cbx_estado_SelectedIndexChanged);
+            cbx_estado.AutoCompleteMode = AutoCompleteMode.Append;
+            cbx_estado.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbx_estado.Enabled = false;
+            cbx_estado.FormattingEnabled = true;
+            cbx_estado.Items.AddRange(new object[] { "MG", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" });
+            cbx_estado.Location = new Point(438, 67);
+            cbx_estado.Margin = new Padding(4, 3, 4, 3);
+            cbx_estado.Name = "cbx_estado";
+            cbx_estado.Size = new Size(80, 23);
+            cbx_estado.TabIndex = 1;
+            cbx_estado.SelectedIndexChanged += Cbx_estado_SelectedIndexChanged;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Gray;
-            this.label7.Location = new System.Drawing.Point(372, 42);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 13);
-            this.label7.TabIndex = 40;
-            this.label7.Text = "Estado";
+            label7.AutoSize = true;
+            label7.ForeColor = Color.Gray;
+            label7.Location = new Point(434, 48);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(42, 15);
+            label7.TabIndex = 40;
+            label7.Text = "Estado";
             // 
             // txt_cep
             // 
-            this.txt_cep.Enabled = false;
-            this.txt_cep.Location = new System.Drawing.Point(242, 106);
-            this.txt_cep.Multiline = true;
-            this.txt_cep.Name = "txt_cep";
-            this.txt_cep.Size = new System.Drawing.Size(132, 21);
-            this.txt_cep.TabIndex = 6;
+            txt_cep.Enabled = false;
+            txt_cep.Location = new Point(282, 122);
+            txt_cep.Margin = new Padding(4, 3, 4, 3);
+            txt_cep.Multiline = true;
+            txt_cep.Name = "txt_cep";
+            txt_cep.Size = new Size(153, 24);
+            txt_cep.TabIndex = 6;
             // 
             // txt_rua
             // 
-            this.txt_rua.Enabled = false;
-            this.txt_rua.Location = new System.Drawing.Point(19, 106);
-            this.txt_rua.Multiline = true;
-            this.txt_rua.Name = "txt_rua";
-            this.txt_rua.Size = new System.Drawing.Size(173, 21);
-            this.txt_rua.TabIndex = 4;
+            txt_rua.Enabled = false;
+            txt_rua.Location = new Point(22, 122);
+            txt_rua.Margin = new Padding(4, 3, 4, 3);
+            txt_rua.Multiline = true;
+            txt_rua.Name = "txt_rua";
+            txt_rua.Size = new Size(201, 24);
+            txt_rua.TabIndex = 4;
             // 
             // txt_nome
             // 
-            this.txt_nome.Enabled = false;
-            this.txt_nome.Location = new System.Drawing.Point(89, 58);
-            this.txt_nome.Multiline = true;
-            this.txt_nome.Name = "txt_nome";
-            this.txt_nome.Size = new System.Drawing.Size(285, 21);
-            this.txt_nome.TabIndex = 0;
+            txt_nome.Enabled = false;
+            txt_nome.Location = new Point(104, 67);
+            txt_nome.Margin = new Padding(4, 3, 4, 3);
+            txt_nome.Multiline = true;
+            txt_nome.Name = "txt_nome";
+            txt_nome.Size = new Size(332, 24);
+            txt_nome.TabIndex = 0;
             // 
             // txt_codigo
             // 
-            this.txt_codigo.Enabled = false;
-            this.txt_codigo.Location = new System.Drawing.Point(19, 58);
-            this.txt_codigo.Multiline = true;
-            this.txt_codigo.Name = "txt_codigo";
-            this.txt_codigo.Size = new System.Drawing.Size(69, 21);
-            this.txt_codigo.TabIndex = 34;
+            txt_codigo.Enabled = false;
+            txt_codigo.Location = new Point(22, 67);
+            txt_codigo.Margin = new Padding(4, 3, 4, 3);
+            txt_codigo.Multiline = true;
+            txt_codigo.Name = "txt_codigo";
+            txt_codigo.Size = new Size(80, 24);
+            txt_codigo.TabIndex = 34;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(18, 90);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 13);
-            this.label6.TabIndex = 33;
-            this.label6.Text = "Rua";
+            label6.AutoSize = true;
+            label6.ForeColor = Color.Gray;
+            label6.Location = new Point(21, 104);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(27, 15);
+            label6.TabIndex = 33;
+            label6.Text = "Rua";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(239, 90);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 13);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "CEP";
+            label5.AutoSize = true;
+            label5.ForeColor = Color.Gray;
+            label5.Location = new Point(279, 104);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(28, 15);
+            label5.TabIndex = 32;
+            label5.Text = "CEP";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(621, 90);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
-            this.label4.TabIndex = 31;
-            this.label4.Text = "Telefone 2";
+            label4.AutoSize = true;
+            label4.ForeColor = Color.Gray;
+            label4.Location = new Point(724, 104);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(60, 15);
+            label4.TabIndex = 31;
+            label4.Text = "Telefone 2";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(520, 90);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 30;
-            this.label3.Text = "Telefone 1";
+            label3.AutoSize = true;
+            label3.ForeColor = Color.Gray;
+            label3.Location = new Point(607, 104);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(60, 15);
+            label3.TabIndex = 30;
+            label3.Text = "Telefone 1";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(87, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Nome";
+            label2.AutoSize = true;
+            label2.ForeColor = Color.Gray;
+            label2.Location = new Point(102, 48);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(40, 15);
+            label2.TabIndex = 29;
+            label2.Text = "Nome";
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(-2, 245);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
-            this.label1.TabIndex = 57;
+            label1.Location = new Point(-2, 283);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(117, 27);
+            label1.TabIndex = 57;
             // 
             // txt_bairro
             // 
-            this.txt_bairro.Enabled = false;
-            this.txt_bairro.Location = new System.Drawing.Point(572, 58);
-            this.txt_bairro.Multiline = true;
-            this.txt_bairro.Name = "txt_bairro";
-            this.txt_bairro.Size = new System.Drawing.Size(149, 21);
-            this.txt_bairro.TabIndex = 3;
+            txt_bairro.Enabled = false;
+            txt_bairro.Location = new Point(667, 67);
+            txt_bairro.Margin = new Padding(4, 3, 4, 3);
+            txt_bairro.Multiline = true;
+            txt_bairro.Name = "txt_bairro";
+            txt_bairro.Size = new Size(173, 24);
+            txt_bairro.TabIndex = 3;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(571, 42);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
-            this.label8.TabIndex = 44;
-            this.label8.Text = "Bairro";
+            label8.AutoSize = true;
+            label8.ForeColor = Color.Gray;
+            label8.Location = new Point(666, 48);
+            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(38, 15);
+            label8.TabIndex = 44;
+            label8.Text = "Bairro";
             // 
             // txt_contato
             // 
-            this.txt_contato.Enabled = false;
-            this.txt_contato.Location = new System.Drawing.Point(375, 106);
-            this.txt_contato.Multiline = true;
-            this.txt_contato.Name = "txt_contato";
-            this.txt_contato.Size = new System.Drawing.Size(146, 21);
-            this.txt_contato.TabIndex = 7;
+            txt_contato.Enabled = false;
+            txt_contato.Location = new Point(438, 122);
+            txt_contato.Margin = new Padding(4, 3, 4, 3);
+            txt_contato.Multiline = true;
+            txt_contato.Name = "txt_contato";
+            txt_contato.Size = new Size(170, 24);
+            txt_contato.TabIndex = 7;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(372, 90);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(44, 13);
-            this.label9.TabIndex = 48;
-            this.label9.Text = "Contato";
+            label9.AutoSize = true;
+            label9.ForeColor = Color.Gray;
+            label9.Location = new Point(434, 104);
+            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(50, 15);
+            label9.TabIndex = 48;
+            label9.Text = "Contato";
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(442, 42);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 13);
-            this.label10.TabIndex = 58;
-            this.label10.Text = "Cidade";
+            label10.AutoSize = true;
+            label10.ForeColor = Color.Gray;
+            label10.Location = new Point(516, 48);
+            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(44, 15);
+            label10.TabIndex = 58;
+            label10.Text = "Cidade";
             // 
             // cbx_cidade
             // 
-            this.cbx_cidade.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cbx_cidade.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbx_cidade.Enabled = false;
-            this.cbx_cidade.FormattingEnabled = true;
-            this.cbx_cidade.Location = new System.Drawing.Point(445, 58);
-            this.cbx_cidade.Name = "cbx_cidade";
-            this.cbx_cidade.Size = new System.Drawing.Size(126, 21);
-            this.cbx_cidade.TabIndex = 2;
+            cbx_cidade.AutoCompleteMode = AutoCompleteMode.Append;
+            cbx_cidade.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbx_cidade.Enabled = false;
+            cbx_cidade.FormattingEnabled = true;
+            cbx_cidade.Location = new Point(519, 67);
+            cbx_cidade.Margin = new Padding(4, 3, 4, 3);
+            cbx_cidade.Name = "cbx_cidade";
+            cbx_cidade.Size = new Size(146, 23);
+            cbx_cidade.TabIndex = 2;
             // 
             // cbx_TipoConta
             // 
-            this.cbx_TipoConta.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cbx_TipoConta.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbx_TipoConta.Enabled = false;
-            this.cbx_TipoConta.FormattingEnabled = true;
-            this.cbx_TipoConta.Items.AddRange(new object[] {
-            "CONTA CORRENTE",
-            "POUPANÇA",
-            "FACIL"});
-            this.cbx_TipoConta.Location = new System.Drawing.Point(242, 161);
-            this.cbx_TipoConta.Name = "cbx_TipoConta";
-            this.cbx_TipoConta.Size = new System.Drawing.Size(132, 21);
-            this.cbx_TipoConta.TabIndex = 12;
+            cbx_TipoConta.AutoCompleteMode = AutoCompleteMode.Append;
+            cbx_TipoConta.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbx_TipoConta.Enabled = false;
+            cbx_TipoConta.FormattingEnabled = true;
+            cbx_TipoConta.Items.AddRange(new object[] { "CONTA CORRENTE", "POUPANÇA", "FACIL" });
+            cbx_TipoConta.Location = new Point(282, 186);
+            cbx_TipoConta.Margin = new Padding(4, 3, 4, 3);
+            cbx_TipoConta.Name = "cbx_TipoConta";
+            cbx_TipoConta.Size = new Size(153, 23);
+            cbx_TipoConta.TabIndex = 12;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.Gray;
-            this.label11.Location = new System.Drawing.Point(242, 145);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 13);
-            this.label11.TabIndex = 63;
-            this.label11.Text = "Tipo de Conta";
+            label11.AutoSize = true;
+            label11.ForeColor = Color.Gray;
+            label11.Location = new Point(282, 167);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(81, 15);
+            label11.TabIndex = 63;
+            label11.Text = "Tipo de Conta";
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.ForeColor = System.Drawing.Color.Gray;
-            this.label13.Location = new System.Drawing.Point(478, 145);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(54, 13);
-            this.label13.TabIndex = 70;
-            this.label13.Text = "Operação";
+            label13.AutoSize = true;
+            label13.ForeColor = Color.Gray;
+            label13.Location = new Point(558, 167);
+            label13.Margin = new Padding(4, 0, 4, 0);
+            label13.Name = "label13";
+            label13.Size = new Size(58, 15);
+            label13.TabIndex = 70;
+            label13.Text = "Operação";
             // 
             // txt_op
             // 
-            this.txt_op.Enabled = false;
-            this.txt_op.Location = new System.Drawing.Point(481, 161);
-            this.txt_op.Multiline = true;
-            this.txt_op.Name = "txt_op";
-            this.txt_op.Size = new System.Drawing.Size(89, 21);
-            this.txt_op.TabIndex = 14;
+            txt_op.Enabled = false;
+            txt_op.Location = new Point(561, 186);
+            txt_op.Margin = new Padding(4, 3, 4, 3);
+            txt_op.Multiline = true;
+            txt_op.Name = "txt_op";
+            txt_op.Size = new Size(103, 24);
+            txt_op.TabIndex = 14;
             // 
             // txt_ag
             // 
-            this.txt_ag.Enabled = false;
-            this.txt_ag.Location = new System.Drawing.Point(375, 161);
-            this.txt_ag.Multiline = true;
-            this.txt_ag.Name = "txt_ag";
-            this.txt_ag.Size = new System.Drawing.Size(105, 21);
-            this.txt_ag.TabIndex = 13;
+            txt_ag.Enabled = false;
+            txt_ag.Location = new Point(438, 186);
+            txt_ag.Margin = new Padding(4, 3, 4, 3);
+            txt_ag.Multiline = true;
+            txt_ag.Name = "txt_ag";
+            txt_ag.Size = new Size(122, 24);
+            txt_ag.TabIndex = 13;
             // 
             // txt_ct
             // 
-            this.txt_ct.Enabled = false;
-            this.txt_ct.Location = new System.Drawing.Point(571, 161);
-            this.txt_ct.Multiline = true;
-            this.txt_ct.Name = "txt_ct";
-            this.txt_ct.Size = new System.Drawing.Size(150, 21);
-            this.txt_ct.TabIndex = 15;
+            txt_ct.Enabled = false;
+            txt_ct.Location = new Point(666, 186);
+            txt_ct.Margin = new Padding(4, 3, 4, 3);
+            txt_ct.Multiline = true;
+            txt_ct.Name = "txt_ct";
+            txt_ct.Size = new Size(174, 24);
+            txt_ct.TabIndex = 15;
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
-            this.label14.ForeColor = System.Drawing.Color.Gray;
-            this.label14.Location = new System.Drawing.Point(372, 145);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 13);
-            this.label14.TabIndex = 66;
-            this.label14.Text = "Agencia";
+            label14.AutoSize = true;
+            label14.ForeColor = Color.Gray;
+            label14.Location = new Point(434, 167);
+            label14.Margin = new Padding(4, 0, 4, 0);
+            label14.Name = "label14";
+            label14.Size = new Size(50, 15);
+            label14.TabIndex = 66;
+            label14.Text = "Agencia";
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
-            this.label15.ForeColor = System.Drawing.Color.Gray;
-            this.label15.Location = new System.Drawing.Point(568, 145);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(35, 13);
-            this.label15.TabIndex = 65;
-            this.label15.Text = "Conta";
+            label15.AutoSize = true;
+            label15.ForeColor = Color.Gray;
+            label15.Location = new Point(663, 167);
+            label15.Margin = new Padding(4, 0, 4, 0);
+            label15.Name = "label15";
+            label15.Size = new Size(39, 15);
+            label15.TabIndex = 65;
+            label15.Text = "Conta";
             // 
             // label16
             // 
-            this.label16.AutoSize = true;
-            this.label16.ForeColor = System.Drawing.Color.Gray;
-            this.label16.Location = new System.Drawing.Point(18, 145);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(34, 13);
-            this.label16.TabIndex = 72;
-            this.label16.Text = "CNPJ";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
+            label16.AutoSize = true;
+            label16.ForeColor = Color.Gray;
+            label16.Location = new Point(21, 167);
+            label16.Margin = new Padding(4, 0, 4, 0);
+            label16.Name = "label16";
+            label16.Size = new Size(34, 15);
+            label16.TabIndex = 72;
+            label16.Text = "CNPJ";
+            label16.Click += label16_Click;
             // 
             // label17
             // 
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.Gray;
-            this.label17.Location = new System.Drawing.Point(20, 42);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(26, 13);
-            this.label17.TabIndex = 73;
-            this.label17.Text = "Cod";
+            label17.AutoSize = true;
+            label17.ForeColor = Color.Gray;
+            label17.Location = new Point(23, 48);
+            label17.Margin = new Padding(4, 0, 4, 0);
+            label17.Name = "label17";
+            label17.Size = new Size(29, 15);
+            label17.TabIndex = 73;
+            label17.Text = "Cod";
+            label17.Click += label17_Click;
             // 
             // txt_email
             // 
-            this.txt_email.Enabled = false;
-            this.txt_email.Location = new System.Drawing.Point(19, 207);
-            this.txt_email.Multiline = true;
-            this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(222, 21);
-            this.txt_email.TabIndex = 16;
+            txt_email.Enabled = false;
+            txt_email.Location = new Point(22, 239);
+            txt_email.Margin = new Padding(4, 3, 4, 3);
+            txt_email.Multiline = true;
+            txt_email.Name = "txt_email";
+            txt_email.Size = new Size(258, 24);
+            txt_email.TabIndex = 16;
             // 
             // label18
             // 
-            this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.Gray;
-            this.label18.Location = new System.Drawing.Point(16, 191);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(36, 13);
-            this.label18.TabIndex = 74;
-            this.label18.Text = "E-Mail";
+            label18.AutoSize = true;
+            label18.ForeColor = Color.Gray;
+            label18.Location = new Point(19, 220);
+            label18.Margin = new Padding(4, 0, 4, 0);
+            label18.Name = "label18";
+            label18.Size = new Size(41, 15);
+            label18.TabIndex = 74;
+            label18.Text = "E-Mail";
             // 
             // label19
             // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.Gray;
-            this.label19.Location = new System.Drawing.Point(194, 90);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(19, 13);
-            this.label19.TabIndex = 78;
-            this.label19.Text = "Nº";
+            label19.AutoSize = true;
+            label19.ForeColor = Color.Gray;
+            label19.Location = new Point(226, 104);
+            label19.Margin = new Padding(4, 0, 4, 0);
+            label19.Name = "label19";
+            label19.Size = new Size(21, 15);
+            label19.TabIndex = 78;
+            label19.Text = "Nº";
             // 
             // txt_num
             // 
-            this.txt_num.Enabled = false;
-            this.txt_num.Location = new System.Drawing.Point(193, 106);
-            this.txt_num.Multiline = true;
-            this.txt_num.Name = "txt_num";
-            this.txt_num.Size = new System.Drawing.Size(48, 21);
-            this.txt_num.TabIndex = 5;
+            txt_num.Enabled = false;
+            txt_num.Location = new Point(225, 122);
+            txt_num.Margin = new Padding(4, 3, 4, 3);
+            txt_num.Multiline = true;
+            txt_num.Name = "txt_num";
+            txt_num.Size = new Size(55, 24);
+            txt_num.TabIndex = 5;
             // 
             // txt_site
             // 
-            this.txt_site.Enabled = false;
-            this.txt_site.Location = new System.Drawing.Point(242, 207);
-            this.txt_site.Multiline = true;
-            this.txt_site.Name = "txt_site";
-            this.txt_site.Size = new System.Drawing.Size(328, 21);
-            this.txt_site.TabIndex = 17;
-            this.txt_site.TextChanged += new System.EventHandler(this.Txt_site_TextChanged);
+            txt_site.Enabled = false;
+            txt_site.Location = new Point(282, 239);
+            txt_site.Margin = new Padding(4, 3, 4, 3);
+            txt_site.Multiline = true;
+            txt_site.Name = "txt_site";
+            txt_site.Size = new Size(382, 24);
+            txt_site.TabIndex = 17;
+            txt_site.TextChanged += Txt_site_TextChanged;
             // 
             // label20
             // 
-            this.label20.AutoSize = true;
-            this.label20.ForeColor = System.Drawing.Color.Gray;
-            this.label20.Location = new System.Drawing.Point(242, 191);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(25, 13);
-            this.label20.TabIndex = 79;
-            this.label20.Text = "Site";
+            label20.AutoSize = true;
+            label20.ForeColor = Color.Gray;
+            label20.Location = new Point(282, 220);
+            label20.Margin = new Padding(4, 0, 4, 0);
+            label20.Name = "label20";
+            label20.Size = new Size(26, 15);
+            label20.TabIndex = 79;
+            label20.Text = "Site";
             // 
             // lkl_site
             // 
-            this.lkl_site.ActiveLinkColor = System.Drawing.Color.DarkGray;
-            this.lkl_site.AutoSize = true;
-            this.lkl_site.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lkl_site.Location = new System.Drawing.Point(18, 244);
-            this.lkl_site.Name = "lkl_site";
-            this.lkl_site.Size = new System.Drawing.Size(25, 13);
-            this.lkl_site.TabIndex = 81;
-            this.lkl_site.TabStop = true;
-            this.lkl_site.Text = "Site";
-            this.lkl_site.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.Lkl_site_LinkClicked);
+            lkl_site.ActiveLinkColor = Color.DarkGray;
+            lkl_site.AutoSize = true;
+            lkl_site.LinkColor = Color.FromArgb(255, 128, 0);
+            lkl_site.Location = new Point(21, 282);
+            lkl_site.Margin = new Padding(4, 0, 4, 0);
+            lkl_site.Name = "lkl_site";
+            lkl_site.Size = new Size(26, 15);
+            lkl_site.TabIndex = 81;
+            lkl_site.TabStop = true;
+            lkl_site.Text = "Site";
+            lkl_site.LinkClicked += Lkl_site_LinkClicked;
             // 
             // chx_editar
             // 
-            this.chx_editar.AutoSize = true;
-            this.chx_editar.Location = new System.Drawing.Point(655, 241);
-            this.chx_editar.Name = "chx_editar";
-            this.chx_editar.Size = new System.Drawing.Size(66, 17);
-            this.chx_editar.TabIndex = 82;
-            this.chx_editar.Text = "EDITAR";
-            this.chx_editar.UseVisualStyleBackColor = true;
-            this.chx_editar.Visible = false;
+            chx_editar.AutoSize = true;
+            chx_editar.Location = new Point(764, 278);
+            chx_editar.Margin = new Padding(4, 3, 4, 3);
+            chx_editar.Name = "chx_editar";
+            chx_editar.Size = new Size(63, 19);
+            chx_editar.TabIndex = 82;
+            chx_editar.Text = "EDITAR";
+            chx_editar.UseVisualStyleBackColor = true;
+            chx_editar.Visible = false;
             // 
             // cbx_ativo
             // 
-            this.cbx_ativo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
-            this.cbx_ativo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbx_ativo.Enabled = false;
-            this.cbx_ativo.FormattingEnabled = true;
-            this.cbx_ativo.Items.AddRange(new object[] {
-            "SIM",
-            "NAO"});
-            this.cbx_ativo.Location = new System.Drawing.Point(571, 207);
-            this.cbx_ativo.Name = "cbx_ativo";
-            this.cbx_ativo.Size = new System.Drawing.Size(150, 21);
-            this.cbx_ativo.TabIndex = 18;
+            cbx_ativo.AutoCompleteMode = AutoCompleteMode.Append;
+            cbx_ativo.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbx_ativo.Enabled = false;
+            cbx_ativo.FormattingEnabled = true;
+            cbx_ativo.Items.AddRange(new object[] { "SIM", "NAO" });
+            cbx_ativo.Location = new Point(666, 239);
+            cbx_ativo.Margin = new Padding(4, 3, 4, 3);
+            cbx_ativo.Name = "cbx_ativo";
+            cbx_ativo.Size = new Size(174, 23);
+            cbx_ativo.TabIndex = 18;
             // 
             // label21
             // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.Color.Gray;
-            this.label21.Location = new System.Drawing.Point(568, 191);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(31, 13);
-            this.label21.TabIndex = 83;
-            this.label21.Text = "Ativo";
+            label21.AutoSize = true;
+            label21.ForeColor = Color.Gray;
+            label21.Location = new Point(663, 220);
+            label21.Margin = new Padding(4, 0, 4, 0);
+            label21.Name = "label21";
+            label21.Size = new Size(35, 15);
+            label21.TabIndex = 83;
+            label21.Text = "Ativo";
             // 
             // txt_tel2
             // 
-            this.txt_tel2.Enabled = false;
-            this.txt_tel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_tel2.Location = new System.Drawing.Point(623, 106);
-            this.txt_tel2.MaximumSize = new System.Drawing.Size(98, 21);
-            this.txt_tel2.MinimumSize = new System.Drawing.Size(98, 21);
-            this.txt_tel2.Name = "txt_tel2";
-            this.txt_tel2.Size = new System.Drawing.Size(98, 21);
-            this.txt_tel2.TabIndex = 85;
+            txt_tel2.Enabled = false;
+            txt_tel2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_tel2.Location = new Point(727, 122);
+            txt_tel2.Margin = new Padding(4, 3, 4, 3);
+            txt_tel2.MaximumSize = new Size(114, 21);
+            txt_tel2.MinimumSize = new Size(114, 21);
+            txt_tel2.Name = "txt_tel2";
+            txt_tel2.Size = new Size(114, 21);
+            txt_tel2.TabIndex = 85;
             // 
             // txt_tel1
             // 
-            this.txt_tel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_tel1.Enabled = false;
-            this.txt_tel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_tel1.Location = new System.Drawing.Point(522, 106);
-            this.txt_tel1.Name = "txt_tel1";
-            this.txt_tel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_tel1.Size = new System.Drawing.Size(100, 21);
-            this.txt_tel1.TabIndex = 86;
-            this.txt_tel1.Leave += new System.EventHandler(this.Txt_tel1_Leave_1);
+            txt_tel1.BorderStyle = BorderStyle.FixedSingle;
+            txt_tel1.Enabled = false;
+            txt_tel1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_tel1.Location = new Point(609, 122);
+            txt_tel1.Margin = new Padding(4, 3, 4, 3);
+            txt_tel1.Name = "txt_tel1";
+            txt_tel1.RightToLeft = RightToLeft.No;
+            txt_tel1.Size = new Size(116, 21);
+            txt_tel1.TabIndex = 86;
+            txt_tel1.Leave += Txt_tel1_Leave_1;
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsm_novo,
-            this.tsm_editar,
-            this.tsm_salvar,
-            this.tsm_cancelar,
-            this.tsm_anterior,
-            this.tsm_proximo,
-            this.tsm_pesquisa,
-            this.tsm_excluir,
-            this.txt_usuario,
-            this.Usuario});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(739, 27);
-            this.menuStrip1.TabIndex = 87;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Items.AddRange(new ToolStripItem[] { tsm_novo, tsm_editar, tsm_salvar, tsm_cancelar, tsm_anterior, tsm_proximo, tsm_pesquisa, tsm_excluir, txt_usuario, Usuario });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new Padding(7, 2, 0, 2);
+            menuStrip1.Size = new Size(862, 27);
+            menuStrip1.TabIndex = 87;
+            menuStrip1.Text = "menuStrip1";
             // 
             // tsm_novo
             // 
-            this.tsm_novo.Name = "tsm_novo";
-            this.tsm_novo.Size = new System.Drawing.Size(48, 23);
-            this.tsm_novo.Text = "Novo";
-            this.tsm_novo.Click += new System.EventHandler(this.Tsm_novo_Click);
+            tsm_novo.Name = "tsm_novo";
+            tsm_novo.Size = new Size(48, 23);
+            tsm_novo.Text = "Novo";
+            tsm_novo.Click += Tsm_novo_Click;
             // 
             // tsm_editar
             // 
-            this.tsm_editar.Name = "tsm_editar";
-            this.tsm_editar.Size = new System.Drawing.Size(49, 23);
-            this.tsm_editar.Text = "Editar";
-            this.tsm_editar.Click += new System.EventHandler(this.Tsm_editar_Click);
+            tsm_editar.Name = "tsm_editar";
+            tsm_editar.Size = new Size(49, 23);
+            tsm_editar.Text = "Editar";
+            tsm_editar.Click += Tsm_editar_Click;
             // 
             // tsm_salvar
             // 
-            this.tsm_salvar.Name = "tsm_salvar";
-            this.tsm_salvar.Size = new System.Drawing.Size(50, 23);
-            this.tsm_salvar.Text = "Salvar";
-            this.tsm_salvar.Click += new System.EventHandler(this.Tsm_salvar_Click);
+            tsm_salvar.Name = "tsm_salvar";
+            tsm_salvar.Size = new Size(50, 23);
+            tsm_salvar.Text = "Salvar";
+            tsm_salvar.Click += Tsm_salvar_Click;
             // 
             // tsm_cancelar
             // 
-            this.tsm_cancelar.Name = "tsm_cancelar";
-            this.tsm_cancelar.Size = new System.Drawing.Size(65, 23);
-            this.tsm_cancelar.Text = "Cancelar";
-            this.tsm_cancelar.Click += new System.EventHandler(this.Tsm_cancelar_Click);
+            tsm_cancelar.Name = "tsm_cancelar";
+            tsm_cancelar.Size = new Size(65, 23);
+            tsm_cancelar.Text = "Cancelar";
+            tsm_cancelar.Click += Tsm_cancelar_Click;
             // 
             // tsm_anterior
             // 
-            this.tsm_anterior.Name = "tsm_anterior";
-            this.tsm_anterior.Size = new System.Drawing.Size(62, 23);
-            this.tsm_anterior.Text = "Anterior";
-            this.tsm_anterior.Click += new System.EventHandler(this.Tsm_anterior_Click);
+            tsm_anterior.Name = "tsm_anterior";
+            tsm_anterior.Size = new Size(62, 23);
+            tsm_anterior.Text = "Anterior";
+            tsm_anterior.Click += Tsm_anterior_Click;
             // 
             // tsm_proximo
             // 
-            this.tsm_proximo.Name = "tsm_proximo";
-            this.tsm_proximo.Size = new System.Drawing.Size(64, 23);
-            this.tsm_proximo.Text = "Proximo";
-            this.tsm_proximo.Click += new System.EventHandler(this.Tsm_proximo_Click);
+            tsm_proximo.Name = "tsm_proximo";
+            tsm_proximo.Size = new Size(64, 23);
+            tsm_proximo.Text = "Proximo";
+            tsm_proximo.Click += Tsm_proximo_Click;
             // 
             // tsm_pesquisa
             // 
-            this.tsm_pesquisa.Name = "tsm_pesquisa";
-            this.tsm_pesquisa.Size = new System.Drawing.Size(65, 23);
-            this.tsm_pesquisa.Text = "Pesquisa";
-            this.tsm_pesquisa.Click += new System.EventHandler(this.Tsm_pesquisa_Click);
+            tsm_pesquisa.Name = "tsm_pesquisa";
+            tsm_pesquisa.Size = new Size(65, 23);
+            tsm_pesquisa.Text = "Pesquisa";
+            tsm_pesquisa.Click += Tsm_pesquisa_Click;
             // 
             // tsm_excluir
             // 
-            this.tsm_excluir.Name = "tsm_excluir";
-            this.tsm_excluir.Size = new System.Drawing.Size(54, 23);
-            this.tsm_excluir.Text = "Excluir";
-            this.tsm_excluir.Click += new System.EventHandler(this.Tsm_excluir_Click);
+            tsm_excluir.Name = "tsm_excluir";
+            tsm_excluir.Size = new Size(54, 23);
+            tsm_excluir.Text = "Excluir";
+            tsm_excluir.Click += Tsm_excluir_Click;
             // 
             // txt_usuario
             // 
-            this.txt_usuario.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.txt_usuario.Enabled = false;
-            this.txt_usuario.Name = "txt_usuario";
-            this.txt_usuario.Size = new System.Drawing.Size(100, 23);
+            txt_usuario.Alignment = ToolStripItemAlignment.Right;
+            txt_usuario.Enabled = false;
+            txt_usuario.Name = "txt_usuario";
+            txt_usuario.Size = new Size(116, 23);
             // 
             // Usuario
             // 
-            this.Usuario.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.Usuario.Name = "Usuario";
-            this.Usuario.Size = new System.Drawing.Size(59, 23);
-            this.Usuario.Text = "Usuario";
+            Usuario.Alignment = ToolStripItemAlignment.Right;
+            Usuario.Name = "Usuario";
+            Usuario.Size = new Size(59, 23);
+            Usuario.Text = "Usuario";
             // 
             // lbl_VlPermissao
             // 
-            this.lbl_VlPermissao.AutoSize = true;
-            this.lbl_VlPermissao.Location = new System.Drawing.Point(652, 27);
-            this.lbl_VlPermissao.Name = "lbl_VlPermissao";
-            this.lbl_VlPermissao.Size = new System.Drawing.Size(80, 13);
-            this.lbl_VlPermissao.TabIndex = 147;
-            this.lbl_VlPermissao.Text = "lbl_VlPermissao";
-            this.lbl_VlPermissao.Visible = false;
+            lbl_VlPermissao.AutoSize = true;
+            lbl_VlPermissao.Location = new Point(761, 31);
+            lbl_VlPermissao.Margin = new Padding(4, 0, 4, 0);
+            lbl_VlPermissao.Name = "lbl_VlPermissao";
+            lbl_VlPermissao.Size = new Size(89, 15);
+            lbl_VlPermissao.TabIndex = 147;
+            lbl_VlPermissao.Text = "lbl_VlPermissao";
+            lbl_VlPermissao.Visible = false;
             // 
             // mtb_Doc
             // 
-            this.mtb_Doc.Location = new System.Drawing.Point(21, 161);
-            this.mtb_Doc.Mask = "00.000.000/0000-00";
-            this.mtb_Doc.Name = "mtb_Doc";
-            this.mtb_Doc.Size = new System.Drawing.Size(220, 20);
-            this.mtb_Doc.TabIndex = 148;
+            mtb_Doc.Location = new Point(24, 186);
+            mtb_Doc.Margin = new Padding(4, 3, 4, 3);
+            mtb_Doc.Mask = "00.000.000/0000-00";
+            mtb_Doc.Name = "mtb_Doc";
+            mtb_Doc.Size = new Size(256, 23);
+            mtb_Doc.TabIndex = 148;
             // 
             // frm_FornecedorCadastro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(739, 281);
-            this.Controls.Add(this.mtb_Doc);
-            this.Controls.Add(this.lbl_VlPermissao);
-            this.Controls.Add(this.txt_tel1);
-            this.Controls.Add(this.txt_tel2);
-            this.Controls.Add(this.cbx_ativo);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.chx_editar);
-            this.Controls.Add(this.lkl_site);
-            this.Controls.Add(this.txt_site);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.txt_num);
-            this.Controls.Add(this.txt_email);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.txt_op);
-            this.Controls.Add(this.txt_ag);
-            this.Controls.Add(this.txt_ct);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.cbx_TipoConta);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.cbx_cidade);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.txt_contato);
-            this.Controls.Add(this.txt_bairro);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.cbx_estado);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.txt_cep);
-            this.Controls.Add(this.txt_rua);
-            this.Controls.Add(this.txt_nome);
-            this.Controls.Add(this.txt_codigo);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
-            this.ForeColor = System.Drawing.SystemColors.Control;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(755, 320);
-            this.MinimumSize = new System.Drawing.Size(755, 320);
-            this.Name = "frm_FornecedorCadastro";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro de Fornecedor";
-            this.Load += new System.EventHandler(this.Frm_FornecedorCadastro_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DimGray;
+            ClientSize = new Size(862, 324);
+            Controls.Add(mtb_Doc);
+            Controls.Add(lbl_VlPermissao);
+            Controls.Add(txt_tel1);
+            Controls.Add(txt_tel2);
+            Controls.Add(cbx_ativo);
+            Controls.Add(label21);
+            Controls.Add(chx_editar);
+            Controls.Add(lkl_site);
+            Controls.Add(txt_site);
+            Controls.Add(label20);
+            Controls.Add(label19);
+            Controls.Add(txt_num);
+            Controls.Add(txt_email);
+            Controls.Add(label18);
+            Controls.Add(label17);
+            Controls.Add(label16);
+            Controls.Add(label13);
+            Controls.Add(txt_op);
+            Controls.Add(txt_ag);
+            Controls.Add(txt_ct);
+            Controls.Add(label14);
+            Controls.Add(label15);
+            Controls.Add(cbx_TipoConta);
+            Controls.Add(label11);
+            Controls.Add(cbx_cidade);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(txt_contato);
+            Controls.Add(txt_bairro);
+            Controls.Add(label8);
+            Controls.Add(cbx_estado);
+            Controls.Add(label7);
+            Controls.Add(txt_cep);
+            Controls.Add(txt_rua);
+            Controls.Add(txt_nome);
+            Controls.Add(txt_codigo);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(menuStrip1);
+            ForeColor = SystemColors.Control;
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
+            Margin = new Padding(4, 3, 4, 3);
+            MaximumSize = new Size(878, 363);
+            MinimumSize = new Size(878, 363);
+            Name = "frm_FornecedorCadastro";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Cadastro de Fornecedor";
+            Load += Frm_FornecedorCadastro_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-        private System.Windows.Forms.ComboBox cbx_estado;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_cep;
-        private System.Windows.Forms.TextBox txt_rua;
-        private System.Windows.Forms.TextBox txt_nome;
-        private System.Windows.Forms.TextBox txt_codigo;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txt_bairro;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txt_contato;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox cbx_cidade;
-        private System.Windows.Forms.ComboBox cbx_TipoConta;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txt_op;
-        private System.Windows.Forms.TextBox txt_ag;
-        private System.Windows.Forms.TextBox txt_ct;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txt_email;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox txt_num;
-        private System.Windows.Forms.TextBox txt_site;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.LinkLabel lkl_site;
-        private System.Windows.Forms.CheckBox chx_editar;
-        private System.Windows.Forms.ComboBox cbx_ativo;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.MaskedTextBox txt_tel2;
-        public System.Windows.Forms.MaskedTextBox txt_tel1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem tsm_novo;
-        private System.Windows.Forms.ToolStripMenuItem tsm_editar;
-        private System.Windows.Forms.ToolStripMenuItem tsm_salvar;
-        private System.Windows.Forms.ToolStripMenuItem tsm_cancelar;
-        private System.Windows.Forms.ToolStripMenuItem tsm_anterior;
-        private System.Windows.Forms.ToolStripMenuItem tsm_proximo;
-        private System.Windows.Forms.ToolStripMenuItem tsm_pesquisa;
-        private System.Windows.Forms.ToolStripMenuItem tsm_excluir;
-        private System.Windows.Forms.ToolStripTextBox txt_usuario;
-        private System.Windows.Forms.ToolStripMenuItem Usuario;
-        private System.Windows.Forms.Label lbl_VlPermissao;
-        private System.Windows.Forms.MaskedTextBox mtb_Doc;
+        private ComboBox cbx_estado;
+        private Label label7;
+        private TextBox txt_cep;
+        private TextBox txt_rua;
+        private TextBox txt_nome;
+        private TextBox txt_codigo;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private TextBox txt_bairro;
+        private Label label8;
+        private TextBox txt_contato;
+        private Label label9;
+        private Label label10;
+        private ComboBox cbx_cidade;
+        private ComboBox cbx_TipoConta;
+        private Label label11;
+        private Label label13;
+        private TextBox txt_op;
+        private TextBox txt_ag;
+        private TextBox txt_ct;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private Label label17;
+        private TextBox txt_email;
+        private Label label18;
+        private Label label19;
+        private TextBox txt_num;
+        private TextBox txt_site;
+        private Label label20;
+        private LinkLabel lkl_site;
+        private CheckBox chx_editar;
+        private ComboBox cbx_ativo;
+        private Label label21;
+        private MaskedTextBox txt_tel2;
+        public MaskedTextBox txt_tel1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem tsm_novo;
+        private ToolStripMenuItem tsm_editar;
+        private ToolStripMenuItem tsm_salvar;
+        private ToolStripMenuItem tsm_cancelar;
+        private ToolStripMenuItem tsm_anterior;
+        private ToolStripMenuItem tsm_proximo;
+        private ToolStripMenuItem tsm_pesquisa;
+        private ToolStripMenuItem tsm_excluir;
+        private ToolStripTextBox txt_usuario;
+        private ToolStripMenuItem Usuario;
+        private Label lbl_VlPermissao;
+        private MaskedTextBox mtb_Doc;
     }
 }

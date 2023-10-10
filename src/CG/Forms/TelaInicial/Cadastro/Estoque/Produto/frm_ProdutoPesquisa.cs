@@ -16,7 +16,7 @@ namespace CG
 
 
             DataTable resultado = new DataTable();
-            resultado = mPermissao.consulta(usuario, this.Name);
+            //resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
             this.TopMost = true;
         }
@@ -58,18 +58,18 @@ namespace CG
         }
 
         private string permissao;
-        Classes.permissoes mPermissao = new Classes.permissoes();
+        //Classes.permissoes mPermissao = new Classes.permissoes();
 
         private string dadosql;
-        Classes.dbconect mConn = new Classes.dbconect();
+        //Classes.dbconect mConn = new Classes.dbconect();
         public void Listar()
         {
             dadosql = "SELECT * FROM `v_estoque` ORDER BY `cod` ASC";
-            dgv_ProdutoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
+            //dgv_ProdutoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
 
             dadosql = string.Format("SELECT MIN(cod) FROM estoque");
             DataTable resultado = new DataTable();
-            resultado = mConn.LeituraLinha(dadosql);
+            //resultado = mConn.LeituraLinha(dadosql);
 
             txt_destino.Text = resultado.Rows[0]["MIN(cod)"].ToString();
 
@@ -109,7 +109,7 @@ namespace CG
 
             dadosql = string.Format("SELECT* FROM `v_estoque` WHERE `{0}` LIKE '%{1}%'", coluna, vlreferencia);
 
-            dgv_ProdutoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
+            //dgv_ProdutoPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
         }
 
 

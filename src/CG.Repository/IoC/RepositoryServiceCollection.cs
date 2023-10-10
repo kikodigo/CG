@@ -1,5 +1,4 @@
-﻿using CG.Repository.Interfaces;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using MySql.Data.MySqlClient;
 
 namespace CG.Repository.IoC
@@ -8,8 +7,7 @@ namespace CG.Repository.IoC
     {
         public static void AddRepositories(this IServiceCollection services, string connectionString)
         {
-            services.AddSingleton(new MySqlConnection(connectionString));
-            services.AddSingleton<ILoginRepository, LoginRepository>();
+          
         }
     }
 }

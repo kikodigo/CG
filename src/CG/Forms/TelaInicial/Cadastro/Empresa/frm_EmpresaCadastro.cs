@@ -16,7 +16,7 @@ namespace CG.Tela_Inicial.Cadastro.Empresa
 
 
             DataTable resultado = new DataTable();
-            resultado = mPermissao.consulta(usuario, this.Name);
+            //resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
         }
 
@@ -58,7 +58,7 @@ namespace CG.Tela_Inicial.Cadastro.Empresa
         }
 
         private string permissao;
-        Classes.permissoes mPermissao = new Classes.permissoes();
+        //Classes.permissoes mPermissao = new Classes.permissoes();
 
 
         public void bloquearbotao()

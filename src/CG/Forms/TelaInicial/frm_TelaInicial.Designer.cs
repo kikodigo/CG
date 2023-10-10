@@ -46,7 +46,7 @@
             cadastroToolStripMenuItem3 = new ToolStripMenuItem();
             pesquisaToolStripMenuItem3 = new ToolStripMenuItem();
             forncedorToolStripMenuItem = new ToolStripMenuItem();
-            cadastroToolStripMenuItem4 = new ToolStripMenuItem();
+            Tsm_Fornec_Cadastro = new ToolStripMenuItem();
             pesquisaToolStripMenuItem4 = new ToolStripMenuItem();
             funcionariosToolStripMenuItem = new ToolStripMenuItem();
             pesquisaToolStripMenuItem5 = new ToolStripMenuItem();
@@ -174,14 +174,15 @@
             // 
             // forncedorToolStripMenuItem
             // 
-            forncedorToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { cadastroToolStripMenuItem4, pesquisaToolStripMenuItem4 });
+            forncedorToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { Tsm_Fornec_Cadastro, pesquisaToolStripMenuItem4 });
             forncedorToolStripMenuItem.Name = "forncedorToolStripMenuItem";
             resources.ApplyResources(forncedorToolStripMenuItem, "forncedorToolStripMenuItem");
             // 
-            // cadastroToolStripMenuItem4
+            // Tsm_Fornec_Cadastro
             // 
-            cadastroToolStripMenuItem4.Name = "cadastroToolStripMenuItem4";
-            resources.ApplyResources(cadastroToolStripMenuItem4, "cadastroToolStripMenuItem4");
+            Tsm_Fornec_Cadastro.Name = "Tsm_Fornec_Cadastro";
+            resources.ApplyResources(Tsm_Fornec_Cadastro, "Tsm_Fornec_Cadastro");
+            Tsm_Fornec_Cadastro.Click += Tsm_Fornec_Cadastro_Click;
             // 
             // pesquisaToolStripMenuItem4
             // 
@@ -429,7 +430,7 @@
         private ToolStripMenuItem pesquisaToolStripMenuItem2;
         private ToolStripMenuItem cadastroToolStripMenuItem3;
         private ToolStripMenuItem pesquisaToolStripMenuItem3;
-        private ToolStripMenuItem cadastroToolStripMenuItem4;
+        private ToolStripMenuItem Tsm_Fornec_Cadastro;
         private ToolStripMenuItem pesquisaToolStripMenuItem4;
         private ToolStripMenuItem pesquisaToolStripMenuItem5;
         private ToolStripMenuItem cadastroToolStripMenuItem5;
