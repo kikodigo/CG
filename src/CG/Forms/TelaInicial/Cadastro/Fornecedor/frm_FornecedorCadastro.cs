@@ -1,4 +1,4 @@
-﻿using CG.Core.Services;
+using CG.Core.Services;
 using CG.Domain.Data;
 using System.Data;
 using System.Diagnostics;
@@ -37,49 +37,51 @@ namespace CG
 
         private void limpar()
         {
-            txt_codigo.Text = "";
-            txt_nome.Text = "";
-            txt_bairro.Text = "";
-            txt_rua.Text = "";
-            txt_num.Text = "";
-            txt_contato.Text = "";
-            txt_tel1.Text = "";
-            txt_tel2.Text = "";
-            txt_ag.Text = "";
-            txt_op.Text = "";
-            txt_ct.Text = "";
-            txt_site.Text = "";
-            txt_email.Text = "";
+            txt_Id.Text = "";
+            txt_Fantasia.Text = "";
+            txt_Bairro.Text = "";
+            txt_Rua.Text = "";
+            txt_Num.Text = "";
+            txt_Contato.Text = "";
+            txt_Tel1.Text = "";
+            txt_Tel2.Text = "";
+            txt_Ag.Text = "";
+            txt_Op.Text = "";
+            txt_Ct.Text = "";
+            txt_Site.Text = "";
+            txt_Email.Text = "";
 
-            cbx_estado.Text = "";
-            cbx_cidade.Text = "";
-            cbx_TipoConta.Text = "";
+            
+
+            cbx_Estado.Text = "";
+            txt_Cidade.Text = "";
+            txt_TipoConta.Text = "";
             cbx_ativo.Text = "SIM";
 
-            mtb_Doc.Text = "";
+            txt_DocNum.Text = "";
         }
         public void bloquearbotao()
         {
-            txt_nome.Enabled = false;
-            txt_bairro.Enabled = false;
-            txt_rua.Enabled = false;
-            txt_num.Enabled = false;
-            txt_cep.Enabled = false;
-            txt_contato.Enabled = false;
-            txt_tel1.Enabled = false;
-            txt_tel2.Enabled = false;
-            txt_ag.Enabled = false;
-            txt_op.Enabled = false;
-            txt_ct.Enabled = false;
-            txt_email.Enabled = false;
-            txt_site.Enabled = false;
+            txt_Fantasia.Enabled = false;
+            txt_Bairro.Enabled = false;
+            txt_Rua.Enabled = false;
+            txt_Num.Enabled = false;
+            txt_Cep.Enabled = false;
+            txt_Contato.Enabled = false;
+            txt_Tel1.Enabled = false;
+            txt_Tel2.Enabled = false;
+            txt_Ag.Enabled = false;
+            txt_Op.Enabled = false;
+            txt_Ct.Enabled = false;
+            txt_Email.Enabled = false;
+            txt_Site.Enabled = false;
 
-            cbx_estado.Enabled = false;
-            cbx_cidade.Enabled = false;
-            cbx_TipoConta.Enabled = false;
+            cbx_Estado.Enabled = false;
+            txt_Cidade.Enabled = false;
+            txt_TipoConta.Enabled = false;
             cbx_ativo.Enabled = false;
 
-            mtb_Doc.Enabled = false;
+            txt_DocNum.Enabled = false;
 
             tsm_novo.Enabled = true;
             tsm_salvar.Enabled = false;
@@ -114,28 +116,28 @@ namespace CG
         public void liberarbotao()
         {
 
-            txt_nome.Enabled = true;
-            txt_bairro.Enabled = true;
-            txt_rua.Enabled = true;
-            txt_num.Enabled = true;
-            txt_cep.Enabled = true;
-            txt_contato.Enabled = true;
-            txt_tel1.Enabled = true;
-            txt_tel2.Enabled = true;
-            txt_ag.Enabled = true;
-            txt_op.Enabled = true;
-            txt_ct.Enabled = true;
-            txt_email.Enabled = true;
-            txt_site.Enabled = true;
+            txt_Fantasia.Enabled = true;
+            txt_Bairro.Enabled = true;
+            txt_Rua.Enabled = true;
+            txt_Num.Enabled = true;
+            txt_Cep.Enabled = true;
+            txt_Contato.Enabled = true;
+            txt_Tel1.Enabled = true;
+            txt_Tel2.Enabled = true;
+            txt_Ag.Enabled = true;
+            txt_Op.Enabled = true;
+            txt_Ct.Enabled = true;
+            txt_Email.Enabled = true;
+            txt_Site.Enabled = true;
 
-            mtb_Doc.Enabled = true;
+            txt_DocNum.Enabled = true;
 
-            cbx_TipoConta.Enabled = true;
-            cbx_cidade.Enabled = true;
-            cbx_estado.Enabled = true;
+            txt_TipoConta.Enabled = true;
+            txt_Cidade.Enabled = true;
+            cbx_Estado.Enabled = true;
             cbx_ativo.Enabled = true;
-            cbx_estado.Enabled = true;
-            cbx_cidade.Enabled = true;
+            cbx_Estado.Enabled = true;
+            txt_Cidade.Enabled = true;
 
 
             tsm_salvar.Enabled = true;
@@ -240,7 +242,7 @@ namespace CG
             //resultado = mConn.LeituraLinha(dadosql);
             //------
 
-            if (string.IsNullOrWhiteSpace(txt_codigo.Text))
+            if (string.IsNullOrWhiteSpace(txt_Id.Text))
             {
 
                 //Consulta no banco com o menor registro encontrato
@@ -261,8 +263,8 @@ namespace CG
         private void Txt_site_TextChanged(object sender, EventArgs e)
         {
 
-            lkl_site.Text = txt_site.Text;
-            if (txt_site.Text == "")
+            lkl_site.Text = txt_Site.Text;
+            if (txt_Site.Text == "")
             {
                 lkl_site.Text = "Site";
             }
@@ -287,7 +289,7 @@ namespace CG
         private void Cbx_estado_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            dadosql = string.Format("select id FROM estado WHERE uf = '{0}'", cbx_estado.Text);
+            dadosql = string.Format("select id FROM estado WHERE uf = '{0}'", cbx_Estado.Text);
             DataTable resultado = new DataTable();
             ////resultado = mConn.LeituraLinha(dadosql);
             //dadosql = string.Format("SELECT nome FROM `cidade` WHERE estado = '{0}'", resultado.Rows[0]["id"].ToString());
@@ -297,11 +299,11 @@ namespace CG
 
 
 
-        private void Txt_tel1_Leave_1(object sender, EventArgs e)
+        private void txt_Tel1_Leave_1(object sender, EventArgs e)
         {
-            // if (Convert.ToInt32(txt_tel1.Text.Length) == 11)
+            // if (Convert.ToInt32(txt_Tel1.Text.Length) == 11)
             // {
-            //     txt_tel1.Mask = "(00)00000 - 0000";
+            //     txt_Tel1.Mask = "(00)00000 - 0000";
             //  }
 
         }
@@ -320,14 +322,14 @@ namespace CG
             limpar();
             liberarbotao();
 
-            txt_codigo.Text = ultimo1;
-            txt_tel1.Text = "";
-            txt_tel2.Text = "";
+            txt_Id.Text = ultimo1;
+            txt_Tel1.Text = "";
+            txt_Tel2.Text = "";
 
             cbx_ativo.Text = "SIM";
-            cbx_cidade.Text = "";
-            cbx_estado.Text = "";
-            cbx_TipoConta.Text = "";
+            txt_Cidade.Text = "";
+            cbx_Estado.Text = "";
+            txt_TipoConta.Text = "";
 
 
         }
@@ -348,14 +350,14 @@ namespace CG
             if (chx_editar.Checked == true)
             //Atualização dos dados do fornecedor no banco
             {
-                dadosql = string.Format("UPDATE `fornecedor` SET `nome` = '{0}',`estado` = '{1}', `cidade` = '{2}', `bairro` = '{3}', `rua` = '{4}', `num` = '{5}', `cep` = '{6}', `contato` = '{7}', `tel1` = '{8}', `tel2` = '{9}', `tipodoc` = '', `doc` = '{10}', `tipocont` = '{11}', `ag` = '{12}', `op` = '{13}', `ct` = '{14}', `email` = '{15}', `site` = '{16}', `ativo` = '{17}' WHERE `fornecedor`.`cod` = '{18}'", txt_nome.Text, cbx_estado.Text, cbx_cidade.Text, txt_bairro.Text, txt_rua.Text, txt_num.Text, txt_cep.Text, txt_contato.Text, txt_tel1.Text, txt_tel2.Text, mtb_Doc.Text.Replace(",", "."), cbx_TipoConta.Text, txt_ag.Text, txt_op.Text, txt_ct.Text, txt_email.Text, txt_site.Text, cbx_ativo.Text, txt_codigo.Text);
+                dadosql = string.Format("UPDATE `fornecedor` SET `nome` = '{0}',`estado` = '{1}', `cidade` = '{2}', `bairro` = '{3}', `rua` = '{4}', `num` = '{5}', `cep` = '{6}', `contato` = '{7}', `tel1` = '{8}', `tel2` = '{9}', `tipodoc` = '', `doc` = '{10}', `tipocont` = '{11}', `ag` = '{12}', `op` = '{13}', `ct` = '{14}', `email` = '{15}', `site` = '{16}', `ativo` = '{17}' WHERE `fornecedor`.`cod` = '{18}'", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoConta.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_ativo.Text, txt_Id.Text);
                 salvo1 = " Item atualizado com exito";
                 salvo2 = "ATUALIZADO";
             }
             else
             //Caso o botão editar não seja selecionado, ira inserir um registro 
             {
-                dadosql = string.Format("INSERT INTO `fornecedor` (`cod`, `nome`, `estado`, `cidade`, `bairro`, `rua`, `num`, `cep`, `contato`, `tel1`, `tel2`, `tipodoc`, `doc`, `tipocont`, `ag`, `op`, `ct`, `email`, `site`, `ativo`) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')", txt_nome.Text, cbx_estado.Text, cbx_cidade.Text, txt_bairro.Text, txt_rua.Text, txt_num.Text, txt_cep.Text, txt_contato.Text, txt_tel1.Text, txt_tel2.Text, mtb_Doc.Text.Replace(",", "."), cbx_TipoConta.Text, txt_ag.Text, txt_op.Text, txt_ct.Text, txt_email.Text, txt_site.Text, cbx_ativo.Text);
+                dadosql = string.Format("INSERT INTO `fornecedor` (`cod`, `nome`, `estado`, `cidade`, `bairro`, `rua`, `num`, `cep`, `contato`, `tel1`, `tel2`, `tipodoc`, `doc`, `tipocont`, `ag`, `op`, `ct`, `email`, `site`, `ativo`) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoConta.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_ativo.Text);
 
                 salvo1 = "Item Criado com Exito";
                 salvo2 = "CRIADO";
@@ -364,7 +366,7 @@ namespace CG
             //mConn.Inserirdb(dadosql);
             if (salvo2 == "ATUALIZADO")
             {
-                vlcodigo = Convert.ToInt16(txt_codigo.Text);
+                vlcodigo = Convert.ToInt16(txt_Id.Text);
                 dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
 
                 //resultado = mConn.LeituraLinha(dadosql);
@@ -404,17 +406,17 @@ namespace CG
             //resultado = mConn.LeituraLinha(dadosql);
             if (chx_editar.Checked == true)
             {
-                if ((txt_codigo.Text != resultado.Rows[0]["MIN(cod)"].ToString()) | (txt_codigo.Text == ""))
+                if ((txt_Id.Text != resultado.Rows[0]["MIN(cod)"].ToString()) | (txt_Id.Text == ""))
                 {
 
                 }
             }
             else
             {
-                txt_codigo.Text = resultado.Rows[0]["MIN(cod)"].ToString();
+                txt_Id.Text = resultado.Rows[0]["MIN(cod)"].ToString();
             }
             int vlcodigo;
-            vlcodigo = Convert.ToInt16(txt_codigo.Text);
+            vlcodigo = Convert.ToInt16(txt_Id.Text);
             dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
             //resultado = mConn.LeituraLinha(dadosql);
             //preencher(resultado);
@@ -427,14 +429,14 @@ namespace CG
             DataTable resultado = new DataTable();
             dadosql = string.Format("SELECT MIN(cod) FROM fornecedor");
             //resultado = mConn.LeituraLinha(dadosql);
-            if (string.IsNullOrWhiteSpace(txt_codigo.Text))
+            if (string.IsNullOrWhiteSpace(txt_Id.Text))
             {
 
-                txt_codigo.Text = resultado.Rows[0]["MIN(cod)"].ToString();
+                txt_Id.Text = resultado.Rows[0]["MIN(cod)"].ToString();
             }
             int vlcodigo;
 
-            vlcodigo = Convert.ToInt16(txt_codigo.Text);
+            vlcodigo = Convert.ToInt16(txt_Id.Text);
             if (vlcodigo.Equals(resultado.Rows[0]["MIN(cod)"]))
             {
                 dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
@@ -463,15 +465,15 @@ namespace CG
             //-----
 
             //Verificação se o campo CODIGO esta vazio, caso esteja será preenchido com o ultimo valor do banco
-            if (string.IsNullOrWhiteSpace(txt_codigo.Text))
+            if (string.IsNullOrWhiteSpace(txt_Id.Text))
             {
-                txt_codigo.Text = resultado.Rows[0]["MAX(cod)"].ToString();
+                txt_Id.Text = resultado.Rows[0]["MAX(cod)"].ToString();
             }
             //-----
 
             // Criação de variavel para conversão de STRING para INT 
             int vlcodigo;
-            vlcodigo = Convert.ToInt16(txt_codigo.Text);
+            vlcodigo = Convert.ToInt16(txt_Id.Text);
             // -----
 
             if (vlcodigo.Equals(resultado.Rows[0]["MAX(cod)"]))
@@ -510,7 +512,7 @@ namespace CG
 
                 int vlcodigo;
                 DataTable resultado = new DataTable();
-                vlcodigo = Convert.ToInt16(txt_codigo.Text);
+                vlcodigo = Convert.ToInt16(txt_Id.Text);
 
                 dadosql = string.Format("UPDATE fornecedor SET ativo = 'NAO' WHERE cod ='{0}'", vlcodigo);
 
@@ -529,16 +531,16 @@ namespace CG
 
         private void label16_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(mtb_Doc.Text.Replace(",", "").Replace("-",""));
+            //MessageBox.Show(txt_DocNum.Text.Replace(",", "").Replace("-",""));
 
-            if (mtb_Doc.Text == "   ,   ,   -" || mtb_Doc.Text == "  ,   ,   /    -")
+            if (txt_DocNum.Text == "   ,   ,   -" || txt_DocNum.Text == "  ,   ,   /    -")
             {
                 MessageBox.Show("em branco");
             }
             else
             {
                 MessageBox.Show("VAI PORRA !!!");
-                int x = mtb_Doc.Text.Replace(",", "").Replace("-", "").Replace("/", "").Length;
+                int x = txt_DocNum.Text.Replace(",", "").Replace("-", "").Replace("/", "").Length;
 
                 MessageBox.Show(x.ToString());
             }

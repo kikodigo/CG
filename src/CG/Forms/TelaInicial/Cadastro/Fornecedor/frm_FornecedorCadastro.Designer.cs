@@ -29,46 +29,42 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_FornecedorCadastro));
-            cbx_estado = new ComboBox();
+            cbx_Estado = new ComboBox();
             label7 = new Label();
-            txt_cep = new TextBox();
-            txt_rua = new TextBox();
-            txt_nome = new TextBox();
-            txt_codigo = new TextBox();
+            txt_Cep = new TextBox();
+            txt_Rua = new TextBox();
+            txt_Fantasia = new TextBox();
+            txt_Id = new TextBox();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            txt_bairro = new TextBox();
+            txt_Bairro = new TextBox();
             label8 = new Label();
-            txt_contato = new TextBox();
+            txt_Contato = new TextBox();
             label9 = new Label();
             label10 = new Label();
-            cbx_cidade = new ComboBox();
-            cbx_TipoConta = new ComboBox();
             label11 = new Label();
             label13 = new Label();
-            txt_op = new TextBox();
-            txt_ag = new TextBox();
-            txt_ct = new TextBox();
+            txt_Op = new TextBox();
+            txt_Ag = new TextBox();
+            txt_Ct = new TextBox();
             label14 = new Label();
             label15 = new Label();
             label16 = new Label();
             label17 = new Label();
-            txt_email = new TextBox();
+            txt_Email = new TextBox();
             label18 = new Label();
             label19 = new Label();
-            txt_num = new TextBox();
-            txt_site = new TextBox();
+            txt_Num = new TextBox();
+            txt_Site = new TextBox();
             label20 = new Label();
             lkl_site = new LinkLabel();
             chx_editar = new CheckBox();
             cbx_ativo = new ComboBox();
             label21 = new Label();
-            txt_tel2 = new MaskedTextBox();
-            txt_tel1 = new MaskedTextBox();
             menuStrip1 = new MenuStrip();
             tsm_novo = new ToolStripMenuItem();
             tsm_editar = new ToolStripMenuItem();
@@ -81,80 +77,83 @@
             txt_usuario = new ToolStripTextBox();
             Usuario = new ToolStripMenuItem();
             lbl_VlPermissao = new Label();
-            mtb_Doc = new MaskedTextBox();
+            txt_Tel1 = new TextBox();
+            txt_Tel2 = new TextBox();
+            txt_Razao = new TextBox();
+            label12 = new Label();
+            txt_Cidade = new TextBox();
+            txt_DocNum = new TextBox();
+            txt_TipoConta = new TextBox();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // cbx_estado
+            // cbx_Estado
             // 
-            cbx_estado.AutoCompleteMode = AutoCompleteMode.Append;
-            cbx_estado.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cbx_estado.Enabled = false;
-            cbx_estado.FormattingEnabled = true;
-            cbx_estado.Items.AddRange(new object[] { "MG", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" });
-            cbx_estado.Location = new Point(438, 67);
-            cbx_estado.Margin = new Padding(4, 3, 4, 3);
-            cbx_estado.Name = "cbx_estado";
-            cbx_estado.Size = new Size(80, 23);
-            cbx_estado.TabIndex = 1;
-            cbx_estado.SelectedIndexChanged += Cbx_estado_SelectedIndexChanged;
+            cbx_Estado.AutoCompleteMode = AutoCompleteMode.Append;
+            cbx_Estado.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbx_Estado.Enabled = false;
+            cbx_Estado.FormattingEnabled = true;
+            cbx_Estado.Items.AddRange(new object[] { "MG", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" });
+            cbx_Estado.Location = new Point(442, 161);
+            cbx_Estado.Margin = new Padding(4, 3, 4, 3);
+            cbx_Estado.Name = "cbx_Estado";
+            cbx_Estado.Size = new Size(46, 23);
+            cbx_Estado.TabIndex = 1;
+            cbx_Estado.SelectedIndexChanged += Cbx_estado_SelectedIndexChanged;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Gray;
-            label7.Location = new Point(434, 48);
+            label7.Location = new Point(438, 142);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(42, 15);
             label7.TabIndex = 40;
             label7.Text = "Estado";
             // 
-            // txt_cep
+            // txt_Cep
             // 
-            txt_cep.Enabled = false;
-            txt_cep.Location = new Point(282, 122);
-            txt_cep.Margin = new Padding(4, 3, 4, 3);
-            txt_cep.Multiline = true;
-            txt_cep.Name = "txt_cep";
-            txt_cep.Size = new Size(153, 24);
-            txt_cep.TabIndex = 6;
+            txt_Cep.Enabled = false;
+            txt_Cep.Location = new Point(286, 216);
+            txt_Cep.Margin = new Padding(4, 3, 4, 3);
+            txt_Cep.Name = "txt_Cep";
+            txt_Cep.Size = new Size(153, 23);
+            txt_Cep.TabIndex = 6;
             // 
-            // txt_rua
+            // txt_Rua
             // 
-            txt_rua.Enabled = false;
-            txt_rua.Location = new Point(22, 122);
-            txt_rua.Margin = new Padding(4, 3, 4, 3);
-            txt_rua.Multiline = true;
-            txt_rua.Name = "txt_rua";
-            txt_rua.Size = new Size(201, 24);
-            txt_rua.TabIndex = 4;
+            txt_Rua.Enabled = false;
+            txt_Rua.Location = new Point(26, 216);
+            txt_Rua.Margin = new Padding(4, 3, 4, 3);
+            txt_Rua.Name = "txt_Rua";
+            txt_Rua.Size = new Size(201, 23);
+            txt_Rua.TabIndex = 4;
             // 
-            // txt_nome
+            // txt_Fantasia
             // 
-            txt_nome.Enabled = false;
-            txt_nome.Location = new Point(104, 67);
-            txt_nome.Margin = new Padding(4, 3, 4, 3);
-            txt_nome.Multiline = true;
-            txt_nome.Name = "txt_nome";
-            txt_nome.Size = new Size(332, 24);
-            txt_nome.TabIndex = 0;
+            txt_Fantasia.Enabled = false;
+            txt_Fantasia.Location = new Point(24, 112);
+            txt_Fantasia.Margin = new Padding(4, 3, 4, 3);
+            txt_Fantasia.Name = "txt_Fantasia";
+            txt_Fantasia.Size = new Size(826, 23);
+            txt_Fantasia.TabIndex = 0;
             // 
-            // txt_codigo
+            // txt_Id
             // 
-            txt_codigo.Enabled = false;
-            txt_codigo.Location = new Point(22, 67);
-            txt_codigo.Margin = new Padding(4, 3, 4, 3);
-            txt_codigo.Multiline = true;
-            txt_codigo.Name = "txt_codigo";
-            txt_codigo.Size = new Size(80, 24);
-            txt_codigo.TabIndex = 34;
+            txt_Id.Enabled = false;
+            txt_Id.Location = new Point(22, 67);
+            txt_Id.Margin = new Padding(4, 3, 4, 3);
+            txt_Id.Name = "txt_Id";
+            txt_Id.Size = new Size(38, 23);
+            txt_Id.TabIndex = 34;
+            txt_Id.Text = "9999";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Gray;
-            label6.Location = new Point(21, 104);
+            label6.Location = new Point(25, 198);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(27, 15);
@@ -165,7 +164,7 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Gray;
-            label5.Location = new Point(279, 104);
+            label5.Location = new Point(283, 198);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(28, 15);
@@ -176,7 +175,7 @@
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Gray;
-            label4.Location = new Point(724, 104);
+            label4.Location = new Point(728, 198);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(60, 15);
@@ -187,7 +186,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.Gray;
-            label3.Location = new Point(607, 104);
+            label3.Location = new Point(611, 198);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(60, 15);
@@ -198,57 +197,55 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.Gray;
-            label2.Location = new Point(102, 48);
+            label2.Location = new Point(22, 93);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(40, 15);
+            label2.Size = new Size(86, 15);
             label2.TabIndex = 29;
-            label2.Text = "Nome";
+            label2.Text = "Nome Fantasia";
             // 
             // label1
             // 
-            label1.Location = new Point(-2, 283);
+            label1.Location = new Point(2, 377);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(117, 27);
+            label1.Size = new Size(117, 30);
             label1.TabIndex = 57;
             // 
-            // txt_bairro
+            // txt_Bairro
             // 
-            txt_bairro.Enabled = false;
-            txt_bairro.Location = new Point(667, 67);
-            txt_bairro.Margin = new Padding(4, 3, 4, 3);
-            txt_bairro.Multiline = true;
-            txt_bairro.Name = "txt_bairro";
-            txt_bairro.Size = new Size(173, 24);
-            txt_bairro.TabIndex = 3;
+            txt_Bairro.Enabled = false;
+            txt_Bairro.Location = new Point(671, 161);
+            txt_Bairro.Margin = new Padding(4, 3, 4, 3);
+            txt_Bairro.Name = "txt_Bairro";
+            txt_Bairro.Size = new Size(173, 23);
+            txt_Bairro.TabIndex = 3;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.ForeColor = Color.Gray;
-            label8.Location = new Point(666, 48);
+            label8.Location = new Point(670, 142);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(38, 15);
             label8.TabIndex = 44;
             label8.Text = "Bairro";
             // 
-            // txt_contato
+            // txt_Contato
             // 
-            txt_contato.Enabled = false;
-            txt_contato.Location = new Point(438, 122);
-            txt_contato.Margin = new Padding(4, 3, 4, 3);
-            txt_contato.Multiline = true;
-            txt_contato.Name = "txt_contato";
-            txt_contato.Size = new Size(170, 24);
-            txt_contato.TabIndex = 7;
+            txt_Contato.Enabled = false;
+            txt_Contato.Location = new Point(442, 216);
+            txt_Contato.Margin = new Padding(4, 3, 4, 3);
+            txt_Contato.Name = "txt_Contato";
+            txt_Contato.Size = new Size(170, 23);
+            txt_Contato.TabIndex = 7;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.ForeColor = Color.Gray;
-            label9.Location = new Point(434, 104);
+            label9.Location = new Point(438, 198);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(50, 15);
@@ -259,43 +256,18 @@
             // 
             label10.AutoSize = true;
             label10.ForeColor = Color.Gray;
-            label10.Location = new Point(516, 48);
+            label10.Location = new Point(491, 142);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
             label10.Size = new Size(44, 15);
             label10.TabIndex = 58;
             label10.Text = "Cidade";
             // 
-            // cbx_cidade
-            // 
-            cbx_cidade.AutoCompleteMode = AutoCompleteMode.Append;
-            cbx_cidade.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cbx_cidade.Enabled = false;
-            cbx_cidade.FormattingEnabled = true;
-            cbx_cidade.Location = new Point(519, 67);
-            cbx_cidade.Margin = new Padding(4, 3, 4, 3);
-            cbx_cidade.Name = "cbx_cidade";
-            cbx_cidade.Size = new Size(146, 23);
-            cbx_cidade.TabIndex = 2;
-            // 
-            // cbx_TipoConta
-            // 
-            cbx_TipoConta.AutoCompleteMode = AutoCompleteMode.Append;
-            cbx_TipoConta.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cbx_TipoConta.Enabled = false;
-            cbx_TipoConta.FormattingEnabled = true;
-            cbx_TipoConta.Items.AddRange(new object[] { "CONTA CORRENTE", "POUPANÇA", "FACIL" });
-            cbx_TipoConta.Location = new Point(282, 186);
-            cbx_TipoConta.Margin = new Padding(4, 3, 4, 3);
-            cbx_TipoConta.Name = "cbx_TipoConta";
-            cbx_TipoConta.Size = new Size(153, 23);
-            cbx_TipoConta.TabIndex = 12;
-            // 
             // label11
             // 
             label11.AutoSize = true;
             label11.ForeColor = Color.Gray;
-            label11.Location = new Point(282, 167);
+            label11.Location = new Point(286, 261);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new Size(81, 15);
@@ -306,48 +278,45 @@
             // 
             label13.AutoSize = true;
             label13.ForeColor = Color.Gray;
-            label13.Location = new Point(558, 167);
+            label13.Location = new Point(562, 261);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
             label13.Size = new Size(58, 15);
             label13.TabIndex = 70;
             label13.Text = "Operação";
             // 
-            // txt_op
+            // txt_Op
             // 
-            txt_op.Enabled = false;
-            txt_op.Location = new Point(561, 186);
-            txt_op.Margin = new Padding(4, 3, 4, 3);
-            txt_op.Multiline = true;
-            txt_op.Name = "txt_op";
-            txt_op.Size = new Size(103, 24);
-            txt_op.TabIndex = 14;
+            txt_Op.Enabled = false;
+            txt_Op.Location = new Point(565, 280);
+            txt_Op.Margin = new Padding(4, 3, 4, 3);
+            txt_Op.Name = "txt_Op";
+            txt_Op.Size = new Size(103, 23);
+            txt_Op.TabIndex = 14;
             // 
-            // txt_ag
+            // txt_Ag
             // 
-            txt_ag.Enabled = false;
-            txt_ag.Location = new Point(438, 186);
-            txt_ag.Margin = new Padding(4, 3, 4, 3);
-            txt_ag.Multiline = true;
-            txt_ag.Name = "txt_ag";
-            txt_ag.Size = new Size(122, 24);
-            txt_ag.TabIndex = 13;
+            txt_Ag.Enabled = false;
+            txt_Ag.Location = new Point(442, 280);
+            txt_Ag.Margin = new Padding(4, 3, 4, 3);
+            txt_Ag.Name = "txt_Ag";
+            txt_Ag.Size = new Size(115, 23);
+            txt_Ag.TabIndex = 13;
             // 
-            // txt_ct
+            // txt_Ct
             // 
-            txt_ct.Enabled = false;
-            txt_ct.Location = new Point(666, 186);
-            txt_ct.Margin = new Padding(4, 3, 4, 3);
-            txt_ct.Multiline = true;
-            txt_ct.Name = "txt_ct";
-            txt_ct.Size = new Size(174, 24);
-            txt_ct.TabIndex = 15;
+            txt_Ct.Enabled = false;
+            txt_Ct.Location = new Point(670, 280);
+            txt_Ct.Margin = new Padding(4, 3, 4, 3);
+            txt_Ct.Name = "txt_Ct";
+            txt_Ct.Size = new Size(174, 23);
+            txt_Ct.TabIndex = 15;
             // 
             // label14
             // 
             label14.AutoSize = true;
             label14.ForeColor = Color.Gray;
-            label14.Location = new Point(434, 167);
+            label14.Location = new Point(438, 261);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
             label14.Size = new Size(50, 15);
@@ -358,7 +327,7 @@
             // 
             label15.AutoSize = true;
             label15.ForeColor = Color.Gray;
-            label15.Location = new Point(663, 167);
+            label15.Location = new Point(667, 261);
             label15.Margin = new Padding(4, 0, 4, 0);
             label15.Name = "label15";
             label15.Size = new Size(39, 15);
@@ -369,12 +338,12 @@
             // 
             label16.AutoSize = true;
             label16.ForeColor = Color.Gray;
-            label16.Location = new Point(21, 167);
+            label16.Location = new Point(25, 261);
             label16.Margin = new Padding(4, 0, 4, 0);
             label16.Name = "label16";
-            label16.Size = new Size(34, 15);
+            label16.Size = new Size(72, 15);
             label16.TabIndex = 72;
-            label16.Text = "CNPJ";
+            label16.Text = "CNPJ / CNPJ";
             label16.Click += label16_Click;
             // 
             // label17
@@ -384,26 +353,25 @@
             label17.Location = new Point(23, 48);
             label17.Margin = new Padding(4, 0, 4, 0);
             label17.Name = "label17";
-            label17.Size = new Size(29, 15);
+            label17.Size = new Size(18, 15);
             label17.TabIndex = 73;
-            label17.Text = "Cod";
+            label17.Text = "ID";
             label17.Click += label17_Click;
             // 
-            // txt_email
+            // txt_Email
             // 
-            txt_email.Enabled = false;
-            txt_email.Location = new Point(22, 239);
-            txt_email.Margin = new Padding(4, 3, 4, 3);
-            txt_email.Multiline = true;
-            txt_email.Name = "txt_email";
-            txt_email.Size = new Size(258, 24);
-            txt_email.TabIndex = 16;
+            txt_Email.Enabled = false;
+            txt_Email.Location = new Point(26, 333);
+            txt_Email.Margin = new Padding(4, 3, 4, 3);
+            txt_Email.Name = "txt_Email";
+            txt_Email.Size = new Size(258, 23);
+            txt_Email.TabIndex = 16;
             // 
             // label18
             // 
             label18.AutoSize = true;
             label18.ForeColor = Color.Gray;
-            label18.Location = new Point(19, 220);
+            label18.Location = new Point(23, 314);
             label18.Margin = new Padding(4, 0, 4, 0);
             label18.Name = "label18";
             label18.Size = new Size(41, 15);
@@ -414,39 +382,37 @@
             // 
             label19.AutoSize = true;
             label19.ForeColor = Color.Gray;
-            label19.Location = new Point(226, 104);
+            label19.Location = new Point(230, 198);
             label19.Margin = new Padding(4, 0, 4, 0);
             label19.Name = "label19";
             label19.Size = new Size(21, 15);
             label19.TabIndex = 78;
             label19.Text = "Nº";
             // 
-            // txt_num
+            // txt_Num
             // 
-            txt_num.Enabled = false;
-            txt_num.Location = new Point(225, 122);
-            txt_num.Margin = new Padding(4, 3, 4, 3);
-            txt_num.Multiline = true;
-            txt_num.Name = "txt_num";
-            txt_num.Size = new Size(55, 24);
-            txt_num.TabIndex = 5;
+            txt_Num.Enabled = false;
+            txt_Num.Location = new Point(229, 216);
+            txt_Num.Margin = new Padding(4, 3, 4, 3);
+            txt_Num.Name = "txt_Num";
+            txt_Num.Size = new Size(55, 23);
+            txt_Num.TabIndex = 5;
             // 
-            // txt_site
+            // txt_Site
             // 
-            txt_site.Enabled = false;
-            txt_site.Location = new Point(282, 239);
-            txt_site.Margin = new Padding(4, 3, 4, 3);
-            txt_site.Multiline = true;
-            txt_site.Name = "txt_site";
-            txt_site.Size = new Size(382, 24);
-            txt_site.TabIndex = 17;
-            txt_site.TextChanged += Txt_site_TextChanged;
+            txt_Site.Enabled = false;
+            txt_Site.Location = new Point(286, 333);
+            txt_Site.Margin = new Padding(4, 3, 4, 3);
+            txt_Site.Name = "txt_Site";
+            txt_Site.Size = new Size(382, 23);
+            txt_Site.TabIndex = 17;
+            txt_Site.TextChanged += Txt_site_TextChanged;
             // 
             // label20
             // 
             label20.AutoSize = true;
             label20.ForeColor = Color.Gray;
-            label20.Location = new Point(282, 220);
+            label20.Location = new Point(286, 314);
             label20.Margin = new Padding(4, 0, 4, 0);
             label20.Name = "label20";
             label20.Size = new Size(26, 15);
@@ -458,7 +424,7 @@
             lkl_site.ActiveLinkColor = Color.DarkGray;
             lkl_site.AutoSize = true;
             lkl_site.LinkColor = Color.FromArgb(255, 128, 0);
-            lkl_site.Location = new Point(21, 282);
+            lkl_site.Location = new Point(25, 376);
             lkl_site.Margin = new Padding(4, 0, 4, 0);
             lkl_site.Name = "lkl_site";
             lkl_site.Size = new Size(26, 15);
@@ -470,7 +436,7 @@
             // chx_editar
             // 
             chx_editar.AutoSize = true;
-            chx_editar.Location = new Point(764, 278);
+            chx_editar.Location = new Point(768, 372);
             chx_editar.Margin = new Padding(4, 3, 4, 3);
             chx_editar.Name = "chx_editar";
             chx_editar.Size = new Size(63, 19);
@@ -485,8 +451,7 @@
             cbx_ativo.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbx_ativo.Enabled = false;
             cbx_ativo.FormattingEnabled = true;
-            cbx_ativo.Items.AddRange(new object[] { "SIM", "NAO" });
-            cbx_ativo.Location = new Point(666, 239);
+            cbx_ativo.Location = new Point(670, 333);
             cbx_ativo.Margin = new Padding(4, 3, 4, 3);
             cbx_ativo.Name = "cbx_ativo";
             cbx_ativo.Size = new Size(174, 23);
@@ -496,37 +461,12 @@
             // 
             label21.AutoSize = true;
             label21.ForeColor = Color.Gray;
-            label21.Location = new Point(663, 220);
+            label21.Location = new Point(667, 314);
             label21.Margin = new Padding(4, 0, 4, 0);
             label21.Name = "label21";
-            label21.Size = new Size(35, 15);
+            label21.Size = new Size(39, 15);
             label21.TabIndex = 83;
-            label21.Text = "Ativo";
-            // 
-            // txt_tel2
-            // 
-            txt_tel2.Enabled = false;
-            txt_tel2.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_tel2.Location = new Point(727, 122);
-            txt_tel2.Margin = new Padding(4, 3, 4, 3);
-            txt_tel2.MaximumSize = new Size(114, 21);
-            txt_tel2.MinimumSize = new Size(114, 21);
-            txt_tel2.Name = "txt_tel2";
-            txt_tel2.Size = new Size(114, 21);
-            txt_tel2.TabIndex = 85;
-            // 
-            // txt_tel1
-            // 
-            txt_tel1.BorderStyle = BorderStyle.FixedSingle;
-            txt_tel1.Enabled = false;
-            txt_tel1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_tel1.Location = new Point(609, 122);
-            txt_tel1.Margin = new Padding(4, 3, 4, 3);
-            txt_tel1.Name = "txt_tel1";
-            txt_tel1.RightToLeft = RightToLeft.No;
-            txt_tel1.Size = new Size(116, 21);
-            txt_tel1.TabIndex = 86;
-            txt_tel1.Leave += Txt_tel1_Leave_1;
+            label21.Text = "Status";
             // 
             // menuStrip1
             // 
@@ -619,57 +559,115 @@
             lbl_VlPermissao.Text = "lbl_VlPermissao";
             lbl_VlPermissao.Visible = false;
             // 
-            // mtb_Doc
+            // txt_Tel1
             // 
-            mtb_Doc.Location = new Point(24, 186);
-            mtb_Doc.Margin = new Padding(4, 3, 4, 3);
-            mtb_Doc.Mask = "00.000.000/0000-00";
-            mtb_Doc.Name = "mtb_Doc";
-            mtb_Doc.Size = new Size(256, 23);
-            mtb_Doc.TabIndex = 148;
+            txt_Tel1.Enabled = false;
+            txt_Tel1.Location = new Point(620, 216);
+            txt_Tel1.Margin = new Padding(4, 3, 4, 3);
+            txt_Tel1.Name = "txt_Tel1";
+            txt_Tel1.Size = new Size(100, 23);
+            txt_Tel1.TabIndex = 149;
+            // 
+            // txt_Tel2
+            // 
+            txt_Tel2.Enabled = false;
+            txt_Tel2.Location = new Point(728, 216);
+            txt_Tel2.Margin = new Padding(4, 3, 4, 3);
+            txt_Tel2.Name = "txt_Tel2";
+            txt_Tel2.Size = new Size(116, 23);
+            txt_Tel2.TabIndex = 150;
+            // 
+            // txt_Razao
+            // 
+            txt_Razao.Enabled = false;
+            txt_Razao.Location = new Point(66, 67);
+            txt_Razao.Margin = new Padding(4, 3, 4, 3);
+            txt_Razao.Name = "txt_Razao";
+            txt_Razao.Size = new Size(783, 23);
+            txt_Razao.TabIndex = 151;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.ForeColor = Color.Gray;
+            label12.Location = new Point(64, 48);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(72, 15);
+            label12.TabIndex = 152;
+            label12.Text = "Razão Social";
+            // 
+            // txt_Cidade
+            // 
+            txt_Cidade.Enabled = false;
+            txt_Cidade.Location = new Point(496, 161);
+            txt_Cidade.Margin = new Padding(4, 3, 4, 3);
+            txt_Cidade.Name = "txt_Cidade";
+            txt_Cidade.Size = new Size(143, 23);
+            txt_Cidade.TabIndex = 153;
+            // 
+            // txt_DocNum
+            // 
+            txt_DocNum.Enabled = false;
+            txt_DocNum.Location = new Point(26, 279);
+            txt_DocNum.Margin = new Padding(4, 3, 4, 3);
+            txt_DocNum.Name = "txt_DocNum";
+            txt_DocNum.Size = new Size(201, 23);
+            txt_DocNum.TabIndex = 154;
+            // 
+            // txt_TipoConta
+            // 
+            txt_TipoConta.Enabled = false;
+            txt_TipoConta.Location = new Point(286, 279);
+            txt_TipoConta.Margin = new Padding(4, 3, 4, 3);
+            txt_TipoConta.Name = "txt_TipoConta";
+            txt_TipoConta.Size = new Size(115, 23);
+            txt_TipoConta.TabIndex = 155;
             // 
             // frm_FornecedorCadastro
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(862, 324);
-            Controls.Add(mtb_Doc);
+            ClientSize = new Size(862, 424);
+            Controls.Add(txt_TipoConta);
+            Controls.Add(txt_DocNum);
+            Controls.Add(txt_Cidade);
+            Controls.Add(txt_Razao);
+            Controls.Add(label12);
+            Controls.Add(txt_Tel2);
+            Controls.Add(txt_Tel1);
             Controls.Add(lbl_VlPermissao);
-            Controls.Add(txt_tel1);
-            Controls.Add(txt_tel2);
             Controls.Add(cbx_ativo);
             Controls.Add(label21);
             Controls.Add(chx_editar);
             Controls.Add(lkl_site);
-            Controls.Add(txt_site);
+            Controls.Add(txt_Site);
             Controls.Add(label20);
             Controls.Add(label19);
-            Controls.Add(txt_num);
-            Controls.Add(txt_email);
+            Controls.Add(txt_Num);
+            Controls.Add(txt_Email);
             Controls.Add(label18);
             Controls.Add(label17);
             Controls.Add(label16);
             Controls.Add(label13);
-            Controls.Add(txt_op);
-            Controls.Add(txt_ag);
-            Controls.Add(txt_ct);
+            Controls.Add(txt_Op);
+            Controls.Add(txt_Ag);
+            Controls.Add(txt_Ct);
             Controls.Add(label14);
             Controls.Add(label15);
-            Controls.Add(cbx_TipoConta);
             Controls.Add(label11);
-            Controls.Add(cbx_cidade);
             Controls.Add(label10);
             Controls.Add(label9);
-            Controls.Add(txt_contato);
-            Controls.Add(txt_bairro);
+            Controls.Add(txt_Contato);
+            Controls.Add(txt_Bairro);
             Controls.Add(label8);
-            Controls.Add(cbx_estado);
+            Controls.Add(cbx_Estado);
             Controls.Add(label7);
-            Controls.Add(txt_cep);
-            Controls.Add(txt_rua);
-            Controls.Add(txt_nome);
-            Controls.Add(txt_codigo);
+            Controls.Add(txt_Cep);
+            Controls.Add(txt_Rua);
+            Controls.Add(txt_Fantasia);
+            Controls.Add(txt_Id);
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
@@ -681,7 +679,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Margin = new Padding(4, 3, 4, 3);
-            MaximumSize = new Size(878, 363);
+            MaximumSize = new Size(878, 463);
             MinimumSize = new Size(878, 363);
             Name = "frm_FornecedorCadastro";
             StartPosition = FormStartPosition.CenterScreen;
@@ -694,46 +692,42 @@
         }
 
         #endregion
-        private ComboBox cbx_estado;
+        private ComboBox cbx_Estado;
         private Label label7;
-        private TextBox txt_cep;
-        private TextBox txt_rua;
-        private TextBox txt_nome;
-        private TextBox txt_codigo;
+        private TextBox txt_Cep;
+        private TextBox txt_Rua;
+        private TextBox txt_Fantasia;
+        private TextBox txt_Id;
         private Label label6;
         private Label label5;
         private Label label4;
         private Label label3;
         private Label label2;
         private Label label1;
-        private TextBox txt_bairro;
+        private TextBox txt_Bairro;
         private Label label8;
-        private TextBox txt_contato;
+        private TextBox txt_Contato;
         private Label label9;
         private Label label10;
-        private ComboBox cbx_cidade;
-        private ComboBox cbx_TipoConta;
         private Label label11;
         private Label label13;
-        private TextBox txt_op;
-        private TextBox txt_ag;
-        private TextBox txt_ct;
+        private TextBox txt_Op;
+        private TextBox txt_Ag;
+        private TextBox txt_Ct;
         private Label label14;
         private Label label15;
         private Label label16;
         private Label label17;
-        private TextBox txt_email;
+        private TextBox txt_Email;
         private Label label18;
         private Label label19;
-        private TextBox txt_num;
-        private TextBox txt_site;
+        private TextBox txt_Num;
+        private TextBox txt_Site;
         private Label label20;
         private LinkLabel lkl_site;
         private CheckBox chx_editar;
         private ComboBox cbx_ativo;
         private Label label21;
-        private MaskedTextBox txt_tel2;
-        public MaskedTextBox txt_tel1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem tsm_novo;
         private ToolStripMenuItem tsm_editar;
@@ -746,6 +740,12 @@
         private ToolStripTextBox txt_usuario;
         private ToolStripMenuItem Usuario;
         private Label lbl_VlPermissao;
-        private MaskedTextBox mtb_Doc;
+        private TextBox txt_Tel1;
+        private TextBox txt_Tel2;
+        private TextBox txt_Razao;
+        private Label label12;
+        private TextBox txt_Cidade;
+        private TextBox txt_DocNum;
+        private TextBox txt_TipoConta;
     }
 }

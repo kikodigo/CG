@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CG.Repository", "src\CG.Rep
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CG.Domain", "src\CG.Domain\CG.Domain.csproj", "{BBCCA179-8796-4220-B3B5-912C7CD85A74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CG.CrossCutting", "src\CG.CrossCutting\CG.CrossCutting.csproj", "{A5282250-E216-44EF-90B8-AA29FADB317C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BBCCA179-8796-4220-B3B5-912C7CD85A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBCCA179-8796-4220-B3B5-912C7CD85A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBCCA179-8796-4220-B3B5-912C7CD85A74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5282250-E216-44EF-90B8-AA29FADB317C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5282250-E216-44EF-90B8-AA29FADB317C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5282250-E216-44EF-90B8-AA29FADB317C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5282250-E216-44EF-90B8-AA29FADB317C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
