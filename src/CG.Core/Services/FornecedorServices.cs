@@ -16,5 +16,6 @@ namespace CG.Core.Services
         {
             return await _fornecedorRepository.GetFirstFornec();
         }
+
     }
 }

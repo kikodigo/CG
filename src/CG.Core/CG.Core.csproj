@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Cpf.Cnpj" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CG.CrossCutting\CG.CrossCutting.csproj" />
     <ProjectReference Include="..\CG.Repository\CG.Repository.csproj" />
   </ItemGroup>
 

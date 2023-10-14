@@ -63,19 +63,19 @@
             label20 = new Label();
             lkl_site = new LinkLabel();
             chx_editar = new CheckBox();
-            cbx_ativo = new ComboBox();
+            cbx_Status = new ComboBox();
             label21 = new Label();
             menuStrip1 = new MenuStrip();
-            tsm_novo = new ToolStripMenuItem();
-            tsm_editar = new ToolStripMenuItem();
-            tsm_salvar = new ToolStripMenuItem();
-            tsm_cancelar = new ToolStripMenuItem();
-            tsm_anterior = new ToolStripMenuItem();
-            tsm_proximo = new ToolStripMenuItem();
-            tsm_pesquisa = new ToolStripMenuItem();
-            tsm_excluir = new ToolStripMenuItem();
-            txt_usuario = new ToolStripTextBox();
-            Usuario = new ToolStripMenuItem();
+            tsm_Novo = new ToolStripMenuItem();
+            tsm_Editar = new ToolStripMenuItem();
+            tsm_Salvar = new ToolStripMenuItem();
+            tsm_Cancelar = new ToolStripMenuItem();
+            tsm_Anterior = new ToolStripMenuItem();
+            tsm_Proximo = new ToolStripMenuItem();
+            tsm_Pesquisa = new ToolStripMenuItem();
+            txt_Usuario = new ToolStripTextBox();
+            tsm_Usuario = new ToolStripMenuItem();
+            tsm_Excluir = new ToolStripMenuItem();
             lbl_VlPermissao = new Label();
             txt_Tel1 = new TextBox();
             txt_Tel2 = new TextBox();
@@ -84,6 +84,10 @@
             txt_Cidade = new TextBox();
             txt_DocNum = new TextBox();
             txt_TipoConta = new TextBox();
+            textBox1 = new TextBox();
+            label22 = new Label();
+            txt_Obs = new TextBox();
+            label23 = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -94,7 +98,7 @@
             cbx_Estado.Enabled = false;
             cbx_Estado.FormattingEnabled = true;
             cbx_Estado.Items.AddRange(new object[] { "MG", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" });
-            cbx_Estado.Location = new Point(442, 161);
+            cbx_Estado.Location = new Point(363, 156);
             cbx_Estado.Margin = new Padding(4, 3, 4, 3);
             cbx_Estado.Name = "cbx_Estado";
             cbx_Estado.Size = new Size(46, 23);
@@ -105,7 +109,7 @@
             // 
             label7.AutoSize = true;
             label7.ForeColor = Color.Gray;
-            label7.Location = new Point(438, 142);
+            label7.Location = new Point(359, 137);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(42, 15);
@@ -115,16 +119,18 @@
             // txt_Cep
             // 
             txt_Cep.Enabled = false;
-            txt_Cep.Location = new Point(286, 216);
+            txt_Cep.Location = new Point(292, 156);
             txt_Cep.Margin = new Padding(4, 3, 4, 3);
+            txt_Cep.MaxLength = 8;
             txt_Cep.Name = "txt_Cep";
-            txt_Cep.Size = new Size(153, 23);
+            txt_Cep.Size = new Size(63, 23);
             txt_Cep.TabIndex = 6;
+            txt_Cep.Text = "32072010";
             // 
             // txt_Rua
             // 
             txt_Rua.Enabled = false;
-            txt_Rua.Location = new Point(26, 216);
+            txt_Rua.Location = new Point(22, 156);
             txt_Rua.Margin = new Padding(4, 3, 4, 3);
             txt_Rua.Name = "txt_Rua";
             txt_Rua.Size = new Size(201, 23);
@@ -133,10 +139,10 @@
             // txt_Fantasia
             // 
             txt_Fantasia.Enabled = false;
-            txt_Fantasia.Location = new Point(24, 112);
+            txt_Fantasia.Location = new Point(147, 112);
             txt_Fantasia.Margin = new Padding(4, 3, 4, 3);
             txt_Fantasia.Name = "txt_Fantasia";
-            txt_Fantasia.Size = new Size(826, 23);
+            txt_Fantasia.Size = new Size(703, 23);
             txt_Fantasia.TabIndex = 0;
             // 
             // txt_Id
@@ -147,13 +153,12 @@
             txt_Id.Name = "txt_Id";
             txt_Id.Size = new Size(38, 23);
             txt_Id.TabIndex = 34;
-            txt_Id.Text = "9999";
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.ForeColor = Color.Gray;
-            label6.Location = new Point(25, 198);
+            label6.Location = new Point(21, 138);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(27, 15);
@@ -164,18 +169,19 @@
             // 
             label5.AutoSize = true;
             label5.ForeColor = Color.Gray;
-            label5.Location = new Point(283, 198);
+            label5.Location = new Point(289, 138);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(28, 15);
             label5.TabIndex = 32;
             label5.Text = "CEP";
+            label5.Click += label5_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.ForeColor = Color.Gray;
-            label4.Location = new Point(728, 198);
+            label4.Location = new Point(310, 181);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(60, 15);
@@ -186,7 +192,7 @@
             // 
             label3.AutoSize = true;
             label3.ForeColor = Color.Gray;
-            label3.Location = new Point(611, 198);
+            label3.Location = new Point(199, 182);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(60, 15);
@@ -197,7 +203,7 @@
             // 
             label2.AutoSize = true;
             label2.ForeColor = Color.Gray;
-            label2.Location = new Point(22, 93);
+            label2.Location = new Point(147, 94);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(86, 15);
@@ -215,17 +221,17 @@
             // txt_Bairro
             // 
             txt_Bairro.Enabled = false;
-            txt_Bairro.Location = new Point(671, 161);
+            txt_Bairro.Location = new Point(603, 156);
             txt_Bairro.Margin = new Padding(4, 3, 4, 3);
             txt_Bairro.Name = "txt_Bairro";
-            txt_Bairro.Size = new Size(173, 23);
+            txt_Bairro.Size = new Size(247, 23);
             txt_Bairro.TabIndex = 3;
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.ForeColor = Color.Gray;
-            label8.Location = new Point(670, 142);
+            label8.Location = new Point(602, 137);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(38, 15);
@@ -235,17 +241,17 @@
             // txt_Contato
             // 
             txt_Contato.Enabled = false;
-            txt_Contato.Location = new Point(442, 216);
+            txt_Contato.Location = new Point(20, 200);
             txt_Contato.Margin = new Padding(4, 3, 4, 3);
             txt_Contato.Name = "txt_Contato";
-            txt_Contato.Size = new Size(170, 23);
+            txt_Contato.Size = new Size(175, 23);
             txt_Contato.TabIndex = 7;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.ForeColor = Color.Gray;
-            label9.Location = new Point(438, 198);
+            label9.Location = new Point(20, 182);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(50, 15);
@@ -256,7 +262,7 @@
             // 
             label10.AutoSize = true;
             label10.ForeColor = Color.Gray;
-            label10.Location = new Point(491, 142);
+            label10.Location = new Point(409, 137);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
             label10.Size = new Size(44, 15);
@@ -267,7 +273,7 @@
             // 
             label11.AutoSize = true;
             label11.ForeColor = Color.Gray;
-            label11.Location = new Point(286, 261);
+            label11.Location = new Point(21, 232);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new Size(81, 15);
@@ -278,7 +284,7 @@
             // 
             label13.AutoSize = true;
             label13.ForeColor = Color.Gray;
-            label13.Location = new Point(562, 261);
+            label13.Location = new Point(264, 231);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
             label13.Size = new Size(58, 15);
@@ -288,7 +294,7 @@
             // txt_Op
             // 
             txt_Op.Enabled = false;
-            txt_Op.Location = new Point(565, 280);
+            txt_Op.Location = new Point(267, 250);
             txt_Op.Margin = new Padding(4, 3, 4, 3);
             txt_Op.Name = "txt_Op";
             txt_Op.Size = new Size(103, 23);
@@ -297,7 +303,7 @@
             // txt_Ag
             // 
             txt_Ag.Enabled = false;
-            txt_Ag.Location = new Point(442, 280);
+            txt_Ag.Location = new Point(144, 250);
             txt_Ag.Margin = new Padding(4, 3, 4, 3);
             txt_Ag.Name = "txt_Ag";
             txt_Ag.Size = new Size(115, 23);
@@ -306,7 +312,7 @@
             // txt_Ct
             // 
             txt_Ct.Enabled = false;
-            txt_Ct.Location = new Point(670, 280);
+            txt_Ct.Location = new Point(378, 250);
             txt_Ct.Margin = new Padding(4, 3, 4, 3);
             txt_Ct.Name = "txt_Ct";
             txt_Ct.Size = new Size(174, 23);
@@ -316,7 +322,7 @@
             // 
             label14.AutoSize = true;
             label14.ForeColor = Color.Gray;
-            label14.Location = new Point(438, 261);
+            label14.Location = new Point(140, 231);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
             label14.Size = new Size(50, 15);
@@ -327,7 +333,7 @@
             // 
             label15.AutoSize = true;
             label15.ForeColor = Color.Gray;
-            label15.Location = new Point(667, 261);
+            label15.Location = new Point(369, 231);
             label15.Margin = new Padding(4, 0, 4, 0);
             label15.Name = "label15";
             label15.Size = new Size(39, 15);
@@ -338,12 +344,12 @@
             // 
             label16.AutoSize = true;
             label16.ForeColor = Color.Gray;
-            label16.Location = new Point(25, 261);
+            label16.Location = new Point(21, 94);
             label16.Margin = new Padding(4, 0, 4, 0);
             label16.Name = "label16";
-            label16.Size = new Size(72, 15);
+            label16.Size = new Size(66, 15);
             label16.TabIndex = 72;
-            label16.Text = "CNPJ / CNPJ";
+            label16.Text = "CNPJ / CPF";
             label16.Click += label16_Click;
             // 
             // label17
@@ -361,17 +367,17 @@
             // txt_Email
             // 
             txt_Email.Enabled = false;
-            txt_Email.Location = new Point(26, 333);
+            txt_Email.Location = new Point(435, 200);
             txt_Email.Margin = new Padding(4, 3, 4, 3);
             txt_Email.Name = "txt_Email";
-            txt_Email.Size = new Size(258, 23);
+            txt_Email.Size = new Size(144, 23);
             txt_Email.TabIndex = 16;
             // 
             // label18
             // 
             label18.AutoSize = true;
             label18.ForeColor = Color.Gray;
-            label18.Location = new Point(23, 314);
+            label18.Location = new Point(432, 181);
             label18.Margin = new Padding(4, 0, 4, 0);
             label18.Name = "label18";
             label18.Size = new Size(41, 15);
@@ -382,7 +388,7 @@
             // 
             label19.AutoSize = true;
             label19.ForeColor = Color.Gray;
-            label19.Location = new Point(230, 198);
+            label19.Location = new Point(230, 138);
             label19.Margin = new Padding(4, 0, 4, 0);
             label19.Name = "label19";
             label19.Size = new Size(21, 15);
@@ -392,7 +398,7 @@
             // txt_Num
             // 
             txt_Num.Enabled = false;
-            txt_Num.Location = new Point(229, 216);
+            txt_Num.Location = new Point(229, 156);
             txt_Num.Margin = new Padding(4, 3, 4, 3);
             txt_Num.Name = "txt_Num";
             txt_Num.Size = new Size(55, 23);
@@ -401,10 +407,10 @@
             // txt_Site
             // 
             txt_Site.Enabled = false;
-            txt_Site.Location = new Point(286, 333);
+            txt_Site.Location = new Point(587, 200);
             txt_Site.Margin = new Padding(4, 3, 4, 3);
             txt_Site.Name = "txt_Site";
-            txt_Site.Size = new Size(382, 23);
+            txt_Site.Size = new Size(263, 23);
             txt_Site.TabIndex = 17;
             txt_Site.TextChanged += Txt_site_TextChanged;
             // 
@@ -412,7 +418,7 @@
             // 
             label20.AutoSize = true;
             label20.ForeColor = Color.Gray;
-            label20.Location = new Point(286, 314);
+            label20.Location = new Point(587, 181);
             label20.Margin = new Padding(4, 0, 4, 0);
             label20.Name = "label20";
             label20.Size = new Size(26, 15);
@@ -436,7 +442,7 @@
             // chx_editar
             // 
             chx_editar.AutoSize = true;
-            chx_editar.Location = new Point(768, 372);
+            chx_editar.Location = new Point(690, 31);
             chx_editar.Margin = new Padding(4, 3, 4, 3);
             chx_editar.Name = "chx_editar";
             chx_editar.Size = new Size(63, 19);
@@ -445,23 +451,23 @@
             chx_editar.UseVisualStyleBackColor = true;
             chx_editar.Visible = false;
             // 
-            // cbx_ativo
+            // cbx_Status
             // 
-            cbx_ativo.AutoCompleteMode = AutoCompleteMode.Append;
-            cbx_ativo.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cbx_ativo.Enabled = false;
-            cbx_ativo.FormattingEnabled = true;
-            cbx_ativo.Location = new Point(670, 333);
-            cbx_ativo.Margin = new Padding(4, 3, 4, 3);
-            cbx_ativo.Name = "cbx_ativo";
-            cbx_ativo.Size = new Size(174, 23);
-            cbx_ativo.TabIndex = 18;
+            cbx_Status.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbx_Status.Enabled = false;
+            cbx_Status.FormattingEnabled = true;
+            cbx_Status.Location = new Point(676, 377);
+            cbx_Status.Margin = new Padding(4, 3, 4, 3);
+            cbx_Status.Name = "cbx_Status";
+            cbx_Status.Size = new Size(174, 23);
+            cbx_Status.Sorted = true;
+            cbx_Status.TabIndex = 18;
             // 
             // label21
             // 
             label21.AutoSize = true;
             label21.ForeColor = Color.Gray;
-            label21.Location = new Point(667, 314);
+            label21.Location = new Point(673, 358);
             label21.Margin = new Padding(4, 0, 4, 0);
             label21.Name = "label21";
             label21.Size = new Size(39, 15);
@@ -470,7 +476,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { tsm_novo, tsm_editar, tsm_salvar, tsm_cancelar, tsm_anterior, tsm_proximo, tsm_pesquisa, tsm_excluir, txt_usuario, Usuario });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { tsm_Novo, tsm_Editar, tsm_Salvar, tsm_Cancelar, tsm_Anterior, tsm_Proximo, tsm_Pesquisa, txt_Usuario, tsm_Usuario, tsm_Excluir });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(7, 2, 0, 2);
@@ -478,75 +484,74 @@
             menuStrip1.TabIndex = 87;
             menuStrip1.Text = "menuStrip1";
             // 
-            // tsm_novo
+            // tsm_Novo
             // 
-            tsm_novo.Name = "tsm_novo";
-            tsm_novo.Size = new Size(48, 23);
-            tsm_novo.Text = "Novo";
-            tsm_novo.Click += Tsm_novo_Click;
+            tsm_Novo.Name = "tsm_Novo";
+            tsm_Novo.Size = new Size(48, 23);
+            tsm_Novo.Text = "Novo";
+            tsm_Novo.Click += Tsm_novo_Click;
             // 
-            // tsm_editar
+            // tsm_Editar
             // 
-            tsm_editar.Name = "tsm_editar";
-            tsm_editar.Size = new Size(49, 23);
-            tsm_editar.Text = "Editar";
-            tsm_editar.Click += Tsm_editar_Click;
+            tsm_Editar.Name = "tsm_Editar";
+            tsm_Editar.Size = new Size(49, 23);
+            tsm_Editar.Text = "Editar";
+            tsm_Editar.Click += Tsm_editar_Click;
             // 
-            // tsm_salvar
+            // tsm_Salvar
             // 
-            tsm_salvar.Name = "tsm_salvar";
-            tsm_salvar.Size = new Size(50, 23);
-            tsm_salvar.Text = "Salvar";
-            tsm_salvar.Click += Tsm_salvar_Click;
+            tsm_Salvar.Name = "tsm_Salvar";
+            tsm_Salvar.Size = new Size(50, 23);
+            tsm_Salvar.Text = "Salvar";
+            tsm_Salvar.Click += Tsm_salvar_Click;
             // 
-            // tsm_cancelar
+            // tsm_Cancelar
             // 
-            tsm_cancelar.Name = "tsm_cancelar";
-            tsm_cancelar.Size = new Size(65, 23);
-            tsm_cancelar.Text = "Cancelar";
-            tsm_cancelar.Click += Tsm_cancelar_Click;
+            tsm_Cancelar.Name = "tsm_Cancelar";
+            tsm_Cancelar.Size = new Size(65, 23);
+            tsm_Cancelar.Text = "Cancelar";
+            tsm_Cancelar.Click += Tsm_cancelar_Click;
             // 
-            // tsm_anterior
+            // tsm_Anterior
             // 
-            tsm_anterior.Name = "tsm_anterior";
-            tsm_anterior.Size = new Size(62, 23);
-            tsm_anterior.Text = "Anterior";
-            tsm_anterior.Click += Tsm_anterior_Click;
+            tsm_Anterior.Name = "tsm_Anterior";
+            tsm_Anterior.Size = new Size(62, 23);
+            tsm_Anterior.Text = "Anterior";
+            tsm_Anterior.Click += Tsm_anterior_Click;
             // 
-            // tsm_proximo
+            // tsm_Proximo
             // 
-            tsm_proximo.Name = "tsm_proximo";
-            tsm_proximo.Size = new Size(64, 23);
-            tsm_proximo.Text = "Proximo";
-            tsm_proximo.Click += Tsm_proximo_Click;
+            tsm_Proximo.Name = "tsm_Proximo";
+            tsm_Proximo.Size = new Size(64, 23);
+            tsm_Proximo.Text = "Proximo";
+            tsm_Proximo.Click += Tsm_proximo_Click;
             // 
-            // tsm_pesquisa
+            // tsm_Pesquisa
             // 
-            tsm_pesquisa.Name = "tsm_pesquisa";
-            tsm_pesquisa.Size = new Size(65, 23);
-            tsm_pesquisa.Text = "Pesquisa";
-            tsm_pesquisa.Click += Tsm_pesquisa_Click;
+            tsm_Pesquisa.Name = "tsm_Pesquisa";
+            tsm_Pesquisa.Size = new Size(65, 23);
+            tsm_Pesquisa.Text = "Pesquisa";
+            tsm_Pesquisa.Click += Tsm_pesquisa_Click;
             // 
-            // tsm_excluir
+            // txt_Usuario
             // 
-            tsm_excluir.Name = "tsm_excluir";
-            tsm_excluir.Size = new Size(54, 23);
-            tsm_excluir.Text = "Excluir";
-            tsm_excluir.Click += Tsm_excluir_Click;
+            txt_Usuario.Alignment = ToolStripItemAlignment.Right;
+            txt_Usuario.Enabled = false;
+            txt_Usuario.Name = "txt_Usuario";
+            txt_Usuario.Size = new Size(116, 23);
             // 
-            // txt_usuario
+            // tsm_Usuario
             // 
-            txt_usuario.Alignment = ToolStripItemAlignment.Right;
-            txt_usuario.Enabled = false;
-            txt_usuario.Name = "txt_usuario";
-            txt_usuario.Size = new Size(116, 23);
+            tsm_Usuario.Alignment = ToolStripItemAlignment.Right;
+            tsm_Usuario.Name = "tsm_Usuario";
+            tsm_Usuario.Size = new Size(59, 23);
+            tsm_Usuario.Text = "Usuario";
             // 
-            // Usuario
+            // tsm_Excluir
             // 
-            Usuario.Alignment = ToolStripItemAlignment.Right;
-            Usuario.Name = "Usuario";
-            Usuario.Size = new Size(59, 23);
-            Usuario.Text = "Usuario";
+            tsm_Excluir.Name = "tsm_Excluir";
+            tsm_Excluir.Size = new Size(54, 23);
+            tsm_Excluir.Text = "Excluir";
             // 
             // lbl_VlPermissao
             // 
@@ -562,7 +567,7 @@
             // txt_Tel1
             // 
             txt_Tel1.Enabled = false;
-            txt_Tel1.Location = new Point(620, 216);
+            txt_Tel1.Location = new Point(203, 200);
             txt_Tel1.Margin = new Padding(4, 3, 4, 3);
             txt_Tel1.Name = "txt_Tel1";
             txt_Tel1.Size = new Size(100, 23);
@@ -571,7 +576,7 @@
             // txt_Tel2
             // 
             txt_Tel2.Enabled = false;
-            txt_Tel2.Location = new Point(728, 216);
+            txt_Tel2.Location = new Point(311, 200);
             txt_Tel2.Margin = new Padding(4, 3, 4, 3);
             txt_Tel2.Name = "txt_Tel2";
             txt_Tel2.Size = new Size(116, 23);
@@ -600,29 +605,71 @@
             // txt_Cidade
             // 
             txt_Cidade.Enabled = false;
-            txt_Cidade.Location = new Point(496, 161);
+            txt_Cidade.Location = new Point(414, 156);
             txt_Cidade.Margin = new Padding(4, 3, 4, 3);
             txt_Cidade.Name = "txt_Cidade";
-            txt_Cidade.Size = new Size(143, 23);
+            txt_Cidade.Size = new Size(181, 23);
             txt_Cidade.TabIndex = 153;
             // 
             // txt_DocNum
             // 
             txt_DocNum.Enabled = false;
-            txt_DocNum.Location = new Point(26, 279);
+            txt_DocNum.Location = new Point(22, 112);
             txt_DocNum.Margin = new Padding(4, 3, 4, 3);
             txt_DocNum.Name = "txt_DocNum";
-            txt_DocNum.Size = new Size(201, 23);
+            txt_DocNum.Size = new Size(117, 23);
             txt_DocNum.TabIndex = 154;
+            txt_DocNum.Leave += txt_DocNum_Leave;
             // 
             // txt_TipoConta
             // 
             txt_TipoConta.Enabled = false;
-            txt_TipoConta.Location = new Point(286, 279);
+            txt_TipoConta.Location = new Point(21, 250);
             txt_TipoConta.Margin = new Padding(4, 3, 4, 3);
             txt_TipoConta.Name = "txt_TipoConta";
             txt_TipoConta.Size = new Size(115, 23);
             txt_TipoConta.TabIndex = 155;
+            // 
+            // textBox1
+            // 
+            textBox1.Enabled = false;
+            textBox1.Location = new Point(560, 250);
+            textBox1.Margin = new Padding(4, 3, 4, 3);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(289, 23);
+            textBox1.TabIndex = 156;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.ForeColor = Color.Gray;
+            label22.Location = new Point(551, 231);
+            label22.Margin = new Padding(4, 0, 4, 0);
+            label22.Name = "label22";
+            label22.Size = new Size(23, 15);
+            label22.TabIndex = 157;
+            label22.Text = "Pix";
+            // 
+            // txt_Obs
+            // 
+            txt_Obs.Enabled = false;
+            txt_Obs.Location = new Point(20, 297);
+            txt_Obs.Margin = new Padding(4, 3, 4, 3);
+            txt_Obs.Multiline = true;
+            txt_Obs.Name = "txt_Obs";
+            txt_Obs.Size = new Size(830, 58);
+            txt_Obs.TabIndex = 159;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.ForeColor = Color.Gray;
+            label23.Location = new Point(20, 279);
+            label23.Margin = new Padding(4, 0, 4, 0);
+            label23.Name = "label23";
+            label23.Size = new Size(28, 15);
+            label23.TabIndex = 158;
+            label23.Text = "Obs";
             // 
             // frm_FornecedorCadastro
             // 
@@ -630,6 +677,10 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
             ClientSize = new Size(862, 424);
+            Controls.Add(txt_Obs);
+            Controls.Add(label23);
+            Controls.Add(textBox1);
+            Controls.Add(label22);
             Controls.Add(txt_TipoConta);
             Controls.Add(txt_DocNum);
             Controls.Add(txt_Cidade);
@@ -638,7 +689,7 @@
             Controls.Add(txt_Tel2);
             Controls.Add(txt_Tel1);
             Controls.Add(lbl_VlPermissao);
-            Controls.Add(cbx_ativo);
+            Controls.Add(cbx_Status);
             Controls.Add(label21);
             Controls.Add(chx_editar);
             Controls.Add(lkl_site);
@@ -726,19 +777,18 @@
         private Label label20;
         private LinkLabel lkl_site;
         private CheckBox chx_editar;
-        private ComboBox cbx_ativo;
+        private ComboBox cbx_Status;
         private Label label21;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem tsm_novo;
-        private ToolStripMenuItem tsm_editar;
-        private ToolStripMenuItem tsm_salvar;
-        private ToolStripMenuItem tsm_cancelar;
-        private ToolStripMenuItem tsm_anterior;
-        private ToolStripMenuItem tsm_proximo;
-        private ToolStripMenuItem tsm_pesquisa;
-        private ToolStripMenuItem tsm_excluir;
-        private ToolStripTextBox txt_usuario;
-        private ToolStripMenuItem Usuario;
+        private ToolStripMenuItem tsm_Novo;
+        private ToolStripMenuItem tsm_Editar;
+        private ToolStripMenuItem tsm_Salvar;
+        private ToolStripMenuItem tsm_Cancelar;
+        private ToolStripMenuItem tsm_Anterior;
+        private ToolStripMenuItem tsm_Proximo;
+        private ToolStripMenuItem tsm_Pesquisa;
+        private ToolStripTextBox txt_Usuario;
+        private ToolStripMenuItem tsm_Usuario;
         private Label lbl_VlPermissao;
         private TextBox txt_Tel1;
         private TextBox txt_Tel2;
@@ -747,5 +797,10 @@
         private TextBox txt_Cidade;
         private TextBox txt_DocNum;
         private TextBox txt_TipoConta;
+        private ToolStripMenuItem tsm_Excluir;
+        private TextBox textBox1;
+        private Label label22;
+        private TextBox txt_Obs;
+        private Label label23;
     }
 }

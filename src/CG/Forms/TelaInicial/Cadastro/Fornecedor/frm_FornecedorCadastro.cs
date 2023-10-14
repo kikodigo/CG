@@ -1,7 +1,11 @@
 using CG.Core.Services;
 using CG.Domain.Data;
+using CG.Domain.Enum;
+using CG.Util;
+using CpfCnpjLibrary;
 using System.Data;
 using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
 using System.Reflection;
 
 namespace CG
@@ -9,12 +13,24 @@ namespace CG
     public partial class frm_FornecedorCadastro : Form
     {
         public readonly FornecedorServices _fornecedorServices;
+        public readonly InitForms _initForms;
+        public readonly HttpExternalQueries _httpExternalQueries;
 
+        public frm_FornecedorCadastro()
+        {
+        }
         public frm_FornecedorCadastro(string usuario)
         {
             InitializeComponent();
             _fornecedorServices = new FornecedorServices();
-            txt_usuario.Text = usuario;
+            _initForms = new InitForms();
+            _httpExternalQueries = new HttpExternalQueries();
+
+            txt_Usuario.Text = usuario;
+
+            cbx_Status.DataSource = Enum.GetValues(typeof(StatusEnum));
+
+            //liberarbotao();
         }
 
 
@@ -28,7 +44,7 @@ namespace CG
 
             //preencher(resultado);
             this.TopMost = true;
-            txt_usuario.Text = usuario;
+            txt_Usuario.Text = usuario;
 
         }
 
@@ -50,13 +66,13 @@ namespace CG
             txt_Ct.Text = "";
             txt_Site.Text = "";
             txt_Email.Text = "";
-
-            
-
-            cbx_Estado.Text = "";
             txt_Cidade.Text = "";
             txt_TipoConta.Text = "";
-            cbx_ativo.Text = "SIM";
+
+
+            cbx_Estado.Text = "";
+
+            cbx_Status.Text = "SIM";
 
             txt_DocNum.Text = "";
         }
@@ -79,18 +95,18 @@ namespace CG
             cbx_Estado.Enabled = false;
             txt_Cidade.Enabled = false;
             txt_TipoConta.Enabled = false;
-            cbx_ativo.Enabled = false;
+            cbx_Status.Enabled = false;
 
             txt_DocNum.Enabled = false;
 
-            tsm_novo.Enabled = true;
-            tsm_salvar.Enabled = false;
-            tsm_editar.Enabled = true;
-            tsm_anterior.Enabled = true;
-            tsm_proximo.Enabled = true;
-            tsm_excluir.Enabled = true;
-            tsm_pesquisa.Enabled = true;
-            tsm_cancelar.Enabled = false;
+            tsm_Novo.Enabled = true;
+            tsm_Salvar.Enabled = false;
+            tsm_Editar.Enabled = true;
+            tsm_Anterior.Enabled = true;
+            tsm_Proximo.Enabled = true;
+            tsm_Excluir.Enabled = true;
+            tsm_Pesquisa.Enabled = true;
+            tsm_Cancelar.Enabled = false;
 
             label1.ForeColor = Color.White;
             label2.ForeColor = Color.White;
@@ -135,19 +151,19 @@ namespace CG
             txt_TipoConta.Enabled = true;
             txt_Cidade.Enabled = true;
             cbx_Estado.Enabled = true;
-            cbx_ativo.Enabled = true;
+            cbx_Status.Enabled = true;
             cbx_Estado.Enabled = true;
             txt_Cidade.Enabled = true;
 
 
-            tsm_salvar.Enabled = true;
-            tsm_novo.Enabled = false;
-            tsm_editar.Enabled = false;
-            tsm_anterior.Enabled = false;
-            tsm_proximo.Enabled = false;
-            tsm_excluir.Enabled = false;
-            tsm_pesquisa.Enabled = false;
-            tsm_cancelar.Enabled = true;
+            tsm_Salvar.Enabled = true;
+            tsm_Novo.Enabled = false;
+            tsm_Editar.Enabled = false;
+            tsm_Anterior.Enabled = false;
+            tsm_Proximo.Enabled = false;
+            tsm_Excluir.Enabled = false;
+            tsm_Pesquisa.Enabled = false;
+            tsm_Cancelar.Enabled = true;
 
             label1.ForeColor = Color.White;
             label2.ForeColor = Color.White;
@@ -176,7 +192,6 @@ namespace CG
         {
 
             //Todo: Precisa ajustar os nomes dos Txt e cbx com o mesmo nome com do objeto FornecedorData
-            asdadasdassaasdasdasd
 
             foreach (Control control in Controls)
             {
@@ -253,8 +268,8 @@ namespace CG
                 //preencher(resultado);
             }
             // bloquearbotao();
-            tsm_cancelar.Enabled = false;
-            tsm_salvar.Enabled = false;
+            tsm_Cancelar.Enabled = false;
+            tsm_Salvar.Enabled = false;
 
         }
 
@@ -262,7 +277,6 @@ namespace CG
 
         private void Txt_site_TextChanged(object sender, EventArgs e)
         {
-
             lkl_site.Text = txt_Site.Text;
             if (txt_Site.Text == "")
             {
@@ -272,17 +286,10 @@ namespace CG
 
         private void Lkl_site_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
             DialogResult dialogResult = MessageBox.Show("Deseja realmente abrir o site?", "Site", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-
                 Process.Start(lkl_site.Text);
-
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                MessageBox.Show("Processo Cancelado!", "Cancelado");
             }
         }
 
@@ -310,26 +317,29 @@ namespace CG
 
         private void Tsm_novo_Click(object sender, EventArgs e)
         {
-            DataTable resultado = new DataTable();
-            string ultimo, ultimo1;
-            int valor;
-            dadosql = string.Format("SELECT MAX(cod) FROM fornecedor");
-            //resultado = mConn.LeituraLinha(dadosql);
-            ultimo = resultado.Rows[0]["MAX(cod)"].ToString();
-            valor = Convert.ToInt16(ultimo);
-            valor++;
-            ultimo1 = Convert.ToString(valor);
-            limpar();
-            liberarbotao();
+            _initForms.HabilitarControles(this, true);
+            _initForms.HabilitarItensMenu(menuStrip1.Items, false);
 
-            txt_Id.Text = ultimo1;
-            txt_Tel1.Text = "";
-            txt_Tel2.Text = "";
+            //DataTable resultado = new DataTable();
+            //string ultimo, ultimo1;
+            //int valor;
+            //dadosql = string.Format("SELECT MAX(cod) FROM fornecedor");
+            ////resultado = mConn.LeituraLinha(dadosql);
+            //ultimo = resultado.Rows[0]["MAX(cod)"].ToString();
+            //valor = Convert.ToInt16(ultimo);
+            //valor++;
+            //ultimo1 = Convert.ToString(valor);
+            //limpar();
+            //liberarbotao();
 
-            cbx_ativo.Text = "SIM";
-            txt_Cidade.Text = "";
-            cbx_Estado.Text = "";
-            txt_TipoConta.Text = "";
+            //txt_Id.Text = ultimo1;
+            //txt_Tel1.Text = "";
+            //txt_Tel2.Text = "";
+
+            //cbx_Status.Text = "SIM";
+            //txt_Cidade.Text = "";
+            //cbx_Estado.Text = "";
+            //txt_TipoConta.Text = "";
 
 
         }
@@ -350,14 +360,14 @@ namespace CG
             if (chx_editar.Checked == true)
             //Atualização dos dados do fornecedor no banco
             {
-                dadosql = string.Format("UPDATE `fornecedor` SET `nome` = '{0}',`estado` = '{1}', `cidade` = '{2}', `bairro` = '{3}', `rua` = '{4}', `num` = '{5}', `cep` = '{6}', `contato` = '{7}', `tel1` = '{8}', `tel2` = '{9}', `tipodoc` = '', `doc` = '{10}', `tipocont` = '{11}', `ag` = '{12}', `op` = '{13}', `ct` = '{14}', `email` = '{15}', `site` = '{16}', `ativo` = '{17}' WHERE `fornecedor`.`cod` = '{18}'", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoConta.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_ativo.Text, txt_Id.Text);
+                dadosql = string.Format("UPDATE `fornecedor` SET `nome` = '{0}',`estado` = '{1}', `cidade` = '{2}', `bairro` = '{3}', `rua` = '{4}', `num` = '{5}', `cep` = '{6}', `contato` = '{7}', `tel1` = '{8}', `tel2` = '{9}', `tipodoc` = '', `doc` = '{10}', `tipocont` = '{11}', `ag` = '{12}', `op` = '{13}', `ct` = '{14}', `email` = '{15}', `site` = '{16}', `ativo` = '{17}' WHERE `fornecedor`.`cod` = '{18}'", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoConta.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_Status.Text, txt_Id.Text);
                 salvo1 = " Item atualizado com exito";
                 salvo2 = "ATUALIZADO";
             }
             else
             //Caso o botão editar não seja selecionado, ira inserir um registro 
             {
-                dadosql = string.Format("INSERT INTO `fornecedor` (`cod`, `nome`, `estado`, `cidade`, `bairro`, `rua`, `num`, `cep`, `contato`, `tel1`, `tel2`, `tipodoc`, `doc`, `tipocont`, `ag`, `op`, `ct`, `email`, `site`, `ativo`) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoConta.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_ativo.Text);
+                dadosql = string.Format("INSERT INTO `fornecedor` (`cod`, `nome`, `estado`, `cidade`, `bairro`, `rua`, `num`, `cep`, `contato`, `tel1`, `tel2`, `tipodoc`, `doc`, `tipocont`, `ag`, `op`, `ct`, `email`, `site`, `ativo`) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoConta.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_Status.Text);
 
                 salvo1 = "Item Criado com Exito";
                 salvo2 = "CRIADO";
@@ -442,17 +452,17 @@ namespace CG
                 dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
                 //resultado = mConn.LeituraLinha(dadosql);
 
-               // preencher(resultado);
-                tsm_anterior.Enabled = false;
-                tsm_proximo.Enabled = true;
+                // preencher(resultado);
+                tsm_Anterior.Enabled = false;
+                tsm_Proximo.Enabled = true;
             }
             else
             {
-                tsm_proximo.Enabled = true;
+                tsm_Proximo.Enabled = true;
 
                 dadosql = string.Format("SELECT * FROM fornecedor WHERE cod < '{0}' ORDER BY cod DESC LIMIT 1", vlcodigo);
                 //resultado = mConn.LeituraLinha(dadosql);
-               // preencher(resultado);
+                // preencher(resultado);
             }
         }
 
@@ -483,12 +493,12 @@ namespace CG
 
                 //resultado = mConn.LeituraLinha(dadosql);
                 //preencher(resultado);
-                tsm_proximo.Enabled = false;
+                tsm_Proximo.Enabled = false;
 
             }
             else
             {
-                tsm_anterior.Enabled = true;
+                tsm_Anterior.Enabled = true;
                 dadosql = string.Format("SELECT * FROM fornecedor WHERE cod > '{0}' ORDER BY cod LIMIT 1", vlcodigo);
 
                 //resultado = mConn.LeituraLinha(dadosql);
@@ -531,26 +541,39 @@ namespace CG
 
         private void label16_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show(txt_DocNum.Text.Replace(",", "").Replace("-",""));
+            var fornec = _httpExternalQueries.GetEmpresaPorCNPJ(Cnpj.FormatarSemPontuacao(txt_DocNum.Text));
+            txt_Fantasia.Text = fornec.Fantasia;
+            txt_Razao.Text = fornec.Nome;
+            txt_Cep.Text = fornec.Cep;
+            txt_Rua.Text = fornec.Logradouro;
+            txt_Cidade.Text = fornec.Municipio;
+            cbx_Estado.Text = fornec.UF;
+            txt_Bairro.Text = fornec.Bairro;
+            txt_Email.Text = fornec.Email;
+            txt_Tel1.Text = fornec.Telefone;
+        }
 
-            if (txt_DocNum.Text == "   ,   ,   -" || txt_DocNum.Text == "  ,   ,   /    -")
-            {
-                MessageBox.Show("em branco");
-            }
-            else
-            {
-                MessageBox.Show("VAI PORRA !!!");
-                int x = txt_DocNum.Text.Replace(",", "").Replace("-", "").Replace("/", "").Length;
+        private void label5_Click(object sender, EventArgs e)
+        {
+            var bla = _httpExternalQueries.GetEnderecoPorCep(txt_Cep.Text);
+            txt_Rua.Text = bla.logradouro;
+            txt_Cidade.Text = bla.localidade;
+            cbx_Estado.Text = bla.uf;
+            txt_Bairro.Text = bla.bairro;
+        }
 
-                MessageBox.Show(x.ToString());
+        private void txt_DocNum_Leave(object sender, EventArgs e)
+        {
+            if (!Cnpj.Validar(txt_DocNum.Text))
+            {
+                MessageBox.Show("Documento Invalido.");
+                txt_DocNum.Focus();
             }
         }
 
         private void label17_Click(object sender, EventArgs e)
         {
-            var bla = _fornecedorServices.GetFirstFornec().Result;
 
-            Preencher(bla);
         }
     }
 }
