@@ -5,34 +5,26 @@ using CG.Util;
 using CpfCnpjLibrary;
 using System.Data;
 using System.Diagnostics;
-using System.DirectoryServices.ActiveDirectory;
 using System.Reflection;
 
 namespace CG
 {
     public partial class frm_FornecedorCadastro : Form
     {
+        public readonly UtilForms _utilForms;
         public readonly FornecedorServices _fornecedorServices;
-        public readonly InitForms _initForms;
         public readonly HttpExternalQueries _httpExternalQueries;
 
-        public frm_FornecedorCadastro()
-        {
-        }
         public frm_FornecedorCadastro(string usuario)
         {
             InitializeComponent();
             _fornecedorServices = new FornecedorServices();
-            _initForms = new InitForms();
+            _utilForms = new UtilForms();
             _httpExternalQueries = new HttpExternalQueries();
 
             txt_Usuario.Text = usuario;
-
             cbx_Status.DataSource = Enum.GetValues(typeof(StatusEnum));
-
-            //liberarbotao();
         }
-
 
         public frm_FornecedorCadastro(string valor, string usuario)
         {
@@ -45,7 +37,6 @@ namespace CG
             //preencher(resultado);
             this.TopMost = true;
             txt_Usuario.Text = usuario;
-
         }
 
         private string dadosql;
@@ -67,7 +58,7 @@ namespace CG
             txt_Site.Text = "";
             txt_Email.Text = "";
             txt_Cidade.Text = "";
-            txt_TipoConta.Text = "";
+            txt_TipoCont.Text = "";
 
 
             cbx_Estado.Text = "";
@@ -75,117 +66,6 @@ namespace CG
             cbx_Status.Text = "SIM";
 
             txt_DocNum.Text = "";
-        }
-        public void bloquearbotao()
-        {
-            txt_Fantasia.Enabled = false;
-            txt_Bairro.Enabled = false;
-            txt_Rua.Enabled = false;
-            txt_Num.Enabled = false;
-            txt_Cep.Enabled = false;
-            txt_Contato.Enabled = false;
-            txt_Tel1.Enabled = false;
-            txt_Tel2.Enabled = false;
-            txt_Ag.Enabled = false;
-            txt_Op.Enabled = false;
-            txt_Ct.Enabled = false;
-            txt_Email.Enabled = false;
-            txt_Site.Enabled = false;
-
-            cbx_Estado.Enabled = false;
-            txt_Cidade.Enabled = false;
-            txt_TipoConta.Enabled = false;
-            cbx_Status.Enabled = false;
-
-            txt_DocNum.Enabled = false;
-
-            tsm_Novo.Enabled = true;
-            tsm_Salvar.Enabled = false;
-            tsm_Editar.Enabled = true;
-            tsm_Anterior.Enabled = true;
-            tsm_Proximo.Enabled = true;
-            tsm_Excluir.Enabled = true;
-            tsm_Pesquisa.Enabled = true;
-            tsm_Cancelar.Enabled = false;
-
-            label1.ForeColor = Color.White;
-            label2.ForeColor = Color.White;
-            label3.ForeColor = Color.White;
-            label4.ForeColor = Color.White;
-            label5.ForeColor = Color.White;
-            label6.ForeColor = Color.White;
-            label7.ForeColor = Color.White;
-            label8.ForeColor = Color.White;
-            label9.ForeColor = Color.White;
-            label10.ForeColor = Color.White;
-            label11.ForeColor = Color.White;
-            label13.ForeColor = Color.White;
-            label14.ForeColor = Color.White;
-            label15.ForeColor = Color.White;
-            label16.ForeColor = Color.White;
-            label17.ForeColor = Color.White;
-            label18.ForeColor = Color.White;
-            label19.ForeColor = Color.White;
-            label20.ForeColor = Color.White;
-            label21.ForeColor = Color.White;
-        }
-        public void liberarbotao()
-        {
-
-            txt_Fantasia.Enabled = true;
-            txt_Bairro.Enabled = true;
-            txt_Rua.Enabled = true;
-            txt_Num.Enabled = true;
-            txt_Cep.Enabled = true;
-            txt_Contato.Enabled = true;
-            txt_Tel1.Enabled = true;
-            txt_Tel2.Enabled = true;
-            txt_Ag.Enabled = true;
-            txt_Op.Enabled = true;
-            txt_Ct.Enabled = true;
-            txt_Email.Enabled = true;
-            txt_Site.Enabled = true;
-
-            txt_DocNum.Enabled = true;
-
-            txt_TipoConta.Enabled = true;
-            txt_Cidade.Enabled = true;
-            cbx_Estado.Enabled = true;
-            cbx_Status.Enabled = true;
-            cbx_Estado.Enabled = true;
-            txt_Cidade.Enabled = true;
-
-
-            tsm_Salvar.Enabled = true;
-            tsm_Novo.Enabled = false;
-            tsm_Editar.Enabled = false;
-            tsm_Anterior.Enabled = false;
-            tsm_Proximo.Enabled = false;
-            tsm_Excluir.Enabled = false;
-            tsm_Pesquisa.Enabled = false;
-            tsm_Cancelar.Enabled = true;
-
-            label1.ForeColor = Color.White;
-            label2.ForeColor = Color.White;
-            label3.ForeColor = Color.White;
-            label4.ForeColor = Color.White;
-            label5.ForeColor = Color.White;
-            label6.ForeColor = Color.White;
-            label7.ForeColor = Color.White;
-            label8.ForeColor = Color.White;
-            label9.ForeColor = Color.White;
-            label10.ForeColor = Color.White;
-            label10.ForeColor = Color.White;
-            label11.ForeColor = Color.White;
-            label13.ForeColor = Color.White;
-            label14.ForeColor = Color.White;
-            label15.ForeColor = Color.White;
-            label16.ForeColor = Color.White;
-            label17.ForeColor = Color.White;
-            label18.ForeColor = Color.White;
-            label19.ForeColor = Color.White;
-            label20.ForeColor = Color.White;
-            label21.ForeColor = Color.White;
         }
 
         public void Preencher(FornecedorData dados)
@@ -216,64 +96,25 @@ namespace CG
                     }
                 }
             }
-        }
-
-        //public void preencher(FornecedorData dados)
-        //{
-
-        //    txt_codigo.Text = dados.Cod.ToString();
-        //    txt_nome.Text = dados.Nome;
-        //    txt_bairro.Text = dados.Bairro;
-        //    txt_rua.Text = dados.Rua;
-        //    txt_num.Text = dados.Num;
-        //    txt_cep.Text = dados.Cep;
-        //    txt_contato.Text = dados.Contato;
-        //    txt_tel1.Text = dados.Tel1;
-        //    txt_tel2.Text = dados.Tel2;
-        //    txt_ag.Text = dados.Ag;
-        //    txt_op.Text = dados.Op;
-        //    txt_ct.Text = dados.Ct;
-        //    txt_email.Text = dados.Email;
-        //    txt_site.Text = dados.Site;
-
-        //    cbx_estado.Text = dados.Estado;
-        //    cbx_cidade.Text = dados.Cidade;
-        //    cbx_TipoConta.Text = dados.Tipocont;
-        //    cbx_ativo.Text = dados.Status.ToString();
-
-        //    mtb_Doc.Text = dados.Doc;
-
-        //}
+        }        
 
         private void Frm_FornecedorCadastro_Load(object sender, EventArgs e)
         {
-
-            //--------
-
-            DataTable resultado = new DataTable();
-
-            //Verificação do menor Registro no banco de dados
-            //dadosql = string.Format("SELECT MIN(cod) FROM fornecedor");
-            //resultado = mConn.LeituraLinha(dadosql);
-            //------
-
-            if (string.IsNullOrWhiteSpace(txt_Id.Text))
-            {
-
-                //Consulta no banco com o menor registro encontrato
-                // dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` = '{0}'", resultado.Rows[0]["MIN(cod)"].ToString());
-                //resultado = mConn.LeituraLinha(dadosql);
-                //------
-
-                //preencher(resultado);
-            }
-            // bloquearbotao();
-            tsm_Cancelar.Enabled = false;
-            tsm_Salvar.Enabled = false;
-
+            _utilForms.CarregamentoDeFormsDesabilidantoCancelareSalvar(menuStrip1.Items);
         }
 
+        private void Tsm_novo_Click(object sender, EventArgs e)
+        {
+            _utilForms.StatusControles(this, true);
+            _utilForms.StatusItensMenu(menuStrip1.Items, false);
+        }
 
+        private void Tsm_cancelar_Click(object sender, EventArgs e)
+        {
+            _utilForms.StatusControles(this, false);
+            _utilForms.StatusItensMenu(menuStrip1.Items, true);
+            chx_editar.Checked = false;
+        }
 
         private void Txt_site_TextChanged(object sender, EventArgs e)
         {
@@ -315,39 +156,11 @@ namespace CG
 
         }
 
-        private void Tsm_novo_Click(object sender, EventArgs e)
-        {
-            _initForms.HabilitarControles(this, true);
-            _initForms.HabilitarItensMenu(menuStrip1.Items, false);
-
-            //DataTable resultado = new DataTable();
-            //string ultimo, ultimo1;
-            //int valor;
-            //dadosql = string.Format("SELECT MAX(cod) FROM fornecedor");
-            ////resultado = mConn.LeituraLinha(dadosql);
-            //ultimo = resultado.Rows[0]["MAX(cod)"].ToString();
-            //valor = Convert.ToInt16(ultimo);
-            //valor++;
-            //ultimo1 = Convert.ToString(valor);
-            //limpar();
-            //liberarbotao();
-
-            //txt_Id.Text = ultimo1;
-            //txt_Tel1.Text = "";
-            //txt_Tel2.Text = "";
-
-            //cbx_Status.Text = "SIM";
-            //txt_Cidade.Text = "";
-            //cbx_Estado.Text = "";
-            //txt_TipoConta.Text = "";
-
-
-        }
+      
 
         private void Tsm_editar_Click(object sender, EventArgs e)
         {
             chx_editar.Checked = true;
-            liberarbotao();
         }
 
         private void Tsm_salvar_Click(object sender, EventArgs e)
@@ -360,14 +173,14 @@ namespace CG
             if (chx_editar.Checked == true)
             //Atualização dos dados do fornecedor no banco
             {
-                dadosql = string.Format("UPDATE `fornecedor` SET `nome` = '{0}',`estado` = '{1}', `cidade` = '{2}', `bairro` = '{3}', `rua` = '{4}', `num` = '{5}', `cep` = '{6}', `contato` = '{7}', `tel1` = '{8}', `tel2` = '{9}', `tipodoc` = '', `doc` = '{10}', `tipocont` = '{11}', `ag` = '{12}', `op` = '{13}', `ct` = '{14}', `email` = '{15}', `site` = '{16}', `ativo` = '{17}' WHERE `fornecedor`.`cod` = '{18}'", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoConta.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_Status.Text, txt_Id.Text);
+                dadosql = string.Format("UPDATE `fornecedor` SET `nome` = '{0}',`estado` = '{1}', `cidade` = '{2}', `bairro` = '{3}', `rua` = '{4}', `num` = '{5}', `cep` = '{6}', `contato` = '{7}', `tel1` = '{8}', `tel2` = '{9}', `tipodoc` = '', `doc` = '{10}', `tipocont` = '{11}', `ag` = '{12}', `op` = '{13}', `ct` = '{14}', `email` = '{15}', `site` = '{16}', `ativo` = '{17}' WHERE `fornecedor`.`cod` = '{18}'", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoCont.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_Status.Text, txt_Id.Text);
                 salvo1 = " Item atualizado com exito";
                 salvo2 = "ATUALIZADO";
             }
             else
             //Caso o botão editar não seja selecionado, ira inserir um registro 
             {
-                dadosql = string.Format("INSERT INTO `fornecedor` (`cod`, `nome`, `estado`, `cidade`, `bairro`, `rua`, `num`, `cep`, `contato`, `tel1`, `tel2`, `tipodoc`, `doc`, `tipocont`, `ag`, `op`, `ct`, `email`, `site`, `ativo`) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoConta.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_Status.Text);
+                dadosql = string.Format("INSERT INTO `fornecedor` (`cod`, `nome`, `estado`, `cidade`, `bairro`, `rua`, `num`, `cep`, `contato`, `tel1`, `tel2`, `tipodoc`, `doc`, `tipocont`, `ag`, `op`, `ct`, `email`, `site`, `ativo`) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoCont.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_Status.Text);
 
                 salvo1 = "Item Criado com Exito";
                 salvo2 = "CRIADO";
@@ -383,10 +196,7 @@ namespace CG
 
                 //preencher(resultado);
 
-                bloquearbotao();
-
                 MessageBox.Show(salvo1, salvo2);
-
             }
             else
             {
@@ -400,39 +210,10 @@ namespace CG
 
                 //preencher(resultado);
 
-                bloquearbotao();
                 MessageBox.Show(salvo1, salvo2);
             }
-
-
-
         }
 
-        private void Tsm_cancelar_Click(object sender, EventArgs e)
-        {
-
-            DataTable resultado = new DataTable();
-            dadosql = string.Format("SELECT MIN(cod) FROM fornecedor");
-            //resultado = mConn.LeituraLinha(dadosql);
-            if (chx_editar.Checked == true)
-            {
-                if ((txt_Id.Text != resultado.Rows[0]["MIN(cod)"].ToString()) | (txt_Id.Text == ""))
-                {
-
-                }
-            }
-            else
-            {
-                txt_Id.Text = resultado.Rows[0]["MIN(cod)"].ToString();
-            }
-            int vlcodigo;
-            vlcodigo = Convert.ToInt16(txt_Id.Text);
-            dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
-            //resultado = mConn.LeituraLinha(dadosql);
-            //preencher(resultado);
-            chx_editar.Checked = false;
-            bloquearbotao();
-        }
 
         private void Tsm_anterior_Click(object sender, EventArgs e)
         {
@@ -573,6 +354,7 @@ namespace CG
 
         private void label17_Click(object sender, EventArgs e)
         {
+
 
         }
     }

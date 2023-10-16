@@ -83,8 +83,8 @@
             label12 = new Label();
             txt_Cidade = new TextBox();
             txt_DocNum = new TextBox();
-            txt_TipoConta = new TextBox();
-            textBox1 = new TextBox();
+            txt_TipoCont = new TextBox();
+            txt_Pix = new TextBox();
             label22 = new Label();
             txt_Obs = new TextBox();
             label23 = new Label();
@@ -621,23 +621,23 @@
             txt_DocNum.TabIndex = 154;
             txt_DocNum.Leave += txt_DocNum_Leave;
             // 
-            // txt_TipoConta
+            // txt_TipoCont
             // 
-            txt_TipoConta.Enabled = false;
-            txt_TipoConta.Location = new Point(21, 250);
-            txt_TipoConta.Margin = new Padding(4, 3, 4, 3);
-            txt_TipoConta.Name = "txt_TipoConta";
-            txt_TipoConta.Size = new Size(115, 23);
-            txt_TipoConta.TabIndex = 155;
+            txt_TipoCont.Enabled = false;
+            txt_TipoCont.Location = new Point(21, 250);
+            txt_TipoCont.Margin = new Padding(4, 3, 4, 3);
+            txt_TipoCont.Name = "txt_TipoCont";
+            txt_TipoCont.Size = new Size(115, 23);
+            txt_TipoCont.TabIndex = 155;
             // 
-            // textBox1
+            // txt_Pix
             // 
-            textBox1.Enabled = false;
-            textBox1.Location = new Point(560, 250);
-            textBox1.Margin = new Padding(4, 3, 4, 3);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(289, 23);
-            textBox1.TabIndex = 156;
+            txt_Pix.Enabled = false;
+            txt_Pix.Location = new Point(560, 250);
+            txt_Pix.Margin = new Padding(4, 3, 4, 3);
+            txt_Pix.Name = "txt_Pix";
+            txt_Pix.Size = new Size(289, 23);
+            txt_Pix.TabIndex = 156;
             // 
             // label22
             // 
@@ -679,9 +679,9 @@
             ClientSize = new Size(862, 424);
             Controls.Add(txt_Obs);
             Controls.Add(label23);
-            Controls.Add(textBox1);
+            Controls.Add(txt_Pix);
             Controls.Add(label22);
-            Controls.Add(txt_TipoConta);
+            Controls.Add(txt_TipoCont);
             Controls.Add(txt_DocNum);
             Controls.Add(txt_Cidade);
             Controls.Add(txt_Razao);
@@ -796,9 +796,9 @@
         private Label label12;
         private TextBox txt_Cidade;
         private TextBox txt_DocNum;
-        private TextBox txt_TipoConta;
+        private TextBox txt_TipoCont;
         private ToolStripMenuItem tsm_Excluir;
-        private TextBox textBox1;
+        private TextBox txt_Pix;
         private Label label22;
         private TextBox txt_Obs;
         private Label label23;
