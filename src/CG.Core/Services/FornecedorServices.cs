@@ -16,6 +16,13 @@ namespace CG.Core.Services
         {
             return await _fornecedorRepository.GetFirstFornec();
         }
+        
+        public async Task<bool> InsertFornec(FornecedorData fornecedor)
+        {
+            var result = _fornecedorRepository.InsertFornec(fornecedor).Result;
 
+            return result;
+
+        }
     }
 }

@@ -61,7 +61,7 @@ namespace CG
             txt_TipoCont.Text = "";
 
 
-            cbx_Estado.Text = "";
+            cbx_Uf.Text = "";
 
             cbx_Status.Text = "SIM";
 
@@ -70,9 +70,6 @@ namespace CG
 
         public void Preencher(FornecedorData dados)
         {
-
-            //Todo: Precisa ajustar os nomes dos Txt e cbx com o mesmo nome com do objeto FornecedorData
-
             foreach (Control control in Controls)
             {
                 if (control is TextBox textBox && control.Name.StartsWith("txt_"))
@@ -96,23 +93,25 @@ namespace CG
                     }
                 }
             }
-        }        
+        }
 
         private void Frm_FornecedorCadastro_Load(object sender, EventArgs e)
         {
-            _utilForms.CarregamentoDeFormsDesabilidantoCancelareSalvar(menuStrip1.Items);
+            UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
+            var firstFornec = _fornecedorServices.GetFirstFornec().Result;
+            UtilForms.PreencherCampos(this, firstFornec);
         }
 
         private void Tsm_novo_Click(object sender, EventArgs e)
         {
-            _utilForms.StatusControles(this, true);
-            _utilForms.StatusItensMenu(menuStrip1.Items, false);
+            UtilForms.StatusControles(this, true);
+            UtilForms.StatusItensMenu(menuStrip1.Items, false);
         }
 
         private void Tsm_cancelar_Click(object sender, EventArgs e)
         {
-            _utilForms.StatusControles(this, false);
-            _utilForms.StatusItensMenu(menuStrip1.Items, true);
+            UtilForms.StatusControles(this, false);
+            UtilForms.StatusItensMenu(menuStrip1.Items, true);
             chx_editar.Checked = false;
         }
 
@@ -137,7 +136,7 @@ namespace CG
         private void Cbx_estado_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            dadosql = string.Format("select id FROM estado WHERE uf = '{0}'", cbx_Estado.Text);
+            dadosql = string.Format("select id FROM estado WHERE uf = '{0}'", cbx_Uf.Text);
             DataTable resultado = new DataTable();
             ////resultado = mConn.LeituraLinha(dadosql);
             //dadosql = string.Format("SELECT nome FROM `cidade` WHERE estado = '{0}'", resultado.Rows[0]["id"].ToString());
@@ -156,7 +155,7 @@ namespace CG
 
         }
 
-      
+
 
         private void Tsm_editar_Click(object sender, EventArgs e)
         {
@@ -165,53 +164,10 @@ namespace CG
 
         private void Tsm_salvar_Click(object sender, EventArgs e)
         {
-            string salvo1, salvo2, codigo;
-            int vlcodigo;
-            DataTable resultado = new DataTable();
+            var fornecToInsert = UtilForms.GerarObjeto<FornecedorData>(this);
+            var result = _fornecedorServices.InsertFornec(fornecToInsert);
 
 
-            if (chx_editar.Checked == true)
-            //Atualização dos dados do fornecedor no banco
-            {
-                dadosql = string.Format("UPDATE `fornecedor` SET `nome` = '{0}',`estado` = '{1}', `cidade` = '{2}', `bairro` = '{3}', `rua` = '{4}', `num` = '{5}', `cep` = '{6}', `contato` = '{7}', `tel1` = '{8}', `tel2` = '{9}', `tipodoc` = '', `doc` = '{10}', `tipocont` = '{11}', `ag` = '{12}', `op` = '{13}', `ct` = '{14}', `email` = '{15}', `site` = '{16}', `ativo` = '{17}' WHERE `fornecedor`.`cod` = '{18}'", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoCont.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_Status.Text, txt_Id.Text);
-                salvo1 = " Item atualizado com exito";
-                salvo2 = "ATUALIZADO";
-            }
-            else
-            //Caso o botão editar não seja selecionado, ira inserir um registro 
-            {
-                dadosql = string.Format("INSERT INTO `fornecedor` (`cod`, `nome`, `estado`, `cidade`, `bairro`, `rua`, `num`, `cep`, `contato`, `tel1`, `tel2`, `tipodoc`, `doc`, `tipocont`, `ag`, `op`, `ct`, `email`, `site`, `ativo`) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}')", txt_Fantasia.Text, cbx_Estado.Text, txt_Cidade.Text, txt_Bairro.Text, txt_Rua.Text, txt_Num.Text, txt_Cep.Text, txt_Contato.Text, txt_Tel1.Text, txt_Tel2.Text, txt_DocNum.Text.Replace(",", "."), txt_TipoCont.Text, txt_Ag.Text, txt_Op.Text, txt_Ct.Text, txt_Email.Text, txt_Site.Text, cbx_Status.Text);
-
-                salvo1 = "Item Criado com Exito";
-                salvo2 = "CRIADO";
-
-            }
-            //mConn.Inserirdb(dadosql);
-            if (salvo2 == "ATUALIZADO")
-            {
-                vlcodigo = Convert.ToInt16(txt_Id.Text);
-                dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", vlcodigo);
-
-                //resultado = mConn.LeituraLinha(dadosql);
-
-                //preencher(resultado);
-
-                MessageBox.Show(salvo1, salvo2);
-            }
-            else
-            {
-
-                dadosql = string.Format("SELECT MAX(cod) FROM fornecedor");
-                //resultado = mConn.LeituraLinha(dadosql);
-                codigo = resultado.Rows[0]["MAX(cod)"].ToString();
-                dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` ='{0}'", codigo);
-
-                //resultado = mConn.LeituraLinha(dadosql);
-
-                //preencher(resultado);
-
-                MessageBox.Show(salvo1, salvo2);
-            }
         }
 
 
@@ -328,7 +284,7 @@ namespace CG
             txt_Cep.Text = fornec.Cep;
             txt_Rua.Text = fornec.Logradouro;
             txt_Cidade.Text = fornec.Municipio;
-            cbx_Estado.Text = fornec.UF;
+            cbx_Uf.Text = fornec.UF;
             txt_Bairro.Text = fornec.Bairro;
             txt_Email.Text = fornec.Email;
             txt_Tel1.Text = fornec.Telefone;
@@ -339,7 +295,7 @@ namespace CG
             var bla = _httpExternalQueries.GetEnderecoPorCep(txt_Cep.Text);
             txt_Rua.Text = bla.logradouro;
             txt_Cidade.Text = bla.localidade;
-            cbx_Estado.Text = bla.uf;
+            cbx_Uf.Text = bla.uf;
             txt_Bairro.Text = bla.bairro;
         }
 

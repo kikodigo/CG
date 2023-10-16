@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
+using ZstdSharp.Unsafe;
 
 namespace CG.Repository.Repositories
 {
@@ -27,6 +28,29 @@ namespace CG.Repository.Repositories
             catch (Exception)
             {
                 throw;
+            }
+            finally
+            {
+                _mySqlConnection.Close();
+            }
+        }
+
+        public bool InsertValueOnMySql(MySqlCommand command)
+        {
+            command.Connection = _mySqlConnection;
+
+            try
+            {
+                _mySqlConnection.Open();
+
+                var rowsAffetct = command.ExecuteNonQuery();
+
+                return rowsAffetct > 0;
+            }
+            catch (Exception)
+            {
+                //GerarLog
+                return false;
             }
             finally
             {
