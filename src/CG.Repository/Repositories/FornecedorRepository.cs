@@ -12,7 +12,7 @@ namespace CG.Repository.Repositories
             _queryBaseRepository = new QueryBaseRepository();
         }
 
-        public async Task<FornecedorData> GetFirstFornec()
+        public async Task<FornecedorData> GetLastFornec()
         {
             var query = "SELECT * FROM `fornecedor` ORDER BY ID DESC LIMIT 1";
 
@@ -28,10 +28,27 @@ namespace CG.Repository.Repositories
 
             var commandMapped = Mapper(fornecedor, insertQuery);
 
-            var result = _queryBaseRepository.InsertValueOnMySql(commandMapped);
+            var result = _queryBaseRepository.InsertOrUpdateValueOnMySql(commandMapped);
 
             return result;
 
+        }
+
+        public async Task<bool> AtualizarFornecedor(FornecedorData fornecedor)
+        {
+            string updateQuery = "UPDATE fornecedor " +
+                                "SET Razao = @Razao, Fantasia = @Fantasia, DocNum = @DocNum, Rua = @Rua, " +
+                                "Num = @Num, Cep = @Cep, Uf = @Uf, Cidade = @Cidade, Bairro = @Bairro, " +
+                                "Contato = @Contato, Tel1 = @Tel1, Tel2 = @Tel2, Email = @Email, Site = @Site, " +
+                                "TipoCont = @TipoCont, Ag = @Ag, Op = @Op, Ct = @Ct, Pix = @Pix, Obs = @Obs, " +
+                                "Status = @Status " +
+                                "WHERE DocNum = @DocNum";
+
+            var commandMapped = Mapper(fornecedor, updateQuery);
+
+            var result = _queryBaseRepository.InsertOrUpdateValueOnMySql(commandMapped);
+
+            return result;
         }
 
         private MySqlCommand Mapper(FornecedorData fornecedor, string query)

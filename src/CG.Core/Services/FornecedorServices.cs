@@ -12,17 +12,20 @@ namespace CG.Core.Services
             _fornecedorRepository = new FornecedorRepository();
         }
 
-        public async Task<FornecedorData> GetFirstFornec()
+        public async Task<FornecedorData> GetLastFornecAsync()
         {
-            return await _fornecedorRepository.GetFirstFornec();
+            return await _fornecedorRepository.GetLastFornec();
         }
-        
-        public async Task<bool> InsertFornec(FornecedorData fornecedor)
+
+        public bool InsertFornec(FornecedorData fornecedor)
         {
-            var result = _fornecedorRepository.InsertFornec(fornecedor).Result;
+            //FAZER : Precisa validar se o documento ja existe no banco, se existir retornar erro
+            return _fornecedorRepository.InsertFornec(fornecedor).Result;
+        }
 
-            return result;
-
+        public bool UpdateFornec(FornecedorData fornecedor)
+        {
+            return _fornecedorRepository.AtualizarFornecedor(fornecedor).Result;
         }
     }
 }

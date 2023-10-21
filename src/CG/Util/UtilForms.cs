@@ -1,10 +1,15 @@
-﻿using Org.BouncyCastle.Asn1.Crmf;
+﻿using CpfCnpjLibrary;
 using System.Reflection;
 
 namespace CG.Util
 {
     public class UtilForms
     {
+        /// <summary>
+        /// Metodo serve para bloquear e desbloquear campos de um formulario
+        /// </summary>
+        /// <param name="container">Informar this para passar o formulario</param>
+        /// <param name="status">true para desbloquear, false para bloquear</param>
         public static void StatusControles(Control container, bool status)
         {
             Color cor = status ? Color.White : Color.Gray;
@@ -19,7 +24,14 @@ namespace CG.Util
 
                 if (control is TextBox || control is ComboBox)
                 {
-                    control.Enabled = status;
+                    if (control.Name == "txt_Id")
+                    {
+                        control.Enabled = false;
+                    }
+                    else
+                    {
+                        control.Enabled = status;
+                    }                   
                 }
                 else if (control.HasChildren)
                 {
@@ -120,6 +132,7 @@ namespace CG.Util
 
             return objeto;
         }
+
         public static void PreencherCampos<T>(Control container, T objeto)
         {
             foreach (Control control in container.Controls)
@@ -144,6 +157,43 @@ namespace CG.Util
                         comboBox.Text = valor;
                     }
                 }
+            }
+        }
+
+        public static void LimparCampos(Control container)
+        {
+            foreach (Control control in container.Controls)
+            {
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Clear(); // Limpa o conteúdo do TextBox
+                }
+                else if (control is ComboBox)
+                {
+                    ((ComboBox)control).SelectedIndex = -1; // Remove a seleção do ComboBox
+                }
+                else if (control.HasChildren)
+                {
+                    // Se o controle tiver controles filhos (por exemplo, um painel), chame o método de limpeza recursivamente
+                    LimparCampos(control);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Valida se o documento é valido
+        /// </summary>
+        /// <param name="doc">Qual documento a ser validado</param>
+        /// <returns>bool, true se esta valido, false se for invalido</returns>
+        public static bool ValidarDoc(string doc)
+        {
+            if(doc.Length == 14)
+            {
+                return Cnpj.Validar(doc);
+            }
+            else
+            {
+                return Cpf.Validar(doc);
             }
         }
     }

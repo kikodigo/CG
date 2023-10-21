@@ -17,6 +17,8 @@ namespace CG.CrossCutting.CEP
                 RequestUri = new Uri(endpoint)
             };
 
+            //FAZER : Verificar se o retorno é OK 200
+            
             var response = _httpClient.SendAsync(request);
 
             var json = response.Result.Content.ReadAsStringAsync().Result;

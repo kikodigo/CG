@@ -35,7 +35,7 @@ namespace CG.Repository.Repositories
             }
         }
 
-        public bool InsertValueOnMySql(MySqlCommand command)
+        public bool InsertOrUpdateValueOnMySql(MySqlCommand command)
         {
             command.Connection = _mySqlConnection;
 

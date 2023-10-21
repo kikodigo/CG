@@ -53,7 +53,7 @@
             txt_Ct = new TextBox();
             label14 = new Label();
             label15 = new Label();
-            label16 = new Label();
+            lbl_DocNum = new Label();
             label17 = new Label();
             txt_Email = new TextBox();
             label18 = new Label();
@@ -102,8 +102,7 @@
             cbx_Uf.Margin = new Padding(5, 4, 5, 4);
             cbx_Uf.Name = "cbx_Uf";
             cbx_Uf.Size = new Size(52, 28);
-            cbx_Uf.TabIndex = 1;
-            cbx_Uf.SelectedIndexChanged += Cbx_estado_SelectedIndexChanged;
+            cbx_Uf.TabIndex = 6;
             // 
             // label7
             // 
@@ -124,8 +123,7 @@
             txt_Cep.MaxLength = 8;
             txt_Cep.Name = "txt_Cep";
             txt_Cep.Size = new Size(71, 27);
-            txt_Cep.TabIndex = 6;
-            txt_Cep.Text = "32072010";
+            txt_Cep.TabIndex = 5;
             // 
             // txt_Rua
             // 
@@ -134,7 +132,7 @@
             txt_Rua.Margin = new Padding(5, 4, 5, 4);
             txt_Rua.Name = "txt_Rua";
             txt_Rua.Size = new Size(229, 27);
-            txt_Rua.TabIndex = 4;
+            txt_Rua.TabIndex = 3;
             // 
             // txt_Fantasia
             // 
@@ -143,7 +141,7 @@
             txt_Fantasia.Margin = new Padding(5, 4, 5, 4);
             txt_Fantasia.Name = "txt_Fantasia";
             txt_Fantasia.Size = new Size(803, 27);
-            txt_Fantasia.TabIndex = 0;
+            txt_Fantasia.TabIndex = 2;
             // 
             // txt_Id
             // 
@@ -175,7 +173,6 @@
             label5.Size = new Size(34, 20);
             label5.TabIndex = 32;
             label5.Text = "CEP";
-            label5.Click += label5_Click;
             // 
             // label4
             // 
@@ -225,7 +222,7 @@
             txt_Bairro.Margin = new Padding(5, 4, 5, 4);
             txt_Bairro.Name = "txt_Bairro";
             txt_Bairro.Size = new Size(282, 27);
-            txt_Bairro.TabIndex = 3;
+            txt_Bairro.TabIndex = 8;
             // 
             // label8
             // 
@@ -245,7 +242,7 @@
             txt_Contato.Margin = new Padding(5, 4, 5, 4);
             txt_Contato.Name = "txt_Contato";
             txt_Contato.Size = new Size(199, 27);
-            txt_Contato.TabIndex = 7;
+            txt_Contato.TabIndex = 9;
             // 
             // label9
             // 
@@ -298,7 +295,7 @@
             txt_Op.Margin = new Padding(5, 4, 5, 4);
             txt_Op.Name = "txt_Op";
             txt_Op.Size = new Size(117, 27);
-            txt_Op.TabIndex = 14;
+            txt_Op.TabIndex = 16;
             // 
             // txt_Ag
             // 
@@ -307,7 +304,7 @@
             txt_Ag.Margin = new Padding(5, 4, 5, 4);
             txt_Ag.Name = "txt_Ag";
             txt_Ag.Size = new Size(131, 27);
-            txt_Ag.TabIndex = 13;
+            txt_Ag.TabIndex = 15;
             // 
             // txt_Ct
             // 
@@ -316,7 +313,7 @@
             txt_Ct.Margin = new Padding(5, 4, 5, 4);
             txt_Ct.Name = "txt_Ct";
             txt_Ct.Size = new Size(198, 27);
-            txt_Ct.TabIndex = 15;
+            txt_Ct.TabIndex = 17;
             // 
             // label14
             // 
@@ -340,17 +337,16 @@
             label15.TabIndex = 65;
             label15.Text = "Conta";
             // 
-            // label16
+            // lbl_DocNum
             // 
-            label16.AutoSize = true;
-            label16.ForeColor = Color.Gray;
-            label16.Location = new Point(24, 125);
-            label16.Margin = new Padding(5, 0, 5, 0);
-            label16.Name = "label16";
-            label16.Size = new Size(79, 20);
-            label16.TabIndex = 72;
-            label16.Text = "CNPJ / CPF";
-            label16.Click += label16_Click;
+            lbl_DocNum.AutoSize = true;
+            lbl_DocNum.ForeColor = Color.Gray;
+            lbl_DocNum.Location = new Point(24, 125);
+            lbl_DocNum.Margin = new Padding(5, 0, 5, 0);
+            lbl_DocNum.Name = "lbl_DocNum";
+            lbl_DocNum.Size = new Size(79, 20);
+            lbl_DocNum.TabIndex = 72;
+            lbl_DocNum.Text = "CNPJ / CPF";
             // 
             // label17
             // 
@@ -362,7 +358,6 @@
             label17.Size = new Size(24, 20);
             label17.TabIndex = 73;
             label17.Text = "ID";
-            label17.Click += label17_Click;
             // 
             // txt_Email
             // 
@@ -371,7 +366,7 @@
             txt_Email.Margin = new Padding(5, 4, 5, 4);
             txt_Email.Name = "txt_Email";
             txt_Email.Size = new Size(164, 27);
-            txt_Email.TabIndex = 16;
+            txt_Email.TabIndex = 12;
             // 
             // label18
             // 
@@ -402,7 +397,7 @@
             txt_Num.Margin = new Padding(5, 4, 5, 4);
             txt_Num.Name = "txt_Num";
             txt_Num.Size = new Size(62, 27);
-            txt_Num.TabIndex = 5;
+            txt_Num.TabIndex = 4;
             // 
             // txt_Site
             // 
@@ -411,7 +406,7 @@
             txt_Site.Margin = new Padding(5, 4, 5, 4);
             txt_Site.Name = "txt_Site";
             txt_Site.Size = new Size(300, 27);
-            txt_Site.TabIndex = 17;
+            txt_Site.TabIndex = 13;
             txt_Site.TextChanged += Txt_site_TextChanged;
             // 
             // label20
@@ -461,7 +456,7 @@
             cbx_Status.Name = "cbx_Status";
             cbx_Status.Size = new Size(198, 28);
             cbx_Status.Sorted = true;
-            cbx_Status.TabIndex = 18;
+            cbx_Status.TabIndex = 20;
             // 
             // label21
             // 
@@ -553,6 +548,7 @@
             tsm_Excluir.Name = "tsm_Excluir";
             tsm_Excluir.Size = new Size(66, 27);
             tsm_Excluir.Text = "Excluir";
+            tsm_Excluir.Click += tsm_Excluir_Click;
             // 
             // lbl_VlPermissao
             // 
@@ -572,7 +568,7 @@
             txt_Tel1.Margin = new Padding(5, 4, 5, 4);
             txt_Tel1.Name = "txt_Tel1";
             txt_Tel1.Size = new Size(114, 27);
-            txt_Tel1.TabIndex = 149;
+            txt_Tel1.TabIndex = 10;
             // 
             // txt_Tel2
             // 
@@ -581,7 +577,7 @@
             txt_Tel2.Margin = new Padding(5, 4, 5, 4);
             txt_Tel2.Name = "txt_Tel2";
             txt_Tel2.Size = new Size(132, 27);
-            txt_Tel2.TabIndex = 150;
+            txt_Tel2.TabIndex = 11;
             // 
             // txt_Razao
             // 
@@ -590,7 +586,7 @@
             txt_Razao.Margin = new Padding(5, 4, 5, 4);
             txt_Razao.Name = "txt_Razao";
             txt_Razao.Size = new Size(894, 27);
-            txt_Razao.TabIndex = 151;
+            txt_Razao.TabIndex = 0;
             // 
             // label12
             // 
@@ -610,7 +606,7 @@
             txt_Cidade.Margin = new Padding(5, 4, 5, 4);
             txt_Cidade.Name = "txt_Cidade";
             txt_Cidade.Size = new Size(206, 27);
-            txt_Cidade.TabIndex = 153;
+            txt_Cidade.TabIndex = 7;
             // 
             // txt_DocNum
             // 
@@ -619,7 +615,7 @@
             txt_DocNum.Margin = new Padding(5, 4, 5, 4);
             txt_DocNum.Name = "txt_DocNum";
             txt_DocNum.Size = new Size(133, 27);
-            txt_DocNum.TabIndex = 154;
+            txt_DocNum.TabIndex = 1;
             txt_DocNum.Leave += txt_DocNum_Leave;
             // 
             // txt_TipoCont
@@ -629,7 +625,7 @@
             txt_TipoCont.Margin = new Padding(5, 4, 5, 4);
             txt_TipoCont.Name = "txt_TipoCont";
             txt_TipoCont.Size = new Size(131, 27);
-            txt_TipoCont.TabIndex = 155;
+            txt_TipoCont.TabIndex = 14;
             // 
             // txt_Pix
             // 
@@ -638,7 +634,7 @@
             txt_Pix.Margin = new Padding(5, 4, 5, 4);
             txt_Pix.Name = "txt_Pix";
             txt_Pix.Size = new Size(330, 27);
-            txt_Pix.TabIndex = 156;
+            txt_Pix.TabIndex = 18;
             // 
             // label22
             // 
@@ -659,7 +655,7 @@
             txt_Obs.Multiline = true;
             txt_Obs.Name = "txt_Obs";
             txt_Obs.Size = new Size(948, 76);
-            txt_Obs.TabIndex = 159;
+            txt_Obs.TabIndex = 19;
             // 
             // label23
             // 
@@ -701,7 +697,7 @@
             Controls.Add(txt_Email);
             Controls.Add(label18);
             Controls.Add(label17);
-            Controls.Add(label16);
+            Controls.Add(lbl_DocNum);
             Controls.Add(label13);
             Controls.Add(txt_Op);
             Controls.Add(txt_Ag);
@@ -768,7 +764,7 @@
         private TextBox txt_Ct;
         private Label label14;
         private Label label15;
-        private Label label16;
+        private Label lbl_DocNum;
         private Label label17;
         private TextBox txt_Email;
         private Label label18;
