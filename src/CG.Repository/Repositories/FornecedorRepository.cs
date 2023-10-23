@@ -34,7 +34,7 @@ namespace CG.Repository.Repositories
 
         }
 
-        public async Task<bool> AtualizarFornecedor(FornecedorData fornecedor)
+        public bool UpdateFornec(FornecedorData fornecedor)
         {
             string updateQuery = "UPDATE fornecedor " +
                                 "SET Razao = @Razao, Fantasia = @Fantasia, DocNum = @DocNum, Rua = @Rua, " +

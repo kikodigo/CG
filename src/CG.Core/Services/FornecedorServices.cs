@@ -25,7 +25,7 @@ namespace CG.Core.Services
 
         public bool UpdateFornec(FornecedorData fornecedor)
         {
-            return _fornecedorRepository.AtualizarFornecedor(fornecedor).Result;
+            return _fornecedorRepository.UpdateFornec(fornecedor);
         }
     }
 }

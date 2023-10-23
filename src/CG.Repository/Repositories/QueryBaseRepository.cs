@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
-using ZstdSharp.Unsafe;
 
 namespace CG.Repository.Repositories
 {
