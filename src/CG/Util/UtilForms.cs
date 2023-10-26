@@ -1,4 +1,5 @@
-﻿using CpfCnpjLibrary;
+﻿using CG.Domain.Enum;
+using CpfCnpjLibrary;
 using System.Reflection;
 
 namespace CG.Util
@@ -31,7 +32,7 @@ namespace CG.Util
                     else
                     {
                         control.Enabled = status;
-                    }                   
+                    }
                 }
                 else if (control.HasChildren)
                 {
@@ -44,7 +45,7 @@ namespace CG.Util
         {
             foreach (ToolStripItem menuItem in menuStrip)
             {
-                if(menuItem.Name == "tsm_Salvar" || menuItem.Name == "tsm_Cancelar")
+                if (menuItem.Name == "tsm_Salvar" || menuItem.Name == "tsm_Cancelar")
                 {
                     menuItem.Enabled = !status;
                 }
@@ -67,7 +68,7 @@ namespace CG.Util
                 if (menuItem.Name == "tsm_Salvar" || menuItem.Name == "tsm_Cancelar")
                 {
                     menuItem.Enabled = false;
-                }             
+                }
 
                 if (menuItem.Name == "tsm_Usuario" || menuItem.Name == "txt_Usuario")
                 {
@@ -123,6 +124,13 @@ namespace CG.Util
                             if (int.TryParse(valor, out int intValue))
                             {
                                 propertyInfo.SetValue(objeto, intValue);
+                            }
+                        }
+                        else if (propertyType == typeof(StatusEnum))
+                        {
+                            if (Enum.TryParse(valor, out StatusEnum statusEnum))
+                            {
+                                propertyInfo.SetValue(objeto, statusEnum);
                             }
                         }
                         // Adicione tratamentos para outros tipos de dados, como double, DateTime, etc.
@@ -187,7 +195,7 @@ namespace CG.Util
         /// <returns>bool, true se esta valido, false se for invalido</returns>
         public static bool ValidarDoc(string doc)
         {
-            if(doc.Length == 14)
+            if (doc.Length == 14)
             {
                 return Cnpj.Validar(doc);
             }

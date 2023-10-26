@@ -36,7 +36,6 @@ namespace CG
             txt_Usuario.Text = usuario;
         }
 
-
         private void Frm_FornecedorCadastro_Load(object sender, EventArgs e)
         {
             UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
@@ -56,10 +55,14 @@ namespace CG
         {
             UtilForms.StatusControles(this, false);
             UtilForms.StatusItensMenu(menuStrip1.Items, true);
-            chx_editar.Checked = false;
 
-            var lastFornec = _fornecedorServices.GetLastFornecAsync().Result;
-            UtilForms.PreencherCampos(this, lastFornec);
+            if (!chx_editar.Checked)
+            {
+                var lastFornec = _fornecedorServices.GetLastFornecAsync().Result;
+                UtilForms.PreencherCampos(this, lastFornec);
+            }
+            
+            chx_editar.Checked = false;
         }
 
         private void Txt_site_TextChanged(object sender, EventArgs e)
@@ -81,10 +84,10 @@ namespace CG
         }
 
         private void Tsm_editar_Click(object sender, EventArgs e)
-        {
-            chx_editar.Checked = true;
+        {            
             UtilForms.StatusControles(this, true);
             UtilForms.StatusItensMenu(menuStrip1.Items, false);
+            chx_editar.Checked = true;
         }
 
         private void Tsm_salvar_Click(object sender, EventArgs e)
@@ -103,11 +106,17 @@ namespace CG
                     result = _fornecedorServices.InsertFornec(fornec);
                 }
                 
-                if (!result) 
+                if (result) 
+                {
+                    UtilForms.StatusControles(this, false);
+                    UtilForms.StatusItensMenu(menuStrip1.Items, true);
+                    chx_editar.Checked = false;
+                }
+                else
                 {
                     MessageBox.Show($"Algum problema ocorreu durante a" +
-                        $"{(chx_editar.Checked ? "edição" : "inserção")}" +
-                        $"do fornecedor.");
+                      $"{(chx_editar.Checked ? "edição" : "inserção")}" +
+                      $"do fornecedor.");
                 }
 
             }
@@ -118,8 +127,6 @@ namespace CG
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-
-
         }
 
         private void Tsm_anterior_Click(object sender, EventArgs e)

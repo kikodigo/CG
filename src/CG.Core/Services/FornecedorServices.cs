@@ -14,13 +14,13 @@ namespace CG.Core.Services
 
         public async Task<FornecedorData> GetLastFornecAsync()
         {
-            return await _fornecedorRepository.GetLastFornec();
+            return _fornecedorRepository.GetLastFornec();
         }
 
         public bool InsertFornec(FornecedorData fornecedor)
         {
             //FAZER : Precisa validar se o documento ja existe no banco, se existir retornar erro
-            return _fornecedorRepository.InsertFornec(fornecedor).Result;
+            return _fornecedorRepository.InsertFornec(fornecedor);
         }
 
         public bool UpdateFornec(FornecedorData fornecedor)

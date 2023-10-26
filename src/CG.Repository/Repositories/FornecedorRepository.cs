@@ -12,7 +12,7 @@ namespace CG.Repository.Repositories
             _queryBaseRepository = new QueryBaseRepository();
         }
 
-        public async Task<FornecedorData> GetLastFornec()
+        public FornecedorData GetLastFornec()
         {
             var query = "SELECT * FROM `fornecedor` ORDER BY ID DESC LIMIT 1";
 
@@ -21,7 +21,7 @@ namespace CG.Repository.Repositories
             return result.FirstOrDefault();
         }
 
-        public async Task<bool> InsertFornec(FornecedorData fornecedor)
+        public bool InsertFornec(FornecedorData fornecedor)
         {
             string insertQuery = "INSERT INTO fornecedor (Razao, Fantasia, DocNum, Rua, Num, Cep, Uf, Cidade, Bairro, Contato, Tel1, Tel2, Email, Site, TipoCont, Ag, Op, Ct, Pix, Obs, Status) " +
                       "VALUES (@Razao, @Fantasia, @DocNum, @Rua, @Num, @Cep, @Uf, @Cidade, @Bairro, @Contato, @Tel1, @Tel2, @Email, @Site, @TipoCont, @Ag, @Op, @Ct, @Pix, @Obs, @Status)";
@@ -75,7 +75,7 @@ namespace CG.Repository.Repositories
             command.Parameters.AddWithValue("@Ct", fornecedor.Ct);
             command.Parameters.AddWithValue("@Pix", fornecedor.Pix);
             command.Parameters.AddWithValue("@Obs", fornecedor.Obs);
-            command.Parameters.AddWithValue("@Status", fornecedor.Status);
+            command.Parameters.AddWithValue("@Status", fornecedor.Status.ToString());
 
             return command;
         }
