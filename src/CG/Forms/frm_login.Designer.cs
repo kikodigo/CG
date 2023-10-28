@@ -39,6 +39,8 @@
             lbl_cadastro = new Label();
             pbx_senha = new PictureBox();
             pbx_user = new PictureBox();
+            label1 = new Label();
+            lbl_StatusDb = new Label();
             pnl_header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pbx_senha).BeginInit();
@@ -181,12 +183,32 @@
             pbx_user.TabIndex = 14;
             pbx_user.TabStop = false;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 554);
+            label1.Name = "label1";
+            label1.Size = new Size(57, 15);
+            label1.TabIndex = 16;
+            label1.Text = "StatusDB:";
+            // 
+            // lbl_StatusDb
+            // 
+            lbl_StatusDb.AutoSize = true;
+            lbl_StatusDb.Location = new Point(75, 554);
+            lbl_StatusDb.Name = "lbl_StatusDb";
+            lbl_StatusDb.Size = new Size(78, 15);
+            lbl_StatusDb.TabIndex = 17;
+            lbl_StatusDb.Text = "Carregando...";
+            // 
             // frm_login
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
             ClientSize = new Size(401, 578);
+            Controls.Add(lbl_StatusDb);
+            Controls.Add(label1);
             Controls.Add(pbx_senha);
             Controls.Add(pbx_user);
             Controls.Add(lbl_cadastro);
@@ -205,7 +227,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CG - Login";
             FormClosing += frm_login_FormClosing;
-            Load += frm_login_Load;
             pnl_header.ResumeLayout(false);
             pnl_header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -226,6 +247,8 @@
         private PictureBox pbx_senha;
         private Label lbl_headerText;
         private PictureBox pictureBox1;
+        private Label label1;
+        private Label lbl_StatusDb;
     }
 }
 

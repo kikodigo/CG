@@ -11,17 +11,17 @@ namespace CG.Core.Services
             _loginRepository = new LoginRepository();
         }
 
-        public async Task<string> connectDB()
+        public bool StatusDb()
         {
-            var result = await _loginRepository.Login("", "");
+            var result = _loginRepository.StatusDb();
 
-            return "";
+            return result == "Open";
         }
 
 
-        public async Task<bool> Login(string username, string password)
+        public bool Login(string username, string password)
         {
-            var result = await _loginRepository.Login(username, password);
+            var result = _loginRepository.Login(username, password);
 
             return !string.IsNullOrEmpty(result);
         }

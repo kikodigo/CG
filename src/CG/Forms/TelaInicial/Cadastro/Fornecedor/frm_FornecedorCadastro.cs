@@ -1,6 +1,7 @@
 using CG.Core.Services;
 using CG.Domain.Data;
 using CG.Domain.Enum;
+using CG.Domain.Response;
 using CG.Util;
 using CpfCnpjLibrary;
 using System.Data;
@@ -39,7 +40,7 @@ namespace CG
         private void Frm_FornecedorCadastro_Load(object sender, EventArgs e)
         {
             UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
-            var firstFornec = _fornecedorServices.GetLastFornecAsync().Result;
+            var firstFornec = _fornecedorServices.GetLastFornecAsync();
             UtilForms.PreencherCampos(this, firstFornec);
         }
 
@@ -58,10 +59,10 @@ namespace CG
 
             if (!chx_editar.Checked)
             {
-                var lastFornec = _fornecedorServices.GetLastFornecAsync().Result;
+                var lastFornec = _fornecedorServices.GetLastFornecAsync();
                 UtilForms.PreencherCampos(this, lastFornec);
             }
-            
+
             chx_editar.Checked = false;
         }
 
@@ -84,7 +85,7 @@ namespace CG
         }
 
         private void Tsm_editar_Click(object sender, EventArgs e)
-        {            
+        {
             UtilForms.StatusControles(this, true);
             UtilForms.StatusItensMenu(menuStrip1.Items, false);
             chx_editar.Checked = true;
@@ -95,18 +96,19 @@ namespace CG
             if (UtilForms.ValidarDoc(txt_DocNum.Text))
             {
                 var fornec = UtilForms.GerarObjeto<FornecedorData>(this);
-                bool result;
+                var result = new GenericResponse<FornecedorData>();
 
-                if (chx_editar.Checked) 
+                if (chx_editar.Checked)
                 {
-                    result = _fornecedorServices.UpdateFornec(fornec);
+                    result.Data = _fornecedorServices.UpdateFornec(fornec);
+                    //precisa melhorar os retornos e inserir os erros dentro da propriedade "has error"
                 }
                 else
                 {
                     result = _fornecedorServices.InsertFornec(fornec);
                 }
-                
-                if (result) 
+
+                if (!result.HasError)
                 {
                     UtilForms.StatusControles(this, false);
                     UtilForms.StatusItensMenu(menuStrip1.Items, true);
@@ -118,7 +120,6 @@ namespace CG
                       $"{(chx_editar.Checked ? "edição" : "inserção")}" +
                       $"do fornecedor.");
                 }
-
             }
             else
             {

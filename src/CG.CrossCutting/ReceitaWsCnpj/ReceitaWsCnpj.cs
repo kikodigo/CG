@@ -1,6 +1,5 @@
 ﻿using CG.Domain.Data;
 using CG.Domain.Util;
-using System.Text.Json;
 
 namespace CG.CrossCutting.SpeedIOCnpj
 {

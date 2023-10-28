@@ -8,8 +8,35 @@ namespace CG
 
         public frm_login()
         {
-            _LoginServices = new LoginServices();
             InitializeComponent();
+            _LoginServices = new LoginServices();
+            StatusDb();
+
+        }
+
+        private void StatusDb()
+        {
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+
+                var result = _LoginServices.StatusDb();
+
+                this.Invoke((MethodInvoker)delegate
+                {
+                    if (result)
+                    {
+                        lbl_StatusDb.Text = "Conectado!";
+                        lbl_StatusDb.ForeColor = Color.DarkGreen;
+                    }
+                    else
+                    {
+                        lbl_StatusDb.Text = "Erro!";
+                        lbl_StatusDb.ForeColor = Color.DarkRed;
+                    }
+                });
+
+            }).Start();
         }
 
         private void btn_entrar_ClickAsync(object sender, EventArgs e)
@@ -29,7 +56,7 @@ namespace CG
 
                 lbl_erro.Text = "";
 
-                var loginStatus = _LoginServices.Login(txt_username.Text, txt_senha.Text).Result;
+                var loginStatus = _LoginServices.Login(txt_username.Text, txt_senha.Text);
 
                 if (loginStatus)
                 {
@@ -40,7 +67,6 @@ namespace CG
                 }
                 else
                 {
-
                     lbl_erro.Text = "Nome de usuário ou senha inválidos!";
                 }
             }
@@ -126,11 +152,6 @@ namespace CG
             {
                 Application.Exit();
             }
-        }
-
-        private void frm_login_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

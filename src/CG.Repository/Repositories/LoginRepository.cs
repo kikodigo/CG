@@ -13,8 +13,7 @@ namespace CG.Repository.Repositories
             _queryBaseRepository = new QueryBaseRepository();
         }
 
-
-        public async Task<string> Login(string username, string password)
+        public string Login(string username, string password)
         {
             var encryptedPassword = EncryptPassword(new UTF8Encoding().GetBytes(password));
 
@@ -24,6 +23,11 @@ namespace CG.Repository.Repositories
 
             return result.FirstOrDefault();
 
+        }
+
+        public string StatusDb()
+        {
+            return _queryBaseRepository.StatusDb();
         }
 
         #region PrivateMethod

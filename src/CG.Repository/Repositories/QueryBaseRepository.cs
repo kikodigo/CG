@@ -12,6 +12,7 @@ namespace CG.Repository.Repositories
             _mySqlConnection = new MySqlConnection(Environment.GetEnvironmentVariable("csSecretGest"));
         }
 
+
         public List<T> MySqlByQuery<T>(string query)
         {
             IEnumerable<T> queryResult = new List<T>();
@@ -50,6 +51,26 @@ namespace CG.Repository.Repositories
             {
                 //GerarLog
                 return false;
+            }
+            finally
+            {
+                _mySqlConnection.Close();
+            }
+        }
+
+        public string StatusDb()
+        {
+            try
+            {
+                _mySqlConnection.Open();
+
+                var status = _mySqlConnection.State.ToString();
+
+                return status;
+            }
+            catch (Exception)
+            {
+                return "Close";
             }
             finally
             {

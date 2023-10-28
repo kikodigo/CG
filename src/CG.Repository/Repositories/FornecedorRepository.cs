@@ -51,6 +51,15 @@ namespace CG.Repository.Repositories
             return result;
         }
 
+        public FornecedorData GetFornecedorByDocNum(string docNum)
+        {
+            var query = $"SELECT * FROM fornecedor WHERE DocNum = '{docNum}'";
+
+            var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
+
+            return result.FirstOrDefault();
+        }
+
         private MySqlCommand Mapper(FornecedorData fornecedor, string query)
         {
             var command = new MySqlCommand(query);
