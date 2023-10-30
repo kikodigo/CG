@@ -101,7 +101,7 @@ namespace CG
                 if (chx_editar.Checked)
                 {
                     result.Data = _fornecedorServices.UpdateFornec(fornec);
-                    //precisa melhorar os retornos e inserir os erros dentro da propriedade "has error"
+                    //precisa melhorar os retornos e inserir os erros dentro da propriedade "has error "
                 }
                 else
                 {
