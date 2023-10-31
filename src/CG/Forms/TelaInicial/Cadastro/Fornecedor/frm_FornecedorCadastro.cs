@@ -105,7 +105,7 @@ namespace CG
                 }
                 else
                 {
-                    result = _fornecedorServices.InsertFornec(fornec);
+                    result = _fornecedorServices.InsertFornec(fornec);   
                 }
 
                 if (!result.HasError)
