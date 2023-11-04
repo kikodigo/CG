@@ -1,4 +1,5 @@
 ﻿using CG.Domain.Data;
+using CG.Repository.Constants;
 using MySql.Data.MySqlClient;
 
 namespace CG.Repository.Repositories
@@ -6,6 +7,8 @@ namespace CG.Repository.Repositories
     public class FornecedorRepository
     {
         private readonly QueryBaseRepository _queryBaseRepository;
+
+        private const string TABLE = "fornecedor";
 
         public FornecedorRepository()
         {
@@ -15,6 +18,33 @@ namespace CG.Repository.Repositories
         public FornecedorData GetLastFornec()
         {
             var query = "SELECT * FROM `fornecedor` ORDER BY ID DESC LIMIT 1";
+
+            var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
+
+            return result.FirstOrDefault();
+        }
+
+        public FornecedorData GetNextFornecById(string id)
+        {
+            var query = string.Format($"{QueryConstants.QUERY_NEXT_BY_ID}", TABLE, id);
+
+            var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
+
+            return result.FirstOrDefault();
+        }
+
+        public FornecedorData GetPreviousFornecById(string id)
+        {
+            var query = string.Format($"{QueryConstants.QUERY_PREVIUS_BY_ID}", TABLE, id);
+
+            var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
+
+            return result.FirstOrDefault();
+        }
+
+        public FornecedorData GetFornecedorByDocNum(string docNum)
+        {
+            var query = $"SELECT * FROM fornecedor WHERE DocNum = '{docNum}'";
 
             var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 
@@ -49,15 +79,6 @@ namespace CG.Repository.Repositories
             var result = _queryBaseRepository.InsertOrUpdateValueOnMySql(commandMapped);
 
             return result;
-        }
-
-        public FornecedorData GetFornecedorByDocNum(string docNum)
-        {
-            var query = $"SELECT * FROM fornecedor WHERE DocNum = '{docNum}'";
-
-            var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
-
-            return result.FirstOrDefault();
         }
 
         private MySqlCommand Mapper(FornecedorData fornecedor, string query)

@@ -25,6 +25,7 @@ namespace CG.Repository.Repositories
             if (_mySqlConnection.State == ConnectionState.Open)
                 _mySqlConnection.Close();
         }
+
         public List<T> MySqlByQuery<T>(string query)
         {
             IEnumerable<T> queryResult = new List<T>();
@@ -70,23 +71,23 @@ namespace CG.Repository.Repositories
             }
         }
 
-        public string StatusDb()
-        {
+        public ConnectionState StatusDb()
+        {
             try
             {
-                _mySqlConnection.Open();
+                OpenConnection();
 
-                var status = _mySqlConnection.State.ToString();
+                var status = _mySqlConnection.State;
 
                 return status;
             }
             catch (Exception)
             {
-                return "Close";
+                return ConnectionState.Closed;
             }
             finally
             {
-                _mySqlConnection.Close();
+                CloseConnection();
             }
         }
     }

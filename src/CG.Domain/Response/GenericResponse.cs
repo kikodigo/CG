@@ -4,6 +4,6 @@
     {
         public T Data { get; set; }
         public bool HasError { get; set; }
-        public dynamic Errors { get; set; }
+        public IEnumerable<string> Errors { get; set; }
     }
 }
