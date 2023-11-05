@@ -58,10 +58,9 @@ namespace CG.Repository.Repositories
 
             var commandMapped = Mapper(fornecedor, insertQuery);
 
-            var result = _queryBaseRepository.InsertOrUpdateValueOnMySql(commandMapped);
+            var result = _queryBaseRepository.InsertUpdateDeleteValueOnMySql(commandMapped);
 
             return result;
-
         }
 
         public bool UpdateFornec(FornecedorData fornecedor)
@@ -76,7 +75,7 @@ namespace CG.Repository.Repositories
 
             var commandMapped = Mapper(fornecedor, updateQuery);
 
-            var result = _queryBaseRepository.InsertOrUpdateValueOnMySql(commandMapped);
+            var result = _queryBaseRepository.InsertUpdateDeleteValueOnMySql(commandMapped);
 
             return result;
         }

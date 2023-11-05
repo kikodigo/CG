@@ -13,7 +13,6 @@ namespace CG.Repository.Repositories
             _mySqlConnection = new MySqlConnection(Environment.GetEnvironmentVariable("csSecretGest"));
         }
 
-
         private void OpenConnection()
         {
             if (_mySqlConnection.State == ConnectionState.Closed) 
@@ -48,12 +47,12 @@ namespace CG.Repository.Repositories
             }
         }
 
-        public bool InsertOrUpdateValueOnMySql(MySqlCommand command)
+        public bool InsertUpdateDeleteValueOnMySql(MySqlCommand command)
         {
-            command.Connection = _mySqlConnection;
-
             try
             {
+                command.Connection = _mySqlConnection;
+
                 OpenConnection();
 
                 var rowsAffetct = command.ExecuteNonQuery();
@@ -88,7 +87,7 @@ namespace CG.Repository.Repositories
             finally
             {
                 CloseConnection();
-            }
+            }
         }
     }
 }

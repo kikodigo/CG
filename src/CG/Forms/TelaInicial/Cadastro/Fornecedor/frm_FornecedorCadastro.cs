@@ -6,7 +6,6 @@ using CG.Util;
 using CpfCnpjLibrary;
 using System.Data;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
 namespace CG
 {
@@ -101,8 +100,7 @@ namespace CG
 
                 if (chx_editar.Checked)
                 {
-                    result.Data = _fornecedorServices.UpdateFornec(fornec);
-                    //precisa melhorar os retornos e inserir os erros dentro da propriedade "has error"
+                    result = _fornecedorServices.UpdateFornec(fornec);
                 }
                 else
                 {
@@ -111,13 +109,11 @@ namespace CG
 
                 if (result.HasError)
                 {
-                    MessageBox.Show($"Algum problema ocorreu durante a" +
-                      $"{(chx_editar.Checked ? "edi��o" : "inser��o")}" +
+                    MsgBoxUtil.MsgBoxError($"Algum problema ocorreu durante a" +
+                      $"{(chx_editar.Checked ? "edição" : "inserção")}" +
                       $"do fornecedor. \n" +
                       $"Error: {string.Join(" - ", result.Errors)}",
-                      "ERRO",
-                      MessageBoxButtons.OK,
-                      MessageBoxIcon.Error);
+                      "ERRO");
                 }
                 else
                 {
@@ -128,10 +124,8 @@ namespace CG
             }
             else
             {
-                MessageBox.Show($"{lbl_DocNum.Text} esta invalido",
-                    "Documento inalido",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
+                    "Documento inalido");
             }
         }
 
@@ -141,10 +135,8 @@ namespace CG
 
             if (previousFornec.HasError) 
             {
-                MessageBox.Show(string.Join(" - ", previousFornec.Errors),
-                    "Fornecedor",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MsgBoxUtil.MsgBoxInformation(string.Join(" - ", previousFornec.Errors),
+                    "Fornecedor");
             }
             else
             {
@@ -159,10 +151,8 @@ namespace CG
 
             if (nextFornec.HasError)
             {
-                MessageBox.Show(string.Join(" - ", nextFornec.Errors),
-                    "Fornecedor",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                MsgBoxUtil.MsgBoxInformation(string.Join(" - ", nextFornec.Errors),
+                    "Fornecedor");
             }
             else
             {
@@ -183,10 +173,8 @@ namespace CG
             {
                 if (!Cnpj.Validar(txt_DocNum.Text))
                 {
-                    MessageBox.Show($"{lbl_DocNum.Text} esta invalido",
-                                      "Documento inalido",
-                                      MessageBoxButtons.OK,
-                                      MessageBoxIcon.Error);
+                    MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
+                                      "Documento inalido");
 
                     txt_DocNum.Focus();
                 }
@@ -195,6 +183,7 @@ namespace CG
 
         private void tsm_Excluir_Click(object sender, EventArgs e)
         {
+            MsgBoxUtil.MsgBoxInformation("Teste","Titulo");
             //Fazer: Verificar em outras tabelas se ja existe utiliza��o desse fornecedor, se sim. apenas inativar
         }
     }
