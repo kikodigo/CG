@@ -6,6 +6,7 @@ using CG.Util;
 using CpfCnpjLibrary;
 using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CG
 {
@@ -101,24 +102,28 @@ namespace CG
                 if (chx_editar.Checked)
                 {
                     result.Data = _fornecedorServices.UpdateFornec(fornec);
-                    //precisa melhorar os retornos e inserir os erros dentro da propriedade "has error "
+                    //precisa melhorar os retornos e inserir os erros dentro da propriedade "has error"
                 }
                 else
                 {
                     result = _fornecedorServices.InsertFornec(fornec);   
                 }
 
-                if (!result.HasError)
+                if (result.HasError)
+                {
+                    MessageBox.Show($"Algum problema ocorreu durante a" +
+                      $"{(chx_editar.Checked ? "ediï¿½ï¿½o" : "inserï¿½ï¿½o")}" +
+                      $"do fornecedor. \n" +
+                      $"Error: {string.Join(" - ", result.Errors)}",
+                      "ERRO",
+                      MessageBoxButtons.OK,
+                      MessageBoxIcon.Error);
+                }
+                else
                 {
                     UtilForms.StatusControles(this, false);
                     UtilForms.StatusItensMenu(menuStrip1.Items, true);
                     chx_editar.Checked = false;
-                }
-                else
-                {
-                    MessageBox.Show($"Algum problema ocorreu durante a" +
-                      $"{(chx_editar.Checked ? "edição" : "inserção")}" +
-                      $"do fornecedor.");
                 }
             }
             else
@@ -132,12 +137,37 @@ namespace CG
 
         private void Tsm_anterior_Click(object sender, EventArgs e)
         {
+            var previousFornec = _fornecedorServices.GetPreviousFornecById(txt_Id.Text);
+
+            if (previousFornec.HasError) 
+            {
+                MessageBox.Show(string.Join(" - ", previousFornec.Errors),
+                    "Fornecedor",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                UtilForms.PreencherCampos(this, previousFornec.Data);
+            }
 
         }
 
         private void Tsm_proximo_Click(object sender, EventArgs e)
         {
+            var nextFornec = _fornecedorServices.GetNextFornecById(txt_Id.Text);
 
+            if (nextFornec.HasError)
+            {
+                MessageBox.Show(string.Join(" - ", nextFornec.Errors),
+                    "Fornecedor",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            else
+            {
+                UtilForms.PreencherCampos(this, nextFornec.Data);
+            }
         }
 
         private void Tsm_pesquisa_Click(object sender, EventArgs e)
@@ -157,6 +187,7 @@ namespace CG
                                       "Documento inalido",
                                       MessageBoxButtons.OK,
                                       MessageBoxIcon.Error);
+
                     txt_DocNum.Focus();
                 }
             }
@@ -164,7 +195,7 @@ namespace CG
 
         private void tsm_Excluir_Click(object sender, EventArgs e)
         {
-            //Fazer: Verificar em outras tabelas se ja existe utilização desse fornecedor, se sim. apenas inativar
+            //Fazer: Verificar em outras tabelas se ja existe utilizaï¿½ï¿½o desse fornecedor, se sim. apenas inativar
         }
     }
 }

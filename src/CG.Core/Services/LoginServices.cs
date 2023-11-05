@@ -15,7 +15,7 @@ namespace CG.Core.Services
         {
             var result = _loginRepository.StatusDb();
 
-            return result == "Open";
+            return result == System.Data.ConnectionState.Open;
         }
 
 

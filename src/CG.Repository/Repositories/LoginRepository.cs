@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Data;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace CG.Repository.Repositories
@@ -25,7 +26,7 @@ namespace CG.Repository.Repositories
 
         }
 
-        public string StatusDb()
+        public ConnectionState StatusDb()
         {
             return _queryBaseRepository.StatusDb();
         }

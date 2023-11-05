@@ -1,5 +1,6 @@
-﻿using Dapper;
+using Dapper;
 using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace CG.Repository.Repositories
 {
@@ -13,13 +14,25 @@ namespace CG.Repository.Repositories
         }
 
 
+        private void OpenConnection()
+        {
+            if (_mySqlConnection.State == ConnectionState.Closed) 
+                _mySqlConnection.Open();
+        }
+
+        private void CloseConnection() 
+        {
+            if (_mySqlConnection.State == ConnectionState.Open)
+                _mySqlConnection.Close();
+        }
+
         public List<T> MySqlByQuery<T>(string query)
         {
             IEnumerable<T> queryResult = new List<T>();
 
             try
             {
-                _mySqlConnection.Open();
+               OpenConnection();
 
                 queryResult = _mySqlConnection.Query<T>(query);
 
@@ -31,7 +44,7 @@ namespace CG.Repository.Repositories
             }
             finally
             {
-                _mySqlConnection.Close();
+                CloseConnection();
             }
         }
 
@@ -41,7 +54,7 @@ namespace CG.Repository.Repositories
 
             try
             {
-                _mySqlConnection.Open();
+                OpenConnection();
 
                 var rowsAffetct = command.ExecuteNonQuery();
 
@@ -54,28 +67,28 @@ namespace CG.Repository.Repositories
             }
             finally
             {
-                _mySqlConnection.Close();
+                CloseConnection();
             }
         }
 
-        public string StatusDb()
+        public ConnectionState StatusDb()
         {
             try
             {
-                _mySqlConnection.Open();
+                OpenConnection();
 
-                var status = _mySqlConnection.State.ToString();
+                var status = _mySqlConnection.State;
 
                 return status;
             }
             catch (Exception)
             {
-                return "Close";
+                return ConnectionState.Closed;
             }
             finally
             {
-                _mySqlConnection.Close();
-            }
+                CloseConnection();
+            }
         }
     }
 }

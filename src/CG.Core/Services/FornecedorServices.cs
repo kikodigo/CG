@@ -2,6 +2,7 @@
 using CG.Domain.Response;
 using CG.Repository.Repositories;
 using MySqlX.XDevAPI.Common;
+using ZstdSharp.Unsafe;
 
 namespace CG.Core.Services
 {
@@ -19,34 +20,84 @@ namespace CG.Core.Services
             return _fornecedorRepository.GetLastFornec();
         }
 
+        public GenericResponse<FornecedorData> GetNextFornecById(string id)
+        {
+            var resultRepository = _fornecedorRepository.GetNextFornecById(id);
+
+            var result = new GenericResponse<FornecedorData>();
+
+            if (resultRepository is not null)
+            {
+                result.Data = resultRepository;
+                result.HasError = false;
+            }
+            else
+            {
+                result.HasError = true;
+                result.Errors = new List<string>() 
+                {
+                    "Não existe registro seguinte."
+                };
+            }
+
+            return result;
+        }
+
+        public GenericResponse<FornecedorData> GetPreviousFornecById(string id)
+        {
+            var resultRepository = _fornecedorRepository.GetPreviousFornecById(id);
+
+            var result = new GenericResponse<FornecedorData>();
+
+            if (resultRepository is not null)
+            {
+                result.Data = resultRepository;
+                result.HasError = false;
+            }
+            else
+            {
+                result.HasError = true;
+                result.Errors = new List<string>()
+                {
+                    "Não existe registro anterior."
+                };
+            }
+
+            return result;
+        }
+
         public GenericResponse<FornecedorData> InsertFornec(FornecedorData fornecedor)
         {
             var existFornec = _fornecedorRepository.GetFornecedorByDocNum(fornecedor.DocNum);
-            bool result = false;
 
-            if (existFornec != null)
+            var response = new GenericResponse<FornecedorData>();
+
+            if (existFornec == null)
             {
-                result = _fornecedorRepository.InsertFornec(fornecedor);
+                response.HasError = !_fornecedorRepository.InsertFornec(fornecedor);
             }
-
-
-            var response = new GenericResponse<FornecedorData>() 
+            else
             {
-                Data = result,
-                HasError = false
-            };
+                response.Errors = new List<string>()
+                {
+                    $"Ja existe um fornecedor cadastrao com esse documento. \n" +
+                        $"RazãoSocial: {existFornec.Razao}"
+                };
+                response.HasError = true;
+                response.Data = existFornec;
+            }
 
             return response;
         }
 
-        public GenericResponse<bool> UpdateFornec(FornecedorData fornecedor)
+        public GenericResponse<FornecedorData> UpdateFornec(FornecedorData fornecedor)
         {
             var resultRepository = _fornecedorRepository.UpdateFornec(fornecedor);
 
-            var response = new GenericResponse<bool>() 
-            { 
-                Data = resultRepository,
-                HasError = false 
+            var response = new GenericResponse<FornecedorData>()
+            {
+                Data = fornecedor,
+                HasError = !resultRepository
             };
 
             return response;
