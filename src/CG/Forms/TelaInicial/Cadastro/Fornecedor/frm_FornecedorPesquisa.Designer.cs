@@ -32,18 +32,11 @@
             cbx_coluna = new ComboBox();
             txt_referencia = new TextBox();
             dgv_FornecedorPesquisa = new DataGridView();
-            COD = new DataGridViewTextBoxColumn();
-            Nome = new DataGridViewTextBoxColumn();
-            Tel1 = new DataGridViewTextBoxColumn();
-            Tel2 = new DataGridViewTextBoxColumn();
-            cnpj = new DataGridViewTextBoxColumn();
-            email = new DataGridViewTextBoxColumn();
-            txt_destino = new TextBox();
             btn_Limpar = new Button();
             label2 = new Label();
             label1 = new Label();
             menuStrip1 = new MenuStrip();
-            txt_usuario = new ToolStripTextBox();
+            txt_Usuario = new ToolStripTextBox();
             Usuario = new ToolStripMenuItem();
             lbl_VlPermissao = new Label();
             ((System.ComponentModel.ISupportInitialize)dgv_FornecedorPesquisa).BeginInit();
@@ -59,6 +52,7 @@
             cbx_coluna.Name = "cbx_coluna";
             cbx_coluna.Size = new Size(156, 28);
             cbx_coluna.TabIndex = 0;
+            cbx_coluna.SelectedIndexChanged += cbx_coluna_SelectedIndexChanged;
             // 
             // txt_referencia
             // 
@@ -74,86 +68,22 @@
             // 
             // dgv_FornecedorPesquisa
             // 
-            dgv_FornecedorPesquisa.AllowUserToAddRows = false;
+            dgv_FornecedorPesquisa.AccessibleRole = AccessibleRole.None;
             dgv_FornecedorPesquisa.AllowUserToDeleteRows = false;
             dgv_FornecedorPesquisa.AllowUserToResizeColumns = false;
             dgv_FornecedorPesquisa.AllowUserToResizeRows = false;
+            dgv_FornecedorPesquisa.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader;
             dgv_FornecedorPesquisa.BackgroundColor = Color.DimGray;
             dgv_FornecedorPesquisa.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_FornecedorPesquisa.Columns.AddRange(new DataGridViewColumn[] { COD, Nome, Tel1, Tel2, cnpj, email });
             dgv_FornecedorPesquisa.Location = new Point(17, 143);
             dgv_FornecedorPesquisa.Margin = new Padding(4, 5, 4, 5);
             dgv_FornecedorPesquisa.Name = "dgv_FornecedorPesquisa";
             dgv_FornecedorPesquisa.ReadOnly = true;
             dgv_FornecedorPesquisa.RowHeadersVisible = false;
             dgv_FornecedorPesquisa.RowHeadersWidth = 51;
-            dgv_FornecedorPesquisa.Size = new Size(1151, 878);
+            dgv_FornecedorPesquisa.Size = new Size(1151, 830);
             dgv_FornecedorPesquisa.TabIndex = 2;
-            dgv_FornecedorPesquisa.CellContentClick += Dgv_FornecedorPesquisa_CellContentClick;
             dgv_FornecedorPesquisa.CellDoubleClick += Dgv_FornecedorPesquisa_CellDoubleClick;
-            // 
-            // COD
-            // 
-            COD.DataPropertyName = "cod";
-            COD.HeaderText = "Codigo";
-            COD.MinimumWidth = 6;
-            COD.Name = "COD";
-            COD.ReadOnly = true;
-            COD.Width = 80;
-            // 
-            // Nome
-            // 
-            Nome.DataPropertyName = "nome";
-            Nome.HeaderText = "Nome";
-            Nome.MinimumWidth = 6;
-            Nome.Name = "Nome";
-            Nome.ReadOnly = true;
-            Nome.Width = 180;
-            // 
-            // Tel1
-            // 
-            Tel1.DataPropertyName = "tel1";
-            Tel1.HeaderText = "Telefone 1";
-            Tel1.MinimumWidth = 6;
-            Tel1.Name = "Tel1";
-            Tel1.ReadOnly = true;
-            Tel1.Width = 105;
-            // 
-            // Tel2
-            // 
-            Tel2.DataPropertyName = "tel1";
-            Tel2.HeaderText = "Telefone 2";
-            Tel2.MinimumWidth = 6;
-            Tel2.Name = "Tel2";
-            Tel2.ReadOnly = true;
-            Tel2.Width = 105;
-            // 
-            // cnpj
-            // 
-            cnpj.DataPropertyName = "doc";
-            cnpj.HeaderText = "CNPJ / CPF";
-            cnpj.MinimumWidth = 6;
-            cnpj.Name = "cnpj";
-            cnpj.ReadOnly = true;
-            cnpj.Width = 175;
-            // 
-            // email
-            // 
-            email.DataPropertyName = "email";
-            email.HeaderText = "E-Mail";
-            email.MinimumWidth = 6;
-            email.Name = "email";
-            email.ReadOnly = true;
-            email.Width = 195;
-            // 
-            // txt_destino
-            // 
-            txt_destino.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_destino.Location = new Point(909, 86);
-            txt_destino.Margin = new Padding(4, 5, 4, 5);
-            txt_destino.Name = "txt_destino";
-            txt_destino.Size = new Size(132, 24);
-            txt_destino.TabIndex = 3;
             // 
             // btn_Limpar
             // 
@@ -178,7 +108,6 @@
             label2.Size = new Size(79, 20);
             label2.TabIndex = 8;
             label2.Text = "Referencia";
-            label2.Click += Label2_Click;
             // 
             // label1
             // 
@@ -194,7 +123,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { txt_usuario, Usuario });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { txt_Usuario, Usuario });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(8, 3, 0, 3);
@@ -203,12 +132,12 @@
             menuStrip1.Text = "menuStrip1";
             menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
-            // txt_usuario
+            // txt_Usuario
             // 
-            txt_usuario.Alignment = ToolStripItemAlignment.Right;
-            txt_usuario.Enabled = false;
-            txt_usuario.Name = "txt_usuario";
-            txt_usuario.Size = new Size(132, 27);
+            txt_Usuario.Alignment = ToolStripItemAlignment.Right;
+            txt_Usuario.Enabled = false;
+            txt_Usuario.Name = "txt_Usuario";
+            txt_Usuario.Size = new Size(132, 27);
             // 
             // Usuario
             // 
@@ -234,12 +163,11 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
-            ClientSize = new Size(1180, 1035);
+            ClientSize = new Size(1180, 996);
             Controls.Add(lbl_VlPermissao);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btn_Limpar);
-            Controls.Add(txt_destino);
             Controls.Add(dgv_FornecedorPesquisa);
             Controls.Add(txt_referencia);
             Controls.Add(cbx_coluna);
@@ -247,8 +175,8 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Margin = new Padding(4, 5, 4, 5);
-            MaximumSize = new Size(1198, 1082);
-            MinimumSize = new Size(1198, 1018);
+            MaximumSize = new Size(1198, 1060);
+            MinimumSize = new Size(1198, 1000);
             Name = "frm_FornecedorPesquisa";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pesquisa de Fornecedor";
@@ -265,18 +193,11 @@
         private ComboBox cbx_coluna;
         private TextBox txt_referencia;
         private DataGridView dgv_FornecedorPesquisa;
-        private TextBox txt_destino;
         private Button btn_Limpar;
         private Label label2;
         private Label label1;
-        private DataGridViewTextBoxColumn COD;
-        private DataGridViewTextBoxColumn Nome;
-        private DataGridViewTextBoxColumn Tel1;
-        private DataGridViewTextBoxColumn Tel2;
-        private DataGridViewTextBoxColumn cnpj;
-        private DataGridViewTextBoxColumn email;
         private MenuStrip menuStrip1;
-        private ToolStripTextBox txt_usuario;
+        private ToolStripTextBox txt_Usuario;
         private ToolStripMenuItem Usuario;
         private Label lbl_VlPermissao;
     }

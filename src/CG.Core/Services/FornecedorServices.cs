@@ -3,6 +3,7 @@ using CG.Domain.Response;
 using CG.Repository.Repositories;
 using MySqlX.XDevAPI.Common;
 using ZstdSharp.Unsafe;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CG.Core.Services
 {
@@ -34,7 +35,7 @@ namespace CG.Core.Services
             else
             {
                 result.HasError = true;
-                result.Errors = new List<string>() 
+                result.Errors = new List<string>()
                 {
                     "Não existe registro seguinte."
                 };
@@ -74,7 +75,22 @@ namespace CG.Core.Services
 
             if (existFornec == null)
             {
-                response.HasError = !_fornecedorRepository.InsertFornec(fornecedor);
+                var rowsAffected = _fornecedorRepository.InsertFornec(fornecedor);
+
+                if (rowsAffected > 0)
+                {
+                    response.HasError = false;
+                }
+                else
+                {
+                    response.HasError = true;
+                    response.Errors = new List<string>()
+                    {
+                       "Correu algum erro na inserção do fornecedor, verifique se ele foi inserido.\n" +
+                       "Feche a tela do fornecedor e abra novamente."
+                    };
+                }
+
             }
             else
             {
@@ -92,15 +108,86 @@ namespace CG.Core.Services
 
         public GenericResponse<FornecedorData> UpdateFornec(FornecedorData fornecedor)
         {
-            var resultRepository = _fornecedorRepository.UpdateFornec(fornecedor);
+            var rowsAffected = _fornecedorRepository.UpdateFornec(fornecedor);
 
-            var response = new GenericResponse<FornecedorData>()
+            var response = new GenericResponse<FornecedorData>();
+
+            if (rowsAffected > 0)
             {
-                Data = fornecedor,
-                HasError = !resultRepository
-            };
+                response.Data = fornecedor;
+                response.HasError = false;
+            }
+            else
+            {
+                response.HasError = true;
+                response.Errors = new List<string>()
+                {
+                    "Correu algum erro no update do fornecedor, verifique se ele foi inserido.\n" +
+                    "Feche a tela do fornecedor e abra novamente."
+                };
+            }
 
             return response;
+        }
+
+        public GenericResponse<bool> DeleteFornec(FornecedorData fornecedor)
+        {
+            var existFornec = _fornecedorRepository.GetFornecedorByDocNum(fornecedor.DocNum);
+
+            var response = new GenericResponse<bool>();
+
+            if (existFornec is not null)
+            {
+                var rowsAffected = _fornecedorRepository.DeletFornecById(fornecedor.Id.ToString());
+
+                if (rowsAffected > 0)
+                {
+                    response.HasError = false;
+                }
+                else
+                {
+                    response.HasError = true;
+                    response.Errors = new List<string>()
+                    {
+                        "Correu algum erro no update do fornecedor, verifique se ele foi inserido.\n" +
+                        "Feche a tela do fornecedor e abra novamente."
+                    };
+                }
+            }
+            else
+            {
+                response.HasError = true;
+                response.Errors = new List<string>()
+                {
+                    "Não encontramos o fornecedor no banco para ser excluido,\n" +
+                    "Por favor, entre em contato com administrador"
+                };
+            }
+
+            return response;
+        }
+
+        public GenericResponseList<FornecedorData> GetAllFornec() 
+        {
+            var response = new GenericResponseList<FornecedorData>();
+
+            var listFornec = _fornecedorRepository.GetAllFornecedor();
+
+            if (listFornec.Any())
+            {
+                response.Data = listFornec;
+                response.HasError = false;
+            }
+            else
+            {
+                response.HasError = true;
+                response.Errors = new List<string>()
+                {
+                    "Nenhuma informação foi localizada"
+                };
+            }
+
+            return response;   
         }
     }
 }

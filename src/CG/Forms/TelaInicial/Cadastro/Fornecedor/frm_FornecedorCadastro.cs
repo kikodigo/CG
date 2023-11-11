@@ -6,6 +6,7 @@ using CG.Util;
 using CpfCnpjLibrary;
 using System.Data;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 
 namespace CG
 {
@@ -24,24 +25,30 @@ namespace CG
             cbx_Status.DataSource = Enum.GetValues(typeof(StatusEnum));
         }
 
-        public frm_FornecedorCadastro(string valor, string usuario)
+        public frm_FornecedorCadastro(string usuario,string id)
         {
             InitializeComponent();
-            DataTable resultado = new DataTable();
-            //dadosql = string.Format("SELECT * FROM `fornecedor` WHERE `cod` = '{0}'", valor);
-            //resultado = mConn.LeituraLinha(dadosql);
-            //------
+            _fornecedorServices = new FornecedorServices();
+            _httpExternalQueries = new HttpExternalQueries();
 
-            //preencher(resultado);
-            this.TopMost = true;
             txt_Usuario.Text = usuario;
+            cbx_Status.DataSource = Enum.GetValues(typeof(StatusEnum));
+
+            CarregamentoFrmCadastrosVindodaPesquisa(id);
+        }
+
+        private void CarregamentoFrmCadastrosVindodaPesquisa(string id)
+        {
+            UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
+            var fornec = _fornecedorServices.GetNextFornecById(id);
+            UtilForms.PreencherCampos(this, fornec);
         }
 
         private void Frm_FornecedorCadastro_Load(object sender, EventArgs e)
         {
             UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
-            var firstFornec = _fornecedorServices.GetLastFornecAsync();
-            UtilForms.PreencherCampos(this, firstFornec);
+            var lastFornec = _fornecedorServices.GetLastFornecAsync();
+            UtilForms.PreencherCampos(this, lastFornec);
         }
 
         private void Tsm_novo_Click(object sender, EventArgs e)
@@ -104,7 +111,7 @@ namespace CG
                 }
                 else
                 {
-                    result = _fornecedorServices.InsertFornec(fornec);   
+                    result = _fornecedorServices.InsertFornec(fornec);
                 }
 
                 if (result.HasError)
@@ -133,7 +140,7 @@ namespace CG
         {
             var previousFornec = _fornecedorServices.GetPreviousFornecById(txt_Id.Text);
 
-            if (previousFornec.HasError) 
+            if (previousFornec.HasError)
             {
                 MsgBoxUtil.MsgBoxInformation(string.Join(" - ", previousFornec.Errors),
                     "Fornecedor");
@@ -162,9 +169,10 @@ namespace CG
 
         private void Tsm_pesquisa_Click(object sender, EventArgs e)
         {
+            
+            frm_FornecedorPesquisa fornpesq = new frm_FornecedorPesquisa(txt_Usuario.Text);
             this.Close();
-            frm_FornecedorPesquisa fornpesq = new frm_FornecedorPesquisa();
-            fornpesq.ShowDialog();
+            fornpesq.Show();
         }
 
         private void txt_DocNum_Leave(object sender, EventArgs e)
@@ -183,8 +191,39 @@ namespace CG
 
         private void tsm_Excluir_Click(object sender, EventArgs e)
         {
-            MsgBoxUtil.MsgBoxInformation("Teste","Titulo");
-            //Fazer: Verificar em outras tabelas se ja existe utiliza��o desse fornecedor, se sim. apenas inativar
+            var messageToMsgBox = $"Deseja excluir o forcedor? \n" +
+                $"Razão Social: {txt_Razao.Text}\n" +
+                $"CNPJ: {txt_DocNum.Text}\n";
+
+            if (MsgBoxUtil.MsgBoxQuestion(messageToMsgBox, "Excluir"))
+            {
+                var fornec = UtilForms.GerarObjeto<FornecedorData>(this);
+                var result = new GenericResponse<bool>();
+
+                //Fazer: Verificar em outras tabelas se ja existe utiliza��o desse fornecedor, se sim. apenas inativar
+
+                result = _fornecedorServices.DeleteFornec(fornec);
+
+                if (result.HasError)
+                {
+                    MsgBoxUtil.MsgBoxError($"Algum problema ocorreu durante a" +
+                      $"{(chx_editar.Checked ? "edição" : "inserção")}" +
+                      $"do fornecedor. \n" +
+                      $"Error: {string.Join(" - ", result.Errors)}",
+                      "ERRO");
+
+                    return;
+                }
+                else
+                {
+                    UtilForms.StatusControles(this, false);
+                    UtilForms.StatusItensMenu(menuStrip1.Items, true);
+                    chx_editar.Checked = false;
+                }
+            }
+            
+            var lastFornec = _fornecedorServices.GetLastFornecAsync();
+            UtilForms.PreencherCampos(this, lastFornec);           
         }
     }
 }

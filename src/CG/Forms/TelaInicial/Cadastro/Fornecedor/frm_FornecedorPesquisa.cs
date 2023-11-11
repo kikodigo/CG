@@ -1,36 +1,39 @@
-﻿using System.Data;
+﻿using CG.Core.Services;
+using CG.Domain.Data;
+using CG.Util;
+using System.Data;
 
 namespace CG
 {
     public partial class frm_FornecedorPesquisa : Form
     {
-        public frm_FornecedorPesquisa()
+        public readonly FornecedorServices _fornecedorServices;
+
+        public frm_FornecedorPesquisa(string usuario)
         {
             InitializeComponent();
+            _fornecedorServices = new FornecedorServices();
+
+            txt_Usuario.Text = usuario;
         }
-        private string dadosql;
-        //Classes.dbconect mConn = new Classes.dbconect();
+
         public void Listar()
         {
-            dadosql = "SELECT `cod`,`nome`,`tel1`,`tel2`,`doc`,`email` FROM `fornecedor`";
-            //dgv_FornecedorPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
+            var listFornec = _fornecedorServices.GetAllFornec();
 
-            dadosql = string.Format("SELECT MIN(cod) FROM fornecedor");
-            DataTable resultado = new DataTable();
-            //resultado = mConn.LeituraLinha(dadosql);
-
-            txt_destino.Text = resultado.Rows[0]["MIN(cod)"].ToString();
-
+            if (listFornec.HasError)
+            {
+                MsgBoxUtil.MsgBoxError(listFornec.Errors.FirstOrDefault(), "Error");
+            }
+            else
+            {
+                dgv_FornecedorPesquisa.DataSource = listFornec.Data;
+            }
         }
         private void Frm_FornecedorPesquisa_Load(object sender, EventArgs e)
         {
             cbx_coluna.Text = "Nome";
             Listar();
-        }
-
-        private void Label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Txt_referencia_TextChanged(object sender, EventArgs e)
@@ -61,24 +64,26 @@ namespace CG
 
             }
 
-            dadosql = string.Format("SELECT `cod`,`nome`,`tel1`,`tel2`,`doc`,`email` FROM `fornecedor` WHERE `{0}` LIKE '%{1}%'", coluna, txt_referencia.Text);
+            //dadosql = string.Format("SELECT `cod`,`nome`,`tel1`,`tel2`,`doc`,`email` FROM `fornecedor` WHERE `{0}` LIKE '%{1}%'", coluna, txt_referencia.Text);
             //dgv_FornecedorPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
         }
 
         private void Dgv_FornecedorPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            txt_destino.Text = this.dgv_FornecedorPesquisa.CurrentRow.Cells[0].Value.ToString();
-            //frm_FornecedorCadastro destino = new frm_FornecedorCadastro(txt_destino.Text);
+            var idFornec = this.dgv_FornecedorPesquisa.CurrentRow.Cells[0].Value.ToString();
+
+            var frmCadastroFornec = new frm_FornecedorCadastro(txt_Usuario.Text, idFornec);
+
             this.Close();
-            //destino.Show();
+            frmCadastroFornec.Show();
         }
 
-        private void Dgv_FornecedorPesquisa_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void cbx_coluna_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

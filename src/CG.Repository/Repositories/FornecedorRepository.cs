@@ -1,5 +1,6 @@
 ﻿using CG.Domain.Data;
 using CG.Repository.Constants;
+using CG.Repository.Repositories.RepoBase;
 using MySql.Data.MySqlClient;
 
 namespace CG.Repository.Repositories
@@ -17,7 +18,7 @@ namespace CG.Repository.Repositories
 
         public FornecedorData GetLastFornec()
         {
-            var query = "SELECT * FROM `fornecedor` ORDER BY ID DESC LIMIT 1";
+            var query = $"SELECT * FROM {TABLE} ORDER BY ID DESC LIMIT 1";
 
             var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 
@@ -44,28 +45,37 @@ namespace CG.Repository.Repositories
 
         public FornecedorData GetFornecedorByDocNum(string docNum)
         {
-            var query = $"SELECT * FROM fornecedor WHERE DocNum = '{docNum}'";
+            var query = $"SELECT * FROM {TABLE} WHERE DocNum = '{docNum}'";
 
             var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 
             return result.FirstOrDefault();
         }
 
-        public bool InsertFornec(FornecedorData fornecedor)
+        public List<FornecedorData> GetAllFornecedor()
         {
-            string insertQuery = "INSERT INTO fornecedor (Razao, Fantasia, DocNum, Rua, Num, Cep, Uf, Cidade, Bairro, Contato, Tel1, Tel2, Email, Site, TipoCont, Ag, Op, Ct, Pix, Obs, Status) " +
-                      "VALUES (@Razao, @Fantasia, @DocNum, @Rua, @Num, @Cep, @Uf, @Cidade, @Bairro, @Contato, @Tel1, @Tel2, @Email, @Site, @TipoCont, @Ag, @Op, @Ct, @Pix, @Obs, @Status)";
+            var query = string.Format(QueryConstants.QUERY_GET_ALL,TABLE);
 
-            var commandMapped = Mapper(fornecedor, insertQuery);
-
-            var result = _queryBaseRepository.InsertUpdateDeleteValueOnMySql(commandMapped);
+            var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 
             return result;
         }
 
-        public bool UpdateFornec(FornecedorData fornecedor)
+        public int InsertFornec(FornecedorData fornecedor)
         {
-            string updateQuery = "UPDATE fornecedor " +
+            string insertQuery = $"INSERT INTO {TABLE} (Razao, Fantasia, DocNum, Rua, Num, Cep, Uf, Cidade, Bairro, Contato, Tel1, Tel2, Email, Site, TipoCont, Ag, Op, Ct, Pix, Obs, Status) " +
+                      "VALUES (@Razao, @Fantasia, @DocNum, @Rua, @Num, @Cep, @Uf, @Cidade, @Bairro, @Contato, @Tel1, @Tel2, @Email, @Site, @TipoCont, @Ag, @Op, @Ct, @Pix, @Obs, @Status)";
+
+            var commandMapped = Mapper(fornecedor, insertQuery);
+
+            var result = _queryBaseRepository.InsertUpdateValueOnMySql(commandMapped);
+
+            return result;
+        }
+
+        public int UpdateFornec(FornecedorData fornecedor)
+        {
+            string updateQuery = $"UPDATE {TABLE} " +
                                 "SET Razao = @Razao, Fantasia = @Fantasia, DocNum = @DocNum, Rua = @Rua, " +
                                 "Num = @Num, Cep = @Cep, Uf = @Uf, Cidade = @Cidade, Bairro = @Bairro, " +
                                 "Contato = @Contato, Tel1 = @Tel1, Tel2 = @Tel2, Email = @Email, Site = @Site, " +
@@ -75,7 +85,16 @@ namespace CG.Repository.Repositories
 
             var commandMapped = Mapper(fornecedor, updateQuery);
 
-            var result = _queryBaseRepository.InsertUpdateDeleteValueOnMySql(commandMapped);
+            var result = _queryBaseRepository.InsertUpdateValueOnMySql(commandMapped);
+
+            return result;
+        }
+
+        public int DeletFornecById(string id)
+        {
+            string query = string.Format(QueryConstants.QUERY_DELETE_BY_ID, TABLE, id);
+
+            var result = _queryBaseRepository.DeleteValueOnMySql(query);
 
             return result;
         }

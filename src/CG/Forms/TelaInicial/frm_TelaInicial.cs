@@ -13,7 +13,7 @@ namespace CG
         {
             InitializeComponent();
 
-            txt_usuario.Text = userLogged;
+            txt_Usuario.Text = userLogged;
 
         }
 
@@ -35,10 +35,7 @@ namespace CG
 
         private void Tsm_Fornec_Cadastro_Click(object sender, EventArgs e)
         {
-            var serviceCollection = new ServiceCollection();
-
-            var forneCadastro = new frm_FornecedorCadastro(txt_usuario.Text);
-
+            var forneCadastro = new frm_FornecedorCadastro(txt_Usuario.Text);
             forneCadastro.Show();
         }
 
@@ -48,6 +45,12 @@ namespace CG
             {
                 Application.Exit();
             }
+        }
+
+        private void pesquisaToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            var fornecPesquisa = new frm_FornecedorPesquisa(txt_Usuario.Text);
+            fornecPesquisa.Show();
         }
     }
 }

@@ -76,7 +76,7 @@
             relatorioToolStripMenuItem = new ToolStripMenuItem();
             logToolStripMenuItem = new ToolStripMenuItem();
             lbl_UsuarioLogado = new Label();
-            txt_usuario = new TextBox();
+            txt_Usuario = new TextBox();
             pictureBox1 = new PictureBox();
             btn_TesteEmail = new Button();
             lbl_contador = new Label();
@@ -189,6 +189,7 @@
             // 
             pesquisaToolStripMenuItem4.Name = "pesquisaToolStripMenuItem4";
             resources.ApplyResources(pesquisaToolStripMenuItem4, "pesquisaToolStripMenuItem4");
+            pesquisaToolStripMenuItem4.Click += pesquisaToolStripMenuItem4_Click;
             // 
             // funcionariosToolStripMenuItem
             // 
@@ -341,10 +342,10 @@
             lbl_UsuarioLogado.ForeColor = SystemColors.Control;
             lbl_UsuarioLogado.Name = "lbl_UsuarioLogado";
             // 
-            // txt_usuario
+            // txt_Usuario
             // 
-            resources.ApplyResources(txt_usuario, "txt_usuario");
-            txt_usuario.Name = "txt_usuario";
+            resources.ApplyResources(txt_Usuario, "txt_Usuario");
+            txt_Usuario.Name = "txt_Usuario";
             // 
             // pictureBox1
             // 
@@ -372,7 +373,7 @@
             BackColor = Color.FromArgb(64, 67, 73);
             Controls.Add(lbl_contador);
             Controls.Add(btn_TesteEmail);
-            Controls.Add(txt_usuario);
+            Controls.Add(txt_Usuario);
             Controls.Add(lbl_UsuarioLogado);
             Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
@@ -415,7 +416,7 @@
         private ToolStripMenuItem forncedorToolStripMenuItem;
         private ToolStripMenuItem unidadeToolStripMenuItem;
         private Label lbl_UsuarioLogado;
-        private TextBox txt_usuario;
+        private TextBox txt_Usuario;
         private ToolStripMenuItem funcionariosToolStripMenuItem;
         private ToolStripMenuItem empresaToolStripMenuItem;
         private ToolStripMenuItem retornoFichasToolStripMenuItem;
