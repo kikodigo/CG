@@ -10,7 +10,7 @@ namespace CG
         {
             ApplicationConfiguration.Initialize();
 
-            Application.Run(new frm_login());
+            Application.Run(new frm_StatusDB());
         }
     }
 }

@@ -189,5 +189,28 @@ namespace CG.Core.Services
 
             return response;   
         }
+
+        public GenericResponseList<FornecedorData> GetAllFornecByReference()
+        {
+            var response = new GenericResponseList<FornecedorData>();
+
+            var listFornec = _fornecedorRepository.GetAllFornecedor();
+
+            if (listFornec.Any())
+            {
+                response.Data = listFornec;
+                response.HasError = false;
+            }
+            else
+            {
+                response.HasError = true;
+                response.Errors = new List<string>()
+                {
+                    "Nenhuma informação foi localizada"
+                };
+            }
+
+            return response;
+        }
     }
 }

@@ -10,33 +10,7 @@ namespace CG
         {
             InitializeComponent();
             _LoginServices = new LoginServices();
-            StatusDb();
 
-        }
-
-        private void StatusDb()
-        {
-            new Thread(() =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-
-                var result = _LoginServices.StatusDb();
-
-                this.Invoke((MethodInvoker)delegate
-                {
-                    if (result)
-                    {
-                        lbl_StatusDb.Text = "Conectado!";
-                        lbl_StatusDb.ForeColor = Color.DarkGreen;
-                    }
-                    else
-                    {
-                        lbl_StatusDb.Text = "Erro!";
-                        lbl_StatusDb.ForeColor = Color.DarkRed;
-                    }
-                });
-
-            }).Start();
         }
 
         private void btn_entrar_ClickAsync(object sender, EventArgs e)

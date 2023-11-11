@@ -5,6 +5,8 @@
 
         public const string QUERY_GET_ALL = "SELECT * FROM {0} ORDER BY id DESC";
 
+        public const string QUERY_GET_LIKE = "SELECT * FROM {0} WHERE {1} LIKE '%{2}%'";
+
         /// <summary>
         /// Intuito de consultar um valor anterior de acordo com o proximo menor valor quanto a ID
         /// </summary>

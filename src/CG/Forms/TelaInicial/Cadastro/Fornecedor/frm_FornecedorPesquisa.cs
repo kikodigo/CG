@@ -42,15 +42,15 @@ namespace CG
             switch (cbx_coluna.Text)
             {
                 case "Codigo":
-                    coluna = "cod";
-
+                    coluna = "Id";
                     break;
-                case "Nome":
-                    coluna = "nome";
+
+                case "Razão":
+                    coluna = "Razao";
 
                     break;
                 case "CNPJ / CPF":
-                    coluna = "doc";
+                    coluna = "DocNum";
 
                     break;
                 case "E-Mail":
@@ -59,10 +59,11 @@ namespace CG
                     break;
 
                 default:
-                    MessageBox.Show("Opção Invalida");
-                    break;
+                    MsgBoxUtil.MsgBoxError("Opção Invalida","Erro");
+                    return;
 
             }
+
 
             //dadosql = string.Format("SELECT `cod`,`nome`,`tel1`,`tel2`,`doc`,`email` FROM `fornecedor` WHERE `{0}` LIKE '%{1}%'", coluna, txt_referencia.Text);
             //dgv_FornecedorPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
@@ -86,6 +87,11 @@ namespace CG
         private void cbx_coluna_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_Limpar_Click(object sender, EventArgs e)
+        {
+            txt_Referencia.Text = "";
         }
     }
 }

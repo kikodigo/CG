@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_FornecedorPesquisa));
             cbx_coluna = new ComboBox();
-            txt_referencia = new TextBox();
+            txt_Referencia = new TextBox();
             dgv_FornecedorPesquisa = new DataGridView();
             btn_Limpar = new Button();
             label2 = new Label();
@@ -46,25 +46,25 @@
             // cbx_coluna
             // 
             cbx_coluna.FormattingEnabled = true;
-            cbx_coluna.Items.AddRange(new object[] { "Codigo", "Nome", "CNPJ / CPF", "E-Mail" });
-            cbx_coluna.Location = new Point(17, 86);
+            cbx_coluna.Items.AddRange(new object[] { "Codigo", "Razão", "Fantasia", "CNPJ / CPF", "E-Mail" });
+            cbx_coluna.Location = new Point(17, 82);
             cbx_coluna.Margin = new Padding(4, 5, 4, 5);
             cbx_coluna.Name = "cbx_coluna";
             cbx_coluna.Size = new Size(156, 28);
             cbx_coluna.TabIndex = 0;
             cbx_coluna.SelectedIndexChanged += cbx_coluna_SelectedIndexChanged;
             // 
-            // txt_referencia
+            // txt_Referencia
             // 
-            txt_referencia.BorderStyle = BorderStyle.FixedSingle;
-            txt_referencia.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_referencia.Location = new Point(176, 86);
-            txt_referencia.Margin = new Padding(4, 5, 4, 5);
-            txt_referencia.MinimumSize = new Size(866, 21);
-            txt_referencia.Name = "txt_referencia";
-            txt_referencia.Size = new Size(866, 24);
-            txt_referencia.TabIndex = 1;
-            txt_referencia.TextChanged += Txt_referencia_TextChanged;
+            txt_Referencia.BorderStyle = BorderStyle.FixedSingle;
+            txt_Referencia.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_Referencia.Location = new Point(176, 86);
+            txt_Referencia.Margin = new Padding(4, 5, 4, 5);
+            txt_Referencia.MinimumSize = new Size(866, 21);
+            txt_Referencia.Name = "txt_Referencia";
+            txt_Referencia.Size = new Size(866, 24);
+            txt_Referencia.TabIndex = 1;
+            txt_Referencia.TextChanged += Txt_referencia_TextChanged;
             // 
             // dgv_FornecedorPesquisa
             // 
@@ -90,13 +90,14 @@
             btn_Limpar.BackColor = Color.FromArgb(64, 67, 73);
             btn_Limpar.FlatStyle = FlatStyle.Flat;
             btn_Limpar.ForeColor = SystemColors.ControlLight;
-            btn_Limpar.Location = new Point(1045, 86);
+            btn_Limpar.Location = new Point(1050, 82);
             btn_Limpar.Margin = new Padding(4, 5, 4, 5);
             btn_Limpar.Name = "btn_Limpar";
             btn_Limpar.Size = new Size(123, 32);
             btn_Limpar.TabIndex = 6;
             btn_Limpar.Text = "Limpar ";
             btn_Limpar.UseVisualStyleBackColor = false;
+            btn_Limpar.Click += btn_Limpar_Click;
             // 
             // label2
             // 
@@ -169,7 +170,7 @@
             Controls.Add(label1);
             Controls.Add(btn_Limpar);
             Controls.Add(dgv_FornecedorPesquisa);
-            Controls.Add(txt_referencia);
+            Controls.Add(txt_Referencia);
             Controls.Add(cbx_coluna);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -191,7 +192,7 @@
         #endregion
 
         private ComboBox cbx_coluna;
-        private TextBox txt_referencia;
+        private TextBox txt_Referencia;
         private DataGridView dgv_FornecedorPesquisa;
         private Button btn_Limpar;
         private Label label2;

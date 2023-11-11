@@ -61,6 +61,11 @@ namespace CG.Repository.Repositories
             return result;
         }
 
+        public List<FornecedorData> GetAllFornecByReference(string reference, string column) 
+        {
+        
+        }
+
         public int InsertFornec(FornecedorData fornecedor)
         {
             string insertQuery = $"INSERT INTO {TABLE} (Razao, Fantasia, DocNum, Rua, Num, Cep, Uf, Cidade, Bairro, Contato, Tel1, Tel2, Email, Site, TipoCont, Ag, Op, Ct, Pix, Obs, Status) " +
