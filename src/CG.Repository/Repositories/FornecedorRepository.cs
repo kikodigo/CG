@@ -63,7 +63,7 @@ namespace CG.Repository.Repositories
 
         public List<FornecedorData> GetAllFornecByReference(string reference, string column) 
         {
-        
+            return new List<FornecedorData>();
         }
 
         public int InsertFornec(FornecedorData fornecedor)
