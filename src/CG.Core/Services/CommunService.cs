@@ -1,16 +1,15 @@
 ﻿using CG.Domain.Data;
 using CG.Domain.Response;
-using CG.Repository.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CG.Core.Services
 {
     public class CommunService
     {
+        private string _table;
+        public CommunService(string table) 
+        {
+            _table = table;
+        }
 
         public GenericResponse<T> GetNextFornecById<T>(string id)
         {
