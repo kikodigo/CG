@@ -42,6 +42,14 @@ namespace CG.Repository.Repositories
 
             return result.FirstOrDefault();
         }
+        public List<FornecedorData> GetAllFornecedor()
+        {
+            var query = string.Format(QueryConstants.QUERY_GET_ALL, TABLE);
+
+            var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
+
+            return result;
+        }
 
         public FornecedorData GetFornecedorByDocNum(string docNum)
         {
@@ -51,16 +59,7 @@ namespace CG.Repository.Repositories
 
             return result.FirstOrDefault();
         }
-
-        public List<FornecedorData> GetAllFornecedor()
-        {
-            var query = string.Format(QueryConstants.QUERY_GET_ALL,TABLE);
-
-            var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
-
-            return result;
-        }
-
+        
         public List<FornecedorData> GetAllFornecByReference(string reference, string column) 
         {
             return new List<FornecedorData>();

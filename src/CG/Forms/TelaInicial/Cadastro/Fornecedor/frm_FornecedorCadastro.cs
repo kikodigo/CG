@@ -1,24 +1,26 @@
 using CG.Core.Services;
+using CG.Domain.Constants;
 using CG.Domain.Data;
 using CG.Domain.Enum;
 using CG.Domain.Response;
 using CG.Util;
 using CpfCnpjLibrary;
-using System.Data;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
 namespace CG
 {
     public partial class frm_FornecedorCadastro : Form
     {
-        public readonly FornecedorServices _fornecedorServices;
-        public readonly HttpExternalQueries _httpExternalQueries;
+        private readonly FornecedorServices _fornecedorServices;
+        private readonly CommonService _commonService;
+        
+        private readonly HttpExternalQueries _httpExternalQueries;
 
         public frm_FornecedorCadastro(string usuario)
         {
             InitializeComponent();
             _fornecedorServices = new FornecedorServices();
+            _commonService = new CommonService(TableConstants.FORNEC_TABLE);
             _httpExternalQueries = new HttpExternalQueries();
 
             txt_Usuario.Text = usuario;
@@ -138,7 +140,7 @@ namespace CG
 
         private void Tsm_anterior_Click(object sender, EventArgs e)
         {
-            var previousFornec = _fornecedorServices.GetPreviousFornecById(txt_Id.Text);
+            var previousFornec = _commonService.GetPreviousValueById<FornecedorData>(txt_Id.Text);
 
             if (previousFornec.HasError)
             {
@@ -154,7 +156,7 @@ namespace CG
 
         private void Tsm_proximo_Click(object sender, EventArgs e)
         {
-            var nextFornec = _fornecedorServices.GetNextFornecById(txt_Id.Text);
+            var nextFornec = _commonService.GetNextValueById<FornecedorData>(txt_Id.Text);
 
             if (nextFornec.HasError)
             {
