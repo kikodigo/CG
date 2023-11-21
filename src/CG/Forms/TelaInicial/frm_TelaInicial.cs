@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using CG.Domain.Constants;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CG
 {
@@ -49,7 +50,7 @@ namespace CG
 
         private void pesquisaToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            var fornecPesquisa = new frm_FornecedorPesquisa(txt_Usuario.Text);
+            var fornecPesquisa = new frm_FornecedorPesquisa(txt_Usuario.Text, TableConstants.FORNEC_TABLE);
             fornecPesquisa.Show();
         }
     }

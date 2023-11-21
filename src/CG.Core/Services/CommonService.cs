@@ -63,6 +63,30 @@ namespace CG.Core.Services
             return result;
         }
 
+        public GenericResponse<T> GetValueById<T>(string id)
+        {
+            var resultRepository = _commonRepository.GetValueById<T>(id);
+
+            var result = new GenericResponse<T>();
+
+            if (resultRepository is not null)
+            {
+                result.Data = resultRepository;
+                result.HasError = false;
+            }
+            else
+            {
+                result.HasError = true;
+                result.Errors = new List<string>()
+                {
+                    "Registro não encontrato.\n" +
+                    "Entre em contato com o Administrador."
+                };
+            }
+
+            return result;
+        }
+
         public GenericResponseList<T> GetAllValues<T>()
         {
             var response = new GenericResponseList<T>();

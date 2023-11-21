@@ -17,7 +17,7 @@ namespace CG.Repository.Repositories
 
         public T GetLastValue<T>()
         {
-            var query = string.Format(QueryConstants.QUERY_GET_LAST_VALUE, dbTable);
+            var query = string.Format(QueryConstants.GET_LAST_VALUE_QUERY, dbTable);
 
             var result = _queryBaseRepository.MySqlByQuery<T>(query);
 
@@ -26,7 +26,7 @@ namespace CG.Repository.Repositories
 
         public T GetNextValueById<T>(string id)
         {
-            var query = string.Format(QueryConstants.QUERY_NEXT_BY_ID, dbTable, id);
+            var query = string.Format(QueryConstants.GET_NEXT_VALUE_BY_ID_QUERY, dbTable, id);
 
             var result = _queryBaseRepository.MySqlByQuery<T>(query);
 
@@ -35,7 +35,16 @@ namespace CG.Repository.Repositories
 
         public T GetPreviousValueById<T>(string id)
         {
-            var query = string.Format(QueryConstants.QUERY_PREVIUS_BY_ID, dbTable, id);
+            var query = string.Format(QueryConstants.GET_PREVIUS_VALUE_BY_ID_QUERY, dbTable, id);
+
+            var result = _queryBaseRepository.MySqlByQuery<T>(query);
+
+            return result.FirstOrDefault();
+        }
+
+        public T GetValueById<T>(string id)
+        {
+            var query = string.Format(QueryConstants.GET_VALUE_BY_ID_QUERY, dbTable, id);
 
             var result = _queryBaseRepository.MySqlByQuery<T>(query);
 
@@ -44,7 +53,7 @@ namespace CG.Repository.Repositories
 
         public List<T> GetAllValue<T>()
         {
-            var query = string.Format(QueryConstants.QUERY_GET_ALL, dbTable);
+            var query = string.Format(QueryConstants.GET_ALL_VALUES_QUERY, dbTable);
 
             var result = _queryBaseRepository.MySqlByQuery<T>(query);
 
@@ -53,7 +62,7 @@ namespace CG.Repository.Repositories
 
         public int DeletValueById(string id)
         {
-            string query = string.Format(QueryConstants.QUERY_DELETE_BY_ID, dbTable, id);
+            string query = string.Format(QueryConstants.DELETE_VALUE_BY_ID_QUERY, dbTable, id);
 
             var result = _queryBaseRepository.DeleteValueOnMySql(query);
 

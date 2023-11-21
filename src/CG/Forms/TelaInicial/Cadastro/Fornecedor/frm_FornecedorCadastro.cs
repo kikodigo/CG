@@ -13,24 +13,26 @@ namespace CG
     {
         private readonly FornecedorServices _fornecedorServices;
         private readonly CommonService _commonService;
-        
         private readonly HttpExternalQueries _httpExternalQueries;
+
+        private readonly string FORNEC_TABLE = TableConstants.FORNEC_TABLE;
 
         public frm_FornecedorCadastro(string usuario)
         {
             InitializeComponent();
             _fornecedorServices = new FornecedorServices();
-            _commonService = new CommonService(TableConstants.FORNEC_TABLE);
+            _commonService = new CommonService(FORNEC_TABLE);
             _httpExternalQueries = new HttpExternalQueries();
 
             txt_Usuario.Text = usuario;
             cbx_Status.DataSource = Enum.GetValues(typeof(StatusEnum));
         }
 
-        public frm_FornecedorCadastro(string usuario,string id)
+        public frm_FornecedorCadastro(string usuario, string id)
         {
             InitializeComponent();
             _fornecedorServices = new FornecedorServices();
+            _commonService = new CommonService(FORNEC_TABLE);
             _httpExternalQueries = new HttpExternalQueries();
 
             txt_Usuario.Text = usuario;
@@ -38,18 +40,18 @@ namespace CG
 
             CarregamentoFrmCadastrosVindodaPesquisa(id);
         }
-
+     
         private void CarregamentoFrmCadastrosVindodaPesquisa(string id)
         {
             UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
-            var fornec = _fornecedorServices.GetNextFornecById(id);
-            UtilForms.PreencherCampos(this, fornec);
+            var fornec = _commonService.GetValueById<FornecedorData>(id);
+            UtilForms.PreencherCampos(this, fornec.Data);
         }
 
         private void Frm_FornecedorCadastro_Load(object sender, EventArgs e)
         {
             UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
-            var lastFornec = _fornecedorServices.GetLastFornecAsync();
+            var lastFornec = _commonService.GetLastValueAsync<FornecedorData>();
             UtilForms.PreencherCampos(this, lastFornec);
         }
 
@@ -68,7 +70,7 @@ namespace CG
 
             if (!chx_editar.Checked)
             {
-                var lastFornec = _fornecedorServices.GetLastFornecAsync();
+                var lastFornec = _commonService.GetLastValueAsync<FornecedorData>();
                 UtilForms.PreencherCampos(this, lastFornec);
             }
 
@@ -171,8 +173,7 @@ namespace CG
 
         private void Tsm_pesquisa_Click(object sender, EventArgs e)
         {
-            
-            frm_FornecedorPesquisa fornpesq = new frm_FornecedorPesquisa(txt_Usuario.Text);
+            frm_FornecedorPesquisa fornpesq = new frm_FornecedorPesquisa(txt_Usuario.Text, FORNEC_TABLE);
             this.Close();
             fornpesq.Show();
         }
@@ -223,9 +224,9 @@ namespace CG
                     chx_editar.Checked = false;
                 }
             }
-            
-            var lastFornec = _fornecedorServices.GetLastFornecAsync();
-            UtilForms.PreencherCampos(this, lastFornec);           
+
+            var lastFornec = _commonService.GetLastValueAsync<FornecedorData>();
+            UtilForms.PreencherCampos(this, lastFornec);
         }
     }
 }

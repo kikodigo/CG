@@ -27,7 +27,7 @@ namespace CG.Repository.Repositories
 
         public FornecedorData GetNextFornecById(string id)
         {
-            var query = string.Format($"{QueryConstants.QUERY_NEXT_BY_ID}", TABLE, id);
+            var query = string.Format($"{QueryConstants.GET_NEXT_VALUE_BY_ID_QUERY}", TABLE, id);
 
             var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 
@@ -36,7 +36,7 @@ namespace CG.Repository.Repositories
 
         public FornecedorData GetPreviousFornecById(string id)
         {
-            var query = string.Format($"{QueryConstants.QUERY_PREVIUS_BY_ID}", TABLE, id);
+            var query = string.Format($"{QueryConstants.GET_PREVIUS_VALUE_BY_ID_QUERY}", TABLE, id);
 
             var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 
@@ -44,7 +44,7 @@ namespace CG.Repository.Repositories
         }
         public List<FornecedorData> GetAllFornecedor()
         {
-            var query = string.Format(QueryConstants.QUERY_GET_ALL, TABLE);
+            var query = string.Format(QueryConstants.GET_ALL_VALUES_QUERY, TABLE);
 
             var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 
@@ -96,7 +96,7 @@ namespace CG.Repository.Repositories
 
         public int DeletFornecById(string id)
         {
-            string query = string.Format(QueryConstants.QUERY_DELETE_BY_ID, TABLE, id);
+            string query = string.Format(QueryConstants.DELETE_VALUE_BY_ID_QUERY, TABLE, id);
 
             var result = _queryBaseRepository.DeleteValueOnMySql(query);
 

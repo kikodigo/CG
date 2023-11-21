@@ -16,57 +16,6 @@ namespace CG.Core.Services
             _fornecedorRepository = new FornecedorRepository();
         }
 
-        public FornecedorData GetLastFornecAsync()
-        {
-            return _fornecedorRepository.GetLastFornec();
-        }
-
-        public GenericResponse<FornecedorData> GetNextFornecById(string id)
-        {
-            var resultRepository = _fornecedorRepository.GetNextFornecById(id);
-
-            var result = new GenericResponse<FornecedorData>();
-
-            if (resultRepository is not null)
-            {
-                result.Data = resultRepository;
-                result.HasError = false;
-            }
-            else
-            {
-                result.HasError = true;
-                result.Errors = new List<string>()
-                {
-                    "Não existe registro seguinte."
-                };
-            }
-
-            return result;
-        }
-
-        public GenericResponse<FornecedorData> GetPreviousFornecById(string id)
-        {
-            var resultRepository = _fornecedorRepository.GetPreviousFornecById(id);
-
-            var result = new GenericResponse<FornecedorData>();
-
-            if (resultRepository is not null)
-            {
-                result.Data = resultRepository;
-                result.HasError = false;
-            }
-            else
-            {
-                result.HasError = true;
-                result.Errors = new List<string>()
-                {
-                    "Não existe registro anterior."
-                };
-            }
-
-            return result;
-        }
-
         public GenericResponse<FornecedorData> InsertFornec(FornecedorData fornecedor)
         {
             var existFornec = _fornecedorRepository.GetFornecedorByDocNum(fornecedor.DocNum);
@@ -149,8 +98,8 @@ namespace CG.Core.Services
                     response.HasError = true;
                     response.Errors = new List<string>()
                     {
-                        "Correu algum erro no update do fornecedor, verifique se ele foi inserido.\n" +
-                        "Feche a tela do fornecedor e abra novamente."
+                        "Ocorreu algum erro ao excluir o valor.\n" +
+                        "Feche a tela e abra novamente para se certificar que o processo foi feito."
                     };
                 }
             }
@@ -165,29 +114,6 @@ namespace CG.Core.Services
             }
 
             return response;
-        }
-
-        public GenericResponseList<FornecedorData> GetAllFornec() 
-        {
-            var response = new GenericResponseList<FornecedorData>();
-
-            var listFornec = _fornecedorRepository.GetAllFornecedor();
-
-            if (listFornec.Any())
-            {
-                response.Data = listFornec;
-                response.HasError = false;
-            }
-            else
-            {
-                response.HasError = true;
-                response.Errors = new List<string>()
-                {
-                    "Nenhuma informação foi localizada"
-                };
-            }
-
-            return response;   
         }
 
         public GenericResponseList<FornecedorData> GetAllFornecByReference()

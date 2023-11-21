@@ -8,18 +8,20 @@ namespace CG
     public partial class frm_FornecedorPesquisa : Form
     {
         public readonly FornecedorServices _fornecedorServices;
+        public readonly CommonService _commonService;
 
-        public frm_FornecedorPesquisa(string usuario)
+        public frm_FornecedorPesquisa(string usuario, string table)
         {
             InitializeComponent();
             _fornecedorServices = new FornecedorServices();
+            _commonService = new CommonService(table);
 
             txt_Usuario.Text = usuario;
         }
 
         public void Listar()
         {
-            var listFornec = _fornecedorServices.GetAllFornec();
+            var listFornec = _commonService.GetAllValues<FornecedorData>();
 
             if (listFornec.HasError)
             {
