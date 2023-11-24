@@ -1,6 +1,5 @@
 ﻿using CG.Repository.Constants;
 using CG.Repository.Repositories.RepoBase;
-using MySqlX.XDevAPI.Relational;
 
 namespace CG.Repository.Repositories
 {
@@ -54,6 +53,15 @@ namespace CG.Repository.Repositories
         public List<T> GetAllValue<T>()
         {
             var query = string.Format(QueryConstants.GET_ALL_VALUES_QUERY, dbTable);
+
+            var result = _queryBaseRepository.MySqlByQuery<T>(query);
+
+            return result;
+        }
+
+        public List<T> GetAllValueByReference<T>(string reference, string column)
+        {
+            var query = string.Format(QueryConstants.GET_VALEUES_LIKE_QUERY, dbTable, column, reference);
 
             var result = _queryBaseRepository.MySqlByQuery<T>(query);
 

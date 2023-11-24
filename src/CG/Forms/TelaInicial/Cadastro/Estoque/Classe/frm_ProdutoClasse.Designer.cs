@@ -29,249 +29,246 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_ProdutoClasse));
-            this.txt_Classe = new System.Windows.Forms.TextBox();
-            this.txt_codigo = new System.Windows.Forms.TextBox();
-            this.lbl_classe = new System.Windows.Forms.Label();
-            this.lbl_codigo = new System.Windows.Forms.Label();
-            this.chx_editar = new System.Windows.Forms.CheckBox();
-            this.lbl_ativo = new System.Windows.Forms.Label();
-            this.cbx_ativo = new System.Windows.Forms.ComboBox();
-            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
-            this.tsm_novo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_editar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_salvar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_cancelar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_anterior = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_proximo = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_pesquisar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_excluir = new System.Windows.Forms.ToolStripMenuItem();
-            this.txt_usuario = new System.Windows.Forms.ToolStripTextBox();
-            this.Usuario = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbl_VlPermissao = new System.Windows.Forms.Label();
-            this.cbx_Patrimonio = new System.Windows.Forms.ComboBox();
-            this.lbl_patrimonio = new System.Windows.Forms.Label();
-            this.menuStrip2.SuspendLayout();
-            this.SuspendLayout();
+            txt_Classe = new TextBox();
+            txt_codigo = new TextBox();
+            lbl_classe = new Label();
+            lbl_codigo = new Label();
+            chx_editar = new CheckBox();
+            lbl_ativo = new Label();
+            cbx_ativo = new ComboBox();
+            menuStrip2 = new MenuStrip();
+            tsm_novo = new ToolStripMenuItem();
+            tsm_editar = new ToolStripMenuItem();
+            tsm_salvar = new ToolStripMenuItem();
+            tsm_cancelar = new ToolStripMenuItem();
+            tsm_anterior = new ToolStripMenuItem();
+            tsm_proximo = new ToolStripMenuItem();
+            tsm_pesquisar = new ToolStripMenuItem();
+            tsm_excluir = new ToolStripMenuItem();
+            txt_usuario = new ToolStripTextBox();
+            Usuario = new ToolStripMenuItem();
+            lbl_VlPermissao = new Label();
+            cbx_Patrimonio = new ComboBox();
+            lbl_patrimonio = new Label();
+            menuStrip2.SuspendLayout();
+            SuspendLayout();
             // 
             // txt_Classe
             // 
-            this.txt_Classe.Enabled = false;
-            this.txt_Classe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Classe.Location = new System.Drawing.Point(87, 90);
-            this.txt_Classe.Name = "txt_Classe";
-            this.txt_Classe.Size = new System.Drawing.Size(473, 21);
-            this.txt_Classe.TabIndex = 31;
+            txt_Classe.Enabled = false;
+            txt_Classe.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            txt_Classe.Location = new Point(122, 138);
+            txt_Classe.Margin = new Padding(4, 5, 4, 5);
+            txt_Classe.Name = "txt_Classe";
+            txt_Classe.Size = new Size(625, 27);
+            txt_Classe.TabIndex = 31;
             // 
             // txt_codigo
             // 
-            this.txt_codigo.Enabled = false;
-            this.txt_codigo.Location = new System.Drawing.Point(17, 90);
-            this.txt_codigo.Multiline = true;
-            this.txt_codigo.Name = "txt_codigo";
-            this.txt_codigo.Size = new System.Drawing.Size(69, 21);
-            this.txt_codigo.TabIndex = 30;
+            txt_codigo.Enabled = false;
+            txt_codigo.Location = new Point(23, 138);
+            txt_codigo.Margin = new Padding(4, 5, 4, 5);
+            txt_codigo.Name = "txt_codigo";
+            txt_codigo.Size = new Size(91, 27);
+            txt_codigo.TabIndex = 30;
             // 
             // lbl_classe
             // 
-            this.lbl_classe.AutoSize = true;
-            this.lbl_classe.ForeColor = System.Drawing.Color.Gray;
-            this.lbl_classe.Location = new System.Drawing.Point(85, 74);
-            this.lbl_classe.Name = "lbl_classe";
-            this.lbl_classe.Size = new System.Drawing.Size(38, 13);
-            this.lbl_classe.TabIndex = 29;
-            this.lbl_classe.Text = "Classe";
+            lbl_classe.AutoSize = true;
+            lbl_classe.ForeColor = Color.Gray;
+            lbl_classe.Location = new Point(119, 114);
+            lbl_classe.Margin = new Padding(4, 0, 4, 0);
+            lbl_classe.Name = "lbl_classe";
+            lbl_classe.Size = new Size(50, 20);
+            lbl_classe.TabIndex = 29;
+            lbl_classe.Text = "Classe";
             // 
             // lbl_codigo
             // 
-            this.lbl_codigo.AutoSize = true;
-            this.lbl_codigo.ForeColor = System.Drawing.Color.Gray;
-            this.lbl_codigo.Location = new System.Drawing.Point(17, 74);
-            this.lbl_codigo.Name = "lbl_codigo";
-            this.lbl_codigo.Size = new System.Drawing.Size(40, 13);
-            this.lbl_codigo.TabIndex = 28;
-            this.lbl_codigo.Text = "Codigo";
+            lbl_codigo.AutoSize = true;
+            lbl_codigo.ForeColor = Color.Gray;
+            lbl_codigo.Location = new Point(23, 114);
+            lbl_codigo.Margin = new Padding(4, 0, 4, 0);
+            lbl_codigo.Name = "lbl_codigo";
+            lbl_codigo.Size = new Size(58, 20);
+            lbl_codigo.TabIndex = 28;
+            lbl_codigo.Text = "Codigo";
             // 
             // chx_editar
             // 
-            this.chx_editar.AutoSize = true;
-            this.chx_editar.Location = new System.Drawing.Point(57, 30);
-            this.chx_editar.Name = "chx_editar";
-            this.chx_editar.Size = new System.Drawing.Size(66, 17);
-            this.chx_editar.TabIndex = 38;
-            this.chx_editar.Text = "EDITAR";
-            this.chx_editar.UseVisualStyleBackColor = true;
-            this.chx_editar.Visible = false;
+            chx_editar.AutoSize = true;
+            chx_editar.Location = new Point(76, 46);
+            chx_editar.Margin = new Padding(4, 5, 4, 5);
+            chx_editar.Name = "chx_editar";
+            chx_editar.Size = new Size(80, 24);
+            chx_editar.TabIndex = 38;
+            chx_editar.Text = "EDITAR";
+            chx_editar.UseVisualStyleBackColor = true;
+            chx_editar.Visible = false;
             // 
             // lbl_ativo
             // 
-            this.lbl_ativo.AutoSize = true;
-            this.lbl_ativo.ForeColor = System.Drawing.Color.Gray;
-            this.lbl_ativo.Location = new System.Drawing.Point(642, 74);
-            this.lbl_ativo.Name = "lbl_ativo";
-            this.lbl_ativo.Size = new System.Drawing.Size(31, 13);
-            this.lbl_ativo.TabIndex = 39;
-            this.lbl_ativo.Text = "Ativo";
+            lbl_ativo.AutoSize = true;
+            lbl_ativo.ForeColor = Color.Gray;
+            lbl_ativo.Location = new Point(862, 113);
+            lbl_ativo.Margin = new Padding(4, 0, 4, 0);
+            lbl_ativo.Name = "lbl_ativo";
+            lbl_ativo.Size = new Size(44, 20);
+            lbl_ativo.TabIndex = 39;
+            lbl_ativo.Text = "Ativo";
             // 
             // cbx_ativo
             // 
-            this.cbx_ativo.FormattingEnabled = true;
-            this.cbx_ativo.Items.AddRange(new object[] {
-            "SIM",
-            "NAO"});
-            this.cbx_ativo.Location = new System.Drawing.Point(645, 90);
-            this.cbx_ativo.Name = "cbx_ativo";
-            this.cbx_ativo.Size = new System.Drawing.Size(73, 21);
-            this.cbx_ativo.TabIndex = 40;
+            cbx_ativo.FormattingEnabled = true;
+            cbx_ativo.Items.AddRange(new object[] { "SIM", "NAO" });
+            cbx_ativo.Location = new Point(866, 137);
+            cbx_ativo.Margin = new Padding(4, 5, 4, 5);
+            cbx_ativo.Name = "cbx_ativo";
+            cbx_ativo.Size = new Size(96, 28);
+            cbx_ativo.TabIndex = 40;
             // 
             // menuStrip2
             // 
-            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsm_novo,
-            this.tsm_editar,
-            this.tsm_salvar,
-            this.tsm_cancelar,
-            this.tsm_anterior,
-            this.tsm_proximo,
-            this.tsm_pesquisar,
-            this.tsm_excluir,
-            this.txt_usuario,
-            this.Usuario});
-            this.menuStrip2.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(739, 27);
-            this.menuStrip2.TabIndex = 42;
-            this.menuStrip2.Text = "menuStrip2";
+            menuStrip2.ImageScalingSize = new Size(20, 20);
+            menuStrip2.Items.AddRange(new ToolStripItem[] { tsm_novo, tsm_editar, tsm_salvar, tsm_cancelar, tsm_anterior, tsm_proximo, tsm_pesquisar, tsm_excluir, txt_usuario, Usuario });
+            menuStrip2.Location = new Point(0, 0);
+            menuStrip2.Name = "menuStrip2";
+            menuStrip2.Padding = new Padding(8, 3, 0, 3);
+            menuStrip2.Size = new Size(983, 33);
+            menuStrip2.TabIndex = 42;
+            menuStrip2.Text = "menuStrip2";
             // 
             // tsm_novo
             // 
-            this.tsm_novo.Name = "tsm_novo";
-            this.tsm_novo.Size = new System.Drawing.Size(48, 23);
-            this.tsm_novo.Text = "Novo";
-            this.tsm_novo.Click += new System.EventHandler(this.Tsm_novo_Click);
+            tsm_novo.Name = "tsm_novo";
+            tsm_novo.Size = new Size(59, 27);
+            tsm_novo.Text = "Novo";
+            tsm_novo.Click += Tsm_novo_Click;
             // 
             // tsm_editar
             // 
-            this.tsm_editar.Name = "tsm_editar";
-            this.tsm_editar.Size = new System.Drawing.Size(49, 23);
-            this.tsm_editar.Text = "Editar";
-            this.tsm_editar.Click += new System.EventHandler(this.Tsm_editar_Click);
+            tsm_editar.Name = "tsm_editar";
+            tsm_editar.Size = new Size(62, 27);
+            tsm_editar.Text = "Editar";
+            tsm_editar.Click += Tsm_editar_Click;
             // 
             // tsm_salvar
             // 
-            this.tsm_salvar.Name = "tsm_salvar";
-            this.tsm_salvar.Size = new System.Drawing.Size(50, 23);
-            this.tsm_salvar.Text = "Salvar";
-            this.tsm_salvar.Click += new System.EventHandler(this.Tsm_salvar_Click);
+            tsm_salvar.Name = "tsm_salvar";
+            tsm_salvar.Size = new Size(63, 27);
+            tsm_salvar.Text = "Salvar";
+            tsm_salvar.Click += Tsm_salvar_Click;
             // 
             // tsm_cancelar
             // 
-            this.tsm_cancelar.Name = "tsm_cancelar";
-            this.tsm_cancelar.Size = new System.Drawing.Size(65, 23);
-            this.tsm_cancelar.Text = "Cancelar";
-            this.tsm_cancelar.Click += new System.EventHandler(this.Tsm_cancelar_Click);
+            tsm_cancelar.Name = "tsm_cancelar";
+            tsm_cancelar.Size = new Size(80, 27);
+            tsm_cancelar.Text = "Cancelar";
+            tsm_cancelar.Click += Tsm_cancelar_Click;
             // 
             // tsm_anterior
             // 
-            this.tsm_anterior.Name = "tsm_anterior";
-            this.tsm_anterior.Size = new System.Drawing.Size(62, 23);
-            this.tsm_anterior.Text = "Anterior";
-            this.tsm_anterior.Click += new System.EventHandler(this.Tsm_anterior_Click);
+            tsm_anterior.Name = "tsm_anterior";
+            tsm_anterior.Size = new Size(77, 27);
+            tsm_anterior.Text = "Anterior";
+            tsm_anterior.Click += Tsm_anterior_Click;
             // 
             // tsm_proximo
             // 
-            this.tsm_proximo.Name = "tsm_proximo";
-            this.tsm_proximo.Size = new System.Drawing.Size(64, 23);
-            this.tsm_proximo.Text = "Proximo";
-            this.tsm_proximo.Click += new System.EventHandler(this.Tsm_proximo_Click);
+            tsm_proximo.Name = "tsm_proximo";
+            tsm_proximo.Size = new Size(78, 27);
+            tsm_proximo.Text = "Proximo";
+            tsm_proximo.Click += Tsm_proximo_Click;
             // 
             // tsm_pesquisar
             // 
-            this.tsm_pesquisar.Name = "tsm_pesquisar";
-            this.tsm_pesquisar.Size = new System.Drawing.Size(65, 23);
-            this.tsm_pesquisar.Text = "Pesquisa";
-            this.tsm_pesquisar.Click += new System.EventHandler(this.Tsm_pesquisar_Click);
+            tsm_pesquisar.Name = "tsm_pesquisar";
+            tsm_pesquisar.Size = new Size(79, 27);
+            tsm_pesquisar.Text = "Pesquisa";
+            tsm_pesquisar.Click += Tsm_pesquisar_Click;
             // 
             // tsm_excluir
             // 
-            this.tsm_excluir.Name = "tsm_excluir";
-            this.tsm_excluir.Size = new System.Drawing.Size(54, 23);
-            this.tsm_excluir.Text = "Excluir";
-            this.tsm_excluir.Click += new System.EventHandler(this.Tsm_excluir_Click);
+            tsm_excluir.Name = "tsm_excluir";
+            tsm_excluir.Size = new Size(66, 27);
+            tsm_excluir.Text = "Excluir";
+            tsm_excluir.Click += Tsm_excluir_Click;
             // 
             // txt_usuario
             // 
-            this.txt_usuario.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.txt_usuario.Enabled = false;
-            this.txt_usuario.Name = "txt_usuario";
-            this.txt_usuario.Size = new System.Drawing.Size(100, 23);
+            txt_usuario.Alignment = ToolStripItemAlignment.Right;
+            txt_usuario.Enabled = false;
+            txt_usuario.Name = "txt_usuario";
+            txt_usuario.Size = new Size(132, 27);
             // 
             // Usuario
             // 
-            this.Usuario.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.Usuario.Name = "Usuario";
-            this.Usuario.Size = new System.Drawing.Size(59, 23);
-            this.Usuario.Text = "Usuario";
+            Usuario.Alignment = ToolStripItemAlignment.Right;
+            Usuario.Name = "Usuario";
+            Usuario.Size = new Size(73, 27);
+            Usuario.Text = "Usuario";
             // 
             // lbl_VlPermissao
             // 
-            this.lbl_VlPermissao.AutoSize = true;
-            this.lbl_VlPermissao.Location = new System.Drawing.Point(638, 27);
-            this.lbl_VlPermissao.Name = "lbl_VlPermissao";
-            this.lbl_VlPermissao.Size = new System.Drawing.Size(80, 13);
-            this.lbl_VlPermissao.TabIndex = 146;
-            this.lbl_VlPermissao.Text = "lbl_VlPermissao";
-            this.lbl_VlPermissao.Visible = false;
+            lbl_VlPermissao.AutoSize = true;
+            lbl_VlPermissao.Location = new Point(851, 42);
+            lbl_VlPermissao.Margin = new Padding(4, 0, 4, 0);
+            lbl_VlPermissao.Name = "lbl_VlPermissao";
+            lbl_VlPermissao.Size = new Size(111, 20);
+            lbl_VlPermissao.TabIndex = 146;
+            lbl_VlPermissao.Text = "lbl_VlPermissao";
+            lbl_VlPermissao.Visible = false;
             // 
             // cbx_Patrimonio
             // 
-            this.cbx_Patrimonio.FormattingEnabled = true;
-            this.cbx_Patrimonio.Items.AddRange(new object[] {
-            "SIM",
-            "NAO"});
-            this.cbx_Patrimonio.Location = new System.Drawing.Point(566, 90);
-            this.cbx_Patrimonio.Name = "cbx_Patrimonio";
-            this.cbx_Patrimonio.Size = new System.Drawing.Size(73, 21);
-            this.cbx_Patrimonio.TabIndex = 148;
+            cbx_Patrimonio.FormattingEnabled = true;
+            cbx_Patrimonio.Items.AddRange(new object[] { "SIM", "NAO" });
+            cbx_Patrimonio.Location = new Point(761, 137);
+            cbx_Patrimonio.Margin = new Padding(4, 5, 4, 5);
+            cbx_Patrimonio.Name = "cbx_Patrimonio";
+            cbx_Patrimonio.Size = new Size(96, 28);
+            cbx_Patrimonio.TabIndex = 148;
             // 
             // lbl_patrimonio
             // 
-            this.lbl_patrimonio.AutoSize = true;
-            this.lbl_patrimonio.ForeColor = System.Drawing.Color.Gray;
-            this.lbl_patrimonio.Location = new System.Drawing.Point(563, 74);
-            this.lbl_patrimonio.Name = "lbl_patrimonio";
-            this.lbl_patrimonio.Size = new System.Drawing.Size(56, 13);
-            this.lbl_patrimonio.TabIndex = 147;
-            this.lbl_patrimonio.Text = "Patrimônio";
+            lbl_patrimonio.AutoSize = true;
+            lbl_patrimonio.ForeColor = Color.Gray;
+            lbl_patrimonio.Location = new Point(757, 113);
+            lbl_patrimonio.Margin = new Padding(4, 0, 4, 0);
+            lbl_patrimonio.Name = "lbl_patrimonio";
+            lbl_patrimonio.Size = new Size(81, 20);
+            lbl_patrimonio.TabIndex = 147;
+            lbl_patrimonio.Text = "Patrimônio";
             // 
             // frm_ProdutoClasse
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(739, 154);
-            this.Controls.Add(this.cbx_Patrimonio);
-            this.Controls.Add(this.lbl_patrimonio);
-            this.Controls.Add(this.lbl_VlPermissao);
-            this.Controls.Add(this.cbx_ativo);
-            this.Controls.Add(this.lbl_ativo);
-            this.Controls.Add(this.chx_editar);
-            this.Controls.Add(this.txt_Classe);
-            this.Controls.Add(this.txt_codigo);
-            this.Controls.Add(this.lbl_classe);
-            this.Controls.Add(this.lbl_codigo);
-            this.Controls.Add(this.menuStrip2);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(755, 193);
-            this.MinimumSize = new System.Drawing.Size(755, 193);
-            this.Name = "frm_ProdutoClasse";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro de Classes";
-            this.Load += new System.EventHandler(this.Frm_ProdutoClasse_Load);
-            this.menuStrip2.ResumeLayout(false);
-            this.menuStrip2.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DimGray;
+            ClientSize = new Size(983, 225);
+            Controls.Add(cbx_Patrimonio);
+            Controls.Add(lbl_patrimonio);
+            Controls.Add(lbl_VlPermissao);
+            Controls.Add(cbx_ativo);
+            Controls.Add(lbl_ativo);
+            Controls.Add(chx_editar);
+            Controls.Add(txt_Classe);
+            Controls.Add(txt_codigo);
+            Controls.Add(lbl_classe);
+            Controls.Add(lbl_codigo);
+            Controls.Add(menuStrip2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 5, 4, 5);
+            MaximumSize = new Size(1001, 272);
+            MinimumSize = new Size(1001, 272);
+            Name = "frm_ProdutoClasse";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Cadastro de Classes";
+            Load += Frm_ProdutoClasse_Load;
+            menuStrip2.ResumeLayout(false);
+            menuStrip2.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

@@ -26,6 +26,10 @@ namespace CG
 
             txt_Usuario.Text = usuario;
             cbx_Status.DataSource = Enum.GetValues(typeof(StatusEnum));
+
+            UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
+            var lastFornec = _commonService.GetLastValueAsync<FornecedorData>();
+            UtilForms.PreencherCampos(this, lastFornec);
         }
 
         public frm_FornecedorCadastro(string usuario, string id)
@@ -40,19 +44,18 @@ namespace CG
 
             CarregamentoFrmCadastrosVindodaPesquisa(id);
         }
-     
+
         private void CarregamentoFrmCadastrosVindodaPesquisa(string id)
         {
             UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
             var fornec = _commonService.GetValueById<FornecedorData>(id);
+            UtilForms.LimparCampos(this);
             UtilForms.PreencherCampos(this, fornec.Data);
         }
 
         private void Frm_FornecedorCadastro_Load(object sender, EventArgs e)
         {
-            UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
-            var lastFornec = _commonService.GetLastValueAsync<FornecedorData>();
-            UtilForms.PreencherCampos(this, lastFornec);
+
         }
 
         private void Tsm_novo_Click(object sender, EventArgs e)

@@ -142,6 +142,7 @@
             // 
             btn_Reconect.Anchor = AnchorStyles.None;
             btn_Reconect.BackColor = Color.FromArgb(64, 67, 73);
+            btn_Reconect.Enabled = false;
             btn_Reconect.FlatAppearance.BorderSize = 0;
             btn_Reconect.FlatStyle = FlatStyle.Flat;
             btn_Reconect.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);

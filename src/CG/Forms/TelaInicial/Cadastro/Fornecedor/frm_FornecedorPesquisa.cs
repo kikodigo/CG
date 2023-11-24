@@ -1,7 +1,6 @@
 ﻿using CG.Core.Services;
 using CG.Domain.Data;
 using CG.Util;
-using System.Data;
 
 namespace CG
 {
@@ -34,41 +33,7 @@ namespace CG
         }
         private void Frm_FornecedorPesquisa_Load(object sender, EventArgs e)
         {
-            cbx_coluna.Text = "Nome";
             Listar();
-        }
-
-        private void Txt_referencia_TextChanged(object sender, EventArgs e)
-        {
-            string coluna = null;
-            switch (cbx_coluna.Text)
-            {
-                case "Codigo":
-                    coluna = "Id";
-                    break;
-
-                case "Razão":
-                    coluna = "Razao";
-
-                    break;
-                case "CNPJ / CPF":
-                    coluna = "DocNum";
-
-                    break;
-                case "E-Mail":
-                    coluna = "email";
-
-                    break;
-
-                default:
-                    MsgBoxUtil.MsgBoxError("Opção Invalida","Erro");
-                    return;
-
-            }
-
-
-            //dadosql = string.Format("SELECT `cod`,`nome`,`tel1`,`tel2`,`doc`,`email` FROM `fornecedor` WHERE `{0}` LIKE '%{1}%'", coluna, txt_referencia.Text);
-            //dgv_FornecedorPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
         }
 
         private void Dgv_FornecedorPesquisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -81,19 +46,48 @@ namespace CG
             frmCadastroFornec.Show();
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void cbx_coluna_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Limpar_Click(object sender, EventArgs e)
         {
             txt_Referencia.Text = "";
+        }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            string column = null;
+            switch (cbx_coluna.Text)
+            {
+                case "Codigo":
+                    column = "Id";
+                    break;
+
+                case "Razão":
+                    column = "Razao";
+
+                    break;
+                case "CNPJ / CPF":
+                    column = "DocNum";
+
+                    break;
+                case "E-Mail":
+                    column = "email";
+
+                    break;
+                case "Fantasia":
+                    column = "Fantasia";
+
+                    break;
+
+                default:
+                    MsgBoxUtil.MsgBoxError("Opção Invalida", "Erro");
+                    return;
+
+            }
+
+            var result = _commonService.GetAllValuesByReference<FornecedorData>(txt_Referencia.Text, column);
+
+            dgv_FornecedorPesquisa.DataSource = result.Data;
+            //dadosql = string.Format("SELECT `cod`,`nome`,`tel1`,`tel2`,`doc`,`email` FROM `fornecedor` WHERE `{0}` LIKE '%{1}%'", coluna, txt_referencia.Text);
+            //dgv_FornecedorPesquisa.DataSource = mConn.ConsultaTabela(dadosql);
         }
     }
 }

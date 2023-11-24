@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_FornecedorPesquisa));
             cbx_coluna = new ComboBox();
-            txt_Referencia = new TextBox();
             dgv_FornecedorPesquisa = new DataGridView();
             btn_Limpar = new Button();
             label2 = new Label();
@@ -39,6 +38,8 @@
             txt_Usuario = new ToolStripTextBox();
             Usuario = new ToolStripMenuItem();
             lbl_VlPermissao = new Label();
+            txt_Referencia = new TextBox();
+            btn_Buscar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgv_FornecedorPesquisa).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -52,19 +53,7 @@
             cbx_coluna.Name = "cbx_coluna";
             cbx_coluna.Size = new Size(156, 28);
             cbx_coluna.TabIndex = 0;
-            cbx_coluna.SelectedIndexChanged += cbx_coluna_SelectedIndexChanged;
-            // 
-            // txt_Referencia
-            // 
-            txt_Referencia.BorderStyle = BorderStyle.FixedSingle;
-            txt_Referencia.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            txt_Referencia.Location = new Point(176, 86);
-            txt_Referencia.Margin = new Padding(4, 5, 4, 5);
-            txt_Referencia.MinimumSize = new Size(866, 21);
-            txt_Referencia.Name = "txt_Referencia";
-            txt_Referencia.Size = new Size(866, 24);
-            txt_Referencia.TabIndex = 1;
-            txt_Referencia.TextChanged += Txt_referencia_TextChanged;
+            cbx_coluna.Text = "Razão";
             // 
             // dgv_FornecedorPesquisa
             // 
@@ -131,7 +120,6 @@
             menuStrip1.Size = new Size(1180, 33);
             menuStrip1.TabIndex = 9;
             menuStrip1.Text = "menuStrip1";
-            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // txt_Usuario
             // 
@@ -158,6 +146,27 @@
             lbl_VlPermissao.Text = "lbl_VlPermissao";
             lbl_VlPermissao.Visible = false;
             // 
+            // txt_Referencia
+            // 
+            txt_Referencia.Location = new Point(180, 82);
+            txt_Referencia.Name = "txt_Referencia";
+            txt_Referencia.Size = new Size(732, 27);
+            txt_Referencia.TabIndex = 148;
+            // 
+            // btn_Buscar
+            // 
+            btn_Buscar.BackColor = Color.FromArgb(64, 67, 73);
+            btn_Buscar.FlatStyle = FlatStyle.Flat;
+            btn_Buscar.ForeColor = SystemColors.ControlLight;
+            btn_Buscar.Location = new Point(919, 82);
+            btn_Buscar.Margin = new Padding(4, 5, 4, 5);
+            btn_Buscar.Name = "btn_Buscar";
+            btn_Buscar.Size = new Size(123, 32);
+            btn_Buscar.TabIndex = 149;
+            btn_Buscar.Text = "Buscar";
+            btn_Buscar.UseVisualStyleBackColor = false;
+            btn_Buscar.Click += btn_Buscar_Click;
+            // 
             // frm_FornecedorPesquisa
             // 
             AllowDrop = true;
@@ -165,12 +174,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DimGray;
             ClientSize = new Size(1180, 996);
+            Controls.Add(btn_Buscar);
+            Controls.Add(txt_Referencia);
             Controls.Add(lbl_VlPermissao);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btn_Limpar);
             Controls.Add(dgv_FornecedorPesquisa);
-            Controls.Add(txt_Referencia);
             Controls.Add(cbx_coluna);
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -192,7 +202,6 @@
         #endregion
 
         private ComboBox cbx_coluna;
-        private TextBox txt_Referencia;
         private DataGridView dgv_FornecedorPesquisa;
         private Button btn_Limpar;
         private Label label2;
@@ -201,5 +210,7 @@
         private ToolStripTextBox txt_Usuario;
         private ToolStripMenuItem Usuario;
         private Label lbl_VlPermissao;
+        private TextBox txt_Referencia;
+        private Button btn_Buscar;
     }
 }

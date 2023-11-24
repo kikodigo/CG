@@ -1,9 +1,6 @@
 ﻿using CG.Domain.Data;
 using CG.Domain.Response;
 using CG.Repository.Repositories;
-using MySqlX.XDevAPI.Common;
-using ZstdSharp.Unsafe;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace CG.Core.Services
 {

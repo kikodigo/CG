@@ -1,5 +1,4 @@
 ﻿using CG.Domain.Constants;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace CG
 {

@@ -1,5 +1,4 @@
 ﻿using CG.Core.Services;
-using ZstdSharp.Unsafe;
 
 namespace CG
 {
@@ -27,26 +26,28 @@ namespace CG
                         lbl_StatusDb.Text = "Conectado!";
                         lbl_StatusDb.ForeColor = Color.DarkGreen;
                         btn_entrar.Enabled = true;
+                        btn_Reconect.Enabled = false;
                     }
                     else
                     {
                         lbl_StatusDb.Text = "Erro!";
                         lbl_StatusDb.ForeColor = Color.DarkRed;
                         btn_entrar.Enabled = false;
+                        btn_Reconect.Enabled = true;
                     }
                 });
 
             }).Start();
-        }      
+        }
 
         private void btn_entrar_Click(object sender, EventArgs e)
         {
             this.Hide();
 
             var frmLogin = new frm_login();
-           
+
             frmLogin.Show();
-            
+
         }
 
         private void frm_StatusDB_Load(object sender, EventArgs e)

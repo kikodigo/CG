@@ -1,6 +1,4 @@
-﻿using Org.BouncyCastle.Asn1.X509;
-
-namespace CG.Repository.Constants
+﻿namespace CG.Repository.Constants
 {
     public class QueryConstants
     {

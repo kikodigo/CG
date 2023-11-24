@@ -59,8 +59,8 @@ namespace CG.Repository.Repositories
 
             return result.FirstOrDefault();
         }
-        
-        public List<FornecedorData> GetAllFornecByReference(string reference, string column) 
+
+        public List<FornecedorData> GetAllFornecByReference(string reference, string column)
         {
             return new List<FornecedorData>();
         }

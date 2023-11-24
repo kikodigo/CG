@@ -1,7 +1,7 @@
-﻿using System.Data;
+﻿using CG.Repository.Repositories.RepoBase;
+using System.Data;
 using System.Security.Cryptography;
 using System.Text;
-using CG.Repository.Repositories.RepoBase;
 
 namespace CG.Repository.Repositories
 {

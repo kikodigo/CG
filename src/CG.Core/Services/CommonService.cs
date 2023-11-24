@@ -7,7 +7,7 @@ namespace CG.Core.Services
     {
         private readonly CommonRepository _commonRepository;
 
-        public CommonService(string table) 
+        public CommonService(string table)
         {
             _commonRepository = new CommonRepository(table);
         }
@@ -92,6 +92,29 @@ namespace CG.Core.Services
             var response = new GenericResponseList<T>();
 
             var listValues = _commonRepository.GetAllValue<T>();
+
+            if (listValues.Any())
+            {
+                response.Data = listValues;
+                response.HasError = false;
+            }
+            else
+            {
+                response.HasError = true;
+                response.Errors = new List<string>()
+                {
+                    "Nenhuma informação foi localizada"
+                };
+            }
+
+            return response;
+        }
+
+        public GenericResponseList<T> GetAllValuesByReference<T>(string reference, string column)
+        {
+            var response = new GenericResponseList<T>();
+
+            var listValues = _commonRepository.GetAllValueByReference<T>(reference, column);
 
             if (listValues.Any())
             {
