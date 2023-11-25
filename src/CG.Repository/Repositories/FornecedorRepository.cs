@@ -1,4 +1,5 @@
-﻿using CG.Domain.Data;
+﻿using CG.Domain.Constants;
+using CG.Domain.Data;
 using CG.Repository.Constants;
 using CG.Repository.Repositories.RepoBase;
 using MySql.Data.MySqlClient;
@@ -9,7 +10,7 @@ namespace CG.Repository.Repositories
     {
         private readonly QueryBaseRepository _queryBaseRepository;
 
-        private const string TABLE = "fornecedor";
+        private const string TABLE = TableConstants.FORNEC_TABLE;
 
         public FornecedorRepository()
         {
@@ -18,7 +19,7 @@ namespace CG.Repository.Repositories
 
         public FornecedorData GetLastFornec()
         {
-            var query = $"SELECT * FROM {TABLE} ORDER BY ID DESC LIMIT 1";
+            var query = string.Format(QueryConstants.GET_LAST_VALUE_QUERY, TABLE);
 
             var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 
@@ -27,7 +28,7 @@ namespace CG.Repository.Repositories
 
         public FornecedorData GetNextFornecById(string id)
         {
-            var query = string.Format($"{QueryConstants.GET_NEXT_VALUE_BY_ID_QUERY}", TABLE, id);
+            var query = string.Format(QueryConstants.GET_NEXT_VALUE_BY_ID_QUERY, TABLE, id);
 
             var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 
@@ -36,7 +37,7 @@ namespace CG.Repository.Repositories
 
         public FornecedorData GetPreviousFornecById(string id)
         {
-            var query = string.Format($"{QueryConstants.GET_PREVIUS_VALUE_BY_ID_QUERY}", TABLE, id);
+            var query = string.Format(QueryConstants.GET_PREVIUS_VALUE_BY_ID_QUERY, TABLE, id);
 
             var result = _queryBaseRepository.MySqlByQuery<FornecedorData>(query);
 

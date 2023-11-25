@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace CG.Util
 {
-    public class UtilForms
+    public class FormsUtil
     {
         /// <summary>
         /// Metodo serve para bloquear e desbloquear campos de um formulario
@@ -79,40 +79,19 @@ namespace CG.Util
 
         public static T GerarObjeto<T>(Control container) where T : new()
         {
-            T objeto = new T();
+            T objeto = new();
 
             foreach (Control control in container.Controls)
             {
-                if (control is TextBox textBox && control.Name.StartsWith("txt_"))
+                if ((control is TextBox && control.Name.StartsWith("txt_"))
+                   || (control is ComboBox && control.Name.StartsWith("cbx_")))
                 {
-                    string propertyName = control.Name.Substring(4); // Remove o prefixo "txt_"
+                    string propertyName = control.Name.Substring(4); // Remove o prefixo 
                     PropertyInfo propertyInfo = typeof(T).GetProperty(propertyName);
-                    if (propertyInfo != null)
-                    {
-                        string valor = textBox.Text;
-                        Type propertyType = propertyInfo.PropertyType;
 
-                        if (propertyType == typeof(string))
-                        {
-                            propertyInfo.SetValue(objeto, valor);
-                        }
-                        else if (propertyType == typeof(int))
-                        {
-                            if (int.TryParse(valor, out int intValue))
-                            {
-                                propertyInfo.SetValue(objeto, intValue);
-                            }
-                        }
-                        // Adicione tratamentos para outros tipos de dados, como double, DateTime, etc.
-                    }
-                }
-                else if (control is ComboBox comboBox && control.Name.StartsWith("cbx_"))
-                {
-                    string propertyName = control.Name.Substring(4); // Remove o prefixo "cbx_"
-                    PropertyInfo propertyInfo = typeof(T).GetProperty(propertyName);
                     if (propertyInfo != null)
                     {
-                        string valor = comboBox.Text;
+                        string valor = control.Text;
                         Type propertyType = propertyInfo.PropertyType;
 
                         if (propertyType == typeof(string))
@@ -135,7 +114,7 @@ namespace CG.Util
                         }
                         // Adicione tratamentos para outros tipos de dados, como double, DateTime, etc.
                     }
-                }
+                }                
             }
 
             return objeto;

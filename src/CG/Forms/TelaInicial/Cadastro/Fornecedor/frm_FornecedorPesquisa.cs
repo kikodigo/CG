@@ -16,6 +16,8 @@ namespace CG
             _commonService = new CommonService(table);
 
             txt_Usuario.Text = usuario;
+
+            cbx_coluna.SelectedIndex = 1;
         }
 
         public void Listar()

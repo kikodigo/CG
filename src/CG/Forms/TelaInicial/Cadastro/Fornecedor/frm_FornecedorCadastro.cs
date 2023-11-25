@@ -27,9 +27,9 @@ namespace CG
             txt_Usuario.Text = usuario;
             cbx_Status.DataSource = Enum.GetValues(typeof(StatusEnum));
 
-            UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
+            FormsUtil.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
             var lastFornec = _commonService.GetLastValueAsync<FornecedorData>();
-            UtilForms.PreencherCampos(this, lastFornec);
+            FormsUtil.PreencherCampos(this, lastFornec);
         }
 
         public frm_FornecedorCadastro(string usuario, string id)
@@ -47,10 +47,10 @@ namespace CG
 
         private void CarregamentoFrmCadastrosVindodaPesquisa(string id)
         {
-            UtilForms.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
+            FormsUtil.CarregamentoDeFormsDesabilitandoCancelareSalvar(menuStrip1.Items);
             var fornec = _commonService.GetValueById<FornecedorData>(id);
-            UtilForms.LimparCampos(this);
-            UtilForms.PreencherCampos(this, fornec.Data);
+            FormsUtil.LimparCampos(this);
+            FormsUtil.PreencherCampos(this, fornec.Data);
         }
 
         private void Frm_FornecedorCadastro_Load(object sender, EventArgs e)
@@ -60,21 +60,21 @@ namespace CG
 
         private void Tsm_novo_Click(object sender, EventArgs e)
         {
-            UtilForms.StatusControles(this, true);
-            UtilForms.StatusItensMenu(menuStrip1.Items, false);
-            UtilForms.LimparCampos(this);
+            FormsUtil.StatusControles(this, true);
+            FormsUtil.StatusItensMenu(menuStrip1.Items, false);
+            FormsUtil.LimparCampos(this);
             txt_Razao.Focus();
         }
 
         private void Tsm_cancelar_Click(object sender, EventArgs e)
         {
-            UtilForms.StatusControles(this, false);
-            UtilForms.StatusItensMenu(menuStrip1.Items, true);
+            FormsUtil.StatusControles(this, false);
+            FormsUtil.StatusItensMenu(menuStrip1.Items, true);
 
             if (!chx_editar.Checked)
             {
                 var lastFornec = _commonService.GetLastValueAsync<FornecedorData>();
-                UtilForms.PreencherCampos(this, lastFornec);
+                FormsUtil.PreencherCampos(this, lastFornec);
             }
 
             chx_editar.Checked = false;
@@ -100,16 +100,16 @@ namespace CG
 
         private void Tsm_editar_Click(object sender, EventArgs e)
         {
-            UtilForms.StatusControles(this, true);
-            UtilForms.StatusItensMenu(menuStrip1.Items, false);
+            FormsUtil.StatusControles(this, true);
+            FormsUtil.StatusItensMenu(menuStrip1.Items, false);
             chx_editar.Checked = true;
         }
 
         private void Tsm_salvar_Click(object sender, EventArgs e)
         {
-            if (UtilForms.ValidarDoc(txt_DocNum.Text))
+            if (FormsUtil.ValidarDoc(txt_DocNum.Text))
             {
-                var fornec = UtilForms.GerarObjeto<FornecedorData>(this);
+                var fornec = FormsUtil.GerarObjeto<FornecedorData>(this);
                 var result = new GenericResponse<FornecedorData>();
 
                 if (chx_editar.Checked)
@@ -131,8 +131,8 @@ namespace CG
                 }
                 else
                 {
-                    UtilForms.StatusControles(this, false);
-                    UtilForms.StatusItensMenu(menuStrip1.Items, true);
+                    FormsUtil.StatusControles(this, false);
+                    FormsUtil.StatusItensMenu(menuStrip1.Items, true);
                     chx_editar.Checked = false;
                 }
             }
@@ -154,7 +154,7 @@ namespace CG
             }
             else
             {
-                UtilForms.PreencherCampos(this, previousFornec.Data);
+                FormsUtil.PreencherCampos(this, previousFornec.Data);
             }
 
         }
@@ -170,7 +170,7 @@ namespace CG
             }
             else
             {
-                UtilForms.PreencherCampos(this, nextFornec.Data);
+                FormsUtil.PreencherCampos(this, nextFornec.Data);
             }
         }
 
@@ -203,7 +203,7 @@ namespace CG
 
             if (MsgBoxUtil.MsgBoxQuestion(messageToMsgBox, "Excluir"))
             {
-                var fornec = UtilForms.GerarObjeto<FornecedorData>(this);
+                var fornec = FormsUtil.GerarObjeto<FornecedorData>(this);
                 var result = new GenericResponse<bool>();
 
                 //Fazer: Verificar em outras tabelas se ja existe utiliza��o desse fornecedor, se sim. apenas inativar
@@ -222,14 +222,14 @@ namespace CG
                 }
                 else
                 {
-                    UtilForms.StatusControles(this, false);
-                    UtilForms.StatusItensMenu(menuStrip1.Items, true);
+                    FormsUtil.StatusControles(this, false);
+                    FormsUtil.StatusItensMenu(menuStrip1.Items, true);
                     chx_editar.Checked = false;
                 }
             }
 
             var lastFornec = _commonService.GetLastValueAsync<FornecedorData>();
-            UtilForms.PreencherCampos(this, lastFornec);
+            FormsUtil.PreencherCampos(this, lastFornec);
         }
     }
 }
