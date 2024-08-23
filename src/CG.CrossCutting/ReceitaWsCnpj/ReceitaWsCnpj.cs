@@ -10,7 +10,8 @@ namespace CG.CrossCutting.SpeedIOCnpj
         public EmpresaData HttpGetEmpresaPorCnpj(string cnpj)
         {
             var endpoint = $"https://receitaws.com.br/v1/cnpj/{cnpj}";
-            //https://publica.cnpj.ws/cnpj/NUMERO_DO_CNPJ_SEM_CARACTERES_ESPECIAIS
+            //https://receitaws.com.br/v1/cnpj/{cnpj} 
+
             //gratuito a cada 3 consulta / min
 
             var request = new HttpRequestMessage
