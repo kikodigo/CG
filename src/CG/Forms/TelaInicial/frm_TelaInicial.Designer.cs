@@ -1,4 +1,4 @@
-﻿namespace CG
+﻿namespace CG.Forms.TelaInicial
 {
     partial class frm_TelaInicial
     {

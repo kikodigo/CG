@@ -1,6 +1,6 @@
 ﻿using CG.Domain.Constants;
 
-namespace CG
+namespace CG.Forms.TelaInicial
 {
     public partial class frm_TelaInicial : Form
     {
