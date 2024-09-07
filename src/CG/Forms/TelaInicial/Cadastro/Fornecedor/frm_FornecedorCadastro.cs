@@ -176,7 +176,7 @@ namespace CG
 
         private void Tsm_pesquisa_Click(object sender, EventArgs e)
         {
-            frm_FornecedorPesquisa fornpesq = new frm_FornecedorPesquisa(txt_Usuario.Text, FORNEC_TABLE);
+            frm_FornecedorPesquisa fornpesq = new frm_FornecedorPesquisa(txt_Usuario.Text);
             this.Close();
             fornpesq.Show();
         }

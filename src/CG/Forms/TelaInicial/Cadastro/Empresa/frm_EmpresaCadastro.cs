@@ -13,12 +13,17 @@ namespace CG.Tela_Inicial.Cadastro.Empresa
 
         }
 
-        private void btn_entrar_Click(object sender, EventArgs e)
+        private void tsm_salvar_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void tsm_salvar_Click(object sender, EventArgs e)
+        private void tsm_editar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_Consultar_Click(object sender, EventArgs e)
         {
 
         }

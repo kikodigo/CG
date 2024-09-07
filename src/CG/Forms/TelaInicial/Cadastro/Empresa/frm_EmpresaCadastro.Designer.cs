@@ -292,6 +292,7 @@
             tsm_editar.Name = "tsm_editar";
             tsm_editar.Size = new Size(49, 23);
             tsm_editar.Text = "Editar";
+            tsm_editar.Click += tsm_editar_Click;
             // 
             // tsm_salvar
             // 
@@ -364,7 +365,7 @@
             btn_Consultar.TabIndex = 173;
             btn_Consultar.Text = "Consultar";
             btn_Consultar.UseVisualStyleBackColor = false;
-            btn_Consultar.Click += btn_entrar_Click;
+            btn_Consultar.Click += btn_Consultar_Click;
             // 
             // frm_EmpresaCadastro
             // 

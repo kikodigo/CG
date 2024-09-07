@@ -1,4 +1,5 @@
 ﻿using CG.Domain.Constants;
+using CG.Tela_Inicial.Cadastro.Empresa;
 
 namespace CG.Forms.TelaInicial
 {
@@ -55,7 +56,7 @@ namespace CG.Forms.TelaInicial
 
         private void cadastroToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-
+            new frm_EmpresaCadastro(txt_Usuario.Text).Show();
         }
     }
 }
