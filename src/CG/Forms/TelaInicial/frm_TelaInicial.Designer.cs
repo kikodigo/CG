@@ -212,6 +212,7 @@
             // 
             cadastroToolStripMenuItem5.Name = "cadastroToolStripMenuItem5";
             resources.ApplyResources(cadastroToolStripMenuItem5, "cadastroToolStripMenuItem5");
+            cadastroToolStripMenuItem5.Click += cadastroToolStripMenuItem5_Click;
             // 
             // requisiçãoToolStripMenuItem
             // 

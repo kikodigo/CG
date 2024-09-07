@@ -29,390 +29,405 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_EmpresaCadastro));
-            this.txt_cidade = new System.Windows.Forms.TextBox();
-            this.txt_estado = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txt_razao = new System.Windows.Forms.TextBox();
-            this.txt_tel1 = new System.Windows.Forms.MaskedTextBox();
-            this.txt_tel2 = new System.Windows.Forms.MaskedTextBox();
-            this.chx_editar = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txt_num = new System.Windows.Forms.TextBox();
-            this.label0 = new System.Windows.Forms.Label();
-            this.txt_cnpj = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txt_bairro = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_cep = new System.Windows.Forms.TextBox();
-            this.txt_rua = new System.Windows.Forms.TextBox();
-            this.txt_nome = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.tsm_editar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_salvar = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_cancelar = new System.Windows.Forms.ToolStripMenuItem();
-            this.txt_usuario = new System.Windows.Forms.ToolStripTextBox();
-            this.usuario = new System.Windows.Forms.ToolStripMenuItem();
-            this.lbl_VlPermissao = new System.Windows.Forms.Label();
-            this.menuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            txt_Cidade = new TextBox();
+            txt_Estado = new TextBox();
+            label1 = new Label();
+            txt_razao = new TextBox();
+            chx_editar = new CheckBox();
+            label9 = new Label();
+            txt_Num = new TextBox();
+            label0 = new Label();
+            txt_Cnpj = new TextBox();
+            label10 = new Label();
+            txt_Bairro = new TextBox();
+            label8 = new Label();
+            label7 = new Label();
+            txt_Cep = new TextBox();
+            txt_Endereco = new TextBox();
+            txt_Fantasia = new TextBox();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            menuStrip1 = new MenuStrip();
+            tsm_editar = new ToolStripMenuItem();
+            tsm_salvar = new ToolStripMenuItem();
+            tsm_cancelar = new ToolStripMenuItem();
+            txt_usuario = new ToolStripTextBox();
+            usuario = new ToolStripMenuItem();
+            lbl_VlPermissao = new Label();
+            txt_Tel1 = new TextBox();
+            txt_Tel2 = new TextBox();
+            btn_Consultar = new Button();
+            menuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
-            // txt_cidade
+            // txt_Cidade
             // 
-            this.txt_cidade.Enabled = false;
-            this.txt_cidade.Location = new System.Drawing.Point(241, 114);
-            this.txt_cidade.Multiline = true;
-            this.txt_cidade.Name = "txt_cidade";
-            this.txt_cidade.Size = new System.Drawing.Size(126, 21);
-            this.txt_cidade.TabIndex = 168;
+            txt_Cidade.Enabled = false;
+            txt_Cidade.Location = new Point(420, 191);
+            txt_Cidade.Margin = new Padding(4, 3, 4, 3);
+            txt_Cidade.Name = "txt_Cidade";
+            txt_Cidade.Size = new Size(146, 23);
+            txt_Cidade.TabIndex = 168;
             // 
-            // txt_estado
+            // txt_Estado
             // 
-            this.txt_estado.Enabled = false;
-            this.txt_estado.Location = new System.Drawing.Point(171, 114);
-            this.txt_estado.Multiline = true;
-            this.txt_estado.Name = "txt_estado";
-            this.txt_estado.Size = new System.Drawing.Size(69, 21);
-            this.txt_estado.TabIndex = 167;
+            txt_Estado.Enabled = false;
+            txt_Estado.Location = new Point(332, 191);
+            txt_Estado.Margin = new Padding(4, 3, 4, 3);
+            txt_Estado.Name = "txt_Estado";
+            txt_Estado.Size = new Size(80, 23);
+            txt_Estado.TabIndex = 167;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.Gray;
-            this.label1.Location = new System.Drawing.Point(17, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
-            this.label1.TabIndex = 166;
-            this.label1.Text = "Razão social";
+            label1.AutoSize = true;
+            label1.ForeColor = Color.Gray;
+            label1.Location = new Point(18, 38);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(71, 15);
+            label1.TabIndex = 166;
+            label1.Text = "Razão social";
             // 
             // txt_razao
             // 
-            this.txt_razao.Enabled = false;
-            this.txt_razao.Location = new System.Drawing.Point(18, 74);
-            this.txt_razao.Multiline = true;
-            this.txt_razao.Name = "txt_razao";
-            this.txt_razao.Size = new System.Drawing.Size(325, 21);
-            this.txt_razao.TabIndex = 165;
-            // 
-            // txt_tel1
-            // 
-            this.txt_tel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_tel1.Enabled = false;
-            this.txt_tel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_tel1.Location = new System.Drawing.Point(200, 156);
-            this.txt_tel1.MaximumSize = new System.Drawing.Size(98, 21);
-            this.txt_tel1.MinimumSize = new System.Drawing.Size(98, 21);
-            this.txt_tel1.Name = "txt_tel1";
-            this.txt_tel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txt_tel1.Size = new System.Drawing.Size(98, 21);
-            this.txt_tel1.TabIndex = 164;
-            // 
-            // txt_tel2
-            // 
-            this.txt_tel2.Enabled = false;
-            this.txt_tel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_tel2.Location = new System.Drawing.Point(299, 156);
-            this.txt_tel2.MaximumSize = new System.Drawing.Size(98, 21);
-            this.txt_tel2.MinimumSize = new System.Drawing.Size(98, 21);
-            this.txt_tel2.Name = "txt_tel2";
-            this.txt_tel2.Size = new System.Drawing.Size(98, 21);
-            this.txt_tel2.TabIndex = 163;
+            txt_razao.Enabled = false;
+            txt_razao.Location = new Point(22, 56);
+            txt_razao.Margin = new Padding(4, 3, 4, 3);
+            txt_razao.Name = "txt_razao";
+            txt_razao.Size = new Size(819, 23);
+            txt_razao.TabIndex = 165;
             // 
             // chx_editar
             // 
-            this.chx_editar.AutoSize = true;
-            this.chx_editar.Location = new System.Drawing.Point(655, 158);
-            this.chx_editar.Name = "chx_editar";
-            this.chx_editar.Size = new System.Drawing.Size(66, 17);
-            this.chx_editar.TabIndex = 162;
-            this.chx_editar.Text = "EDITAR";
-            this.chx_editar.UseVisualStyleBackColor = true;
-            this.chx_editar.Visible = false;
+            chx_editar.AutoSize = true;
+            chx_editar.Location = new Point(684, 30);
+            chx_editar.Margin = new Padding(4, 3, 4, 3);
+            chx_editar.Name = "chx_editar";
+            chx_editar.Size = new Size(63, 19);
+            chx_editar.TabIndex = 162;
+            chx_editar.Text = "EDITAR";
+            chx_editar.UseVisualStyleBackColor = true;
+            chx_editar.Visible = false;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(19, 140);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(19, 13);
-            this.label9.TabIndex = 161;
-            this.label9.Text = "Nº";
+            label9.AutoSize = true;
+            label9.ForeColor = Color.Gray;
+            label9.Location = new Point(268, 173);
+            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(21, 15);
+            label9.TabIndex = 161;
+            label9.Text = "Nº";
             // 
-            // txt_num
+            // txt_Num
             // 
-            this.txt_num.Enabled = false;
-            this.txt_num.Location = new System.Drawing.Point(18, 156);
-            this.txt_num.Multiline = true;
-            this.txt_num.Name = "txt_num";
-            this.txt_num.Size = new System.Drawing.Size(48, 21);
-            this.txt_num.TabIndex = 146;
+            txt_Num.Enabled = false;
+            txt_Num.Location = new Point(267, 191);
+            txt_Num.Margin = new Padding(4, 3, 4, 3);
+            txt_Num.Name = "txt_Num";
+            txt_Num.Size = new Size(55, 23);
+            txt_Num.TabIndex = 146;
             // 
             // label0
             // 
-            this.label0.AutoSize = true;
-            this.label0.ForeColor = System.Drawing.Color.Gray;
-            this.label0.Location = new System.Drawing.Point(18, 98);
-            this.label0.Name = "label0";
-            this.label0.Size = new System.Drawing.Size(34, 13);
-            this.label0.TabIndex = 160;
-            this.label0.Text = "CNPJ";
+            label0.AutoSize = true;
+            label0.ForeColor = Color.Gray;
+            label0.Location = new Point(22, 126);
+            label0.Margin = new Padding(4, 0, 4, 0);
+            label0.Name = "label0";
+            label0.Size = new Size(34, 15);
+            label0.TabIndex = 160;
+            label0.Text = "CNPJ";
             // 
-            // txt_cnpj
+            // txt_Cnpj
             // 
-            this.txt_cnpj.Enabled = false;
-            this.txt_cnpj.Location = new System.Drawing.Point(18, 114);
-            this.txt_cnpj.Multiline = true;
-            this.txt_cnpj.Name = "txt_cnpj";
-            this.txt_cnpj.Size = new System.Drawing.Size(152, 21);
-            this.txt_cnpj.TabIndex = 148;
+            txt_Cnpj.Enabled = false;
+            txt_Cnpj.Location = new Point(22, 145);
+            txt_Cnpj.Margin = new Padding(4, 3, 4, 3);
+            txt_Cnpj.Name = "txt_Cnpj";
+            txt_Cnpj.Size = new Size(177, 23);
+            txt_Cnpj.TabIndex = 148;
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Gray;
-            this.label10.Location = new System.Drawing.Point(239, 98);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 13);
-            this.label10.TabIndex = 159;
-            this.label10.Text = "Cidade";
+            label10.AutoSize = true;
+            label10.ForeColor = Color.Gray;
+            label10.Location = new Point(418, 172);
+            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(44, 15);
+            label10.TabIndex = 159;
+            label10.Text = "Cidade";
             // 
-            // txt_bairro
+            // txt_Bairro
             // 
-            this.txt_bairro.Enabled = false;
-            this.txt_bairro.Location = new System.Drawing.Point(368, 114);
-            this.txt_bairro.Multiline = true;
-            this.txt_bairro.Name = "txt_bairro";
-            this.txt_bairro.Size = new System.Drawing.Size(149, 21);
-            this.txt_bairro.TabIndex = 144;
+            txt_Bairro.Enabled = false;
+            txt_Bairro.Location = new Point(574, 191);
+            txt_Bairro.Margin = new Padding(4, 3, 4, 3);
+            txt_Bairro.Name = "txt_Bairro";
+            txt_Bairro.Size = new Size(173, 23);
+            txt_Bairro.TabIndex = 144;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Gray;
-            this.label8.Location = new System.Drawing.Point(365, 98);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(34, 13);
-            this.label8.TabIndex = 155;
-            this.label8.Text = "Bairro";
+            label8.AutoSize = true;
+            label8.ForeColor = Color.Gray;
+            label8.Location = new Point(571, 172);
+            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(38, 15);
+            label8.TabIndex = 155;
+            label8.Text = "Bairro";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Gray;
-            this.label7.Location = new System.Drawing.Point(168, 98);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(40, 13);
-            this.label7.TabIndex = 154;
-            this.label7.Text = "Estado";
+            label7.AutoSize = true;
+            label7.ForeColor = Color.Gray;
+            label7.Location = new Point(328, 172);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(42, 15);
+            label7.TabIndex = 154;
+            label7.Text = "Estado";
             // 
-            // txt_cep
+            // txt_Cep
             // 
-            this.txt_cep.Enabled = false;
-            this.txt_cep.Location = new System.Drawing.Point(67, 156);
-            this.txt_cep.Multiline = true;
-            this.txt_cep.Name = "txt_cep";
-            this.txt_cep.Size = new System.Drawing.Size(132, 21);
-            this.txt_cep.TabIndex = 147;
+            txt_Cep.Enabled = false;
+            txt_Cep.Location = new Point(207, 145);
+            txt_Cep.Margin = new Padding(4, 3, 4, 3);
+            txt_Cep.Name = "txt_Cep";
+            txt_Cep.Size = new Size(115, 23);
+            txt_Cep.TabIndex = 147;
             // 
-            // txt_rua
+            // txt_Endereco
             // 
-            this.txt_rua.Enabled = false;
-            this.txt_rua.Location = new System.Drawing.Point(518, 114);
-            this.txt_rua.Multiline = true;
-            this.txt_rua.Name = "txt_rua";
-            this.txt_rua.Size = new System.Drawing.Size(203, 21);
-            this.txt_rua.TabIndex = 145;
+            txt_Endereco.Enabled = false;
+            txt_Endereco.Location = new Point(23, 191);
+            txt_Endereco.Margin = new Padding(4, 3, 4, 3);
+            txt_Endereco.Name = "txt_Endereco";
+            txt_Endereco.Size = new Size(236, 23);
+            txt_Endereco.TabIndex = 145;
             // 
-            // txt_nome
+            // txt_Fantasia
             // 
-            this.txt_nome.Enabled = false;
-            this.txt_nome.Location = new System.Drawing.Point(344, 74);
-            this.txt_nome.Multiline = true;
-            this.txt_nome.Name = "txt_nome";
-            this.txt_nome.Size = new System.Drawing.Size(377, 21);
-            this.txt_nome.TabIndex = 143;
+            txt_Fantasia.Enabled = false;
+            txt_Fantasia.Location = new Point(21, 100);
+            txt_Fantasia.Margin = new Padding(4, 3, 4, 3);
+            txt_Fantasia.Name = "txt_Fantasia";
+            txt_Fantasia.Size = new Size(820, 23);
+            txt_Fantasia.TabIndex = 143;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Gray;
-            this.label6.Location = new System.Drawing.Point(516, 98);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(27, 13);
-            this.label6.TabIndex = 153;
-            this.label6.Text = "Rua";
+            label6.AutoSize = true;
+            label6.ForeColor = Color.Gray;
+            label6.Location = new Point(21, 172);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(56, 15);
+            label6.TabIndex = 153;
+            label6.Text = "Endereço";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Gray;
-            this.label5.Location = new System.Drawing.Point(64, 140);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(28, 13);
-            this.label5.TabIndex = 152;
-            this.label5.Text = "CEP";
+            label5.AutoSize = true;
+            label5.ForeColor = Color.Gray;
+            label5.Location = new Point(204, 127);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(28, 15);
+            label5.TabIndex = 152;
+            label5.Text = "CEP";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Gray;
-            this.label4.Location = new System.Drawing.Point(296, 138);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
-            this.label4.TabIndex = 151;
-            this.label4.Text = "Telefone 2";
+            label4.AutoSize = true;
+            label4.ForeColor = Color.Gray;
+            label4.Location = new Point(123, 219);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(60, 15);
+            label4.TabIndex = 151;
+            label4.Text = "Telefone 2";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(198, 140);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 150;
-            this.label3.Text = "Telefone 1";
+            label3.AutoSize = true;
+            label3.ForeColor = Color.Gray;
+            label3.Location = new Point(23, 221);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(60, 15);
+            label3.TabIndex = 150;
+            label3.Text = "Telefone 1";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Gray;
-            this.label2.Location = new System.Drawing.Point(341, 58);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
-            this.label2.TabIndex = 149;
-            this.label2.Text = "Nome Fantasia";
+            label2.AutoSize = true;
+            label2.ForeColor = Color.Gray;
+            label2.Location = new Point(18, 82);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(86, 15);
+            label2.TabIndex = 149;
+            label2.Text = "Nome Fantasia";
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsm_editar,
-            this.tsm_salvar,
-            this.tsm_cancelar,
-            this.txt_usuario,
-            this.usuario});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(739, 27);
-            this.menuStrip1.TabIndex = 169;
-            this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { tsm_editar, tsm_salvar, tsm_cancelar, txt_usuario, usuario });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new Padding(7, 2, 0, 2);
+            menuStrip1.Size = new Size(862, 27);
+            menuStrip1.TabIndex = 169;
+            menuStrip1.Text = "menuStrip1";
             // 
             // tsm_editar
             // 
-            this.tsm_editar.Name = "tsm_editar";
-            this.tsm_editar.Size = new System.Drawing.Size(49, 23);
-            this.tsm_editar.Text = "Editar";
-            this.tsm_editar.Click += new System.EventHandler(this.EditarToolStripMenuItem_Click);
+            tsm_editar.Name = "tsm_editar";
+            tsm_editar.Size = new Size(49, 23);
+            tsm_editar.Text = "Editar";
             // 
             // tsm_salvar
             // 
-            this.tsm_salvar.Name = "tsm_salvar";
-            this.tsm_salvar.Size = new System.Drawing.Size(50, 23);
-            this.tsm_salvar.Text = "Salvar";
-            this.tsm_salvar.Click += new System.EventHandler(this.Tsm_salvar_Click);
+            tsm_salvar.Name = "tsm_salvar";
+            tsm_salvar.Size = new Size(50, 23);
+            tsm_salvar.Text = "Salvar";
+            tsm_salvar.Click += tsm_salvar_Click;
             // 
             // tsm_cancelar
             // 
-            this.tsm_cancelar.Name = "tsm_cancelar";
-            this.tsm_cancelar.Size = new System.Drawing.Size(65, 23);
-            this.tsm_cancelar.Text = "Cancelar";
-            this.tsm_cancelar.Click += new System.EventHandler(this.Tsm_cancelar_Click);
+            tsm_cancelar.Name = "tsm_cancelar";
+            tsm_cancelar.Size = new Size(65, 23);
+            tsm_cancelar.Text = "Cancelar";
             // 
             // txt_usuario
             // 
-            this.txt_usuario.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.txt_usuario.Enabled = false;
-            this.txt_usuario.Name = "txt_usuario";
-            this.txt_usuario.Size = new System.Drawing.Size(100, 23);
+            txt_usuario.Alignment = ToolStripItemAlignment.Right;
+            txt_usuario.Enabled = false;
+            txt_usuario.Name = "txt_usuario";
+            txt_usuario.Size = new Size(116, 23);
             // 
             // usuario
             // 
-            this.usuario.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.usuario.Name = "usuario";
-            this.usuario.Size = new System.Drawing.Size(59, 23);
-            this.usuario.Text = "Usuario";
+            usuario.Alignment = ToolStripItemAlignment.Right;
+            usuario.Name = "usuario";
+            usuario.Size = new Size(59, 23);
+            usuario.Text = "Usuario";
             // 
             // lbl_VlPermissao
             // 
-            this.lbl_VlPermissao.AutoSize = true;
-            this.lbl_VlPermissao.Location = new System.Drawing.Point(641, 27);
-            this.lbl_VlPermissao.Name = "lbl_VlPermissao";
-            this.lbl_VlPermissao.Size = new System.Drawing.Size(80, 13);
-            this.lbl_VlPermissao.TabIndex = 170;
-            this.lbl_VlPermissao.Text = "lbl_VlPermissao";
-            this.lbl_VlPermissao.Visible = false;
+            lbl_VlPermissao.AutoSize = true;
+            lbl_VlPermissao.Location = new Point(748, 31);
+            lbl_VlPermissao.Margin = new Padding(4, 0, 4, 0);
+            lbl_VlPermissao.Name = "lbl_VlPermissao";
+            lbl_VlPermissao.Size = new Size(89, 15);
+            lbl_VlPermissao.TabIndex = 170;
+            lbl_VlPermissao.Text = "lbl_VlPermissao";
+            lbl_VlPermissao.Visible = false;
+            // 
+            // txt_Tel1
+            // 
+            txt_Tel1.Enabled = false;
+            txt_Tel1.Location = new Point(23, 237);
+            txt_Tel1.Margin = new Padding(4, 3, 4, 3);
+            txt_Tel1.Name = "txt_Tel1";
+            txt_Tel1.Size = new Size(90, 23);
+            txt_Tel1.TabIndex = 171;
+            // 
+            // txt_Tel2
+            // 
+            txt_Tel2.Enabled = false;
+            txt_Tel2.Location = new Point(123, 237);
+            txt_Tel2.Margin = new Padding(4, 3, 4, 3);
+            txt_Tel2.Name = "txt_Tel2";
+            txt_Tel2.Size = new Size(90, 23);
+            txt_Tel2.TabIndex = 172;
+            // 
+            // btn_Consultar
+            // 
+            btn_Consultar.Anchor = AnchorStyles.None;
+            btn_Consultar.BackColor = Color.FromArgb(64, 67, 73);
+            btn_Consultar.FlatAppearance.BorderSize = 0;
+            btn_Consultar.FlatStyle = FlatStyle.Flat;
+            btn_Consultar.Font = new Font("Microsoft Sans Serif", 12F);
+            btn_Consultar.ForeColor = SystemColors.ControlLightLight;
+            btn_Consultar.Location = new Point(327, 142);
+            btn_Consultar.Margin = new Padding(4, 3, 4, 3);
+            btn_Consultar.Name = "btn_Consultar";
+            btn_Consultar.Size = new Size(85, 25);
+            btn_Consultar.TabIndex = 173;
+            btn_Consultar.Text = "Consultar";
+            btn_Consultar.UseVisualStyleBackColor = false;
+            btn_Consultar.Click += btn_entrar_Click;
             // 
             // frm_EmpresaCadastro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(739, 202);
-            this.Controls.Add(this.lbl_VlPermissao);
-            this.Controls.Add(this.txt_cidade);
-            this.Controls.Add(this.txt_estado);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txt_razao);
-            this.Controls.Add(this.txt_tel1);
-            this.Controls.Add(this.txt_tel2);
-            this.Controls.Add(this.chx_editar);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.txt_num);
-            this.Controls.Add(this.label0);
-            this.Controls.Add(this.txt_cnpj);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.txt_bairro);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.txt_cep);
-            this.Controls.Add(this.txt_rua);
-            this.Controls.Add(this.txt_nome);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(755, 241);
-            this.MinimumSize = new System.Drawing.Size(755, 241);
-            this.Name = "frm_EmpresaCadastro";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro da Empresa";
-            this.Load += new System.EventHandler(this.Frm_EmpresaCadastro_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.DimGray;
+            ClientSize = new Size(862, 276);
+            Controls.Add(btn_Consultar);
+            Controls.Add(txt_Tel2);
+            Controls.Add(txt_Tel1);
+            Controls.Add(lbl_VlPermissao);
+            Controls.Add(txt_Cidade);
+            Controls.Add(txt_Estado);
+            Controls.Add(label1);
+            Controls.Add(txt_razao);
+            Controls.Add(chx_editar);
+            Controls.Add(label9);
+            Controls.Add(txt_Num);
+            Controls.Add(label0);
+            Controls.Add(txt_Cnpj);
+            Controls.Add(label10);
+            Controls.Add(txt_Bairro);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(txt_Cep);
+            Controls.Add(txt_Endereco);
+            Controls.Add(txt_Fantasia);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
+            Margin = new Padding(4, 3, 4, 3);
+            MinimumSize = new Size(878, 272);
+            Name = "frm_EmpresaCadastro";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Cadastro da Empresa";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txt_cidade;
-        private System.Windows.Forms.TextBox txt_estado;
+        private System.Windows.Forms.TextBox txt_Cidade;
+        private System.Windows.Forms.TextBox txt_Estado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_razao;
-        public System.Windows.Forms.MaskedTextBox txt_tel1;
-        private System.Windows.Forms.MaskedTextBox txt_tel2;
         private System.Windows.Forms.CheckBox chx_editar;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txt_num;
+        private System.Windows.Forms.TextBox txt_Num;
         private System.Windows.Forms.Label label0;
-        private System.Windows.Forms.TextBox txt_cnpj;
+        private System.Windows.Forms.TextBox txt_Cnpj;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txt_bairro;
+        private System.Windows.Forms.TextBox txt_Bairro;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txt_cep;
-        private System.Windows.Forms.TextBox txt_rua;
-        private System.Windows.Forms.TextBox txt_nome;
+        private System.Windows.Forms.TextBox txt_Cep;
+        private System.Windows.Forms.TextBox txt_Endereco;
+        private System.Windows.Forms.TextBox txt_Fantasia;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -425,5 +440,8 @@
         private System.Windows.Forms.ToolStripTextBox txt_usuario;
         private System.Windows.Forms.ToolStripMenuItem usuario;
         private System.Windows.Forms.Label lbl_VlPermissao;
+        private TextBox txt_Tel1;
+        private TextBox txt_Tel2;
+        private Button btn_Consultar;
     }
 }

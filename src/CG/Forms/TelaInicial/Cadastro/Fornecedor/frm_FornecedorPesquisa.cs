@@ -1,4 +1,5 @@
 ﻿using CG.Core.Services;
+using CG.Domain.Constants;
 using CG.Domain.Data;
 using CG.Util;
 
@@ -9,11 +10,12 @@ namespace CG
         public readonly FornecedorServices _fornecedorServices;
         public readonly CommonService _commonService;
 
-        public frm_FornecedorPesquisa(string usuario, string table)
+
+        public frm_FornecedorPesquisa(string usuario)
         {
             InitializeComponent();
             _fornecedorServices = new FornecedorServices();
-            _commonService = new CommonService(table);
+            _commonService = new CommonService(TableConstants.FORNEC_TABLE);
 
             txt_Usuario.Text = usuario;
 

@@ -49,8 +49,13 @@ namespace CG.Forms.TelaInicial
 
         private void pesquisaToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            var fornecPesquisa = new frm_FornecedorPesquisa(txt_Usuario.Text, TableConstants.FORNEC_TABLE);
+            var fornecPesquisa = new frm_FornecedorPesquisa(txt_Usuario.Text);
             fornecPesquisa.Show();
+        }
+
+        private void cadastroToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

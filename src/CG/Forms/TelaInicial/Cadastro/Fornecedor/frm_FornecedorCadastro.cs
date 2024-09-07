@@ -206,7 +206,7 @@ namespace CG
                 var fornec = FormsUtil.GerarObjeto<FornecedorData>(this);
                 var result = new GenericResponse<bool>();
 
-                //Fazer: Verificar em outras tabelas se ja existe utiliza��o desse fornecedor, se sim. apenas inativar
+                //TODO: Verificar em outras tabelas se ja existe utiliza��o desse fornecedor, se sim. apenas inativar
 
                 result = _fornecedorServices.DeleteFornec(fornec);
 
