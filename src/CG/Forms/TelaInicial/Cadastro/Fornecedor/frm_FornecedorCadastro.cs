@@ -138,7 +138,7 @@ namespace CG
             }
             else
             {
-                MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
+                MsgBoxUtil.MsgBoxError($"{txt_DocNum.Text} esta invalido",
                     "Documento inalido");
             }
         }

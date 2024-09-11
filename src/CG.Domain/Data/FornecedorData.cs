@@ -27,5 +27,4 @@ namespace CG.Domain.Data
         public string Obs { get; set; }
         public StatusEnum Status { get; set; }
     }
-
 }

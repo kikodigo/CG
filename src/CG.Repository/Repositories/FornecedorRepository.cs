@@ -43,6 +43,7 @@ namespace CG.Repository.Repositories
 
             return result.FirstOrDefault();
         }
+
         public List<FornecedorData> GetAllFornecedor()
         {
             var query = string.Format(QueryConstants.GET_ALL_VALUES_QUERY, TABLE);

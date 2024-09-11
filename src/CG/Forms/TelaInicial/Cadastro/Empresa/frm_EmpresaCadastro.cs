@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using CG.Util;
+using System.Data;
 
 namespace CG.Tela_Inicial.Cadastro.Empresa
 {
@@ -20,10 +21,17 @@ namespace CG.Tela_Inicial.Cadastro.Empresa
 
         private void tsm_editar_Click(object sender, EventArgs e)
         {
-
+            FormsUtil.StatusControles(this, true);
+            FormsUtil.StatusItensMenu(menuStrip1.Items, false);
+            chx_editar.Checked = true;
         }
 
         private void btn_Consultar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsm_cancelar_Click(object sender, EventArgs e)
         {
 
         }
