@@ -306,6 +306,7 @@
             tsm_cancelar.Name = "tsm_cancelar";
             tsm_cancelar.Size = new Size(65, 23);
             tsm_cancelar.Text = "Cancelar";
+            tsm_cancelar.Click += tsm_cancelar_Click;
             // 
             // txt_usuario
             // 
