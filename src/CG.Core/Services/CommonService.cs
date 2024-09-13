@@ -48,16 +48,11 @@ namespace CG.Core.Services
 
             if (resultRepository is not null)
             {
-                result.Data = resultRepository;
-                result.HasError = false;
+                result.Sucesso();
             }
             else
             {
-                result.HasError = true;
-                result.Errors = new List<string>()
-                {
-                    "Não existe registro anterior."
-                };
+                result.Falha("Não existe registro anterior");
             }
 
             return result;
@@ -71,17 +66,12 @@ namespace CG.Core.Services
 
             if (resultRepository is not null)
             {
-                result.Data = resultRepository;
-                result.HasError = false;
+                result.Sucesso();
             }
             else
             {
-                result.HasError = true;
-                result.Errors = new List<string>()
-                {
-                    "Registro não encontrato.\n" +
-                    "Entre em contato com o Administrador."
-                };
+                result.Falha("Registro não encontrato.\n" +
+                             "Entre em contato com o Administrador.");
             }
 
             return result;

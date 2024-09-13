@@ -185,13 +185,37 @@ namespace CG
         {
             if (!string.IsNullOrEmpty(txt_DocNum.Text))
             {
-                if (!Cnpj.Validar(txt_DocNum.Text))
+                switch (txt_DocNum.Text.Length)
                 {
-                    MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
-                                      "Documento inalido");
+                    case 11:
+                        if (!Cpf.Validar(txt_DocNum.Text))
+                        {
+                            MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
+                                "Documento inalido");
 
-                    txt_DocNum.Focus();
+                            txt_DocNum.Focus();
+                        }
+                        break;
+                    
+                    case 14:
+                        if (!Cnpj.Validar(txt_DocNum.Text))
+                        {
+                            MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
+                                "Documento inalido");
+
+                            txt_DocNum.Focus();
+                        }
+                        break;
+                    
+                    default:
+                        MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
+                            "Documento inalido");
+
+                        txt_DocNum.Focus();
+                        break;
                 }
+                
+               
             }
         }
 

@@ -32,7 +32,7 @@ namespace CG.Core.Services
                     response.HasError = true;
                     response.Errors = new List<string>()
                     {
-                       "Correu algum erro na inserção do fornecedor, verifique se ele foi inserido.\n" +
+                       "Ocorreu algum erro na inserção do fornecedor, verifique se ele foi inserido.\n" +
                        "Feche a tela do fornecedor e abra novamente."
                     };
                 }
@@ -68,7 +68,7 @@ namespace CG.Core.Services
                 response.HasError = true;
                 response.Errors = new List<string>()
                 {
-                    "Correu algum erro no update do fornecedor, verifique se ele foi inserido.\n" +
+                    "Ocorreu algum erro no update do fornecedor, verifique se ele foi inserido.\n" +
                     "Feche a tela do fornecedor e abra novamente."
                 };
             }

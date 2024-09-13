@@ -1,4 +1,5 @@
-﻿using CG.Domain.Constants;
+﻿using System.Reflection;
+using CG.Domain.Constants;
 using CG.Domain.Data;
 using CG.Repository.Constants;
 using CG.Repository.Repositories.RepoBase;
@@ -109,7 +110,7 @@ namespace CG.Repository.Repositories
         {
             var command = new MySqlCommand(query);
 
-            command.Parameters.AddWithValue("@Razao", fornecedor.Razao);
+            command.Parameters.AddWithValue($"@{nameof(fornecedor.Razao)}", fornecedor.Razao);
             command.Parameters.AddWithValue("@Fantasia", fornecedor.Fantasia);
             command.Parameters.AddWithValue("@DocNum", fornecedor.DocNum);
             command.Parameters.AddWithValue("@Rua", fornecedor.Rua);
