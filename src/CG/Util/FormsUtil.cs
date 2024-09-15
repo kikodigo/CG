@@ -23,7 +23,7 @@ namespace CG.Util
                     label.ForeColor = cor;
                 }
 
-                if (control is TextBox || control is ComboBox)
+                if (control is TextBox || control is ComboBox || control is Button)
                 {
                     if (control.Name == "txt_Id")
                     {
@@ -120,8 +120,9 @@ namespace CG.Util
             return objeto;
         }
 
-        public static void PreencherCampos<T>(Control container, T objeto)
+        public static void PreencherCampos<T>(Control container, T? objeto)
         {
+            if(objeto != null)
             foreach (Control control in container.Controls)
             {
                 if (control is TextBox textBox && control.Name.StartsWith("txt_"))

@@ -1,5 +1,6 @@
 ﻿using CG.Domain.Data;
 using CG.Domain.Util;
+using Newtonsoft.Json;
 
 namespace CG.CrossCutting.SpeedIOCnpj
 {
@@ -24,9 +25,23 @@ namespace CG.CrossCutting.SpeedIOCnpj
 
             var json = response.Result.Content.ReadAsStringAsync().Result;
 
-            var result = JsonExtension.JsonToObject<EmpresaData>(json);
+            dynamic jsonData = JsonConvert.DeserializeObject<dynamic>(json);
 
-            return result;
+            var empresaData = new EmpresaData
+            {
+                DocNum = jsonData.cnpj.ToString(),
+                Razao = jsonData.nome.ToString(),
+                Fantasia = jsonData.fantasia.ToString(),
+                Cep = jsonData.cep.ToString(),
+                Endereco = jsonData.logradouro.ToString(),
+                Num = jsonData.numero.ToString(),
+                Estado = jsonData.uf.ToString(),
+                Cidade = jsonData.municipio.ToString(),
+                Bairro = jsonData.bairro.ToString(),
+                Tel1 = jsonData.telefone.ToString()
+            };
+
+            return empresaData;
         }
 
     }

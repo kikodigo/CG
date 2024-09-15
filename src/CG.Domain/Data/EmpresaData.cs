@@ -1,6 +1,4 @@
-﻿using System.Reflection.Metadata;
-
-namespace CG.Domain.Data
+﻿namespace CG.Domain.Data
 {
     public class EmpresaData
     {
@@ -16,6 +14,5 @@ namespace CG.Domain.Data
         public string Bairro { get; set; }
         public string Tel1 { get; set; }
         public string Tel2 { get; set; }
-        public int Logo { get; set; } //Todo: Ajustar essa prop para aceitar imagem
     }
 }

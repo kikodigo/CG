@@ -14,49 +14,8 @@ namespace CG
             //resultado = mPermissao.consulta(usuario, this.Name);
             lbl_VlPermissao.Text = resultado.Rows[0][this.Name].ToString();
         }
+              
 
-        public void controleacesso(string CodPerfil)
-        {
-            switch (CodPerfil)
-            {
-                case "1":
-
-                    break;
-
-                case "2":
-                    tsm_excluir.Visible = false;
-                    break;
-
-                case "3":
-                    tsm_excluir.Visible = false;
-                    tsm_editar.Visible = false;
-
-                    break;
-
-                case "4":
-                    tsm_editar.Visible = false;
-                    tsm_novo.Visible = false;
-                    tsm_excluir.Visible = false;
-                    tsm_salvar.Visible = false;
-                    tsm_cancelar.Visible = false;
-
-                    break;
-
-                case "0":
-                    MessageBox.Show("Acesso negado!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    this.Close();
-                    break;
-
-                default:
-                    MessageBox.Show("Falha ao carregar Perfil.\\nInforme o Administrador do sistema.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.Close();
-                    break;
-
-            }
-
-        }
-
-        private string permissao;
         //Classes.permissoes mPermissao = new Classes.permissoes();
 
         public void preencher(DataTable resultado)

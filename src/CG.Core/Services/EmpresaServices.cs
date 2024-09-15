@@ -20,24 +20,31 @@ public class EmpresaServices
     {
         var existeEmpresa = _commonService.GetLastValueAsync<EmpresaData>();
 
+        int rowsAffected;
         if (existeEmpresa is null)
         {
-            var existeEmpresa1 = _empresaRepository.InsertEmpresa(empresaData);
+            rowsAffected = _empresaRepository.InsertEmpresa(empresaData);
         }
         else
         {
-            var existeEmpresa1 = _empresaRepository.UpdateEmpresa(empresaData);
+            rowsAffected = _empresaRepository.UpdateEmpresa(empresaData);
         }
-        
-        
-       
-        
-        
-        
-        
-        
-        return new GenericResponse<EmpresaData>();
+
+        var response = new GenericResponse<EmpresaData>();
+
+        if (rowsAffected > 0)
+        {
+            response.HasError = false;
+        }
+        else
+        {
+            response.HasError = true;
+            response.Errors = new List<string>()
+            {
+                "Ocorreu algum erro na inserção da empresa, verifique se ele foi inserido.\n" +
+                "Feche a tela da empresa e abra novamente."
+            };
+        }
+        return response;
     }
-    
-    
 }

@@ -3,6 +3,7 @@ using CG.Domain.Constants;
 using CG.Domain.Data;
 using CG.Repository.Constants;
 using CG.Repository.Repositories.RepoBase;
+using CG.Repository.Util;
 using MySql.Data.MySqlClient;
 
 namespace CG.Repository.Repositories
@@ -10,12 +11,14 @@ namespace CG.Repository.Repositories
     public class FornecedorRepository
     {
         private readonly QueryBaseRepository _queryBaseRepository;
+        private readonly Mappers _mappers;
 
         private const string TABLE = TableConstants.FORNEC_TABLE;
 
         public FornecedorRepository()
         {
             _queryBaseRepository = new QueryBaseRepository();
+            _mappers = new Mappers(TABLE);
         }
 
         public FornecedorData GetLastFornec()
@@ -70,10 +73,7 @@ namespace CG.Repository.Repositories
 
         public int InsertFornec(FornecedorData fornecedor)
         {
-            string insertQuery = $"INSERT INTO {TABLE} (Razao, Fantasia, DocNum, Rua, Num, Cep, Uf, Cidade, Bairro, Contato, Tel1, Tel2, Email, Site, TipoCont, Ag, Op, Ct, Pix, Obs, Status) " +
-                      "VALUES (@Razao, @Fantasia, @DocNum, @Rua, @Num, @Cep, @Uf, @Cidade, @Bairro, @Contato, @Tel1, @Tel2, @Email, @Site, @TipoCont, @Ag, @Op, @Ct, @Pix, @Obs, @Status)";
-
-            var commandMapped = Mapper(fornecedor, insertQuery);
+            var commandMapped = _mappers.InsertMapper(fornecedor);
 
             var result = _queryBaseRepository.InsertUpdateValueOnMySql(commandMapped);
 
@@ -82,15 +82,7 @@ namespace CG.Repository.Repositories
 
         public int UpdateFornec(FornecedorData fornecedor)
         {
-            string updateQuery = $"UPDATE {TABLE} " +
-                                "SET Razao = @Razao, Fantasia = @Fantasia, DocNum = @DocNum, Rua = @Rua, " +
-                                "Num = @Num, Cep = @Cep, Uf = @Uf, Cidade = @Cidade, Bairro = @Bairro, " +
-                                "Contato = @Contato, Tel1 = @Tel1, Tel2 = @Tel2, Email = @Email, Site = @Site, " +
-                                "TipoCont = @TipoCont, Ag = @Ag, Op = @Op, Ct = @Ct, Pix = @Pix, Obs = @Obs, " +
-                                "Status = @Status " +
-                                "WHERE DocNum = @DocNum";
-
-            var commandMapped = Mapper(fornecedor, updateQuery);
+            var commandMapped = _mappers.UpdateMapper<FornecedorData>(fornecedor);
 
             var result = _queryBaseRepository.InsertUpdateValueOnMySql(commandMapped);
 
@@ -104,35 +96,6 @@ namespace CG.Repository.Repositories
             var result = _queryBaseRepository.DeleteValueOnMySql(query);
 
             return result;
-        }
-
-        private MySqlCommand Mapper(FornecedorData fornecedor, string query)
-        {
-            var command = new MySqlCommand(query);
-
-            command.Parameters.AddWithValue($"@{nameof(fornecedor.Razao)}", fornecedor.Razao);
-            command.Parameters.AddWithValue("@Fantasia", fornecedor.Fantasia);
-            command.Parameters.AddWithValue("@DocNum", fornecedor.DocNum);
-            command.Parameters.AddWithValue("@Rua", fornecedor.Rua);
-            command.Parameters.AddWithValue("@Num", fornecedor.Num);
-            command.Parameters.AddWithValue("@Cep", fornecedor.Cep);
-            command.Parameters.AddWithValue("@Uf", fornecedor.Uf);
-            command.Parameters.AddWithValue("@Cidade", fornecedor.Cidade);
-            command.Parameters.AddWithValue("@Bairro", fornecedor.Bairro);
-            command.Parameters.AddWithValue("@Contato", fornecedor.Contato);
-            command.Parameters.AddWithValue("@Tel1", fornecedor.Tel1);
-            command.Parameters.AddWithValue("@Tel2", fornecedor.Tel2);
-            command.Parameters.AddWithValue("@Email", fornecedor.Email);
-            command.Parameters.AddWithValue("@Site", fornecedor.Site);
-            command.Parameters.AddWithValue("@TipoCont", fornecedor.TipoCont);
-            command.Parameters.AddWithValue("@Ag", fornecedor.Ag);
-            command.Parameters.AddWithValue("@Op", fornecedor.Op);
-            command.Parameters.AddWithValue("@Ct", fornecedor.Ct);
-            command.Parameters.AddWithValue("@Pix", fornecedor.Pix);
-            command.Parameters.AddWithValue("@Obs", fornecedor.Obs);
-            command.Parameters.AddWithValue("@Status", fornecedor.Status.ToString());
-
-            return command;
-        }
+        }    
     }
 }
