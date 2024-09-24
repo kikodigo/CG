@@ -52,7 +52,6 @@ namespace CG.Tela_Inicial.Cadastro.Empresa
                 FormsUtil.PreencherCampos(this, empresahttp);
                 txt_Id.Text = idAtual;
             }
-
         }
 
         private void tsm_cancelar_Click(object sender, EventArgs e)

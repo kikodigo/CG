@@ -1,11 +1,11 @@
+using System.Diagnostics;
 using CG.Core.Services;
+using CG.Core.Validators;
 using CG.Domain.Constants;
 using CG.Domain.Data;
 using CG.Domain.Enum;
 using CG.Domain.Response;
 using CG.Util;
-using CpfCnpjLibrary;
-using System.Diagnostics;
 
 namespace CG
 {
@@ -185,37 +185,13 @@ namespace CG
         {
             if (!string.IsNullOrEmpty(txt_DocNum.Text))
             {
-                switch (txt_DocNum.Text.Length)
+                if (!txt_DocNum.Text.ValidarDocumento())
                 {
-                    case 11:
-                        if (!Cpf.Validar(txt_DocNum.Text))
-                        {
-                            MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
-                                "Documento inalido");
+                    MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
+                        "Documento inalido");
 
-                            txt_DocNum.Focus();
-                        }
-                        break;
-                    
-                    case 14:
-                        if (!Cnpj.Validar(txt_DocNum.Text))
-                        {
-                            MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
-                                "Documento inalido");
-
-                            txt_DocNum.Focus();
-                        }
-                        break;
-                    
-                    default:
-                        MsgBoxUtil.MsgBoxError($"{lbl_DocNum.Text} esta invalido",
-                            "Documento inalido");
-
-                        txt_DocNum.Focus();
-                        break;
+                    txt_DocNum.Focus();
                 }
-                
-               
             }
         }
 
@@ -230,7 +206,7 @@ namespace CG
                 var fornec = FormsUtil.GerarObjeto<FornecedorData>(this);
                 var result = new GenericResponse<bool>();
 
-                //TODO: Verificar em outras tabelas se ja existe utiliza��o desse fornecedor, se sim. apenas inativar
+                //TODO: Verificar em outras tabelas se ja existe utilizacaoo desse fornecedor, se sim. apenas inativar
 
                 result = _fornecedorServices.DeleteFornec(fornec);
 
